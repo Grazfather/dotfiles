@@ -41,7 +41,6 @@
 :nmap \l :setlocal number!<CR>
 
 " Improve search
-:set incsearch
 :set ignorecase
 :set smartcase
 :set hlsearch
