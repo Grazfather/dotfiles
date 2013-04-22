@@ -51,3 +51,7 @@
 set splitbelow
 set splitright
 
+" Use local config if it exists
+if filereadable($HOME . "/.vimrc.local")
+    source ~/.vimrc.local
+endif
