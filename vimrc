@@ -47,3 +47,7 @@
 :nmap \q :nohlsearch<CR>
 :nmap \w :set hlsearch<CR>
 
+" Open new split panes to right and bottom
+set splitbelow
+set splitright
+
