@@ -1,3 +1,6 @@
+" Pathogen package manager
+execute pathogen#infect()
+
 " Solarized color scheme in ~/.vim/colors/solarized.vim
 :syntax enable
 :set background=dark
@@ -50,6 +53,12 @@
 " Open new split panes to right and bottom
 set splitbelow
 set splitright
+
+" vim, not vi
+set nocompatible
+
+" allow hidden buffers
+set hidden
 
 " Use local config if it exists
 if filereadable($HOME . "/.vimrc.local")
