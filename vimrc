@@ -60,6 +60,9 @@ set nocompatible
 " allow hidden buffers
 set hidden
 
+" always show the status bar
+:set laststatus=2
+
 " Use local config if it exists
 if filereadable($HOME . "/.vimrc.local")
     source ~/.vimrc.local
