@@ -51,14 +51,14 @@ execute pathogen#infect()
 :nmap \w :set hlsearch<CR>
 
 " Open new split panes to right and bottom
-set splitbelow
-set splitright
+:set splitbelow
+:set splitright
 
 " vim, not vi
-set nocompatible
+:set nocompatible
 
 " allow hidden buffers
-set hidden
+:set hidden
 
 " always show the status bar
 :set laststatus=2
