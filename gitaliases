@@ -4,6 +4,7 @@
       ca = commit --amend
       co = checkout
       ci = commit
+      cp = cherry-pick
       st = status
       br = branch
       hist = log --pretty=format:\"%h %cd | %s%d [%an]\" --graph --date=short
