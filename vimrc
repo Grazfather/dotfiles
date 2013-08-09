@@ -63,6 +63,10 @@ execute pathogen#infect()
 " always show the status bar
 :set laststatus=2
 
+" Highlight current line
+" This requires setting g:solarized_hitrail
+:set cursorline
+
 " Use local config if it exists
 if filereadable($HOME . "/.vimrc.local")
     source ~/.vimrc.local
