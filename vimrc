@@ -67,6 +67,10 @@ execute pathogen#infect()
 " This requires setting g:solarized_hitrail
 :set cursorline
 
+" Enable syntax folding, but have it disabled by default
+:set foldmethod=syntax
+:set foldlevel=99
+
 " Use local config if it exists
 if filereadable($HOME . "/.vimrc.local")
     source ~/.vimrc.local
