@@ -19,7 +19,7 @@ execute pathogen#infect()
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Highlight unneeded blank lines
-:highlight BlankLines ctermbg=darkgreen guibg=darkgreen ctermfg=white 
+:highlight BlankLines ctermbg=darkgreen guibg=darkgreen ctermfg=white
 :let w:m1=matchadd('BlankLines', '^$\n\{2,}')
 
 " Highlight trailing whitespace and spaces before tabs
@@ -66,6 +66,9 @@ execute pathogen#infect()
 " Highlight current line
 " This requires setting g:solarized_hitrail
 :set cursorline
+
+" Consistent backspace on all systems
+:set backspace=2
 
 " Enable syntax folding, but have it disabled by default
 :set foldmethod=syntax
