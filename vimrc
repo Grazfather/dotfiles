@@ -63,8 +63,13 @@ execute pathogen#infect()
 " always show the status bar
 :set laststatus=2
 
+" hide mode so it shows on the statusbar only
+:set noshowmode
+
+" short ttimeoutlen to lower latency to show current mode
+:set ttimeoutlen=50
+
 " Highlight current line
-" This requires setting g:solarized_hitrail
 :set cursorline
 
 " Consistent backspace on all systems
