@@ -78,3 +78,13 @@ execute pathogen#infect()
 if filereadable($HOME . "/.vimrc.local")
     source ~/.vimrc.local
 endif
+
+" Set background and font in gVim
+if has("gui_running")
+  set background=light
+  if has("gui_gtk2")
+    set guifont=Inconsolata\ 11
+  elseif has("gui_win32")
+    set guifont=Consolas:h10:cANSI
+  endif
+endif
