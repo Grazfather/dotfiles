@@ -1,9 +1,9 @@
 #!/bin/bash
 
-dir=~/dotfiles
-backup=~/dotfiles.bak
+dir=$HOME/dotfiles
+backup=$HOME/dotfiles.bak
 
-mkdir -p ~/$backup
+mkdir -p $backup
 
 for file in $dir/*
 do
@@ -12,9 +12,9 @@ do
         if [[ "$filename" != "makelinks.sh" ]]; then
             echo "Creating link for .$filename"
             # Move existing dotfile to $backup
-            mv ~/.$filename $backup/
+            mv $HOME/.$filename $backup/
             # Create symlink
-            ln -s $dir/$filename ~/.$filename
+            ln -s $dir/$filename $HOME/.$filename
         fi
     fi
 done
