@@ -91,6 +91,9 @@ nnoremap <C-l> <C-w>l
 " Leave insert mode with jj
 :inoremap jj <ESC>
 
+" Clear trailing whitespace
+:nnoremap <leader>W :%s/\s\+$//<CR>
+
 " Enable syntax folding, but have it disabled by default
 :set foldmethod=syntax
 :set foldlevel=99
