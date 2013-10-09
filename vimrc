@@ -30,6 +30,9 @@ execute pathogen#infect()
 :highlight LongLines ctermbg=darkblue guibg=darkblue ctermfg=white
 :let w:m3=matchadd('LongLines', '\%>80v.\+')
 
+" Allow filetype-specific plugins
+:filetype plugin on
+
 " Disable arrow keys for navigation
 :nnoremap <up> <nop>
 :nnoremap <down> <nop>
