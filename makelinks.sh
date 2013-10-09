@@ -9,7 +9,7 @@ for file in $dir/*
 do
     filename=$(basename $file)
     if [[ -f $file ]]; then
-        if [[ "$filename" != "makelinks.sh" ]]; then
+        if [[ "$filename" != "$(basename $0)" ]]; then
             echo "Creating link for .$filename"
             # Move existing dotfile to $backup
             mv $HOME/.$filename $backup/
