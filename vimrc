@@ -64,6 +64,12 @@ execute pathogen#infect()
 " allow hidden buffers
 :set hidden
 
+" Ctrl-<hjkl> to move windows
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+
 " always show the status bar
 :set laststatus=2
 
