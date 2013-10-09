@@ -40,15 +40,19 @@ execute pathogen#infect()
 :nmap j gj
 :nmap k gk
 
-" Show line numbers with \l
-:nmap \l :setlocal number!<CR>
+" Remap <leader>
+:let mapleader=","
+
+" Show relative line numbers with <leader>l
+:nmap <leader>l :setlocal relativenumber!<CR>
 
 " Improve search
 :set ignorecase
 :set smartcase
 :set hlsearch
-:nmap \q :nohlsearch<CR>
-:nmap \w :set hlsearch<CR>
+" Enable and disable search highlighting
+:nmap <leader>q :nohlsearch<CR>
+:nmap <leader>a :set hlsearch<CR>
 
 " Open new split panes to right and bottom
 :set splitbelow
