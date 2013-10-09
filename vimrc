@@ -88,6 +88,9 @@ nnoremap <C-l> <C-w>l
 " Consistent backspace on all systems
 :set backspace=2
 
+" Leave insert mode with jj
+:inoremap jj <ESC>
+
 " Enable syntax folding, but have it disabled by default
 :set foldmethod=syntax
 :set foldlevel=99
