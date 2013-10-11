@@ -53,9 +53,9 @@ execute pathogen#infect()
 :set ignorecase
 :set smartcase
 :set hlsearch
+
 " Enable and disable search highlighting
-:nmap <leader>q :nohlsearch<CR>
-:nmap <leader>a :set hlsearch<CR>
+:nmap <leader>q :set hlsearch!<CR>
 
 " Open new split panes to right and bottom
 :set splitbelow
