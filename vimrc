@@ -107,7 +107,7 @@ nnoremap <C-l> <C-w>l
 " Toggle showing listchars
 :nnoremap <leader><TAB> :set list!<CR>
 if &encoding == "utf-8"
-  exe "set listchars=nbsp:\u2423,conceal:\u22ef,tab:\u25b8\u2014,precedes:\u2026,extends:\u2026"
+  exe "set listchars=eol:\u00ac,nbsp:\u2423,conceal:\u22ef,tab:\u25b8\u2014,precedes:\u2026,extends:\u2026"
 else
   set listchars=eol:$,tab:>-,extends:>,precedes:<,conceal:+
 endif
