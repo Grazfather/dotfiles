@@ -6,6 +6,16 @@ execute pathogen#infect()
 :set background=dark
 :colorscheme solarized
 
+" Set background and font in gVim
+if has("gui_running")
+  set background=light
+  if has("gui_gtk2")
+    set guifont=Inconsolata\ 11
+  elseif has("gui_win32")
+    set guifont=Consolas:h10:cANSI
+  endif
+endif
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Match extra lines, spaces, and long lines like the following:
 " Extra lines:
@@ -101,14 +111,4 @@ nnoremap <C-l> <C-w>l
 " Use local config if it exists
 if filereadable($HOME . "/.vimrc.local")
     source ~/.vimrc.local
-endif
-
-" Set background and font in gVim
-if has("gui_running")
-  set background=light
-  if has("gui_gtk2")
-    set guifont=Inconsolata\ 11
-  elseif has("gui_win32")
-    set guifont=Consolas:h10:cANSI
-  endif
 endif
