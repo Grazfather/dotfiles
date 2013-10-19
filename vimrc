@@ -104,6 +104,14 @@ nnoremap <C-l> <C-w>l
 " Clear trailing whitespace
 :nnoremap <leader>W :%s/\s\+$//<CR>
 
+" Toggle showing listchars
+:nnoremap <leader><TAB> :set list!<CR>
+if &encoding == "utf-8"
+  exe "set listchars=nbsp:\u2423,conceal:\u22ef,tab:\u25b8\\u2014,precedes:\u2026,extends;\u2026
+else
+  set listchars=eol:$,tab:>-,extends:>,precedes:<,conceal:+
+endif
+
 " Enable syntax folding, but have it disabled by default
 :set foldmethod=syntax
 :set foldlevel=99
