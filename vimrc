@@ -71,9 +71,6 @@ endif
 :set splitbelow
 :set splitright
 
-" vim, not vi
-:set nocompatible
-
 " allow hidden buffers
 :set hidden
 
@@ -115,6 +112,9 @@ endif
 " Enable syntax folding, but have it disabled by default
 :set foldmethod=syntax
 :set foldlevel=99
+
+" Open vimrc
+:nmap <leader>v :edit $MYVIMRC<CR>
 
 " Use local config if it exists
 if filereadable($HOME . "/.vimrc.local")
