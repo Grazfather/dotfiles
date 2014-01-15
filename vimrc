@@ -1,5 +1,5 @@
 " Pathogen package manager
-execute pathogen#infect()
+silent! execute pathogen#infect()
 
 " Solarized color scheme in ~/.vim/colors/solarized.vim
 :syntax enable
