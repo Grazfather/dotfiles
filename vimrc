@@ -33,12 +33,16 @@ endif
 :let w:m1=matchadd('BlankLines', '^$\n\{2,}')
 
 " Highlight trailing whitespace and spaces before tabs
-:highlight TrailingWhitespace ctermbg=darkred guibg=darkred ctermfg=white
+:highlight TrailingWhitespace ctermbg=darkred guibg=darkred
 :let w:m2=matchadd('TrailingWhitespace', '\s\+$\| \+\ze\t')
 
-" Highlight lines longer than 80 characters
-:highlight LongLines ctermbg=darkblue guibg=darkblue ctermfg=white
-:let w:m3=matchadd('LongLines', '\%>80v.\+')
+" Highlight the 80th column
+if exists('+colorcolumn')
+  :au BufWinEnter *.c,*.h,*.cpp set colorcolumn=80
+else
+  :highlight LongLines ctermbg=darkblue guibg=darkblue ctermfg=white
+  :au BufWinEnter *.c,*.h,*.cpp let w:m3=matchadd('LongLines', '\%80v', -1)
+endif
 
 " Allow filetype-specific plugins
 :filetype plugin on
