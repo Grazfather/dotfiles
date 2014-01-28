@@ -1,4 +1,5 @@
 " Pathogen package manager
+runtime bundle/vim-pathogen/autoload/pathogen.vim
 silent! execute pathogen#infect()
 
 " Solarized color scheme in ~/.vim/colors/solarized.vim
@@ -124,3 +125,11 @@ endif
 if filereadable($HOME . "/.vimrc.local")
     source ~/.vimrc.local
 endif
+
+" Configure plugins
+let g:airline_powerline_fonts = 1
+let g:airline_theme = 'wombat'
+let g:tmuxline_preset = 'full'
+
+let g:hardtime_timeout = 500
+let g:hardtime_default_on = 1
