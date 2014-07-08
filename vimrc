@@ -5,7 +5,7 @@ silent! execute pathogen#infect()
 " Solarized color scheme in ~/.vim/colors/solarized.vim
 :syntax enable
 :set background=dark
-:colorscheme solarized
+:colorscheme jellybeans
 
 " Set background and font in gVim
 if has("gui_running")
