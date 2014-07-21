@@ -10,6 +10,7 @@
       hist = log --pretty=format:\"%h %cd | %s%d [%an]\" --graph --date=short
       d = diff
       dc = diff --cached
+      rc = rebase --continue
       type = cat-file -t
       dump = cat-file -p
 
