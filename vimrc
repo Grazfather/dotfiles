@@ -45,6 +45,10 @@ else
   :au BufWinEnter *.c,*.h,*.cpp let w:m3=matchadd('LongLines', '\%80v', -1)
 endif
 
+" Remap <leader>
+:let mapleader=","
+
+" NAVIGATION
 " Allow filetype-specific plugins
 :filetype plugin on
 
@@ -54,12 +58,17 @@ endif
 :nnoremap <left> <nop>
 :nnoremap <right> <nop>
 
-" Make j and k move up and down better
-:nmap j gj
-:nmap k gk
+" Make j and k move up and down better for wrapped lines
+:noremap k gk
+:noremap j gj
+:noremap k gk
+:noremap gj j
 
-" Remap <leader>
-:let mapleader=","
+" Ctrl-<hjkl> to move windows
+:noremap <C-h> <C-w>h
+:noremap <C-j> <C-w>j
+:noremap <C-k> <C-w>k
+:noremap <C-l> <C-w>l
 
 " Show relative line numbers with <leader>l
 :nmap <leader>l :setlocal relativenumber!<CR>
@@ -78,12 +87,6 @@ endif
 
 " allow hidden buffers
 :set hidden
-
-" Ctrl-<hjkl> to move windows
-nnoremap <C-h> <C-w>h
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-l> <C-w>l
 
 " always show the status bar
 :set laststatus=2
@@ -118,8 +121,21 @@ endif
 :set foldmethod=syntax
 :set foldlevel=99
 
-" Open vimrc
-:nmap <leader>v :edit $MYVIMRC<CR>
+" Space to toggle folds
+nnoremap <Space> za
+vnoremap <Space> za
+
+" Select whole buffer
+nnoremap vaa ggvGg_
+
+" Uppercase typed word from insert mode
+inoremap <C-u> <esc>mzgUiw`za
+
+" Open commonly edited files
+:nmap <leader>ev :edit $MYVIMRC<CR>
+:nmap <leader>et :edit $HOME/.tmux.conf<CR>
+:nmap <leader>eb :edit $HOME/.bash_aliases<CR>
+:nmap <leader>eg :edit $HOME/.gitaliases<CR>
 
 " Use local config if it exists
 if filereadable($HOME . "/.vimrc.local")
@@ -133,3 +149,6 @@ let g:tmuxline_preset = 'full'
 
 " taglist.vim
 :nnoremap <leader>t :TlistToggle<CR>
+
+" NERDTree
+:nnoremap <leader>n :NERDTreeToggle<CR>
