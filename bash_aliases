@@ -16,6 +16,7 @@ alias gitrc="git rebase --continue"
 # navigation aliases
 alias ..="cd .."
 alias ...="cd ../.."
+alias ....="cd ../../.."
 
 # suppress the copyright info when starting gdb
 alias gdb='gdb -q'
