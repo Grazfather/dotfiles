@@ -131,6 +131,9 @@ nnoremap vaa ggvGg_
 " Uppercase typed word from insert mode
 inoremap <C-u> <esc>mzgUiw`za
 
+" Use braces to determine when to auto indent
+:set smartindent
+
 " Open commonly edited files
 :nmap <leader>ev :edit $MYVIMRC<CR>
 :nmap <leader>et :edit $HOME/.tmux.conf<CR>
