@@ -11,6 +11,8 @@
       d = diff
       dc = diff --cached
       rc = rebase --continue
+      ra = rebase --abort
+      rs = rebase --skip
       type = cat-file -t
       dump = cat-file -p
 
