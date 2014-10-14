@@ -48,9 +48,14 @@ endif
 " Remap <leader>
 :let mapleader=","
 
-" NAVIGATION
 " Allow filetype-specific plugins
 :filetype plugin on
+
+" Read configurations from files
+:set modeline
+:set modelines=5
+
+" NAVIGATION
 
 " Disable arrow keys for navigation
 :nnoremap <up> <nop>
@@ -134,11 +139,17 @@ inoremap <C-u> <esc>mzgUiw`za
 " Use braces to determine when to auto indent
 :set smartindent
 
+" Special settings for python files
+:au Filetype python setl expandtab smarttab tabstop=4 shiftwidth=4 softtabstop=4
+
 " Open commonly edited files
 :nmap <leader>ev :edit $MYVIMRC<CR>
 :nmap <leader>et :edit $HOME/.tmux.conf<CR>
 :nmap <leader>eb :edit $HOME/.bash_aliases<CR>
 :nmap <leader>eg :edit $HOME/.gitaliases<CR>
+
+" Reload vimrc
+:nmap <leader>rv :source $MYVIMRC<CR>
 
 " Use local config if it exists
 if filereadable($HOME . "/.vimrc.local")
