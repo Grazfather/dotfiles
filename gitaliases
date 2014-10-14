@@ -6,6 +6,8 @@
       ci = commit
       cp = cherry-pick
       st = status
+      sl = stash list
+      sp = stash pop
       br = branch
       hist = log --pretty=format:\"%h %cd | %s%d [%an]\" --graph --date=short
       d = diff
