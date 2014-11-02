@@ -66,7 +66,7 @@ endif
 " Make j and k move up and down better for wrapped lines
 :noremap k gk
 :noremap j gj
-:noremap k gk
+:noremap gk k
 :noremap gj j
 
 " Ctrl-<hjkl> to move windows
@@ -74,6 +74,11 @@ endif
 :noremap <C-j> <C-w>j
 :noremap <C-k> <C-w>k
 :noremap <C-l> <C-w>l
+
+" Jumping between buffers
+:noremap <C-n> :bnext<CR>
+:noremap <C-p> :bprev<CR>
+:noremap <C-e> :b#<CR>
 
 " Show relative line numbers with <leader>l
 :nmap <leader>l :setlocal relativenumber!<CR>
