@@ -110,6 +110,9 @@ endif
 " Highlight current line
 :set cursorline
 
+" Highlight current column
+:set cursorcolumn
+
 " Consistent backspace on all systems
 :set backspace=2
 
@@ -171,3 +174,7 @@ let g:tmuxline_preset = 'full'
 
 " NERDTree
 :nnoremap <leader>n :NERDTreeToggle<CR>
+
+" CtrlP
+:nnoremap <leader>b :CtrlPBuffer<CR>
+:let g:ctrlp_map = '<leader>p'
