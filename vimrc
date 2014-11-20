@@ -120,7 +120,7 @@ endif
 :inoremap jj <ESC>
 
 " Clear trailing whitespace
-:nnoremap <leader>W :%s/\s\+$//<CR>
+:nnoremap <leader>W :%s/\s\+$//<CR><C-o>
 
 " Toggle showing listchars
 :nnoremap <leader><TAB> :set list!<CR>
@@ -147,8 +147,10 @@ inoremap <C-u> <esc>mzgUiw`za
 " Use braces to determine when to auto indent
 :set smartindent
 
-" Special settings for python files
+" Special settings for some filetypes
 :au Filetype python setl expandtab smarttab tabstop=4 shiftwidth=4 softtabstop=4
+:au Filetype ruby setl expandtab smarttab tabstop=4 shiftwidth=4 softtabstop=4
+:au Filetype yaml setl expandtab smarttab tabstop=4 shiftwidth=4 softtabstop=4
 
 " Open commonly edited files
 :nmap <leader>ev :edit $MYVIMRC<CR>
