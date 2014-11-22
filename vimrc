@@ -147,6 +147,12 @@ inoremap <C-u> <esc>mzgUiw`za
 " Use braces to determine when to auto indent
 :set smartindent
 
+" Make Y act like D and C
+nnoremap Y y$
+
+" Unmap ex mode
+nnoremap Q <nop>
+
 " Special settings for some filetypes
 :au Filetype python setl expandtab smarttab tabstop=4 shiftwidth=4 softtabstop=4
 :au Filetype ruby setl expandtab smarttab tabstop=4 shiftwidth=4 softtabstop=4
@@ -166,9 +172,12 @@ if filereadable($HOME . "/.vimrc.local")
     source ~/.vimrc.local
 endif
 
-" Configure plugins
+" CONFIGURE PLUGINS
+" Airline
 let g:airline_powerline_fonts = 1
 let g:airline_theme = 'wombat'
+
+" Tmuxline (Configures Tmux's statusbar to match Vim's)
 let g:tmuxline_preset = 'full'
 
 " taglist.vim
