@@ -7,6 +7,12 @@ Running `init.sh` will symlink _$HOME/.{file}_ to _$HOME/dotfiles/{file}_, and b
 
 Make sure that _.bash_aliases_ is called from your _.bashrc_:
 
-```
+```bash
 echo "if [ -f $HOME/.bash_aliases ]; then . $HOME/.bash_aliases; fi" >> ~/.bashrc
+```
+
+Configure git to use the global gitignore_global
+
+```bash
+git config --global core.excludesfile ~/.gitignore_global
 ```

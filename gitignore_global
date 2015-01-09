@@ -1,0 +1,42 @@
+# OSX
+*~
+.DS_Store
+.Trashes
+
+# Windows
+Thumbs.db
+Desktop.ini
+
+# Tags
+cscope.*
+
+# Vim
+.netrwhist
+*.sw[op]
+
+# Python
+__pycache__/
+*.py[cod]
+
+# Binaries
+*.com
+*.class
+*.dll
+*.exe
+*.o
+*.so
+
+# Packages
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+
+# Logs
+*.log
+*.sql
+*.sql
