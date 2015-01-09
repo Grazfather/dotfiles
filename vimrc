@@ -91,6 +91,11 @@ endif
 " Enable and disable search highlighting
 :nmap <leader>q :set hlsearch!<CR>
 
+" Turn off swap files
+:set noswapfile
+:set nobackup
+:set nowritebackup
+
 " Open new split panes to right and bottom
 :set splitbelow
 :set splitright
@@ -130,8 +135,8 @@ else
   set listchars=eol:$,tab:>-,extends:>,precedes:<,conceal:+
 endif
 
-" Enable syntax folding, but have it disabled by default
-:set foldmethod=syntax
+" Enable indent folding, but have it disabled by default
+:set foldmethod=indent
 :set foldlevel=99
 
 " Space to toggle folds
