@@ -37,3 +37,6 @@
 [submodule "vim/bundle/vim-easygrep"]
 	path = vim/bundle/vim-easygrep
 	url = https://github.com/dkprice/vim-easygrep.git
+[submodule "vim/bundle/vim-flavored-markdown"]
+	path = vim/bundle/vim-flavored-markdown
+	url = https://github.com/jtratner/vim-flavored-markdown.git

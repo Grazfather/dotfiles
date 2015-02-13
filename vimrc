@@ -163,8 +163,11 @@ nnoremap Q <nop>
 :au Filetype ruby setl expandtab smarttab tabstop=4 shiftwidth=4 softtabstop=4
 :au Filetype yaml setl expandtab smarttab tabstop=4 shiftwidth=4 softtabstop=4
 
-" wtf is Modula-2? .md is markdown
-:au BufNewFile,BufReadPost *.md set filetype=markdown
+" Use github-flavored markdown
+:aug markdown
+    :au!
+    :au BufNewFile,BufRead *.md,*.markdown setlocal filetype=ghmarkdown
+:aug END
 
 " Open commonly edited files
 :nmap <leader>ev :edit $MYVIMRC<CR>
