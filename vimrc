@@ -178,6 +178,9 @@ nnoremap Q <nop>
 " Reload vimrc
 :nmap <leader>rv :source $MYVIMRC<CR>
 
+" Close the current buffer
+:nmap <leader>b :bd<CR>
+
 " Use local config if it exists
 if filereadable($HOME . "/.vimrc.local")
     source ~/.vimrc.local
@@ -198,5 +201,4 @@ let g:tmuxline_preset = 'full'
 :nnoremap <leader>n :NERDTreeToggle<CR>
 
 " CtrlP
-:nnoremap <leader>b :CtrlPBuffer<CR>
 :let g:ctrlp_map = '<leader>p'
