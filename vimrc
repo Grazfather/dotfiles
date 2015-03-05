@@ -81,7 +81,7 @@ endif
 :noremap <C-e> :b#<CR>
 
 " Show relative line numbers with <leader>l
-:nmap <leader>l :setlocal relativenumber!<CR>
+:nmap <leader>l :setlocal relativenumber!<CR>:setlocal number!<CR>
 
 " Improve search
 :set ignorecase
