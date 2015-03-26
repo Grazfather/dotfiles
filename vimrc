@@ -159,7 +159,6 @@ nnoremap Y y$
 nnoremap Q <nop>
 
 " Special settings for some filetypes
-:au Filetype python setl expandtab smarttab tabstop=4 shiftwidth=4 softtabstop=4
 :au Filetype ruby setl expandtab smarttab tabstop=4 shiftwidth=4 softtabstop=4
 :au Filetype yaml setl expandtab smarttab tabstop=4 shiftwidth=4 softtabstop=4
 
