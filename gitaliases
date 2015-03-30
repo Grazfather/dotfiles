@@ -10,7 +10,7 @@
       sp = stash pop
       br = branch
       hist = log --pretty=format:\"%h %cd%C(yellow)%d%Creset %s%C(green) [%an]%Creset\" --graph --date=short
-      ll = log --pretty=format:\"%h %cd%C(yellow)%d%Creset %s%C(green) [%an]%Creset\" --decorate --numstat
+      ll = log --pretty=format:\"%h %cd%C(yellow)%d%Creset %s%C(green) [%an]%Creset\" --decorate --numstat --date=short
       d = diff
       dc = diff --cached
       rc = rebase --continue
