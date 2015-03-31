@@ -22,7 +22,7 @@ endif
 " Extra lines:
 
 
-" Long lines:
+" Long lines (C only):
 "23456789012345678901234567890123456789012345678901234567890123456789012345678901234567890
 " Lines ending with spaces:   
 " Lines with spaces AND tabs:
@@ -39,10 +39,10 @@ endif
 
 " Highlight the 80th column
 if exists('+colorcolumn')
-  :au BufWinEnter *.c,*.h,*.cpp set colorcolumn=80
+  :au FileType c,cpp setlocal colorcolumn=80
 else
   :highlight LongLines ctermbg=darkblue guibg=darkblue ctermfg=white
-  :au BufWinEnter *.c,*.h,*.cpp let w:m3=matchadd('LongLines', '\%80v', -1)
+  :au FileType c,cpp let w:m3=matchadd('LongLines', '\%80v', -1)
 endif
 
 " Remap <leader>
