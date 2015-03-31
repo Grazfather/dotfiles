@@ -6,10 +6,10 @@ setlocal softtabstop=4
 
 " SNIPPETS
 " Add 'DELETEME' comment
-nmap <leader>dm mdA # DELETEME<ESC>`d
+nmap <leader>dm mxA # DELETEME<ESC>`x
 
 " Delete all DELETEME lines
-nmap <leader>dd :g/DELETEME/d<CR>
+nmap <leader>dd :let @x=@/<CR>:g/DELETEME/d<CR>:let @/=@x<CR><C-o>
 
 " Add log line
 nmap <leader>o Oimport logging; logging.getLogger("BLA").error("")<ESC>hi
