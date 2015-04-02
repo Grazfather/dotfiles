@@ -9,7 +9,7 @@ setlocal softtabstop=4
 nmap <leader>dm mxA # DELETEME<ESC>`x
 
 " Delete all DELETEME lines
-nmap <leader>dd :let @x=@/<CR>:g/DELETEME/d<CR>:let @/=@x<CR><C-o>
+nmap <leader>dd :keepp :g/DELETEME/d<CR><C-o>
 
 " Add log line
 nmap <leader>o Oimport logging; logging.getLogger("BLA").error("")<ESC>hi
