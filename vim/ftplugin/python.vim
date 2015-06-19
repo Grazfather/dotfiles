@@ -12,7 +12,7 @@ nmap <leader>dm mxA # DELETEME<ESC>`x
 nmap <leader>dd :keepp :g/DELETEME/d<CR><C-o>
 
 " Add log line
-nmap <leader>o Oimport logging; logging.getLogger("DELETEME").error("")<ESC>hi
+nmap <leader>o Oimport logging; logging.getLogger("DELETEME").error()<ESC>i
 
 " Add breakpoint
 nmap <leader>db Oimport pdb; pdb.set_trace()<ESC>
