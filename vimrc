@@ -201,3 +201,8 @@ let g:tmuxline_preset = 'full'
 
 " CtrlP
 :let g:ctrlp_map = '<leader>p'
+
+" Fugitive
+:nmap <leader>gb :Gblame<CR>
+:nmap <leader>gd :Gdiff<CR>
+:nmap <leader>gs :Gstatus<CR>
