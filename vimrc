@@ -176,10 +176,18 @@ nnoremap Q <nop>
 " Close the current buffer
 :nmap <leader>b :bd<CR>
 
+" Save
+:nmap <leader>w :w<CR>
+
 " Use local config if it exists
 if filereadable($HOME . "/.vimrc.local")
     source ~/.vimrc.local
 endif
+
+" Mappings for vimdiff
+:nmap <leader>dg :diffget<CR>
+:nmap <leader>dp :diffput<CR>
+:nmap <leader>du :diffupdate<CR>
 
 " CONFIGURE PLUGINS
 " Airline
