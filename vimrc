@@ -46,7 +46,7 @@ else
 endif
 
 " Remap <leader>
-:let mapleader=","
+:let mapleader="\<Space>"
 
 " Allow filetype-specific plugins
 :filetype plugin on
@@ -138,10 +138,6 @@ endif
 " Enable indent folding, but have it disabled by default
 :set foldmethod=indent
 :set foldlevel=99
-
-" Space to toggle folds
-nnoremap <Space> za
-vnoremap <Space> za
 
 " Select whole buffer
 nnoremap vaa ggvGg_
