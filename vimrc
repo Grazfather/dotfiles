@@ -121,8 +121,8 @@ endif
 " Consistent backspace on all systems
 :set backspace=2
 
-" Leave insert mode with jj
-:inoremap jj <ESC>
+" Leave insert mode with hh
+:inoremap hh <ESC>
 
 " Clear trailing whitespace
 :nnoremap <leader>W :%s/\s\+$//<CR><C-o>
