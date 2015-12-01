@@ -1,23 +1,25 @@
 [alias]
       aa = add --all
       ao = add --patch
+      b = branch
+      br = branch
       ca = commit --amend
       co = checkout
       ci = commit
       cp = cherry-pick
-      st = status
-      s = status
-      sl = stash list
-      sp = stash pop
-      br = branch
-      b = branch
-      hist = log --pretty=format:\"%h %cd%C(yellow)%d%Creset %s%C(green) [%an]%Creset\" --graph --date=short
-      ll = log --pretty=format:\"%h %cd%C(yellow)%d%Creset %s%C(green) [%an]%Creset\" --decorate --numstat --date=short
       d = diff
       dc = diff --cached
+      fo = fetch origin
+      fop = fetch origin --prune
+      hist = log --pretty=format:\"%h %cd%C(yellow)%d%Creset %s%C(green) [%an]%Creset\" --graph --date=short
+      ll = log --pretty=format:\"%h %cd%C(yellow)%d%Creset %s%C(green) [%an]%Creset\" --decorate --numstat --date=short
       rc = rebase --continue
       ra = rebase --abort
       rs = rebase --skip
+      s = status
+      st = status
+      sl = stash list
+      sp = stash pop
       type = cat-file -t
       dump = cat-file -p
 
