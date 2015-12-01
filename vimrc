@@ -80,6 +80,10 @@ endif
 :noremap <C-p> :bprev<CR>
 :noremap <C-e> :b#<CR>
 
+" Let <C-n> and <C-p> also filter through command history
+:cnoremap <C-n> <Down>
+:cnoremap <C-p> <Up>
+
 " Show relative line numbers with <leader>l
 :nmap <leader>l :setlocal relativenumber!<CR>:setlocal number!<CR>
 
