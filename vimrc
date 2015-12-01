@@ -91,6 +91,7 @@ endif
 :set ignorecase
 :set smartcase
 :set hlsearch
+:set noincsearch " Default on neovim, and I hate it
 
 " Enable and disable search highlighting
 :nmap <leader>q :set hlsearch!<CR>
