@@ -93,6 +93,7 @@ set scrolloff=4
 " Improve search
 :set ignorecase
 :set smartcase
+:set infercase
 :set hlsearch
 :set noincsearch " Default on neovim, and I hate it
 
