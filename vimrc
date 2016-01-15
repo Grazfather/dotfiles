@@ -84,6 +84,9 @@ endif
 :cnoremap <C-n> <Down>
 :cnoremap <C-p> <Up>
 
+" Start scrolling before my cursor reaches the bottom of the screen
+set scrolloff=4
+
 " Show relative line numbers with <leader>l
 :nmap <leader>l :setlocal relativenumber!<CR>:setlocal number!<CR>
 
