@@ -69,11 +69,14 @@ endif
 :noremap gk k
 :noremap gj j
 
-" Ctrl-<hjkl> to move windows
+" Ctrl-<hjkl> to change splits
 :noremap <C-h> <C-w>h
 :noremap <C-j> <C-w>j
 :noremap <C-k> <C-w>k
 :noremap <C-l> <C-w>l
+
+" <Tab> to cycle through splits
+:noremap <Tab> <C-w>w
 
 " Jumping between buffers
 :noremap <C-n> :bnext<CR>
