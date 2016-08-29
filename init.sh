@@ -1,6 +1,6 @@
 #!/bin/bash
 
-dir=$HOME/dotfiles
+dir=$PWD
 backup=$HOME/dotfiles.bak
 
 mkdir -p $backup
