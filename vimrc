@@ -55,6 +55,9 @@ endif
 :set modeline
 :set modelines=5
 
+" Setup tags file
+:set tags=./tags,tags;
+
 " NAVIGATION
 
 " Disable arrow keys for navigation
@@ -211,6 +214,7 @@ let g:tmuxline_preset = 'full'
 
 " taglist.vim
 :nnoremap <leader>t :TlistToggle<CR>
+:let g:Tlist_Use_Right_Window = 1
 
 " NERDTree
 :nnoremap <leader>n :NERDTreeToggle<CR>
