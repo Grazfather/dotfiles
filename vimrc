@@ -17,6 +17,11 @@ if has("gui_running")
   endif
 endif
 
+" Use local config if it exists
+if filereadable($HOME . "/.vimrc.local")
+    source ~/.vimrc.local
+endif
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Match extra lines, spaces, and long lines like the following:
 " Extra lines:
@@ -193,11 +198,6 @@ nnoremap Q <nop>
 
 " Save
 :nmap <leader>w :w<CR>
-
-" Use local config if it exists
-if filereadable($HOME . "/.vimrc.local")
-    source ~/.vimrc.local
-endif
 
 " Mappings for vimdiff
 :nmap <leader>dg :diffget<CR>
