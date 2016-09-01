@@ -44,10 +44,10 @@ endif
 
 " Highlight the 80th column
 if exists('+colorcolumn')
-  :au FileType c,cpp setlocal colorcolumn=80
+  :au FileType c,cpp,vim setlocal colorcolumn=80
 else
   :highlight LongLines ctermbg=darkblue guibg=darkblue ctermfg=white
-  :au FileType c,cpp let w:m3=matchadd('LongLines', '\%80v', -1)
+  :au FileType c,cpp,vim let w:m3=matchadd('LongLines', '\%80v', -1)
 endif
 
 " Remap <leader>
