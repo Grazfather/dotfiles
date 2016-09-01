@@ -111,7 +111,7 @@ set scrolloff=4
 :set hlsearch
 :set noincsearch " Default on neovim, and I hate it
 
-" Enable and disable search highlighting
+" Toggle search highlighting
 :nmap <leader>q :set hlsearch!<CR>
 
 " Turn off swap files
@@ -135,11 +135,12 @@ set scrolloff=4
 " short ttimeoutlen to lower latency to show current mode
 :set ttimeoutlen=50
 
-" Highlight current line
-:set cursorline
+" Toggle cursor highlighting
+:nmap <leader>h :set cursorline! cursorcolumn!<CR>
 
-" Highlight current column
-:set cursorcolumn
+" Make cursor highlights more obvious
+:hi CursorLine   cterm=NONE ctermbg=darkgreen ctermfg=black guibg=darkred guifg=white
+:hi CursorColumn cterm=NONE ctermbg=darkgreen ctermfg=black guibg=darkred guifg=white
 
 " Consistent backspace on all systems
 :set backspace=2
