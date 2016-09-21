@@ -102,7 +102,7 @@ endif
 set scrolloff=4
 
 " Show relative line numbers with <leader>l
-:nmap <leader>l :setlocal relativenumber!<CR>:setlocal number!<CR>
+:nmap <leader>l :set number! relativenumber!<CR>
 
 " Improve search
 :set ignorecase
