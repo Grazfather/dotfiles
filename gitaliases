@@ -11,6 +11,7 @@
       dc = diff --cached
       fo = fetch origin
       fop = fetch origin --prune
+      fp = format-patch
       hist = log --pretty=format:\"%h %cd%C(yellow)%d%Creset %s%C(green) [%an]%Creset\" --graph --date=short
       ll = log --pretty=format:\"%h %cd%C(yellow)%d%Creset %s%C(green) [%an]%Creset\" --decorate --numstat --date=short
       rc = rebase --continue
