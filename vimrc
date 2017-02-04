@@ -225,12 +225,12 @@ nnoremap Q <nop>
 " CONFIGURE PLUGINS
 " Airline
 :let g:airline_powerline_fonts = 1
-:let g:airline_theme = 'luna'
+:let g:airline_theme = 'zenburn'
 :let g:airline#extensions#tmuxline#enabled = 0
 
 " Tmuxline (Configures Tmux's statusbar)
-:let g:tmuxline_preset = 'full'
-:let g:tmuxline_theme = 'vim_statusline_3'
+:let g:tmuxline_preset = 'powerline'
+:let g:tmuxline_theme = 'zenburn'
 
 " taglist.vim
 :nnoremap <leader>t :TlistToggle<CR>
