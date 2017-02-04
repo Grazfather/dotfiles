@@ -1,8 +1,20 @@
-" Pathogen package manager
-runtime bundle/vim-pathogen/autoload/pathogen.vim
-silent! execute pathogen#infect()
+" Vim-Plug Plugins
+call plug#begin('~/.vim/plugged')
+Plug 'altercation/vim-colors-solarized'
+Plug 'bling/vim-airline'
+Plug 'bling/vim-bufferline'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'edkolev/tmuxline.vim'
+Plug 'fatih/vim-go'
+Plug 'nanotech/jellybeans.vim'
+Plug 'rust-lang/rust.vim'
+Plug 'scrooloose/nerdcommenter'
+Plug 'scrooloose/nerdtree'
+Plug 'tpope/vim-fugitive'
+Plug 'vim-scripts/taglist.vim'
+call plug#end()
 
-" Solarized color scheme in ~/.vim/colors/solarized.vim
+" Color scheme
 :syntax enable
 :set background=dark
 :colorscheme jellybeans
