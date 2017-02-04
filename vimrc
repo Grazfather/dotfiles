@@ -228,8 +228,9 @@ nnoremap Q <nop>
 :let g:airline_theme = 'luna'
 :let g:airline#extensions#tmuxline#enabled = 0
 
-" Tmuxline (Configures Tmux's statusbar to match Vim's)
-let g:tmuxline_preset = 'full'
+" Tmuxline (Configures Tmux's statusbar)
+:let g:tmuxline_preset = 'full'
+:let g:tmuxline_theme = 'vim_statusline_3'
 
 " taglist.vim
 :nnoremap <leader>t :TlistToggle<CR>
