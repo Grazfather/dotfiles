@@ -1,7 +1,8 @@
 " Vim-Plug Plugins
 call plug#begin('~/.vim/plugged')
 Plug 'altercation/vim-colors-solarized'
-Plug 'bling/vim-airline'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'bling/vim-bufferline'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'edkolev/tmuxline.vim'
@@ -223,8 +224,9 @@ nnoremap Q <nop>
 
 " CONFIGURE PLUGINS
 " Airline
-let g:airline_powerline_fonts = 1
-let g:airline_theme = 'wombat'
+:let g:airline_powerline_fonts = 1
+:let g:airline_theme = 'luna'
+:let g:airline#extensions#tmuxline#enabled = 0
 
 " Tmuxline (Configures Tmux's statusbar to match Vim's)
 let g:tmuxline_preset = 'full'
