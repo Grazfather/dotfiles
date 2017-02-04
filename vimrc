@@ -12,6 +12,7 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-fugitive'
 Plug 'vim-scripts/taglist.vim'
+Plug 'w0rp/ale'
 call plug#end()
 
 " Color scheme
