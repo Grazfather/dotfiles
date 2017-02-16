@@ -37,12 +37,10 @@ if filereadable($HOME . "/.vimrc.local")
 endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Match extra lines, spaces, and long lines like the following:
+" Match extra lines and spaces like the following:
 " Extra lines:
 
 
-" Long lines (C only):
-"23456789012345678901234567890123456789012345678901234567890123456789012345678901234567890
 " Lines ending with spaces:   
 " Lines with spaces AND tabs:
     	"
@@ -55,14 +53,6 @@ endif
 " Highlight trailing whitespace and spaces before tabs
 :highlight TrailingWhitespace ctermbg=darkred guibg=darkred
 :let w:m2=matchadd('TrailingWhitespace', '\s\+$\| \+\ze\t')
-
-" Highlight the 80th column
-if exists('+colorcolumn')
-  :au FileType c,cpp,vim setlocal colorcolumn=80
-else
-  :highlight LongLines ctermbg=darkblue guibg=darkblue ctermfg=white
-  :au FileType c,cpp,vim let w:m3=matchadd('LongLines', '\%80v', -1)
-endif
 
 " Remap <leader>
 :let mapleader="\<Space>"
