@@ -67,6 +67,13 @@ endif
 " Setup tags file
 :set tags=./tags,tags;
 
+" Set path to include the cwd and everything underneath
+:set path=**
+:set wildmenu
+
+" Show the normal mode command as I type it
+:set showcmd
+
 " NAVIGATION
 
 " Disable arrow keys for navigation
