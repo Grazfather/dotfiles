@@ -125,6 +125,9 @@ set scrolloff=4
 " Toggle search highlighting
 :nmap <leader>q :set hlsearch!<CR>
 
+" Lazily redraw: Make macros faster
+:set lazyredraw
+
 " Turn off swap files
 :set noswapfile
 :set nobackup
