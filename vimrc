@@ -165,6 +165,9 @@ set scrolloff=4
 " Clear trailing whitespace
 :nnoremap <leader>W :%s/\s\+$//<CR><C-o>
 
+" Convert tabs to spaces
+:nnoremap <leader>ts :%s/\t/    /g<CR>
+
 " Toggle showing listchars
 :nnoremap <leader><TAB> :set list!<CR>
 if &encoding == "utf-8"
