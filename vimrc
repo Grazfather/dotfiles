@@ -5,6 +5,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'bling/vim-bufferline'
 Plug 'ctrlpvim/ctrlp.vim'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'edkolev/tmuxline.vim'
 Plug 'fatih/vim-go'
 Plug 'nanotech/jellybeans.vim'
@@ -252,7 +253,6 @@ nnoremap Q <nop>
 :nmap <leader>gs :Gstatus<CR>
 
 " FZF
-set runtimepath+=/usr/local/opt/fzf
 :nmap <leader>f :FZF<CR>
 
 " ale
