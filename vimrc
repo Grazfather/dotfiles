@@ -4,8 +4,8 @@ Plug 'altercation/vim-colors-solarized'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'bling/vim-bufferline'
-Plug 'ctrlpvim/ctrlp.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
 Plug 'edkolev/tmuxline.vim'
 Plug 'fatih/vim-go'
 Plug 'nanotech/jellybeans.vim'
@@ -243,17 +243,15 @@ nnoremap Q <nop>
 " NERDTree
 :nnoremap <leader>n :NERDTreeToggle<CR>
 
-" CtrlP
-:let g:ctrlp_map = '<leader>p'
-:let g:ctrlp_extensions = ['tag']
-
 " Fugitive
 :nmap <leader>gb :Gblame<CR>
 :nmap <leader>gd :Gdiff<CR>
 :nmap <leader>gs :Gstatus<CR>
 
 " FZF
-:nmap <leader>f :FZF<CR>
+:nmap <leader>ff :FZF<CR>
+:nmap <leader>fb :Buffers<CR>
+:nmap <leader>fl :Lines<CR>
 
 " ale
 :let g:ale_lint_on_save = 1
