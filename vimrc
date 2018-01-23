@@ -13,7 +13,7 @@ Plug 'rust-lang/rust.vim'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-fugitive'
-Plug 'vim-scripts/taglist.vim'
+Plug 'majutsushi/tagbar'
 Plug 'w0rp/ale'
 call plug#end()
 
@@ -237,8 +237,7 @@ nnoremap Q <nop>
 :let g:tmuxline_theme = 'zenburn'
 
 " taglist.vim
-:nnoremap <leader>t :TlistToggle<CR>
-:let g:Tlist_Use_Right_Window = 1
+:nnoremap <leader>tb :TagbarToggle<CR>
 
 " NERDTree
 :nnoremap <leader>n :NERDTreeToggle<CR>
