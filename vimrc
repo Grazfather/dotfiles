@@ -151,7 +151,7 @@ set scrolloff=4
 :set ttimeoutlen=50
 
 " Toggle cursor highlighting
-:nmap <leader>h :set cursorline! cursorcolumn!<CR>
+:nmap <leader>x :set cursorline! cursorcolumn!<CR>
 
 " Make cursor highlights more obvious
 :hi CursorLine   cterm=NONE ctermbg=darkgreen ctermfg=black guibg=darkred guifg=white
