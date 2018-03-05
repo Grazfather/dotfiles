@@ -243,9 +243,10 @@ nnoremap Q <nop>
 :nmap <leader>gd :Gdiff<CR>
 :nmap <leader>gs :Gstatus<CR>
 
-" FZF
+" FZF.vim
 :nmap <leader>ff :FZF<CR>
 :nmap <leader>fb :Buffers<CR>
+:nmap <leader>ft :Tags<CR>
 :nmap <leader>fl :Lines<CR>
 
 " ale
