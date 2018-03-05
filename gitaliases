@@ -14,10 +14,11 @@
       fp = format-patch
       hist = log --pretty=format:\"%h %cd%C(yellow)%d%Creset %s%C(green) [%an]%Creset\" --graph --date=short
       ll = log --pretty=format:\"%h %cd%C(yellow)%d%Creset %s%C(green) [%an]%Creset\" --decorate --numstat --date=short
+      rb = "!r() { git rebase -i HEAD~$1; }; r"
       rc = rebase --continue
       ra = rebase --abort
       rs = rebase --skip
-      s = status
+      s = status -s
       st = status
       sl = stash list
       sp = stash pop
