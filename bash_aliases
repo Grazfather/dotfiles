@@ -14,3 +14,5 @@ alias ....="cd ../../.."
 
 # suppress the copyright info when starting gdb
 alias gdb='gdb -q'
+
+alias lsusbx='ioreg -p IOUSB -l -w 0'
