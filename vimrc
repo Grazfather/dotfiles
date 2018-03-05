@@ -1,8 +1,9 @@
 " Vim-Plug Plugins
 call plug#begin('~/.vim/plugged')
 Plug 'altercation/vim-colors-solarized'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+"Plug 'vim-airline/vim-airline'
+"Plug 'vim-airline/vim-airline-themes'
+Plug 'itchyny/lightline.vim'
 Plug 'bling/vim-bufferline'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
@@ -227,11 +228,6 @@ nnoremap Q <nop>
 :nmap <leader>du :diffupdate<CR>
 
 " CONFIGURE PLUGINS
-" Airline
-:let g:airline_powerline_fonts = 1
-:let g:airline_theme = 'zenburn'
-:let g:airline#extensions#tmuxline#enabled = 0
-
 " Tmuxline (Configures Tmux's statusbar)
 :let g:tmuxline_preset = 'powerline'
 :let g:tmuxline_theme = 'zenburn'
