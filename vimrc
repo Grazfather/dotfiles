@@ -131,7 +131,7 @@ set scrolloff=4
 :set noincsearch " Default on neovim, and I hate it
 
 " Toggle search highlighting
-:nmap <leader>q :set hlsearch!<CR>
+:nmap <CR> :set hlsearch!<CR>
 
 " Lazily redraw: Make macros faster
 :set lazyredraw
