@@ -1,0 +1,25 @@
+#!/bin/bash
+
+LOG_HASH="%C(white)%h%Creset"
+LOG_DATE="%C(green)%cd%Creset"
+LOG_AUTHOR="%C(bold blue)%an%Creset"
+LOG_REFS="%C(yellow)%d%Creset"
+LOG_SUBJECT="%s"
+
+# Put a '}' between sections so we can use it as a unique delimeter
+LOG_FORMAT="$LOG_HASH}$LOG_DATE}$LOG_AUTHOR}$LOG_REFS $LOG_SUBJECT"
+
+pretty_git_log() {
+    git log --date=short --graph --color=never --pretty="tformat:${LOG_FORMAT}" $* |
+    column -s '}' -t |
+    git_page_maybe
+}
+
+git_page_maybe() {
+    # Page only if we're asked to.
+    if [ -n "$GIT_NO_PAGER" ]; then
+        cat
+    else
+        less --QUIT-AT-EOF --quit-if-one-screen --no-init --RAW-CONTROL-CHARS --chop-long-lines
+    fi
+}
