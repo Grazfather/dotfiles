@@ -78,6 +78,12 @@ endif
 
 " NAVIGATION
 
+" Jump to last cursor position unless it's invalid or in an event handler
+autocmd BufReadPost *
+  \ if line("'\"") > 0 && line("'\"") <= line("$") |
+  \   exe "normal g`\"" |
+  \ endif
+
 " Disable arrow keys for navigation
 :nnoremap <up> <nop>
 :nnoremap <down> <nop>
@@ -168,7 +174,7 @@ set scrolloff=4
 :nnoremap <leader>W :%s/\s\+$//<CR><C-o>
 
 " Convert tabs to spaces
-:nnoremap <leader>ts :%s/\t/    /g<CR>
+:nnoremap <leader>T :%s/\t/    /g<CR>
 
 " Toggle showing listchars
 :nnoremap <leader><TAB> :set list!<CR>
@@ -217,7 +223,7 @@ nnoremap Q <nop>
 :nmap <leader>rv :source $MYVIMRC<CR>
 
 " Close the current buffer
-:nmap <leader>b :bp\|bd #<CR>
+:nmap <leader>c :bp\|bd #<CR>
 
 " Save
 :nmap <leader>w :w<CR>
@@ -228,12 +234,15 @@ nnoremap Q <nop>
 :nmap <leader>du :diffupdate<CR>
 
 " CONFIGURE PLUGINS
+" Use deoplete.
+let g:deoplete#enable_at_startup = 1
+
 " Tmuxline (Configures Tmux's statusbar)
 :let g:tmuxline_preset = 'powerline'
 :let g:tmuxline_theme = 'zenburn'
 
 " taglist.vim
-:nnoremap <leader>tb :TagbarToggle<CR>
+:nnoremap <leader>z :TagbarToggle<CR>
 
 " NERDTree
 :nnoremap <leader>n :NERDTreeToggle<CR>
@@ -244,10 +253,10 @@ nnoremap Q <nop>
 :nmap <leader>gs :Gstatus<CR>
 
 " FZF.vim
-:nmap <leader>ff :FZF<CR>
-:nmap <leader>fb :Buffers<CR>
-:nmap <leader>ft :Tags<CR>
-:nmap <leader>fl :Lines<CR>
+:nmap <leader>f :FZF<CR>
+:nmap <leader>b :Buffers<CR>
+:nmap <leader>t :Tags<CR>
+:nmap <leader>s :Lines<CR>
 
 " ale
 :let g:ale_lint_on_save = 1
