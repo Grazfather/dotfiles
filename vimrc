@@ -1,6 +1,5 @@
 " Vim-Plug Plugins
 call plug#begin('~/.vim/plugged')
-Plug 'altercation/vim-colors-solarized'
 "Plug 'vim-airline/vim-airline'
 "Plug 'vim-airline/vim-airline-themes'
 Plug 'itchyny/lightline.vim'
@@ -9,19 +8,21 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'edkolev/tmuxline.vim'
 Plug 'fatih/vim-go'
-Plug 'nanotech/jellybeans.vim'
 Plug 'rust-lang/rust.vim'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-fugitive'
 Plug 'majutsushi/tagbar'
 Plug 'w0rp/ale'
+" Themes
+Plug 'altercation/vim-colors-solarized'
+Plug 'nanotech/jellybeans.vim'
 call plug#end()
 
 " Color scheme
 :syntax enable
 :set background=dark
-:colorscheme jellybeans
+:silent! colorscheme jellybeans
 
 " Set background and font in gVim
 if has("gui_running")
