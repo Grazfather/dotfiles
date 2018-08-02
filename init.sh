@@ -1,9 +1,11 @@
 #!/bin/bash
 set -e
 
-dir=$PWD
+dir=$(dirname "$0")
 backup=$HOME/dotfiles.bak
 
+
+# Setup symlinks
 for file in $dir/*; do
     filename=$(basename $file)
     echo $file
@@ -12,9 +14,8 @@ for file in $dir/*; do
             mkdir -p $backup
             # Move existing dotfile to $backup
             mv $HOME/.$filename $backup/
-	fi
+        fi
         echo "Creating link for .$filename"
-        # Create symlink
         ln -s $dir/$filename $HOME/.$filename
     fi
 done
@@ -24,3 +25,15 @@ git submodule init && git submodule update
 
 # Install vim plugins
 vim +'PlugInstall --sync' +qa
+
+# Install bash aliases
+if ! grep -q bash_aliases $HOME/.bashrc; then
+    echo "# Set up aliases" >> $HOME/.bashrc
+    echo "[ -f \$HOME/.bash_aliases ] && source \$HOME/.bash_aliases" >> $HOME/.bashrc
+fi
+
+# Install git aliases
+if ! grep -q gitaliases $HOME/.gitconfig 2>/dev/null; then
+    echo "[include]" >> $HOME/.gitconfig
+    echo "	path = ~/.gitaliases" >> $HOME/.gitconfig
+fi
