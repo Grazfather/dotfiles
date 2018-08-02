@@ -47,19 +47,12 @@ if filereadable($HOME . "/.vimrc.local")
 endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Match extra lines and spaces like the following:
-" Extra lines:
-
-
-" Lines ending with spaces:   
-" Lines with spaces AND tabs:
+" Match weird white space:
+"   Lines ending with spaces:   
+"   Lines with spaces AND tabs:
     	"
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Highlight unneeded blank lines
-:highlight BlankLines ctermbg=darkgreen guibg=darkgreen ctermfg=white
-:let w:m1=matchadd('BlankLines', '^$\n\{2,}')
-
 " Highlight trailing whitespace and spaces before tabs
 :highlight TrailingWhitespace ctermbg=darkred guibg=darkred
 :let w:m2=matchadd('TrailingWhitespace', '\s\+$\| \+\ze\t')
