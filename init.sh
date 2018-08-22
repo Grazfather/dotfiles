@@ -50,3 +50,11 @@ if ! grep -q gitaliases $HOME/.gitconfig 2>/dev/null; then
 else
     status ".gitaliases already in .gitconfig"
 fi
+
+# Add bin to PATH
+if ! grep -q dotfiles/bin $HOME/.bashrc; then
+	echo "# Add dotfiles bin to PATH" >> $HOME/.bashrc
+	echo "export PATH=\$PATH:$DIR/bin" >> $HOME/.bashrc
+else
+    status "dotfiles bin already in .bashrc"
+fi
