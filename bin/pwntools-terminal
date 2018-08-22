@@ -1,0 +1,15 @@
+#!/usr/bin/env python
+
+import subprocess
+import sys
+
+def switch_pane(pane=1):
+    subprocess.call(["tmux", "select-pane", "-t", str(pane)])
+
+def send_to_pane(cmd, pane=1):
+    subprocess.call(["tmux", "send-keys", "-t", str(pane), cmd, "Enter"])
+
+send_to_pane("C-u") # Delete anything that might be typed on the prompt
+send_to_pane("quit")
+send_to_pane(sys.argv[1])
+switch_pane()
