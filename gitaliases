@@ -24,4 +24,5 @@
       sp = stash pop
       type = cat-file -t
       dump = cat-file -p
+      qclone = clone --depth 1
 
