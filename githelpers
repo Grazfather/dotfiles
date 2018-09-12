@@ -10,7 +10,7 @@ LOG_SUBJECT="%s"
 LOG_FORMAT="$LOG_HASH}$LOG_DATE}$LOG_AUTHOR}$LOG_REFS $LOG_SUBJECT"
 
 pretty_git_log() {
-    git log --date=short --graph --color=never --pretty="tformat:${LOG_FORMAT}" $* |
+    git log --date=short --graph --color=always --pretty="tformat:${LOG_FORMAT}" $* |
     column -s '}' -t |
     git_page_maybe
 }
