@@ -50,13 +50,14 @@ endif
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Match weird white space:
 "   Lines ending with spaces:   
-"   Lines with spaces AND tabs:
+"   Lines with spaces AND tabs (in either order):
     	"
+	    "
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Highlight trailing whitespace and spaces before tabs
+" Highlight trailing whitespace and spaces touching tabs
 :highlight TrailingWhitespace ctermbg=darkred guibg=darkred
-:let w:m2=matchadd('TrailingWhitespace', '\s\+$\| \+\ze\t')
+:let w:m2=matchadd('TrailingWhitespace', '\s\+$\| \+\ze\t\|\t\+\ze ')
 
 " Remap <leader>
 :let mapleader="\<Space>"
