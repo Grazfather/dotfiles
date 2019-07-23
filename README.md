@@ -3,16 +3,4 @@ dotfiles
 
 My collection of dotfiles for vim, bash, git, and tmux.
 
-Running `init.sh` will symlink _$HOME/.{file}_ to _$HOME/dotfiles/{file}_, and back up the original in _$HOME/dotfiles.bak/_ as well as pull in all the vim plugin submodules.
-
-Make sure that _.bash_aliases_ is called from your _.bashrc_:
-
-```bash
-echo "if [ -f $HOME/.bash_aliases ]; then . $HOME/.bash_aliases; fi" >> ~/.bashrc
-```
-
-Configure git to use the global gitignore_global
-
-```bash
-git config --global core.excludesfile ~/.gitignore_global
-```
+Running `init.sh` will symlink _$HOME/.{file}_ to _/path/to/dotfiles/{file}_, and back up the original in _$HOME/dotfiles.bak/_, pull in all the vim plugin submodules, and install git aliases and bash aliases in the appropriate rc file.
