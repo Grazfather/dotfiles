@@ -19,6 +19,7 @@ Plug 'w0rp/ale'
 " Themes
 Plug 'altercation/vim-colors-solarized'
 Plug 'nanotech/jellybeans.vim'
+Plug 'Alok/notational-fzf-vim'
 call plug#end()
 
 " Color scheme
@@ -259,3 +260,7 @@ let g:deoplete#enable_at_startup = 1
 :let g:ale_lint_on_save = 1
 :let g:ale_lint_on_text_changed = 0
 :let g:ale_sign_column_always = 1
+
+" Notational fzf vim
+:let g:nv_search_paths = ["~/notes/"]
+:nmap <leader>o :NV<CR>
