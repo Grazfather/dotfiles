@@ -14,7 +14,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'majutsushi/tagbar'
 Plug 'airblade/vim-gitgutter'
 Plug 'jtratner/vim-flavored-markdown'
-Plug 'w0rp/ale'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " Themes
 Plug 'altercation/vim-colors-solarized'
@@ -255,11 +255,6 @@ let g:deoplete#enable_at_startup = 1
 :nmap <leader>b :Buffers<CR>
 :nmap <leader>t :Tags<CR>
 :nmap <leader>s :Lines<CR>
-
-" ale
-:let g:ale_lint_on_save = 1
-:let g:ale_lint_on_text_changed = 0
-:let g:ale_sign_column_always = 1
 
 " Notational fzf vim
 :let g:nv_search_paths = ["~/notes/"]
