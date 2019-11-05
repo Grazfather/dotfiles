@@ -15,11 +15,11 @@ Plug 'majutsushi/tagbar'
 Plug 'airblade/vim-gitgutter'
 Plug 'jtratner/vim-flavored-markdown'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'Alok/notational-fzf-vim'
 
 " Themes
 Plug 'altercation/vim-colors-solarized'
 Plug 'nanotech/jellybeans.vim'
-Plug 'Alok/notational-fzf-vim'
 call plug#end()
 
 " Color scheme
@@ -165,9 +165,6 @@ set scrolloff=4
 " Consistent backspace on all systems
 :set backspace=2
 
-" Leave insert mode with hh
-:inoremap hh <ESC>
-
 " Clear trailing whitespace
 :nnoremap <leader>W :%s/\s\+$//<CR><C-o>
 
@@ -225,6 +222,9 @@ nnoremap Q <nop>
 
 " Save
 :nmap <leader>w :w<CR>
+
+" Toggle paste
+:nmap <leader>p :set paste!<CR>
 
 " Mappings for vimdiff
 :nmap <leader>dg :diffget<CR>
