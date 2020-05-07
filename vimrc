@@ -226,6 +226,12 @@ nnoremap Q <nop>
 " Toggle paste
 :nmap <leader>p :set paste!<CR>
 
+" Add 'DELETEME' comment using nerdcommenter
+nmap <leader>dm mx<leader>cA DELETEME<ESC>`x
+
+" Delete all DELETEME lines
+nmap <leader>dd :keepp :g/DELETEME/d<CR><C-o>
+
 " Mappings for vimdiff
 :nmap <leader>dg :diffget<CR>
 :nmap <leader>dp :diffput<CR>
