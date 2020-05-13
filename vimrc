@@ -20,12 +20,13 @@ Plug 'Alok/notational-fzf-vim'
 " Themes
 Plug 'altercation/vim-colors-solarized'
 Plug 'nanotech/jellybeans.vim'
+Plug 'morhetz/gruvbox'
 call plug#end()
 
 " Color scheme
 :syntax enable
 :set background=dark
-:silent! colorscheme jellybeans
+:silent! colorscheme gruvbox
 
 " Set background and font in gVim
 if has("gui_running")
