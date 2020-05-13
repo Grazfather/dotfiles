@@ -238,8 +238,6 @@ nmap <leader>dd :keepp :g/DELETEME/d<CR><C-o>
 :nmap <leader>du :diffupdate<CR>
 
 " CONFIGURE PLUGINS
-" Use deoplete.
-let g:deoplete#enable_at_startup = 1
 
 " Tmuxline (Configures Tmux's statusbar)
 :let g:tmuxline_preset = 'powerline'
