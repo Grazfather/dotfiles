@@ -2,8 +2,8 @@
 call plug#begin('~/.vim/plugged')
 Plug 'itchyny/lightline.vim'
 Plug 'bling/vim-bufferline'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
+Plug 'lotabout/skim', { 'dir': '~/.skim', 'do': './install' }
+Plug 'lotabout/skim.vim'
 Plug 'edkolev/tmuxline.vim'
 Plug 'fatih/vim-go'
 let g:go_version_warning = 0
@@ -256,11 +256,12 @@ let g:deoplete#enable_at_startup = 1
 :nmap <leader>gd :Gdiff<CR>
 :nmap <leader>gs :Gstatus<CR>
 
-" FZF.vim
-:nmap <leader>f :FZF<CR>
+" skim.vim
+:nmap <leader>f :SK<CR>
 :nmap <leader>b :Buffers<CR>
 :nmap <leader>t :Tags<CR>
 :nmap <leader>s :Lines<CR>
+:nmap <leader>rg :Rg<CR>
 
 " Notational fzf vim
 :let g:nv_search_paths = ["~/notes/"]
