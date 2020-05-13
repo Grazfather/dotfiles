@@ -11,7 +11,6 @@ Plug 'rust-lang/rust.vim'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-fugitive'
-Plug 'majutsushi/tagbar'
 Plug 'airblade/vim-gitgutter'
 Plug 'jtratner/vim-flavored-markdown'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -243,9 +242,6 @@ nmap <leader>dd :keepp :g/DELETEME/d<CR><C-o>
 " Tmuxline (Configures Tmux's statusbar)
 :let g:tmuxline_preset = 'powerline'
 :let g:tmuxline_theme = 'zenburn'
-
-" taglist.vim
-:nnoremap <leader>z :TagbarToggle<CR>
 
 " NERDTree
 :nnoremap <leader>n :NERDTreeToggle<CR>
