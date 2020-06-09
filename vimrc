@@ -160,10 +160,6 @@ set scrolloff=4
 " Toggle cursor highlighting
 :nmap <leader>x :set cursorline! cursorcolumn!<CR>
 
-" Make cursor highlights more obvious
-:hi CursorLine   cterm=NONE ctermbg=darkgreen ctermfg=black guibg=darkred guifg=white
-:hi CursorColumn cterm=NONE ctermbg=darkgreen ctermfg=black guibg=darkred guifg=white
-
 " Consistent backspace on all systems
 :set backspace=2
 
