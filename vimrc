@@ -105,9 +105,6 @@ autocmd BufReadPost *
 " <Tab> to cycle through splits
 :noremap <Tab> <C-w>w
 
-" Close the current split
-:nmap <leader>x <C-w>c
-
 " Jumping between buffers
 :noremap <C-n> :bnext<CR>
 :noremap <C-p> :bprev<CR>
@@ -216,7 +213,7 @@ nnoremap Q <nop>
 :nmap <leader>rv :source $MYVIMRC<CR>
 
 " Close the current buffer
-:nmap <leader>c :bp\|bd #<CR>
+:nmap <leader>qq :bp\|bd #<CR>
 
 " Save
 :nmap <leader>w :w<CR>
