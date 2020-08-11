@@ -2,8 +2,8 @@
 call plug#begin('~/.vim/plugged')
 Plug 'itchyny/lightline.vim'
 Plug 'bling/vim-bufferline'
-Plug 'lotabout/skim', { 'dir': '~/.skim', 'do': './install' }
-Plug 'lotabout/skim.vim'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 Plug 'edkolev/tmuxline.vim'
 Plug 'fatih/vim-go'
 let g:go_version_warning = 0
@@ -249,11 +249,11 @@ nmap <leader>dd :keepp :g/DELETEME/d<CR><C-o>
 :nmap <leader>gd :Gdiff<CR>
 :nmap <leader>gs :Gstatus<CR>
 
-" skim.vim
-:nmap <leader>f :SK<CR>
+" fzf.vim
+:nmap <leader>f :FZF<CR>
 :nmap <leader>b :Buffers<CR>
-:nmap <leader>t :Tags<CR>
 :nmap <leader>s :Lines<CR>
+:nmap <leader>* :Lines <c-r><c-w><cr> " Search word under cursor in all buffers
 :nmap <leader>rg :Rg<CR>
 
 " Notational fzf vim
