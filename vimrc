@@ -2,21 +2,25 @@
 call plug#begin('~/.vim/plugged')
 Plug 'itchyny/lightline.vim'
 Plug 'bling/vim-bufferline'
+" Navigation
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'edkolev/tmuxline.vim'
-Plug 'fatih/vim-go'
-let g:go_version_warning = 0
-Plug 'rust-lang/rust.vim'
-Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'ryanoasis/vim-devicons'
+Plug 'Alok/notational-fzf-vim'
+" Language specific
+Plug 'fatih/vim-go'
+let g:go_version_warning = 0
+Plug 'rust-lang/rust.vim'
+Plug 'jtratner/vim-flavored-markdown'
+Plug 'scrooloose/nerdcommenter'
+" Git
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
-Plug 'jtratner/vim-flavored-markdown'
+" Autocomplete
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'Alok/notational-fzf-vim'
 
 " Themes
 Plug 'altercation/vim-colors-solarized'
