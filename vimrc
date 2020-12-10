@@ -16,6 +16,11 @@ Plug 'fatih/vim-go'
 let g:go_version_warning = 0
 " -- Markdown
 Plug 'jtratner/vim-flavored-markdown'
+" -- Clojure
+" ---- Connection to nREPL
+Plug 'tpope/vim-fireplace'
+" ---- Linting
+Plug 'borkdude/clj-kondo'
 " Git
 Plug 'tpope/vim-fugitive'
 " -- Adds :Gbrowse
