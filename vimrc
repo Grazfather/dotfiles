@@ -267,7 +267,7 @@ nmap <leader>dd :keepp :g/DELETEME/d<CR><C-o>
 :nmap <leader>f :FZF<CR>
 :nmap <leader>b :Buffers<CR>
 :nmap <leader>s :Lines<CR>
-:nmap <leader>* :Lines <c-r><c-w><cr> " Search word under cursor in all buffers
+:nmap <leader>r* :Lines <C-r><C-w><CR>
 :nmap <leader>rg :Rg<CR>
 
 " Notational fzf vim
