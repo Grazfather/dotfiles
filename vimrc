@@ -11,11 +11,11 @@ Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'ryanoasis/vim-devicons'
 Plug 'Alok/notational-fzf-vim'
 " Language specific
+" -- Go
 Plug 'fatih/vim-go'
 let g:go_version_warning = 0
-Plug 'rust-lang/rust.vim'
+" -- Markdown
 Plug 'jtratner/vim-flavored-markdown'
-Plug 'scrooloose/nerdcommenter'
 " Git
 Plug 'tpope/vim-fugitive'
 " -- Adds :Gbrowse
@@ -26,10 +26,10 @@ Plug 'junegunn/gv.vim'
 Plug 'airblade/vim-gitgutter'
 " Autocomplete
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" Misc
+Plug 'scrooloose/nerdcommenter'
 
 " Themes
-Plug 'altercation/vim-colors-solarized'
-Plug 'nanotech/jellybeans.vim'
 Plug 'morhetz/gruvbox'
 call plug#end()
 
@@ -56,7 +56,7 @@ endif
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Match weird white space:
 "   Lines ending with spaces:   
-"   Lines with spaces AND tabs (in either order):
+"   Mixed spaces and tabs (in either order):
     	"
 	    "
 
