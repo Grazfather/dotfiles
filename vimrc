@@ -18,6 +18,11 @@ Plug 'jtratner/vim-flavored-markdown'
 Plug 'scrooloose/nerdcommenter'
 " Git
 Plug 'tpope/vim-fugitive'
+" -- Adds :Gbrowse
+Plug 'tpope/vim-rhubarb'
+" -- Adds :GV to browse history
+Plug 'junegunn/gv.vim'
+" -- Adds changed lines in the gutter
 Plug 'airblade/vim-gitgutter'
 " Autocomplete
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -253,7 +258,7 @@ nmap <leader>dd :keepp :g/DELETEME/d<CR><C-o>
 " NERDTree
 :nnoremap <leader>n :NERDTreeToggle<CR>
 
-" Fugitive
+" Fugitive (git)
 :nmap <leader>gb :Gblame<CR>
 :nmap <leader>gd :Gdiff<CR>
 :nmap <leader>gs :Gstatus<CR>
