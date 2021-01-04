@@ -71,6 +71,14 @@ endif
 :let w:m2=matchadd('TrailingWhitespace', '\s\+$\| \+\ze\t\|\t\+\ze ')
 
 " Remap <leader>
+" I tend to use leader a lot, so I try to namespace commands under leader
+" using a simple mnemonic:
+" <leader>e_ -> Edit stuff
+" <leader>g_ -> Git stuff
+" <leader>o_ -> Coc stuff
+" <leader>f_ -> [fuzzy] search stuff
+" <leader>v_ -> Change View stuff
+" Though some that don't fit aren't yet put behind a namespace
 :let mapleader="\<Space>"
 
 " Allow filetype-specific plugins
@@ -117,12 +125,12 @@ autocmd BufReadPost *
 :noremap <C-l> <C-w>l
 
 " Shift-Ctrl-<jk> to move lines
-:nnoremap <c-J> :m .+1<CR>==
-:nnoremap <c-K> :m .-2<CR>==
-:inoremap <c-J> <Esc>:m .+1<CR>==gi
-:inoremap <c-K> <Esc>:m .-2<CR>==gi
-:vnoremap <c-J> :m '>+1<CR>gv=gv
-:vnoremap <c-K> :m '<-2<CR>gv=gv
+:nnoremap <C-J> :m .+1<CR>==
+:nnoremap <C-K> :m .-2<CR>==
+:inoremap <C-J> <Esc>:m .+1<CR>==gi
+:inoremap <C-K> <Esc>:m .-2<CR>==gi
+:vnoremap <C-J> :m '>+1<CR>gv=gv
+:vnoremap <C-K> :m '<-2<CR>gv=gv
 
 " <Tab> to cycle through splits
 :noremap <Tab> <C-w>w
@@ -139,8 +147,8 @@ autocmd BufReadPost *
 " Start scrolling before my cursor reaches the bottom of the screen
 set scrolloff=4
 
-" Show relative line numbers with <leader>l
-:nmap <leader>l :set number! relativenumber!<CR>
+" Show relative line numbers with <leader>vl
+:nmap <leader>vl :set number! relativenumber!<CR>
 
 " Improve search
 :set ignorecase
@@ -177,19 +185,19 @@ set scrolloff=4
 :set ttimeoutlen=50
 
 " Toggle cursor highlighting
-:nmap <leader>x :set cursorline! cursorcolumn!<CR>
+:nmap <leader>vx :set cursorline! cursorcolumn!<CR>
 
 " Consistent backspace on all systems
 :set backspace=2
 
 " Clear trailing whitespace
-:nnoremap <leader>W :%s/\s\+$//<CR><C-o>
+:nnoremap <leader>eW :%s/\s\+$//<CR><C-o>
 
 " Convert tabs to spaces
-:nnoremap <leader>T :%s/\t/    /g<CR>
+:nnoremap <leader>eT :%s/\t/    /g<CR>
 
 " Toggle showing listchars
-:nnoremap <leader><TAB> :set list!<CR>
+:nnoremap <leader>v<TAB> :set list!<CR>
 if &encoding == "utf-8"
   exe "set listchars=eol:\u00ac,nbsp:\u2423,conceal:\u22ef,tab:\u25b8\u2014,precedes:\u2026,extends:\u2026"
 else
@@ -232,13 +240,13 @@ nnoremap Q <nop>
 :nmap <leader>eg :edit $HOME/.gitaliases<CR>
 
 " Reload vimrc
-:nmap <leader>rv :source $MYVIMRC<CR>
+:nmap <leader>frv :source $MYVIMRC<CR>
 
 " Close the current buffer
 :nmap <leader>qq :bp\|bd #<CR>
 
 " Save
-:nmap <leader>w :w<CR>
+:nmap <leader>bw :w<CR>
 
 " Toggle paste
 :nmap <leader>p :set paste!<CR>
@@ -269,12 +277,12 @@ nmap <leader>dd :keepp :g/DELETEME/d<CR><C-o>
 :nmap <leader>gs :Gstatus<CR>
 
 " fzf.vim
-:nmap <leader>f :FZF<CR>
-:nmap <leader>b :Buffers<CR>
-:nmap <leader>s :Lines<CR>
-:nmap <leader>r* :Lines <C-r><C-w><CR>
-:nmap <leader>rg :Rg<CR>
+:nmap <leader>ff :FZF<CR>
+:nmap <leader>fb :Buffers<CR>
+:nmap <leader>fs :Lines<CR>
+:nmap <leader>f* :Lines <c-r><c-w><cr>
+:nmap <leader>frg :Rg<CR>
 
 " Notational fzf vim
 :let g:nv_search_paths = ["~/notes/"]
-:nmap <leader>o :NV<CR>
+:nmap <leader>fn :NV<CR>
