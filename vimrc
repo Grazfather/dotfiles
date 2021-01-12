@@ -182,6 +182,9 @@ set scrolloff=4
 " Consistent backspace on all systems
 :set backspace=2
 
+" When tabbing on lines with extra spaces, round to the next tab barrier
+:set shiftround
+
 " Clear trailing whitespace
 :nnoremap <leader>eW :%s/\s\+$//<CR><C-o>
 
