@@ -148,7 +148,7 @@ autocmd BufReadPost *
 set scrolloff=4
 
 " Show relative line numbers with <leader>vl
-:nmap <leader>vl :set number! relativenumber!<CR>
+:nmap <leader>tnv :set number! relativenumber!<CR>
 
 " Improve search
 :set ignorecase
@@ -246,7 +246,7 @@ nnoremap Q <nop>
 :nmap <leader>qq :bp\|bd #<CR>
 
 " Save
-:nmap <leader>bw :w<CR>
+:nmap <leader>fs :w<CR>
 
 " Toggle paste
 :nmap <leader>p :set paste!<CR>
@@ -276,11 +276,11 @@ nmap <leader>dd :keepp :g/DELETEME/d<CR><C-o>
 :nmap <leader>gd :Gdiff<CR>
 :nmap <leader>gs :Gstatus<CR>
 
-" fzf.vim
+" fzv.vim
 :nmap <leader>ff :FZF<CR>
-:nmap <leader>fb :Buffers<CR>
-:nmap <leader>fs :Lines<CR>
-:nmap <leader>f* :Lines <c-r><c-w><cr>
+:nmap <leader>bb :Buffers<CR>
+:nmap <leader>ss :Lines<CR>
+:nmap <leader>f* :Lines <C-r><C-w><CR>
 :nmap <leader>frg :Rg<CR>
 
 " Notational fzf vim
