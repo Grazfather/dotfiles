@@ -76,7 +76,7 @@ endif
 " <leader>e_ -> Edit stuff
 " <leader>g_ -> Git stuff
 " <leader>o_ -> Coc stuff
-" <leader>f_ -> [fuzzy] search stuff
+" <leader>f_ -> File stuff, some [fuzzy] find stuff
 " <leader>t_ -> Toggleable settings
 " <leader>v_ -> Change View stuff
 " Though some that don't fit aren't yet put behind a namespace
@@ -215,10 +215,10 @@ nnoremap Q <nop>
 :aug END
 
 " Open commonly edited files
-:nmap <leader>ev :edit $MYVIMRC<CR>
-:nmap <leader>et :edit $HOME/.tmux.conf<CR>
-:nmap <leader>eb :edit $HOME/.bash_aliases<CR>
-:nmap <leader>eg :edit $HOME/.gitaliases<CR>
+:nmap <leader>fev :edit $MYVIMRC<CR>
+:nmap <leader>fet :edit $HOME/.tmux.conf<CR>
+:nmap <leader>feb :edit $HOME/.bash_aliases<CR>
+:nmap <leader>feg :edit $HOME/.gitaliases<CR>
 
 " Reload vimrc
 :nmap <leader>frv :source $MYVIMRC<CR>
