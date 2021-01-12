@@ -92,7 +92,7 @@ endif
 :set tags=./tags,tags;
 
 " Set path to include the cwd and everything underneath
-:set path=**
+:set path=**3
 :set wildmenu
 
 " Show the normal mode command as I type it
@@ -211,9 +211,6 @@ endif
 " Select whole buffer
 nnoremap vaa ggvGg_
 
-" Uppercase typed word from insert mode
-inoremap <C-u> <esc>mzgUiw`za
-
 " Use braces to determine when to auto indent
 :set smartindent
 
@@ -256,11 +253,6 @@ nmap <leader>dm mx<leader>cA DELETEME<ESC>`x
 
 " Delete all DELETEME lines
 nmap <leader>dd :keepp :g/DELETEME/d<CR><C-o>
-
-" Mappings for vimdiff
-:nmap <leader>dg :diffget<CR>
-:nmap <leader>dp :diffput<CR>
-:nmap <leader>du :diffupdate<CR>
 
 " CONFIGURE PLUGINS
 
