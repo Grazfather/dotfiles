@@ -77,6 +77,7 @@ endif
 " <leader>g_ -> Git stuff
 " <leader>o_ -> Coc stuff
 " <leader>f_ -> [fuzzy] search stuff
+" <leader>t_ -> Toggleable settings
 " <leader>v_ -> Change View stuff
 " Though some that don't fit aren't yet put behind a namespace
 :let mapleader="\<Space>"
@@ -147,18 +148,12 @@ autocmd BufReadPost *
 " Start scrolling before my cursor reaches the bottom of the screen
 set scrolloff=4
 
-" Show relative line numbers with <leader>vl
-:nmap <leader>tnv :set number! relativenumber!<CR>
-
 " Improve search
 :set ignorecase
 :set smartcase
 :set infercase
 :set hlsearch
 :set noincsearch " Default on neovim, and I hate it
-
-" Toggle search highlighting
-:nmap <CR> :set hlsearch!<CR>
 
 " Lazily redraw: Make macros faster
 :set lazyredraw
@@ -184,9 +179,6 @@ set scrolloff=4
 " short ttimeoutlen to lower latency to show current mode
 :set ttimeoutlen=50
 
-" Toggle cursor highlighting
-:nmap <leader>vx :set cursorline! cursorcolumn!<CR>
-
 " Consistent backspace on all systems
 :set backspace=2
 
@@ -195,14 +187,6 @@ set scrolloff=4
 
 " Convert tabs to spaces
 :nnoremap <leader>eT :%s/\t/    /g<CR>
-
-" Toggle showing listchars
-:nnoremap <leader>v<TAB> :set list!<CR>
-if &encoding == "utf-8"
-  exe "set listchars=eol:\u00ac,nbsp:\u2423,conceal:\u22ef,tab:\u25b8\u2014,precedes:\u2026,extends:\u2026"
-else
-  set listchars=eol:$,tab:>-,extends:>,precedes:<,conceal:+
-endif
 
 " Enable indent folding, but have it disabled by default
 :set foldmethod=indent
@@ -245,14 +229,36 @@ nnoremap Q <nop>
 " Save
 :nmap <leader>fs :w<CR>
 
-" Toggle paste
-:nmap <leader>p :set paste!<CR>
-
 " Add 'DELETEME' comment using nerdcommenter
 nmap <leader>dm mx<leader>cA DELETEME<ESC>`x
 
 " Delete all DELETEME lines
 nmap <leader>dd :keepp :g/DELETEME/d<CR><C-o>
+
+" Toggle search highlighting
+:nmap <leader>th :set hlsearch!<CR>
+" Show relative line numbers
+:nmap <leader>tnv :set number! relativenumber!<CR>
+" Toggle cursor highlighting
+:nmap <leader>tx :set cursorline! cursorcolumn!<CR>
+" Toggle signcolumn (gutter) to make copy and paste easier
+:nmap <leader>tg :call Toggle_sign_column()<CR>
+function! Toggle_sign_column()
+    if &signcolumn == "yes"
+        set signcolumn=no
+    else
+        set signcolumn=yes
+    endif
+endfunction
+" Toggle showing listchars
+:nnoremap <leader>t<TAB> :set list!<CR>
+if &encoding == "utf-8"
+  exe "set listchars=eol:\u00ac,nbsp:\u2423,conceal:\u22ef,tab:\u25b8\u2014,precedes:\u2026,extends:\u2026"
+else
+  set listchars=eol:$,tab:>-,extends:>,precedes:<,conceal:+
+endif
+" Toggle paste
+:nmap <leader>tp :set paste!<CR>
 
 " CONFIGURE PLUGINS
 
