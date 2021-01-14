@@ -78,7 +78,7 @@ endif
 " <leader>o_ -> Coc stuff
 " <leader>f_ -> File stuff, some [fuzzy] find stuff
 " <leader>t_ -> Toggleable settings
-" <leader>v_ -> Change View stuff
+" <leader>w_ -> Window stuff
 " Though some that don't fit aren't yet put behind a namespace
 :let mapleader="\<Space>"
 
@@ -262,6 +262,11 @@ else
 endif
 " Toggle paste
 :nmap <leader>tp :set paste!<CR>
+
+" Window (split) management
+:nmap <leader>w/ :vsp<CR>
+:nmap <leader>w- :sp<CR>
+:nmap <leader>wd <C-W>c
 
 " CONFIGURE PLUGINS
 
