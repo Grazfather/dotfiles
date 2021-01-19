@@ -227,10 +227,13 @@ nnoremap Q <nop>
 :nmap <leader>frv :source $MYVIMRC<CR>
 
 " Close the current buffer
-:nmap <leader>qq :bp\|bd #<CR>
+:nmap <leader>bd :bp\|bd #<CR>
 
 " Save
 :nmap <leader>fs :w<CR>
+
+" Quit
+:nmap <leader>qq :qa<CR>
 
 " Add 'DELETEME' comment using nerdcommenter
 nmap <leader>dm mx<leader>cA DELETEME<ESC>`x
