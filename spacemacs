@@ -532,6 +532,17 @@ before packages are loaded."
   (define-key evil-insert-state-map (kbd "C-b") 'evil-backward-char)
   (define-key evil-insert-state-map (kbd "C-e") 'evil-end-of-line)
   (setq-default hybrid-style-enable-hjkl-bindings t)
+  (define-key helm-map (kbd "C-n") 'helm-next-line)
+  (define-key helm-map (kbd "C-p") 'helm-previous-line)
+
+  ; Make the clojure repl use normal readline shortcuts
+  (evil-define-key 'normal cider-repl-mode-map
+    (kbd "C-n") 'cider-repl-next-input
+    (kbd "C-p") 'cider-repl-previous-input)
+  (evil-define-key 'insert cider-repl-mode-map
+    (kbd "C-h") 'evil-delete-backward-char
+    (kbd "C-n") 'cider-repl-next-input
+    (kbd "C-p") 'cider-repl-previous-input)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
