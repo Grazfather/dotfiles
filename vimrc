@@ -278,7 +278,7 @@ endif
 :let g:tmuxline_theme = 'zenburn'
 
 " NERDTree
-:nnoremap <leader>n :NERDTreeToggle<CR>
+:nnoremap <leader>ft :NERDTreeToggle<CR>
 
 " Fugitive (git)
 :nmap <leader>gb :Gblame<CR>
