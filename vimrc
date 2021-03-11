@@ -21,6 +21,8 @@ Plug 'jtratner/vim-flavored-markdown'
 Plug 'tpope/vim-fireplace'
 " ---- Linting
 Plug 'borkdude/clj-kondo'
+" -- TOML
+Plug 'cespare/vim-toml'
 " Git
 Plug 'tpope/vim-fugitive'
 " -- Adds :Gbrowse
