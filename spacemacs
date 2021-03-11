@@ -543,6 +543,13 @@ before packages are loaded."
     (kbd "C-h") 'evil-delete-backward-char
     (kbd "C-n") 'cider-repl-next-input
     (kbd "C-p") 'cider-repl-previous-input)
+
+  ; vaa to select the whole buffer
+  (define-key evil-normal-state-map (kbd "vaa") 'mark-whole-buffer)
+
+  ; Make j and k behave like gj and gk (better for wrapped lines)
+  (define-key evil-normal-state-map (kbd "j") 'evil-next-visual-line)
+  (define-key evil-normal-state-map (kbd "k") 'evil-previous-visual-line)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
