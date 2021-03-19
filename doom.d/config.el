@@ -54,6 +54,9 @@
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
 
+
+;; Use `SPC c e` to eval these settings to apply them without restarting Emacs
+
 ;; Disable smart parens
 (remove-hook 'doom-first-buffer-hook #'smartparens-global-mode)
 
