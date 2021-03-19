@@ -34,7 +34,7 @@
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
-(setq display-line-numbers-type t)
+(setq display-line-numbers-type 'relative)
 
 
 ;; Here are some additional functions/macros that could help you configure Doom:
@@ -91,3 +91,7 @@
 (map! :n "vaa" #'mark-whole-buffer)
 
 (map! :leader :prefix "f" :g "t" #'+neotree/open)
+
+; Open new split panes to the right and bottom
+(setq evil-vsplit-window-right' t
+      evil-split-window-below' t)
