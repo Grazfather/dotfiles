@@ -1,0 +1,90 @@
+#!/usr/bin/env bb
+#_" -*- mode: clojure; -*-"
+(ns hl
+  (:require [clojure.java.io :as io]
+            [clojure.string :as s]
+            [clojure.tools.cli :refer [parse-opts]]))
+
+;; CLI
+(def cli-options
+  [["-p" "--pattern PATTERN" "Regex to highlight"
+    :default "^.+$"
+    :validate [#(re-pattern %) "Must be a valid regex pattern"]
+    ]
+   ["-h" "--help" "Show help"]])
+
+(def usage-header
+  "Usage:
+  hs [-h] [-p PATTERN]")
+
+(def usage-details
+  "FILTERING
+  -p, --pattern    regex pattern to highlight
+                   If your regex contains group, they must be
+                   non-overlapping, and every matched character must
+                   be in some group, otherwise ungrouped characters
+                   will not be shown")
+
+(defn print-usage
+  [o]
+  (println usage-header)
+  (println (:summary o))
+  (println usage-details)
+)
+
+;; Colorization
+(def ansi-escape "\u001b")
+
+(defn ansi-color-start
+  [color]
+  (format "%s[38;5;%dm" ansi-escape color))
+
+(defn ansi-color-end
+  []
+  (format "%s[0m" ansi-escape))
+
+(defn get-color
+  [s]
+  (-> s
+      hash
+      (mod 200) ; TODO: Fix
+      (+ 16)))
+
+(defn colorize
+  [s]
+  (format "%s%s%s"
+          (ansi-color-start (get-color s))
+          s
+          (ansi-color-end)))
+
+;; Pattern matching
+(defn colorize-match
+  [match]
+  (if (vector? match) ; groups
+    (s/join "" (mapv colorize (rest match)))
+    (colorize match)))
+
+(defn colorize-line
+  [regex l]
+  (s/replace l regex colorize-match))
+
+;; Main
+(defn run [pattern lines]
+  (doseq [l lines]
+    (println (colorize-line pattern l))))
+
+;; Arg parsing
+(def o (parse-opts *command-line-args* cli-options))
+(def opts (:options o))
+
+(when-let [e (:errors o)]
+  (mapv #(println %) e)
+  (System/exit 1))
+(when (:help opts)
+  (print-usage o)
+  (System/exit 1))
+
+(def pattern (re-pattern (:pattern opts)))
+(def stream (line-seq (io/reader *in*)))
+
+(run pattern stream)
