@@ -127,14 +127,6 @@ autocmd BufReadPost *
 :noremap <C-k> <C-w>k
 :noremap <C-l> <C-w>l
 
-" Shift-Ctrl-<jk> to move lines
-:nnoremap <C-J> :m .+1<CR>==
-:nnoremap <C-K> :m .-2<CR>==
-:inoremap <C-J> <Esc>:m .+1<CR>==gi
-:inoremap <C-K> <Esc>:m .-2<CR>==gi
-:vnoremap <C-J> :m '>+1<CR>gv=gv
-:vnoremap <C-K> :m '<-2<CR>gv=gv
-
 " <Tab> to cycle through splits
 :noremap <Tab> <C-w>w
 
