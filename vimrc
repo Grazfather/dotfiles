@@ -261,8 +261,8 @@ endif
 :nmap <leader>tp :set paste!<CR>
 
 " Window (split) management
-:nmap <leader>w/ :vsp<CR>
-:nmap <leader>w- :sp<CR>
+:nmap <leader>wv :vsp<CR>
+:nmap <leader>ws :sp<CR>
 :nmap <leader>wd <C-W>c
 
 " CONFIGURE PLUGINS
@@ -279,7 +279,7 @@ endif
 :nmap <leader>gd :Gdiff<CR>
 :nmap <leader>gs :Gstatus<CR>
 
-" fzv.vim
+" fzf.vim
 :nmap <leader>ff :FZF<CR>
 :nmap <leader>bb :Buffers<CR>
 :nmap <leader>ss :Lines<CR>
