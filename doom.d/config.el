@@ -95,3 +95,6 @@
 ; Open new split panes to the right and bottom
 (setq evil-vsplit-window-right' t
       evil-split-window-below' t)
+
+; Don't autoformat python -- Black is too aggressive
+(appendq! +format-on-save-enabled-modes '(python-mode))
