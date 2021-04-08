@@ -184,3 +184,9 @@
        :config
        ;;literate
        (default +bindings))
+
+;; Evil needs some settings earlier than config.el
+;; Don't act like soft wrapped lines are separate lines
+;; I remap j and k to act like it, but I don't want it to for the rest e.g. $
+;; and 0
+(setq evil-respect-visual-line-mode nil)

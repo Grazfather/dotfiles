@@ -60,6 +60,9 @@
 ;; Disable smart parens
 (remove-hook 'doom-first-buffer-hook #'smartparens-global-mode)
 
+;; Default to soft wrapping long lines
+(global-visual-line-mode t)
+
 ;; Map C-h to backspace in insert mode
 (map! :i "C-h" #'backward-delete-char)
 
@@ -93,8 +96,15 @@
 (map! :leader :prefix "f" :g "t" #'+neotree/open)
 
 ; Open new split panes to the right and bottom
-(setq evil-vsplit-window-right' t
-      evil-split-window-below' t)
+(setq evil-vsplit-window-right t
+      evil-split-window-below t)
 
 ; Don't autoformat python -- Black is too aggressive
 (appendq! +format-on-save-enabled-modes '(python-mode))
+
+; I don't use Evil's evil-respect-visual-line-mode, but I still want the
+; behaviour for navigating lines
+(map! :n "k" 'evil-previous-visual-line
+      :n "gk" 'evil-previous-line
+      :n "j" 'evil-next-visual-line
+      :n "gj" 'evil-next-line)
