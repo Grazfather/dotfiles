@@ -78,11 +78,13 @@ endif
 " <leader>e_ -> Edit stuff
 " <leader>g_ -> Git stuff
 " <leader>o_ -> Coc stuff
+" <leader>m_ -> 'localleader': Filestype specific stuff
 " <leader>f_ -> File stuff, some [fuzzy] find stuff
 " <leader>t_ -> Toggleable settings
 " <leader>w_ -> Window stuff
 " Though some that don't fit aren't yet put behind a namespace
 :let mapleader="\<Space>"
+:let maplocalleader="\<Space>m"
 
 " Allow filetype-specific plugins
 :filetype plugin on
