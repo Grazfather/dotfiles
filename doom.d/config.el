@@ -66,6 +66,14 @@
 ;; Map C-h to backspace in insert mode
 (map! :i "C-h" #'backward-delete-char)
 
+;; NAVIGATION
+;; Disable arrow keys in evil mode
+(map! :map override
+      :nvi [left] #'ignore
+      :nvi [down] #'ignore
+      :nvi [up] #'ignore
+      :nvi [right] #'ignore)
+
 ;; Window nav
 (map! :map general-override-mode-map
       :n "C-h" #'evil-window-left
@@ -76,6 +84,13 @@
 ;; Buffer nav
 (map! :n "C-n" #'next-buffer
       :n "C-p" #'previous-buffer)
+
+; I don't use Evil's evil-respect-visual-line-mode, but I still want the
+; behaviour for navigating lines
+(map! :n "k" 'evil-previous-visual-line
+      :n "gk" 'evil-previous-line
+      :n "j" 'evil-next-visual-line
+      :n "gj" 'evil-next-line)
 
 ;; Unbind C-z, which normally toggles emacs mode. This way I can background
 ;; emacs when run in the terminal.
@@ -101,10 +116,3 @@
 
 ; Don't autoformat python -- Black is too aggressive
 (appendq! +format-on-save-enabled-modes '(python-mode))
-
-; I don't use Evil's evil-respect-visual-line-mode, but I still want the
-; behaviour for navigating lines
-(map! :n "k" 'evil-previous-visual-line
-      :n "gk" 'evil-previous-line
-      :n "j" 'evil-next-visual-line
-      :n "gj" 'evil-next-line)
