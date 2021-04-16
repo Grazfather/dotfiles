@@ -18,7 +18,8 @@ let g:go_version_warning = 0
 Plug 'jtratner/vim-flavored-markdown'
 " -- Clojure
 " ---- Connection to nREPL
-Plug 'tpope/vim-fireplace'
+Plug 'guns/vim-sexp', {'for': 'clojure'}
+Plug 'liquidz/vim-iced', {'for': 'clojure'}
 " ---- Linting
 Plug 'borkdude/clj-kondo'
 " -- TOML
