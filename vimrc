@@ -9,6 +9,7 @@ Plug 'edkolev/tmuxline.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'ryanoasis/vim-devicons'
+Plug 'junegunn/vim-peekaboo'
 Plug 'Alok/notational-fzf-vim'
 " Language specific
 " -- Go
