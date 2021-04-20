@@ -87,10 +87,10 @@
 
 ; I don't use Evil's evil-respect-visual-line-mode, but I still want the
 ; behaviour for navigating lines
-(map! :n "k" 'evil-previous-visual-line
-      :n "gk" 'evil-previous-line
-      :n "j" 'evil-next-visual-line
-      :n "gj" 'evil-next-line)
+(map! :n "k" #'evil-previous-visual-line
+      :n "gk" #'evil-previous-line
+      :n "j" #'evil-next-visual-line
+      :n "gj" #'evil-next-line)
 
 ;; Unbind C-z, which normally toggles emacs mode. This way I can background
 ;; emacs when run in the terminal.
@@ -115,4 +115,4 @@
       evil-split-window-below t)
 
 ; Don't autoformat python -- Black is too aggressive
-(appendq! +format-on-save-enabled-modes '(python-mode))
+(add-to-list '+format-on-save-enabled-modes 'python-mode t)
