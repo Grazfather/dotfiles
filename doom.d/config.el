@@ -60,11 +60,17 @@
 ;; Disable smart parens
 (remove-hook 'doom-first-buffer-hook #'smartparens-global-mode)
 
+;; This mapping is so that I can see what expression was run for what I just did
+(map! :leader :prefix "h" "z" #'repeat-complex-command)
+
 ;; Default to soft wrapping long lines
 (global-visual-line-mode t)
 
 ;; Map C-h to backspace in insert mode
 (map! :i "C-h" #'backward-delete-char)
+
+;; Maximise the window on startup
+(add-to-list 'initial-frame-alist '(fullscreen . maximized))
 
 ;; NAVIGATION
 ;; Disable arrow keys in evil mode
@@ -114,5 +120,9 @@
 (setq evil-vsplit-window-right t
       evil-split-window-below t)
 
+; Map expand-region
+(map! :nv "C-q" #'er/expand-region)
+
+;; LANGUAGE SPECIFIC
 ; Don't autoformat python -- Black is too aggressive
 (add-to-list '+format-on-save-enabled-modes 'python-mode t)
