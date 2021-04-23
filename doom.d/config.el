@@ -112,8 +112,6 @@
 ; SPC d d to delete all DELETEME lines
 (map! :leader :prefix "d" "d" ":g/DELETEME/d")
 
-(map! :n "vaa" #'mark-whole-buffer)
-
 (map! :leader :prefix "f" :g "t" #'+neotree/open)
 
 ; Open new split panes to the right and bottom

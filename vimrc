@@ -194,7 +194,7 @@ set scrolloff=4
 :set foldlevel=99
 
 " Select whole buffer
-nnoremap vaa ggvGg_
+nnoremap vag ggvGg_
 
 " Use braces to determine when to auto indent
 :set smartindent
