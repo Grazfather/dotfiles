@@ -104,7 +104,7 @@
 (undefine-key! evil-motion-state-map "C-z")
 (undefine-key! evil-normal-state-map "C-z")
 
-;; Highlight DELETEME along with the other settings
+;; Highlight DELETEME in my code
 (after! hl-todo
   (pushnew! hl-todo-keyword-faces '("DELETEME" error bold)))
 ; SPC d m to add a DELETEME comment
@@ -124,3 +124,7 @@
 ;; LANGUAGE SPECIFIC
 ; Don't autoformat python -- Black is too aggressive
 (add-to-list '+format-on-save-enabled-modes 'python-mode t)
+
+; Tell the LSP to not monitor Go vendor files
+(after! lsp-mode
+  (add-to-list 'lsp-file-watch-ignored-directories "[/\\\\]vendor\\'" t))
