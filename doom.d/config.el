@@ -91,6 +91,11 @@
 (map! :n "C-n" #'next-buffer
       :n "C-p" #'previous-buffer)
 
+;; Workspace nav
+(map! :leader :prefix "TAB"
+      "n" #'+workspace/switch-right
+      "p" #'+workspace/switch-left)
+
 ; I don't use Evil's evil-respect-visual-line-mode, but I still want the
 ; behaviour for navigating lines
 (map! :n "k" #'evil-previous-visual-line
