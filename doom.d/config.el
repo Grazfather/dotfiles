@@ -117,7 +117,7 @@
 ; SPC d d to delete all DELETEME lines
 (map! :leader :prefix "d" "d" ":g/DELETEME/d")
 
-(map! :leader :prefix "f" :g "t" #'+neotree/open)
+(map! :leader :prefix "f" "t" #'+neotree/open)
 
 ; Open new split panes to the right and bottom
 (setq evil-vsplit-window-right t
