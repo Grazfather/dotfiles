@@ -87,6 +87,12 @@
       :n "C-k" #'evil-window-up
       :n "C-l" #'evil-window-right)
 
+;; Since I use colemak and I want the window switch keys under my fingiers
+(after! switch-window
+  (setq switch-window-shortcut-style 'qwerty
+        switch-window-qwerty-shortcuts '("a" "r" "s" "t" "n" "e" "i" "o")
+        switch-window-shortcut-appearance 'asciiart))
+
 ;; Buffer nav
 (map! :n "C-n" #'next-buffer
       :n "C-p" #'previous-buffer)
