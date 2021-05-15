@@ -49,10 +49,8 @@
 ;; [x] a - apps
 ;; [x] |-- e - emacs
 ;; [x] |-- g - chrome
-;; [x] |-- f - firefox
 ;; [x] |-- i - iTerm
 ;; [x] |-- s - Slack
-;; [x] |-- b - Brave
 ;;
 ;; [x] j - jump
 ;;
@@ -251,22 +249,16 @@
         {:key :e
          :title "Emacs"
          :action (activator "Emacs")}
-        {:key :g
+        {:key :b
          :title "Chrome"
          :action (activator "Google Chrome")}
-        {:key :f
-         :title "Firefox"
-         :action (activator "Firefox")}
-        {:key :i
+        {:key :t
          :title "iTerm"
          :action (activator "iTerm2")}
         {:key :s
          :title "Slack"
          :action (activator "Slack")}
-        {:key :b
-         :title "Brave"
-         :action (activator "Brave")}
-        {:key :m
+        {:key :r
          :title music-app
          :action (activator music-app)}])
 
@@ -313,10 +305,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (local menu-items
-       [{:key    :space
-         :title  "Alfred"
-         :action (activator "Alfred 4")}
-        {:key   :w
+       [{:key   :w
          :title "Window"
          :enter "windows:enter-window-menu"
          :exit "windows:exit-window-menu"
@@ -330,7 +319,7 @@
         {:key   :m
          :title "Media"
          :items media-bindings}
-        {:key   :x
+        {:key   :e
          :title "Emacs"
          :items emacs-bindings}])
 
@@ -375,18 +364,8 @@
           :title "Edit with Emacs"
           :action "emacs:edit-with-emacs"}]))
 
-(local brave-config
-       {:key "Brave Browser"
-        :keys browser-keys
-        :items browser-items})
-
 (local chrome-config
        {:key "Google Chrome"
-        :keys browser-keys
-        :items browser-items})
-
-(local firefox-config
-       {:key "Firefox"
         :keys browser-keys
         :items browser-items})
 
@@ -397,16 +376,6 @@
         :launch "emacs:maximize"
         :items []
         :keys []})
-
-(local grammarly-config
-       {:key "Grammarly"
-        :items (concat
-                menu-items
-                [{:mods [:ctrl]
-                  :key :c
-                  :title "Return to Emacs"
-                  :action "grammarly:back-to-emacs"}])
-        :keys ""})
 
 (local hammerspoon-config
        {:key "Hammerspoon"
@@ -429,12 +398,6 @@
                 :key :r
                 :action "slack:add-reaction"}
                {:mods [:ctrl]
-                :key :h
-                :action "slack:prev-element"}
-               {:mods [:ctrl]
-                :key :l
-                :action "slack:next-element"}
-               {:mods [:ctrl]
                 :key :t
                 :action "slack:thread"}
                {:mods [:ctrl]
@@ -443,10 +406,6 @@
                {:mods [:ctrl]
                 :key :n
                 :action "slack:next-day"}
-               {:mods [:ctrl]
-                :key :e
-                :action "slack:scroll-up"
-                :repeat true}
                {:mods [:ctrl]
                 :key :y
                 :action "slack:scroll-down"
@@ -469,11 +428,8 @@
                 :repeat true}]})
 
 (local apps
-       [brave-config
-        chrome-config
-        firefox-config
+       [chrome-config
         emacs-config
-        grammarly-config
         hammerspoon-config
         slack-config])
 
