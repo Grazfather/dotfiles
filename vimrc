@@ -10,7 +10,6 @@ Plug 'scrooloose/nerdtree'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'ryanoasis/vim-devicons'
 Plug 'junegunn/vim-peekaboo'
-Plug 'Alok/notational-fzf-vim'
 " Language specific
 " -- Go
 Plug 'fatih/vim-go'
@@ -289,11 +288,6 @@ endif
 :nmap <leader>ss :Lines<CR>
 :nmap <leader>f* :Lines <C-r><C-w><CR>
 :nmap <leader>frg :Rg<CR>
-
-" Notational fzf vim
-:let g:nv_search_paths = ["~/notes/"]
-:nmap <leader>fn :NV<CR>
-
 
 " TextEdit might fail if hidden is not set.
 set hidden
