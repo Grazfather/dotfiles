@@ -16,3 +16,5 @@ alias gdb='gdb -q'
 alias rga="rg --no-ignore --hidden --glob '!.git'"
 
 alias lsusbx='ioreg -p IOUSB -l -w 0|grep "\-o"'
+
+alias vim='nvim'
