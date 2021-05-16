@@ -1,6 +1,15 @@
-dotfiles
-========
+# dotfiles
 
-My collection of dotfiles for vim, bash, git, and tmux.
+My collection of dotfiles for the various tools I use.
 
-Running `init.sh` will symlink _$HOME/.{file}_ to _/path/to/dotfiles/{file}_, and back up the original in _$HOME/dotfiles.bak/_, pull in all the vim plugin submodules, and install git aliases and bash aliases in the appropriate rc file.
+## Prerequisites
+
+* [babashka](https://babashka.org)
+* git
+* vim/neovim
+
+Running `bb setup` will symlink the dotfiles in the repo into their appropriate
+location, set up your _.bashrc_ and _.gitconfig_ to use the aliases, and add
+this repo's _bin/_ to your `PATH`.
+
+Original files will be backed up to _\<FILE\>.bak_.
