@@ -4,9 +4,6 @@ alias lh='ls -lh'
 alias ll='ls -alF'
 alias l='ls -CF'
 
-# git aliases
-alias gith="git hist"
-
 # navigation aliases
 alias ..="cd .."
 alias ...="cd ../.."
