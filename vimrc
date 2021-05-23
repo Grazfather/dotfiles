@@ -290,4 +290,7 @@ endif
 :nmap <leader>f* :Lines <C-r><C-w><CR>
 :nmap <leader>frg :Rg<CR>
 
-
+" Iced
+let g:iced_default_key_mapping_leader = '<LocalLeader>'
+let g:iced_enable_default_key_mappings = v:true
+let g:iced_enable_clj_konda_analysis = v:true
