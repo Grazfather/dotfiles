@@ -39,3 +39,6 @@ __pycache__/
 # Logs
 *.log
 *.sql
+
+# Clojure
+.clj-kondo/
