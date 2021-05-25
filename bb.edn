@@ -60,8 +60,8 @@
                          (if-not (file-contains? filename ".bash_aliases")
                            (append-to-file filename
                                            (str
-                                             "\n[ -f $HOME/.bash_aliases ] && source $HOME/.bash_aliases"
-                                             "\n[ -f $HOME/.bash_aliases_local ] && source $HOME/.bash_aliases_local"))
+                                            "\n[ -f $HOME/.bash_aliases ] && source $HOME/.bash_aliases"
+                                            "\n[ -f $HOME/.bash_aliases_local ] && source $HOME/.bash_aliases_local"))
                            (status ".bash_aliases already in .bashrc")))
 
   install-git-aliases (let [filename (home-dir ".gitconfig")]
@@ -70,7 +70,11 @@
                                           "[include]\n\tpath = ~/.gitaliases")
                           (status ".gitaliases already in .bashrc")))
 
-  install-vim-plugins {:task (shell "vim +'PlugInstall --sync' +qa")
+  install-vim-plugins {:task (do
+                               ; Plugins may be vim or neovim specific, so we
+                               ; have to install using both
+                               (shell "vim +'PlugInstall --sync' +qa")
+                               (shell "nvim +'PlugInstall --sync' +qa"))
                        :depends [symlink]}
 
   setup {:depends [symlink set-path install-bash-aliases install-git-aliases install-vim-plugins]}}}
