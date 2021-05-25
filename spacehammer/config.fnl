@@ -111,6 +111,7 @@
         :title "Back"
         :action :previous})
 
+(local hyper-mods [:alt :cmd :ctrl])
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Windows
@@ -301,6 +302,37 @@
          :action "emacs:full-screen"}])
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; App hotkeys
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(local app-keys
+       [{:mods hyper-mods
+         :key :r
+         :action (activator "Spotify")}
+        {:mods hyper-mods
+         :key :s
+         :action (activator "Slack")}
+        {:mods hyper-mods
+         :key :t
+         :action (activator "iTerm2")}
+        {:mods hyper-mods
+         :key :b
+         :action (activator "Chrome")}
+        {:mods hyper-mods
+         :key :f
+         :action (activator "Finder")}
+        {:mods hyper-mods
+         :key :p
+         :action (activator "Preview")}
+        {:mods hyper-mods
+         :key :o
+         :action (activator "Obsidian")}
+        {:mods hyper-mods
+         :key :e
+         :action (activator "Emacs")}
+        ])
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Main Menu & Config
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -324,21 +356,22 @@
          :items emacs-bindings}])
 
 (local common-keys
-       [{:mods [:alt]
-         :key :space
-         :action "lib.modal:activate-modal"}
-        {:mods [:alt]
-         :key :n
-         :action "apps:next-app"}
-        {:mods [:alt]
-         :key :p
-         :action "apps:prev-app"}
-        {:mods [:cmd :ctrl]
-         :key "`"
-         :action hs.toggleConsole}
-        {:mods [:cmd :ctrl]
-         :key :o
-         :action "emacs:edit-with-emacs"}])
+       (concat app-keys
+               [{:mods hyper-mods
+                 :key :w
+                 :action "lib.modal:activate-modal"}
+                {:mods [:alt]
+                 :key :n
+                 :action "apps:next-app"}
+                {:mods [:alt]
+                 :key :p
+                 :action "apps:prev-app"}
+                {:mods [:cmd :ctrl]
+                 :key "`"
+                 :action hs.toggleConsole}
+                {:mods [:cmd :ctrl]
+                 :key :o
+                 :action "emacs:edit-with-emacs"}]))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; App Specific Config
