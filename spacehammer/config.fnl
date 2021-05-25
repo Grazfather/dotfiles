@@ -316,8 +316,17 @@
          :key :t
          :action (activator "iTerm2")}
         {:mods hyper-mods
+         :key :c
+         :action (activator "Whatsapp")}
+        {:mods hyper-mods
+         :key :d
+         :action (activator "Discord")}
+        {:mods hyper-mods
          :key :b
          :action (activator "Chrome")}
+        {:mods hyper-mods
+         :key :q
+         :action (activator "Roam Research")}
         {:mods hyper-mods
          :key :f
          :action (activator "Finder")}
