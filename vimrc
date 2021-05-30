@@ -1,4 +1,6 @@
-" Vim-Plug Plugins
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" PLUGINS
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 call plug#begin('~/.vim/plugged')
 Plug 'itchyny/lightline.vim'
 Plug 'bling/vim-bufferline'
@@ -39,6 +41,9 @@ endif
 " Misc
 Plug 'scrooloose/nerdcommenter'
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" THEMES/UI
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Themes
 Plug 'morhetz/gruvbox'
 call plug#end()
@@ -58,19 +63,25 @@ if has("gui_running")
   endif
 endif
 
+" Tmuxline (Configures Tmux's statusbar)
+:let g:tmuxline_preset = "powerline"
+:let g:tmuxline_theme = "zenburn"
+
 " Use local config if it exists
 if filereadable($HOME . "/.vimrc.local")
     source ~/.vimrc.local
 endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" VISUAL/LAYOUT
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 " Match weird white space:
 "   Lines ending with spaces:   
 "   Mixed spaces and tabs (in either order):
     	"
 	    "
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Highlight trailing whitespace and spaces touching tabs
 :highlight TrailingWhitespace ctermbg=darkred guibg=darkred
 :let w:m2=matchadd('TrailingWhitespace', '\s\+$\| \+\ze\t\|\t\+\ze ')
@@ -105,7 +116,12 @@ endif
 " Show the normal mode command as I type it
 :set showcmd
 
+" Lazily redraw: Make macros faster
+:set lazyredraw
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " NAVIGATION
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Jump to last cursor position unless it's invalid or in an event handler
 autocmd BufReadPost *
@@ -153,9 +169,6 @@ set scrolloff=4
 :set hlsearch
 :set noincsearch " Default on neovim, and I hate it
 
-" Lazily redraw: Make macros faster
-:set lazyredraw
-
 " Turn off swap files
 :set noswapfile
 :set nobackup
@@ -183,18 +196,9 @@ set scrolloff=4
 " When tabbing on lines with extra spaces, round to the next tab barrier
 :set shiftround
 
-" Clear trailing whitespace
-:nnoremap <leader>eW :%s/\s\+$//<CR><C-o>
-
-" Convert tabs to spaces
-:nnoremap <leader>eT :%s/\t/    /g<CR>
-
 " Enable indent folding, but have it disabled by default
 :set foldmethod=indent
 :set foldlevel=99
-
-" Select whole buffer
-nnoremap vag ggvGg_
 
 " Use braces to determine when to auto indent
 :set smartindent
@@ -205,15 +209,18 @@ nnoremap Y y$
 " Unmap ex mode
 nnoremap Q <nop>
 
-" Special settings for some filetypes
-:au Filetype ruby setl expandtab smarttab tabstop=4 shiftwidth=4 softtabstop=4
-:au Filetype yaml setl expandtab smarttab tabstop=4 shiftwidth=4 softtabstop=4
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" GLOBAL MAPPINGS
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" Use github-flavored markdown
-:aug markdown
-    :au!
-    :au BufNewFile,BufRead *.md,*.markdown setlocal filetype=ghmarkdown
-:aug END
+" Clear trailing whitespace
+:nnoremap <leader>eW :%s/\s\+$//<CR><C-o>
+
+" Convert tabs to spaces
+:nnoremap <leader>eT :%s/\t/    /g<CR>
+
+" Select whole buffer
+nnoremap vag ggvGg_
 
 " Open commonly edited files
 :nmap <leader>fev :edit $MYVIMRC<CR>
@@ -241,10 +248,13 @@ nmap <leader>dd :keepp :g/DELETEME/d<CR><C-o>
 
 " Toggle search highlighting
 :nmap <leader>th :set hlsearch!<CR>
+
 " Show relative line numbers
 :nmap <leader>tnv :set number! relativenumber!<CR>
+
 " Toggle cursor highlighting
 :nmap <leader>tx :set cursorline! cursorcolumn!<CR>
+
 " Toggle signcolumn (gutter) to make copy and paste easier
 :nmap <leader>tg :call Toggle_sign_column()<CR>
 function! Toggle_sign_column()
@@ -254,6 +264,7 @@ function! Toggle_sign_column()
         set signcolumn=yes
     endif
 endfunction
+
 " Toggle showing listchars
 :nnoremap <leader>t<TAB> :set list!<CR>
 if &encoding == "utf-8"
@@ -261,6 +272,7 @@ if &encoding == "utf-8"
 else
   set listchars=eol:$,tab:>-,extends:>,precedes:<,conceal:+
 endif
+
 " Toggle paste
 :nmap <leader>tp :set paste!<CR>
 
@@ -268,12 +280,6 @@ endif
 :nmap <leader>wv :vsp<CR>
 :nmap <leader>ws :sp<CR>
 :nmap <leader>wd <C-W>c
-
-" CONFIGURE PLUGINS
-
-" Tmuxline (Configures Tmux's statusbar)
-:let g:tmuxline_preset = 'powerline'
-:let g:tmuxline_theme = 'zenburn'
 
 " NERDTree
 :nnoremap <leader>ft :NERDTreeToggle<CR>
@@ -290,7 +296,21 @@ endif
 :nmap <leader>f* :Lines <C-r><C-w><CR>
 :nmap <leader>frg :Rg<CR>
 
-" Iced
-let g:iced_default_key_mapping_leader = '<LocalLeader>'
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Specific language settings
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Special settings for some filetypes
+:au Filetype ruby setl expandtab smarttab tabstop=4 shiftwidth=4 softtabstop=4
+:au Filetype yaml setl expandtab smarttab tabstop=4 shiftwidth=4 softtabstop=4
+
+" Use github-flavored markdown
+:aug markdown
+    :au!
+    :au BufNewFile,BufRead *.md,*.markdown setlocal filetype=ghmarkdown
+:aug END
+
+" vim-iced (Clojure)
+let g:iced_default_key_mapping_leader = "<LocalLeader>"
 let g:iced_enable_default_key_mappings = v:true
 let g:iced_enable_clj_konda_analysis = v:true
