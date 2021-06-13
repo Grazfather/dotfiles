@@ -66,11 +66,27 @@
 ;; Default to soft wrapping long lines
 (global-visual-line-mode t)
 
-;; Map C-h to backspace in insert mode
-(map! :i "C-h" #'backward-delete-char)
-
 ;; Maximise the window on startup
 (add-to-list 'initial-frame-alist '(fullscreen . maximized))
+
+; Open new split panes to the right and bottom
+(setq evil-vsplit-window-right t
+      evil-split-window-below t)
+
+(setq lsp-file-watch-threshold 5000)
+
+;; Unbind C-z, which normally toggles emacs mode. This way I can background
+;; emacs when run in the terminal.
+(undefine-key! evil-insert-state-map "C-z")
+(undefine-key! evil-motion-state-map "C-z")
+(undefine-key! evil-normal-state-map "C-z")
+
+;; This mapping is so that I can see what expression was run for what I just did
+(map! :leader :prefix "h"
+      :desc "Show/rerun last expression" "z" #'repeat-complex-command)
+
+;; Map C-h to backspace in insert mode
+(map! :i "C-h" #'backward-delete-char)
 
 ;; NAVIGATION
 ;; Disable arrow keys in evil mode
@@ -87,7 +103,7 @@
       :n "C-k" #'evil-window-up
       :n "C-l" #'evil-window-right)
 
-;; Since I use colemak and I want the window switch keys under my fingiers
+;; Since I use colemak and I want the window switch keys under my fingers
 (after! switch-window
   (setq switch-window-shortcut-style 'qwerty
         switch-window-qwerty-shortcuts '("a" "r" "s" "t" "n" "e" "i" "o")
@@ -97,11 +113,6 @@
 (map! :n "C-n" #'next-buffer
       :n "C-p" #'previous-buffer)
 
-;; Workspace nav
-(map! :leader :prefix "TAB"
-      "n" #'+workspace/switch-right
-      "p" #'+workspace/switch-left)
-
 ; I don't use Evil's evil-respect-visual-line-mode, but I still want the
 ; behaviour for navigating lines
 (map! :n "k" #'evil-previous-visual-line
@@ -109,25 +120,16 @@
       :n "j" #'evil-next-visual-line
       :n "gj" #'evil-next-line)
 
-;; Unbind C-z, which normally toggles emacs mode. This way I can background
-;; emacs when run in the terminal.
-(undefine-key! evil-insert-state-map "C-z")
-(undefine-key! evil-motion-state-map "C-z")
-(undefine-key! evil-normal-state-map "C-z")
-
 ;; Highlight DELETEME in my code
 (after! hl-todo
   (pushnew! hl-todo-keyword-faces '("DELETEME" error bold)))
 ; SPC d m to add a DELETEME comment
-(map! :leader :prefix "d" "m" (kbd! "A SPC D E L E T E M E C-g b g c A"))
-; SPC d d to delete all DELETEME lines
-(map! :leader :prefix "d" "d" ":g/DELETEME/d")
+(map! :leader :prefix "d"
+      :desc "Add DELETEME" "m" (kbd! "A SPC D E L E T E M E C-g b g c A")
+      :desc "Delete all DELETEME lines" "d" ":g/DELETEME/d")
 
-(map! :leader :prefix "f" "t" #'+neotree/open)
-
-; Open new split panes to the right and bottom
-(setq evil-vsplit-window-right t
-      evil-split-window-below t)
+(map! :leader :prefix "f"
+      :desc "Toggle neotree" "t" #'+neotree/open)
 
 ; Map expand-region
 (map! :nv "C-q" #'er/expand-region)
