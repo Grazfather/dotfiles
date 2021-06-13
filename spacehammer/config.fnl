@@ -390,12 +390,12 @@
        [{:mods [:cmd :shift]
          :key :l
          :action "chrome:open-location"}
-        {:mods [:alt]
-         :key :k
+        {:mods hyper-mods
+         :key :n
          :action "chrome:next-tab"
          :repeat true}
-        {:mods [:alt]
-         :key :j
+        {:mods hyper-mods
+         :key :p
          :action "chrome:prev-tab"
          :repeat true}])
 
@@ -449,8 +449,24 @@
                 :key :n
                 :action "slack:next-day"}
                {:mods [:ctrl]
-                :key :y
+                :key :f
                 :action "slack:scroll-down"
+                :repeat true}
+               {:mods [:ctrl]
+                :key :b
+                :action "slack:scroll-up"
+                :repeat true}
+               {:mods [:ctrl]
+                :key :d
+                :action (fn []
+                          (slack.scroll-down)
+                          (slack.scroll-down))
+                :repeat true}
+               {:mods [:ctrl]
+                :key :u
+                :action (fn []
+                          (slack.scroll-up)
+                          (slack.scroll-up))
                 :repeat true}
                {:mods [:ctrl]
                 :key :i
