@@ -448,21 +448,21 @@
                {:mods [:ctrl]
                 :key :n
                 :action "slack:next-day"}
-               {:mods [:ctrl]
+               {:mods [:alt]
                 :key :f
                 :action "slack:scroll-down"
                 :repeat true}
-               {:mods [:ctrl]
+               {:mods [:alt]
                 :key :b
                 :action "slack:scroll-up"
                 :repeat true}
-               {:mods [:ctrl]
+               {:mods [:alt]
                 :key :d
                 :action (fn []
                           (slack.scroll-down)
                           (slack.scroll-down))
                 :repeat true}
-               {:mods [:ctrl]
+               {:mods [:alt]
                 :key :u
                 :action (fn []
                           (slack.scroll-up)
