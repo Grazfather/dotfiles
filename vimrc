@@ -250,7 +250,7 @@ nmap <leader>dd :keepp :g/DELETEME/d<CR><C-o>
 :nmap <leader>th :set hlsearch!<CR>
 
 " Show relative line numbers
-:nmap <leader>tnv :set number! relativenumber!<CR>
+:nmap <leader>tl :set number! relativenumber!<CR>
 
 " Toggle cursor highlighting
 :nmap <leader>tx :set cursorline! cursorcolumn!<CR>
