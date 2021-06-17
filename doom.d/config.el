@@ -128,6 +128,13 @@
       :desc "Add DELETEME" "m" (kbd! "A SPC D E L E T E M E C-g b g c A")
       :desc "Delete all DELETEME lines" "d" ":g/DELETEME/d")
 
+
+(map! :leader :prefix "e"
+      :desc "Clear trailing whitespace" "W"
+      (kbd! "m x : % s / \\ s + $ / / RET ` x")
+      :desc "Convert tabs to spaces" "T"
+      (kbd! "m x : % s / \\ t / SPC SPC SPC SPC SPC SPC SPC SPC / g RET ` x"))
+
 (map! :leader :prefix "f"
       :desc "Toggle neotree" "t" #'+neotree/open)
 
