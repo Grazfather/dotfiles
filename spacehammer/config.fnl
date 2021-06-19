@@ -48,7 +48,7 @@
 ;;
 ;; [x] a - apps
 ;; [x] |-- e - emacs
-;; [x] |-- g - chrome
+;; [x] |-- b - browser
 ;; [x] |-- i - iTerm
 ;; [x] |-- s - Slack
 ;;
@@ -105,6 +105,7 @@
 ;; ~/.spacehammer/config.fnl. That will be used in place of the default
 ;; and will not be overwritten by upstream changes when spacehammer is updated.
 (local music-app "Spotify")
+(local browser-app "Firefox")
 
 (local return
        {:key :space
@@ -251,8 +252,8 @@
          :title "Emacs"
          :action (activator "Emacs")}
         {:key :b
-         :title "Chrome"
-         :action (activator "Google Chrome")}
+         :title "Browser"
+         :action (activator browser-app)}
         {:key :t
          :title "iTerm"
          :action (activator "iTerm2")}
@@ -323,7 +324,7 @@
          :action (activator "Discord")}
         {:mods hyper-mods
          :key :b
-         :action (activator "Chrome")}
+         :action (activator browser-app)}
         {:mods hyper-mods
          :key :q
          :action (activator "Roam Research")}
@@ -406,8 +407,8 @@
           :title "Edit with Emacs"
           :action "emacs:edit-with-emacs"}]))
 
-(local chrome-config
-       {:key "Google Chrome"
+(local browser-config
+       {:key browser-app
         :keys browser-keys
         :items browser-items})
 
@@ -486,7 +487,7 @@
                 :repeat true}]})
 
 (local apps
-       [chrome-config
+       [browser-config
         emacs-config
         hammerspoon-config
         slack-config])
