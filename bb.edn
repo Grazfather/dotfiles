@@ -11,7 +11,7 @@
              ["gitignore_global"]
              ["tmux.conf"]
              ["spacehammer"]
-             ["karabiner.json" ".config/karabiner/karabiner.json"]
+             ["karabiner" ".config/karabiner/"]
              ["nvim/" ".config/nvim/"]])
 
           (def base-path (System/getProperty "user.dir"))
