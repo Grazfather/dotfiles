@@ -105,7 +105,8 @@
 ;; ~/.spacehammer/config.fnl. That will be used in place of the default
 ;; and will not be overwritten by upstream changes when spacehammer is updated.
 (local music-app "Spotify")
-(local browser-app "Firefox")
+(local browser-app
+       (hs.application.nameForBundleID (hs.urlevent.getDefaultHandler "http")))
 
 (local return
        {:key :space
