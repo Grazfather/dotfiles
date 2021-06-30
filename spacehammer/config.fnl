@@ -42,7 +42,7 @@
 ;; [x] |-- n, p - next, previous screen
 ;; [x] |-- shift + n, p - up, down screen
 ;; [x] |-- g - grid
-;; [x] |-- m - maximize
+;; [x] |-- space - maximize
 ;; [x] |-- c - center
 ;; [x] |-- u - undo
 ;;
@@ -219,10 +219,40 @@
          :action "windows:move-east"
          :repeatable true}])
 
+(local window-presets
+       [{:key "arst"
+         :title "left side presets"}
+        {:key :a
+         :action (fn [] (hs.grid.set (hs.window.focusedWindow) "0,0 3x4"))
+         :repeatable true}
+        {:key :r
+         :action (fn [] (hs.grid.set (hs.window.focusedWindow) "0,0 4x4"))
+         :repeatable true}
+        {:key :s
+         :action (fn [] (hs.grid.set (hs.window.focusedWindow) "0,0 5x4"))
+         :repeatable true}
+        {:key :t
+         :action (fn [] (hs.grid.set (hs.window.focusedWindow) "0,0 6x4"))
+         :repeatable true}
+        {:key "neio"
+         :title "right side presets"}
+        {:key :n
+         :action (fn [] (hs.grid.set (hs.window.focusedWindow) "3,0 6x4"))
+         :repeatable true}
+        {:key :e
+         :action (fn [] (hs.grid.set (hs.window.focusedWindow) "4,0 5x4"))
+         :repeatable true}
+        {:key :i
+         :action (fn [] (hs.grid.set (hs.window.focusedWindow) "5,0 4x4"))
+         :repeatable true}
+        {:key :o
+         :action (fn [] (hs.grid.set (hs.window.focusedWindow) "6,0 3x4"))
+         :repeatable true}
+        ])
+
 (local window-bindings
        (concat
-        [return
-         {:key :w
+        [{:key :w
           :title "Last Window"
           :action "windows:jump-to-last-window"}]
         window-jumps
@@ -230,18 +260,22 @@
         window-increments
         window-resize
         window-move-screens
-        [{:key :m
+        window-presets
+        [{:key :space
           :title "Maximize"
-          :action "windows:maximize-window-frame"}
+          :action "windows:maximize-window-frame"
+          :repeatable true}
          {:key :c
           :title "Center"
-          :action "windows:center-window-frame"}
+          :action "windows:center-window-frame"
+          :repeatable true}
          {:key :g
           :title "Grid"
           :action "windows:show-grid"}
          {:key :u
           :title "Undo"
-          :action "windows:undo-action"}]))
+          :action "windows:undo-action"
+          :repeatable true}]))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Apps Menu
@@ -500,6 +534,7 @@
         :enter (fn [] (windows.hide-display-numbers))
         :exit  (fn [] (windows.hide-display-numbers))
         :apps  apps
+        :grid {:size "9x4"}
         :hyper {:key :F18}})
 
 
