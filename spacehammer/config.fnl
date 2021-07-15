@@ -480,10 +480,10 @@
                 :action "slack:thread"}
                {:mods [:ctrl]
                 :key :p
-                :action "slack:prev-day"}
+                :action "slack:up"}
                {:mods [:ctrl]
                 :key :n
-                :action "slack:next-day"}
+                :action "slack:down"}
                {:mods [:alt]
                 :key :f
                 :action "slack:scroll-down"
@@ -514,11 +514,11 @@
                 :repeat true}
                {:mods [:ctrl]
                 :key :j
-                :action "slack:down"
+                :action "slack:next-day"
                 :repeat true}
                {:mods [:ctrl]
                 :key :k
-                :action "slack:up"
+                :action "slack:prev-day"
                 :repeat true}]})
 
 (local apps
