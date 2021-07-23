@@ -285,9 +285,10 @@ endif
 :nnoremap <leader>ft :NERDTreeToggle<CR>
 
 " Fugitive (git)
-:nmap <leader>gb :Gblame<CR>
-:nmap <leader>gd :Gdiff<CR>
-:nmap <leader>gs :Gstatus<CR>
+:nmap <leader>gb :Git blame<CR>
+:nmap <leader>gd :Git diff<CR>
+:nmap <leader>gs :Git status<CR>
+:nmap <leader>gl :GV<CR>
 
 " fzf.vim
 :nmap <leader>ff :FZF<CR>
