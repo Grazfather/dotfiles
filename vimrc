@@ -37,10 +37,6 @@ Plug 'tpope/vim-rhubarb'
 Plug 'junegunn/gv.vim'
 " -- Adds changed lines in the gutter
 Plug 'airblade/vim-gitgutter'
-" LSP
-if has("nvim")
-  Plug 'neovim/nvim-lspconfig'
-endif
 " Misc
 Plug 'scrooloose/nerdcommenter'
 
