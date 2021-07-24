@@ -26,6 +26,8 @@ Plug 'liquidz/vim-iced', {'for': 'clojure'}
 Plug 'borkdude/clj-kondo'
 " -- TOML
 Plug 'cespare/vim-toml'
+" -- Fennel
+Plug 'bakpakin/fennel.vim'
 " Git
 Plug 'tpope/vim-fugitive'
 " -- Adds :Gbrowse
