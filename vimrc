@@ -4,6 +4,7 @@
 call plug#begin('~/.vim/plugged')
 Plug 'itchyny/lightline.vim'
 Plug 'bling/vim-bufferline'
+Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] }
 " Navigation
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
@@ -100,6 +101,9 @@ endif
 " Though some that don't fit aren't yet put behind a namespace
 :let mapleader="\<Space>"
 :let maplocalleader="\<Space>m"
+
+" Use WhichKey to show my prefix mappings
+:nnoremap <silent> <leader> :WhichKey '<Space>'<CR>
 
 " Allow filetype-specific plugins
 :filetype plugin on
