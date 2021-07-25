@@ -72,6 +72,9 @@
   install-git-aliases (let [filename (home-dir ".gitconfig")]
                         (append-if-missing filename "[include]\n\tpath = ~/.gitaliases" ".gitaliases"))
 
+  install-git-ignore (let [filename (home-dir ".gitconfig")]
+                        (append-if-missing filename "[include]\n\tpath = ~/.gitignore_global" ".gitignore_global"))
+
   install-vim-plugins {:task (do
                                ; Plugins may be vim or neovim specific, so we
                                ; have to install using both
@@ -79,4 +82,5 @@
                                (shell "nvim +'PlugInstall --sync' +qa"))
                        :depends [symlink]}
 
-  setup {:depends [symlink set-path install-bash-aliases install-git-aliases install-vim-plugins]}}}
+  setup {:depends [symlink set-path install-bash-aliases install-git-aliases
+                   install-git-ignore install-vim-plugins]}}}
