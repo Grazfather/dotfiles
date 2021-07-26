@@ -217,7 +217,7 @@
   <leader>eT ":%s/\t/    /g<CR>"
 
   ; Select whole buffer
-  vag "ggvGg_"
+  vag "ggVGg_"
 
   ; Open commonly edited files
   <leader>fev ":edit $MYVIMRC<CR>"
