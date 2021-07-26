@@ -1,0 +1,22 @@
+[username]
+format = '[$user]($style)'
+style_root = 'red bold'
+style_user = 'green bold'
+
+[hostname]
+format = '@[$hostname]($style) '
+style = 'blue dimmed bold'
+
+[directory]
+style = 'white bold'
+
+[gcloud]
+disabled = true
+[golang]
+disabled = true
+[lua]
+disabled = true
+[nodejs]
+disabled = true
+[python]
+disabled = true

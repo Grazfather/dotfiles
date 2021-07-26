@@ -12,6 +12,7 @@
              ["tmux.conf"]
              ["spacehammer"]
              ["karabiner" ".config/karabiner/"]
+             ["starship.toml" ".config/starship.toml"]
              ["nvim/" ".config/nvim/"]])
 
           (def base-path (System/getProperty "user.dir"))
