@@ -229,7 +229,7 @@
   <leader>frv ":source $MYVIMRC<CR>"
 
   ; Close the current buffer
-  <leader>bd ":bp\\|bd #<CR>"
+  <leader>bd ":bp|bd #<CR>"
 
   ; Save
   <leader>fs ":w<CR>"
@@ -280,7 +280,7 @@
   (if (= (get? signcolumn) "yes")
     (set! signcolumn "no")
     (set! signcolumn "yes"))))
-(nmap! "<leader>tg" ":lua toggle_sign_column()<CR>")
+(nmap! "<leader>tg" "<cmd>lua toggle_sign_column()<CR>")
 
 ; Toggle showing listchars
 (nnoremap! <leader>t<TAB> ":set list!<CR>")
