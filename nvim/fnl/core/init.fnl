@@ -272,8 +272,8 @@
   ; fzf.vim
   <leader>ff "<cmd>FZF<CR>"
   <leader>bb "<cmd>Buffers<CR>"
-  <leader>ss "<cmd>Lines<CR>"
-  <leader>f* "<cmd>Lines <C-r><C-w><CR>"
+  <leader>ss "<cmd>BLines<CR>"
+  <leader>f* "<cmd>Lines<CR>"
   <leader>frg "<cmd>Rg<CR>")
 
 ; Toggle signcolumn (gutter) to make copy and paste easier

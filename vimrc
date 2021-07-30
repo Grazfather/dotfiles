@@ -295,8 +295,8 @@ endif
 " fzf.vim
 :nmap <leader>ff :FZF<CR>
 :nmap <leader>bb :Buffers<CR>
-:nmap <leader>ss :Lines<CR>
-:nmap <leader>f* :Lines <C-r><C-w><CR>
+:nmap <leader>ss :BLines<CR>
+:nmap <leader>f* :Lines<CR>
 :nmap <leader>frg :Rg<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
