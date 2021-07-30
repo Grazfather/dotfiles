@@ -42,6 +42,7 @@
 ;; [x] |-- n, p - next, previous screen
 ;; [x] |-- shift + n, p - up, down screen
 ;; [x] |-- g - grid
+;; [x] |-- arstneio - grid presets
 ;; [x] |-- space - maximize
 ;; [x] |-- c - center
 ;; [x] |-- u - undo

@@ -58,7 +58,7 @@
 ;; Use `SPC c e` to eval these settings to apply them without restarting Emacs
 
 ;; Disable smart parens
-(remove-hook 'doom-first-buffer-hook #'smartparens-global-mode)
+;; (remove-hook 'doom-first-buffer-hook #'smartparens-global-mode)
 
 ;; This mapping is so that I can see what expression was run for what I just did
 (map! :leader :prefix "h" "z" #'repeat-complex-command)
@@ -74,6 +74,9 @@
       evil-split-window-below t)
 
 (setq lsp-file-watch-threshold 5000)
+
+; Don't have yanks/delete overwrite what I have in the system clipboard
+(setq x-select-enable-clipboard nil)
 
 ;; Unbind C-z, which normally toggles emacs mode. This way I can background
 ;; emacs when run in the terminal.

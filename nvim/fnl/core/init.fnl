@@ -26,6 +26,7 @@
     (use "junegunn/vim-peekaboo")
     ; Language specific
     (use "neovim/nvim-lspconfig")
+    (use "nvim-treesitter/nvim-treesitter")
     ; -- Go
     (use "fatih/vim-go")
     ; -- Markdown
@@ -289,25 +290,8 @@
   (set! listchars "eol:$,conceal:+tab:>-,precedes:<,extends:\u{2026}"))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; Specific language settings
+; Language support
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-; Special settings for some filetypes
-(vim.api.nvim_command
-  ":au Filetype ruby setl expandtab smarttab tabstop=4 shiftwidth=4 softtabstop=4
-  :au Filetype yaml setl expandtab smarttab tabstop=4 shiftwidth=4 softtabstop=4")
-
-; Use github-flavored markdown
-(vim.api.nvim_exec
-  ":aug markdown
-  :au!
-  :au BufNewFile,BufRead *.md,*.markdown setlocal filetype=ghmarkdown
-  :aug END" false)
-
-; vim-iced (Clojure)
-(let! g/iced_default_key_mapping_leader "<LocalLeader>"
-      g/iced_enable_default_key_mappings "v:true"
-      g/iced_enable_clj_konda_analysis "v:true")
 
 ; LSP
 (local lspconfig (require "lspconfig"))
@@ -353,3 +337,37 @@
 ; keybindings when the language server attaches
 (each [_ lsp (ipairs servers)]
   ((. (. lspconfig lsp) "setup") {on_attach on-attach}))
+
+; Treesitter
+(local treesitter (require "nvim-treesitter.configs"))
+(treesitter.setup {
+                   :highlight {
+                               :enable true
+                               :disable {}
+                               }
+                   :indent {
+                            :enable false
+                            :disable {}
+                            }
+                   :ensure_installed [ "clojure" "fennel" "go" "python" ] })
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Specific language settings
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+; Special settings for some filetypes
+(vim.api.nvim_command
+  ":au Filetype ruby setl expandtab smarttab tabstop=4 shiftwidth=4 softtabstop=4
+  :au Filetype yaml setl expandtab smarttab tabstop=4 shiftwidth=4 softtabstop=4")
+
+; Use github-flavored markdown
+(vim.api.nvim_exec
+  ":aug markdown
+  :au!
+  :au BufNewFile,BufRead *.md,*.markdown setlocal filetype=ghmarkdown
+  :aug END" false)
+
+; vim-iced (Clojure)
+(let! g/iced_default_key_mapping_leader "<LocalLeader>"
+      g/iced_enable_default_key_mappings "v:true"
+      g/iced_enable_clj_konda_analysis "v:true")
