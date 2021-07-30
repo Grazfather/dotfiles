@@ -95,7 +95,7 @@
       g/maplocalleader " m")
 
 ; Use WhichKey to show my prefix mappings
-(nmap! <leader> ":WhichKey '<Space>'<CR>")
+(nmap! <leader> "<cmd>WhichKey '<Space>'<CR>")
 
 ; Allow filetype-specific plugins
 :filetype plugin on
@@ -149,9 +149,9 @@
 (nnoremap! <Tab> "<C-w>w")
 
 ; Jumping between buffers
-(nnoremap! <C-n> ":bnext<CR>"
-           <C-p> ":bprev<CR>"
-           <C-e> ":b#<CR>")
+(nnoremap! <C-n> "<cmd>bnext<CR>"
+           <C-p> "<cmd>bprev<CR>"
+           <C-e> "<cmd>b#<CR>")
 
 ; Let <C-n> and <C-p> also filter through command history
 (noremap! "c" <C-n> "<down>"
@@ -212,69 +212,69 @@
 
 (nmap!
   ; Clear trailing whitespace
-  <leader>eW ":%s/\\s\\+$//<CR><C-o>"
+  <leader>eW "<cmd>%s/\\s\\+$//<CR><C-o>"
 
   ; Convert tabs to spaces
-  <leader>eT ":%s/\t/    /g<CR>"
+  <leader>eT "<cmd>%s/\t/    /g<CR>"
 
   ; Select whole buffer
   vag "ggVGg_"
 
   ; Open commonly edited files
-  <leader>fev ":edit $MYVIMRC<CR>"
-  <leader>fet ":edit $HOME/.tmux.conf<CR>"
-  <leader>feb ":edit $HOME/.bash_aliases<CR>"
-  <leader>feg ":edit $HOME/.gitaliases<CR>"
+  <leader>fev "<cmd>edit $MYVIMRC<CR>"
+  <leader>fet "<cmd>edit $HOME/.tmux.conf<CR>"
+  <leader>feb "<cmd>edit $HOME/.bash_aliases<CR>"
+  <leader>feg "<cmd>edit $HOME/.gitaliases<CR>"
 
   ; Reload vimrc
-  <leader>frv ":source $MYVIMRC<CR>"
+  <leader>frv "<cmd>source $MYVIMRC<CR>"
 
   ; Close the current buffer
-  <leader>bd ":bp|bd #<CR>"
+  <leader>bd "<cmd>bp|bd #<CR>"
 
   ; Save
-  <leader>fs ":w<CR>"
+  <leader>fs "<cmd>w<CR>"
 
   ; Quit
-  <leader>qq ":qa<CR>"
+  <leader>qq "<cmd>qa<CR>"
 
   ; Add 'DELETEME' comment using nerdcommenter
   <leader>dm "mx<leader>cA DELETEME<ESC>`x"
   ; Delete all DELETEME lines
-  <leader>dd ":keepp :g/DELETEME/d<CR><C-o>"
+  <leader>dd "<cmd>keepp :g/DELETEME/d<CR><C-o>"
 
   ; Toggle search highlighting
-  <leader>th ":set hlsearch!<CR>"
+  <leader>th "<cmd>set hlsearch!<CR>"
 
   ; Show relative line numbers
-  <leader>tl ":set number! relativenumber!<CR>"
+  <leader>tl "<cmd>set number! relativenumber!<CR>"
 
   ; Toggle cursor highlighting
-  <leader>tx ":set cursorline! cursorcolumn!<CR>"
+  <leader>tx "<cmd>set cursorline! cursorcolumn!<CR>"
 
   ; Toggle paste
-  <leader>tp ":set paste!<CR>"
+  <leader>tp "<cmd>set paste!<CR>"
 
   ; Window (split) management
-  <leader>wv ":vsp<CR>"
-  <leader>ws ":sp<CR>"
+  <leader>wv "<cmd>vsp<CR>"
+  <leader>ws "<cmd>sp<CR>"
   <leader>wd "<C-W>c"
 
   ; NERDTree
-  <leader>ft ":NERDTreeToggle<CR>"
+  <leader>ft "<cmd>NERDTreeToggle<CR>"
 
   ; Fugitive (git)
-  <leader>gb ":Git blame<CR>"
-  <leader>gd ":Git diff<CR>"
-  <leader>gs ":Git status<CR>"
-  <leader>gl ":GV<CR>"
+  <leader>gb "<cmd>Git blame<CR>"
+  <leader>gd "<cmd>Git diff<CR>"
+  <leader>gs "<cmd>Git status<CR>"
+  <leader>gl "<cmd>GV<CR>"
 
   ; fzf.vim
-  <leader>ff ":FZF<CR>"
-  <leader>bb ":Buffers<CR>"
-  <leader>ss ":Lines<CR>"
-  <leader>f* ":Lines <C-r><C-w><CR>"
-  <leader>frg ":Rg<CR>")
+  <leader>ff "<cmd>FZF<CR>"
+  <leader>bb "<cmd>Buffers<CR>"
+  <leader>ss "<cmd>Lines<CR>"
+  <leader>f* "<cmd>Lines <C-r><C-w><CR>"
+  <leader>frg "<cmd>Rg<CR>")
 
 ; Toggle signcolumn (gutter) to make copy and paste easier
 (global toggle_sign_column (fn []
@@ -284,7 +284,7 @@
 (nmap! "<leader>tg" "<cmd>lua toggle_sign_column()<CR>")
 
 ; Toggle showing listchars
-(nnoremap! <leader>t<TAB> ":set list!<CR>")
+(nnoremap! <leader>t<TAB> "<cmd>set list!<CR>")
 (if (= (get? encoding) "utf-8")
   (set! listchars "eol:\u{00ac},nbsp:\u{2423},conceal:\u{22ef},tab:\u{25b8}\u{2014},precedes:\u{2026},extends:\u{2026}")
   (set! listchars "eol:$,conceal:+tab:>-,precedes:<,extends:\u{2026}"))
