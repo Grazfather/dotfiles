@@ -277,7 +277,9 @@
   <leader>gl "<cmd>GV<CR>"
 
   ; fzf.vim
-  <leader>ff "<cmd>FZF<CR>"
+  ; -- Find files in 'project' (repo)
+  <leader>pf "<cmd>GFiles<CR>"
+  <leader>ff "<cmd>Files<CR>"
   <leader>bb "<cmd>Buffers<CR>"
   <leader>ss "<cmd>BLines<CR>"
   <leader>f* "<cmd>Lines<CR>"

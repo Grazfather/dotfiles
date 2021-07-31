@@ -300,7 +300,9 @@ endif
 :nmap <leader>gl :GV<CR>
 
 " fzf.vim
-:nmap <leader>ff :FZF<CR>
+" -- Find files in 'project' (repo)
+:nmap <leader>pf <cmd>GFiles<CR>
+:nmap <leader>ff <cmd>Files<CR>
 :nmap <leader>bb :Buffers<CR>
 :nmap <leader>ss :BLines<CR>
 :nmap <leader>f* :Lines<CR>
