@@ -203,6 +203,13 @@
 ; Make Y act like D and C
 (nnoremap! Y "y$")
 
+; Make joins keep the cursor in the same spot in the window
+(nnoremap! J "mzJ`z")
+
+; Make searching keep the cursor in the same spot in the window
+(nnoremap! n "nzzzv"
+           N "Nzzzv")
+
 ; Unmap ex mode
 (nnoremap! Q "<nop>")
 

@@ -208,6 +208,13 @@ set scrolloff=4
 " Make Y act like D and C
 nnoremap Y y$
 
+" Make joins keep the cursor at the same spot in the window
+nnoremap J mzJ`z
+
+" Make searching keep the cursor in thei same spot in the window
+nnoremap n nzzzv
+nnoremap N Nzzzv
+
 " Unmap ex mode
 nnoremap Q <nop>
 
