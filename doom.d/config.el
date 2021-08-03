@@ -116,6 +116,14 @@
 (map! :n "C-n" #'next-buffer
       :n "C-p" #'previous-buffer)
 
+;; Workspace (tab) nav
+(map! :leader :prefix "TAB"
+      :desc "Next workspace" "n" #'+workspace/switch-right
+      :desc "Previous workspace" "p" #'workspace/switch-left
+      :desc "New workspace" "c" #'workspace/new)
+;; -- Unbind C-t which is normally new workspace
+(undefine-key! evil-normal-state-map "C-t")
+
 ; I don't use Evil's evil-respect-visual-line-mode, but I still want the
 ; behaviour for navigating lines
 (map! :n "k" #'evil-previous-visual-line
