@@ -379,6 +379,28 @@
         ])
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Repl
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(local repl (require :repl))
+(local repl-keys
+       [{:mods [:alt :cmd]
+         :key :r
+         :action (fn []
+                   (alert "creating repl server")
+                   (global repl-server (repl.start {:host "127.0.0.1"})))}
+        {:mods [:alt :cmd]
+         :key :s
+         :action (fn []
+                   (alert "running repl server")
+                   (repl.run repl-server))}
+        {:mods [:alt :cmd]
+         :key :t
+         :action (fn []
+                   (alert "stopping repl server")
+                   (repl.stop repl-server))}])
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Main Menu & Config
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -403,6 +425,7 @@
 
 (local common-keys
        (concat app-keys
+               repl-keys
                [{:mods hyper-mods
                  :key :w
                  :action "lib.modal:activate-modal"}
