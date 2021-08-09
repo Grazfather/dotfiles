@@ -74,7 +74,7 @@
                         (append-if-missing filename "[include]\n\tpath = ~/.gitaliases" ".gitaliases"))
 
   install-git-ignore (let [filename (home-dir ".gitconfig")]
-                        (append-if-missing filename "[include]\n\tpath = ~/.gitignore_global" ".gitignore_global"))
+                        (append-if-missing filename "[core]\n\texcludesfile = ~/.gitignore_global" ".gitignore_global"))
 
   install-vim-plugins {:task (do
                                ; Plugins may be vim or neovim specific, so we
