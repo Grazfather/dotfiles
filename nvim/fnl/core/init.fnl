@@ -24,6 +24,7 @@
     (use "tiagofumo/vim-nerdtree-syntax-highlight")
     (use "ryanoasis/vim-devicons")
     (use "junegunn/vim-peekaboo")
+    (use "phaazon/hop.nvim")
     ; Language specific
     (use "neovim/nvim-lspconfig")
     (use "nvim-treesitter/nvim-treesitter")
@@ -212,6 +213,14 @@
 
 ; Unmap ex mode
 (nnoremap! Q "<nop>")
+
+; Configure hop bindings
+((. (require "hop") "setup") {:keys "arstneiogmqwfpluy;"})
+(map! "nv" gs/ "<cmd>HopPattern<CR>"
+      "nv" gss "<cmd>HopChar2<CR>"
+      "nv" gsw "<cmd>HopWordAC<CR>"
+      "nv" gsh "<cmd>HopLineAC<CR>"
+      "nv" gsj "<cmd>HopLineBC<CR>")
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; GLOBAL MAPPINGS
