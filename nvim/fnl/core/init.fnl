@@ -305,7 +305,7 @@
 ; LSP
 (local lspconfig (require "lspconfig"))
 
-(local servers ["gopls" "clojure_lsp"])
+(local servers ["gopls" "clojure_lsp" "pyright"])
 
 (defn on-attach [client bufnr]
   (defn buf-set-keymap [...] (vim.api.nvim_buf_set_keymap bufnr ...))
