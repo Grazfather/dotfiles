@@ -99,8 +99,8 @@
 ;; Workspace (tab) nav
 (map! :leader :prefix "TAB"
       :desc "Next workspace" "n" #'+workspace/switch-right
-      :desc "Previous workspace" "p" #'workspace/switch-left
-      :desc "New workspace" "c" #'workspace/new)
+      :desc "Previous workspace" "p" #'+workspace/switch-left
+      :desc "New workspace" "c" #'+workspace/new)
 ;; -- Unbind C-t which is normally new workspace
 (undefine-key! evil-normal-state-map "C-t")
 
@@ -114,11 +114,11 @@
 ;; Highlight DELETEME in my code
 (after! hl-todo
   (pushnew! hl-todo-keyword-faces '("DELETEME" error bold)))
+
 ; SPC d m to add a DELETEME comment
 (map! :leader :prefix "d"
       :desc "Add DELETEME" "m" (kbd! "A SPC D E L E T E M E C-g b g c A")
       :desc "Delete all DELETEME lines" "d" ":g/DELETEME/d")
-
 
 (map! :leader :prefix "e"
       :desc "Clear trailing whitespace" "W"
