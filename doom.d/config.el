@@ -71,7 +71,16 @@
 ;; Map C-h to backspace in insert mode
 (map! :i "C-h" #'backward-delete-char)
 
+;; Make line-join keep the cursor in place
+(evil-define-operator join-line-nomove (beg end)
+  :motion evil-forward-char
+  (evil-set-marker 122)
+  (evil-join beg end)
+  (evil-goto-mark 122))
+(map! :n "J" #'join-line-nomove)
+
 ;; NAVIGATION
+
 ;; Disable arrow keys in evil mode
 (map! :map override
       :nvi [left] #'ignore
