@@ -323,7 +323,7 @@
   (buf-set-option "omnifunc" "v:lua.vim.lsp.omnifunc")
 
   ; Mappings
-  (local opts {noremap true silent true})
+  (local opts {:noremap true :silent true})
   (buf-set-keymap "n" "gD" "<cmd>lua vim.lsp.buf.declaration()<CR>" opts)
   (buf-set-keymap "n" "gd" "<cmd>lua vim.lsp.buf.definition()<CR>" opts)
   (buf-set-keymap "n" "K" "<cmd>lua vim.lsp.buf.hover()<CR>" opts)
@@ -354,7 +354,7 @@
 ; Use a loop to conveniently both setup defined servers and map buffer local
 ; keybindings when the language server attaches
 (each [_ lsp (ipairs servers)]
-  ((. (. lspconfig lsp) "setup") {on_attach on-attach}))
+  ((. (. lspconfig lsp) "setup") {:on_attach on-attach}))
 
 ; Treesitter
 (local treesitter (require "nvim-treesitter.configs"))
