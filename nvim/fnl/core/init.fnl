@@ -220,8 +220,9 @@
 (map! "nv" gs/ "<cmd>HopPattern<CR>"
       "nv" gss "<cmd>HopChar2<CR>"
       "nv" gsw "<cmd>HopWordAC<CR>"
-      "nv" gsh "<cmd>HopLineAC<CR>"
-      "nv" gsj "<cmd>HopLineBC<CR>")
+      "nv" gsb "<cmd>HopWordBC<CR>"
+      "nv" gsj "<cmd>HopLineAC<CR>"
+      "nv" gsk "<cmd>HopLineBC<CR>")
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; GLOBAL MAPPINGS
