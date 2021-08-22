@@ -138,8 +138,9 @@
 (map! :leader :prefix "f"
       :desc "Toggle neotree" "t" #'+neotree/open)
 
-; Map expand-region
-(map! :nv "C-q" #'er/expand-region)
+; Map expand & contract -region
+(map! :nv "ghe" #'er/expand-region)
+(map! :nv "ghi" #'er/contract-region)
 
 ;; LANGUAGE SPECIFIC
 ; Don't autoformat python -- Black is too aggressive

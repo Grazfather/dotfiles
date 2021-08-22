@@ -371,6 +371,15 @@
                             :enable false
                             :disable {}
                             }
+                   :incremental_selection {
+                                           :enable true
+                                           :keymaps {
+                                                     :init_selection "gh"
+                                                     :node_incremental "ghe"
+                                                     :node_decremental "ghi"
+                                                     :scope_incremental "ghu"
+                                                     }
+                                           }
                    :ensure_installed [ "clojure" "fennel" "go" "python" ] })
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
