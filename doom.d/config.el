@@ -40,9 +40,6 @@
 ;; Disable smart parens
 ;; (remove-hook 'doom-first-buffer-hook #'smartparens-global-mode)
 
-;; This mapping is so that I can see what expression was run for what I just did
-(map! :leader :prefix "h" "z" #'repeat-complex-command)
-
 ;; Default to soft wrapping long lines
 (global-visual-line-mode t)
 
