@@ -117,6 +117,9 @@
       :n "j" #'evil-next-visual-line
       :n "gj" #'evil-next-line)
 
+(after! orderless
+  (setq orderless-matching-styles '(orderless-flex)))
+
 ;; Highlight DELETEME in my code
 (after! hl-todo
   (pushnew! hl-todo-keyword-faces '("DELETEME" error bold)))
