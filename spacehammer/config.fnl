@@ -548,11 +548,21 @@
                 :action "slack:prev-day"
                 :repeat true}]})
 
+(local obsidian-config
+       {:key "Obsidian"
+        :keys [{:mods [:ctrl]
+                :key  :p
+                :action "slack:up"}
+               {:mods [:ctrl]
+                :key  :n
+                :action "slack:down"}]})
+
 (local apps
        [browser-config
         emacs-config
         hammerspoon-config
-        slack-config])
+        slack-config
+        obsidian-config])
 
 (local config
        {:title "Main Menu"
