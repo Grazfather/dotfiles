@@ -53,6 +53,7 @@
     (use "airblade/vim-gitgutter")
     ; Misc
     (use "scrooloose/nerdcommenter")
+    (use "tpope/vim-surround")
     ; Themes
     (use "morhetz/gruvbox")))
 
