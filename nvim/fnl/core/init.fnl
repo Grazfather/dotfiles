@@ -18,7 +18,8 @@
     (use "liuchengxu/vim-which-key")
     ; Navigation
     (use {1 "junegunn/fzf" :run (fn [] (vim.fn "-> fzf#install()")) })
-    (use "junegunn/fzf.vim")
+    (use {1 "ibhagwan/fzf-lua"
+          :requires ["vijaymarupudi/nvim-fzf" "kyazdani42/nvim-web-devicons"]})
     (use "edkolev/tmuxline.vim")
     (use "scrooloose/nerdtree")
     (use "tiagofumo/vim-nerdtree-syntax-highlight")
@@ -290,12 +291,22 @@
 
   ; fzf.vim
   ; -- Find files in 'project' (repo)
-  <leader>pf "<cmd>GFiles<CR>"
-  <leader>ff "<cmd>Files<CR>"
-  <leader>bb "<cmd>Buffers<CR>"
-  <leader>ss "<cmd>BLines<CR>"
-  <leader>f* "<cmd>Lines<CR>"
-  <leader>frg "<cmd>Rg<CR>")
+  <leader>pf "<cmd>lua require('fzf-lua').git_files()<CR>"
+  ; -- Find files from CWD
+  <leader>ff "<cmd>lua require('fzf-lua').files()<CR>"
+  ; -- Find buffer
+  <leader>bb "<cmd>lua require('fzf-lua').buffers()<CR>"
+  ; -- Find line in current buffer
+  <leader>ss "<cmd>lua require('fzf-lua').blines()<CR>"
+  ; -- Find line in all buffers
+  <leader>f* "<cmd>lua require('fzf-lua').lines()<CR>"
+  ; -- Grep file content from CWD
+  <leader>frg "<cmd>lua require('fzf-lua').live_grep()<CR>"
+
+  <leader>hh "<cmd>lua require('fzf-lua').help_tags()<CR>"
+  <leader>hk "<cmd>lua require('fzf-lua').keymaps()<CR>"
+  <leader>hm "<cmd>lua require('fzf-lua').man_pages()<CR>"
+  <leader>: "<cmd>lua require('fzf-lua').commands()<CR>")
 
 ; Toggle signcolumn (gutter) to make copy and paste easier
 (global toggle_sign_column (fn []
