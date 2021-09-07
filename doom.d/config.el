@@ -98,6 +98,10 @@
         switch-window-qwerty-shortcuts '("a" "r" "s" "t" "n" "e" "i" "o")
         switch-window-shortcut-appearance 'asciiart))
 
+;; Similarly, for avy/evil-easymotion I want the keys under my fingers
+(after! avy
+  (setq avy-keys '(?a ?r ?s ?t ?n ?e ?i ?o)))
+
 ;; Buffer nav
 (map! :n "C-n" #'next-buffer
       :n "C-p" #'previous-buffer)

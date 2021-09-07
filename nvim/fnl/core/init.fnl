@@ -218,7 +218,7 @@
 (nnoremap! Q "<nop>")
 
 ; Configure hop bindings
-((. (require "hop") "setup") {:keys "arstneiogmqwfpluy;"})
+((. (require "hop") "setup") {:keys "arstneio"})
 (map! "nv" gs/ "<cmd>HopPattern<CR>"
       "nv" gss "<cmd>HopChar2<CR>"
       "nv" gsw "<cmd>HopWordAC<CR>"
