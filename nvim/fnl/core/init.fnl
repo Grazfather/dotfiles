@@ -309,6 +309,7 @@
   <leader>: "<cmd>lua require('fzf-lua').commands()<CR>")
 
 ; Toggle signcolumn (gutter) to make copy and paste easier
+(set! signcolumn "yes")
 (global toggle_sign_column (fn []
   (if (= (get? signcolumn) "yes")
     (set! signcolumn "no")
