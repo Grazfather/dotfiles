@@ -221,7 +221,7 @@
 (nnoremap! Q "<nop>")
 
 ; Configure hop bindings
-((. (require "hop") "setup") {:keys "arstneio"})
+((. (require :hop) :setup) {:keys "arstneio"})
 (map! "nv" gs/ "<cmd>HopPattern<CR>"
       "nv" gss "<cmd>HopChar2<CR>"
       "nv" gsw "<cmd>HopWordAC<CR>"
@@ -331,7 +331,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ; LSP
-(local lspconfig (require "lspconfig"))
+(local lspconfig (require :lspconfig))
 
 (local servers ["gopls" "clojure_lsp" "pyright"])
 
@@ -375,10 +375,10 @@
 ; Use a loop to conveniently both setup defined servers and map buffer local
 ; keybindings when the language server attaches
 (each [_ lsp (ipairs servers)]
-  ((. (. lspconfig lsp) "setup") {:on_attach on-attach}))
+  ((. (. lspconfig lsp) :setup) {:on_attach on-attach}))
 
 ; Treesitter
-(local treesitter (require "nvim-treesitter.configs"))
+(local treesitter (require :nvim-treesitter.configs))
 (treesitter.setup {
                    :highlight {
                                :enable true
