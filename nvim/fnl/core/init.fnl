@@ -204,6 +204,9 @@
 ; Use braces to determine when to auto indent
 (set-true! smartindent)
 
+; Show linenumbers by default
+(set-true! number relativenumber)
+
 ; Make Y act like D and C
 (nnoremap! Y "y$")
 
@@ -279,6 +282,7 @@
   <leader>wv "<cmd>vsp<CR>"
   <leader>ws "<cmd>sp<CR>"
   <leader>wd "<C-W>c"
+  <leader>wo "<C-W>o"
 
   ; NERDTree
   <leader>ft "<cmd>NERDTreeToggle<CR>"
