@@ -12,6 +12,7 @@
 
 
 (require-macros :lib.macros)
+(require-macros :lib.advice.macros)
 (local windows (require :windows))
 (local emacs (require :emacs))
 (local slack (require :slack))
@@ -574,6 +575,16 @@
         :grid {:size "9x4"}
         :hyper {:key :F18}})
 
+;; Make alerts show on all screens
+(defadvice alert-all
+           [str style seconds]
+           :override alert
+           "Replace core.alert with one that alerts on all screens"
+           (each [_ screen (pairs  (hs.screen.allScreens))]
+             (hs.alert.show str
+                            (or style 1)
+                            screen
+                            seconds)))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Exports
