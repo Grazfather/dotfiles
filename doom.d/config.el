@@ -52,9 +52,6 @@
 
 (setq lsp-file-watch-threshold 5000)
 
-; Don't have yanks/delete overwrite what I have in the system clipboard
-(setq x-select-enable-clipboard nil)
-
 ;; Unbind C-z, which normally toggles emacs mode. This way I can background
 ;; emacs when run in the terminal.
 (undefine-key! evil-insert-state-map "C-z")
