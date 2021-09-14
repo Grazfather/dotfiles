@@ -575,6 +575,10 @@
         :grid {:size "9x4"}
         :hyper {:key :F18}})
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Tweaks
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 ;; Make alerts show on all screens
 (defadvice alert-all
            [str style seconds]
@@ -585,6 +589,24 @@
                             (or style 1)
                             screen
                             seconds)))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Spoons
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(hs.loadSpoon "SpoonInstall")
+(local Install spoon.SpoonInstall)
+
+;; Simple clipboard manager
+(Install:andUse "TextClipboardHistory"
+                {:config {:show_in_menubar false
+                          :paste_on_select true}
+                 :hotkeys {:toggle_clipboard [hyper-mods "v"] }
+                 :start true})
+
+;; Show a cheatsheet of hotkeys for the current app
+(Install:andUse "KSheet"
+                {:hotkeys {:toggle [hyper-mods "/"]}})
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Exports
