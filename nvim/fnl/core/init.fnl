@@ -13,8 +13,10 @@
     ; Aniseed itself
     (use "Olical/aniseed")
 
-    (use "itchyny/lightline.vim")
-    (use "bling/vim-bufferline")
+    (use {1 "hoob3rt/lualine.nvim"
+          :requires "kyazdani42/nvim-web-devicons"})
+    (use {1 "akinsho/bufferline.nvim"
+          :requires "kyazdani42/nvim-web-devicons"})
     (use "liuchengxu/vim-which-key")
     ; Navigation
     (use {1 "junegunn/fzf" :run (fn [] (vim.fn "-> fzf#install()")) })
@@ -70,6 +72,15 @@
 ; Tmuxline (Configures Tmux's statusbar)
 (let! g/tmuxline_preset "powerline"
       g/tmuxline_theme "zenburn")
+
+; Status line
+((. (require :lualine) :setup) {:options {:theme :gruvbox}})
+; Always show the status bar
+(set! laststatus 2)
+; Show opened buffers on tabline
+(set-true! termguicolors)
+((. (require :bufferline) :setup) {:options {:separator_style :slant
+                                             :diagnostics :nvim_lsp}})
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; VISUAL/LAYOUT
@@ -181,9 +192,6 @@
 
 ; Allow hidden buffers
 (set-true! hidden)
-
-; Always show the status bar
-(set! laststatus 2)
 
 ; Hide mode so it shows on the statusbar only
 (set-false! showmode)
