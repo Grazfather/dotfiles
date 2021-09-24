@@ -8,10 +8,13 @@
 
 (packer.startup
   (fn []
-    ; Packer itself
+    ; META (Vim config stuff)
+    ; -- Packer itself
     (use "wbthomason/packer.nvim")
-    ; Aniseed itself
+    ; -- Aniseed itself, to compile fennel
     (use "Olical/aniseed")
+    ; -- Profile with :StartupTime
+    (use "tweekmonster/startuptime.vim")
 
     (use {1 "hoob3rt/lualine.nvim"
           :requires "kyazdani42/nvim-web-devicons"})
