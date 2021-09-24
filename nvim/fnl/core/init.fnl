@@ -392,14 +392,8 @@
 ; Treesitter
 (local treesitter (require :nvim-treesitter.configs))
 (treesitter.setup {
-                   :highlight {
-                               :enable true
-                               :disable {}
-                               }
-                   :indent {
-                            :enable false
-                            :disable {}
-                            }
+                   :highlight { :enable true }
+                   :indent { :enable false }
                    :incremental_selection {
                                            :enable true
                                            :keymaps {
@@ -409,7 +403,9 @@
                                                      :scope_incremental "ghu"
                                                      }
                                            }
-                   :ensure_installed [ "clojure" "fennel" "go" "python" ] })
+                   :ensure_installed ["bash" "c" "clojure" "javascript"
+                                      "fennel" "json" "lua" "go" "python"
+                                      "toml" "yaml"] })
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; Specific language settings
