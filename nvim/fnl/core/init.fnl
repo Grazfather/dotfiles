@@ -31,6 +31,8 @@
     (use "ryanoasis/vim-devicons")
     (use "junegunn/vim-peekaboo")
     (use "phaazon/hop.nvim")
+    ; Lisp
+    (use "guns/vim-sexp")
     ; Language specific
     (use "neovim/nvim-lspconfig")
     (use "glepnir/lspsaga.nvim")
@@ -41,7 +43,6 @@
     (use "jtratner/vim-flavored-markdown")
     ; -- Clojure
     ; ---- Connection to nREPL
-    (use "guns/vim-sexp")
     (use {1 "liquidz/vim-iced" :ft ["clojure"]})
     ; ---- Linting
     (use "borkdude/clj-kondo")
@@ -430,3 +431,6 @@
 (let! g/iced_default_key_mapping_leader "<LocalLeader>"
       g/iced_enable_default_key_mappings "v:true"
       g/iced_enable_clj_konda_analysis "v:true")
+
+; Make vim-sexp work for fennel
+(vim.api.nvim_set_var "sexp_filetypes" "clojure,scheme,lisp,timl,fennel")
