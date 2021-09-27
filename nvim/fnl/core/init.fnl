@@ -324,7 +324,7 @@
   <leader>hh "<cmd>lua require('fzf-lua').help_tags()<CR>"
   <leader>hk "<cmd>lua require('fzf-lua').keymaps()<CR>"
   <leader>hm "<cmd>lua require('fzf-lua').man_pages()<CR>"
-  <leader>: "<cmd>lua require('fzf-lua').commands()<CR>")
+  "<leader>:" "<cmd>lua require('fzf-lua').commands()<CR>")
 
 ; Toggle signcolumn (gutter) to make copy and paste easier
 (set! signcolumn "yes")
