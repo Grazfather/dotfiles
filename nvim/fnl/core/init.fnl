@@ -15,6 +15,8 @@
     (use "Olical/aniseed")
     ; -- Profile with :StartupTime
     (use "tweekmonster/startuptime.vim")
+    ; -- Speed up setting up filetypes to improve startup time
+    (use "nathom/filetype.nvim")
 
     (use {1 "hoob3rt/lualine.nvim"
           :requires "kyazdani42/nvim-web-devicons"})

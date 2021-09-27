@@ -19,5 +19,8 @@ ensure("wbthomason", "packer.nvim")
 -- Aniseed compiles our Fennel code to Lua and loads it automatically.
 ensure("Olical", "aniseed")
 
+-- Do not source the default filetype.vim, use filetype.nvim
+vim.g.did_load_filetypes = 1
+
 -- Enable Aniseed
 vim.g["aniseed#env"] = { module = "core.init" }
