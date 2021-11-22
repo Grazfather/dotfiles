@@ -33,6 +33,7 @@
     (use "ryanoasis/vim-devicons")
     (use "junegunn/vim-peekaboo")
     (use "phaazon/hop.nvim")
+    (use "ggandor/lightspeed.nvim")
     ; Lisp
     (use "guns/vim-sexp")
     ; Language specific
