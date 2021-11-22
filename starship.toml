@@ -8,7 +8,16 @@ format = '@[$hostname]($style) '
 style = 'blue dimmed bold'
 
 [directory]
-style = 'white bold'
+style = 'bold white'
+
+[git_branch]
+style = 'bold yellow'
+[git_status]
+conflicted = 'C'
+modified = 'M'
+renamed = 'R'
+staged = 'S'
+untracked = 'U'
 
 [gcloud]
 disabled = true
