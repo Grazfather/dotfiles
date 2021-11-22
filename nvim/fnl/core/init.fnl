@@ -66,6 +66,15 @@
     ; Themes
     (use "morhetz/gruvbox")))
 
+(fn call-module-setup
+  [m ...]
+  "Call a module's setup function if the module can be imported."
+  (let [(ok? mod) (pcall require m) ]
+    (if ok?
+      (-?> mod
+           (. :setup)
+           ((fn [f ...] (f ...)) ...)))))
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; THEMES/UI
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -80,13 +89,13 @@
       g/tmuxline_theme "zenburn")
 
 ; Status line
-((. (require :lualine) :setup) {:options {:theme :gruvbox}})
+(call-module-setup :lualine {:options {:theme :gruvbox}})
 ; Always show the status bar
 (set! laststatus 2)
 ; Show opened buffers on tabline
 (set-true! termguicolors)
-((. (require :bufferline) :setup) {:options {:separator_style :slant
-                                             :diagnostics :nvim_lsp}})
+(call-module-setup :bufferline {:options {:separator_style :slant
+                                          :diagnostics :nvim_lsp}})
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; VISUAL/LAYOUT
@@ -235,7 +244,7 @@
 (nnoremap! Q "<nop>")
 
 ; Configure hop bindings
-((. (require :hop) :setup) {:keys "arstneio"})
+(call-module-setup :hop {:keys "arstneio"})
 (map! "nv" gs/ "<cmd>HopPattern<CR>"
       "nv" gss "<cmd>HopChar2<CR>"
       "nv" gsw "<cmd>HopWordAC<CR>"
@@ -392,22 +401,22 @@
   ((. (. lspconfig lsp) :setup) {:on_attach on-attach}))
 
 ; Treesitter
-(local treesitter (require :nvim-treesitter.configs))
-(treesitter.setup {
-                   :highlight { :enable true }
-                   :indent { :enable false }
-                   :incremental_selection {
-                                           :enable true
-                                           :keymaps {
-                                                     :init_selection "gh"
-                                                     :node_incremental "ghe"
-                                                     :node_decremental "ghi"
-                                                     :scope_incremental "ghu"
-                                                     }
-                                           }
-                   :ensure_installed ["bash" "c" "clojure" "javascript"
-                                      "fennel" "json" "lua" "go" "python"
-                                      "toml" "yaml"] })
+(call-module-setup :treesitter
+                   {
+                    :highlight { :enable true }
+                    :indent { :enable false }
+                    :incremental_selection {
+                                            :enable true
+                                            :keymaps {
+                                                      :init_selection "gh"
+                                                      :node_incremental "ghe"
+                                                      :node_decremental "ghi"
+                                                      :scope_incremental "ghu"
+                                                      }
+                                            }
+                    :ensure_installed ["bash" "c" "clojure" "javascript"
+                                       "fennel" "json" "lua" "go" "python"
+                                       "toml" "yaml"] })
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; Specific language settings
