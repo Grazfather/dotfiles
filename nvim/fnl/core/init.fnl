@@ -36,10 +36,13 @@
     (use "ggandor/lightspeed.nvim")
     ; Lisp
     (use "guns/vim-sexp")
-    ; Language specific
+    ; Language support
     (use "neovim/nvim-lspconfig")
     (use "glepnir/lspsaga.nvim")
     (use "nvim-treesitter/nvim-treesitter")
+    (use "hrsh7th/nvim-cmp")
+    (use "hrsh7th/cmp-buffer")
+    (use "hrsh7th/cmp-nvim-lsp")
     ; -- Go
     (use "fatih/vim-go")
     ; -- Markdown
@@ -354,6 +357,22 @@
 ; Language support
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+; Completion via nvim-cmp
+(local cmp (require :cmp))
+(call-module-setup
+  :cmp
+  {
+   :mapping {"<CR>" (cmp.mapping.confirm { :select true })}
+   :sources [{:name :buffer :keyword_length 3 }
+             {:name :nvim_lsp :keyword_length 3 }]
+   :experimental {:native_menu false
+                  :ghost_text true}})
+
+; These are provided later to lspconfig
+(local capabilities
+  ((. (require :cmp_nvim_lsp) :update_capabilities)
+   (vim.lsp.protocol.make_client_capabilities)))
+
 ; LSP
 (local lspconfig (require :lspconfig))
 
@@ -399,7 +418,8 @@
 ; Use a loop to conveniently both setup defined servers and map buffer local
 ; keybindings when the language server attaches
 (each [_ lsp (ipairs servers)]
-  ((. (. lspconfig lsp) :setup) {:on_attach on-attach}))
+  ((. (. lspconfig lsp) :setup) {:on_attach on-attach
+                                 :capabilities capabilities}))
 
 ; Treesitter
 (call-module-setup :treesitter
