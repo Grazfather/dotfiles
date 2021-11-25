@@ -58,6 +58,8 @@
     (use "cespare/vim-toml")
     ; -- Fennel
     (use "bakpakin/fennel.vim")
+    ; -- Solidity
+    (use "tomlion/vim-solidity")
     ; Git
     (use "tpope/vim-fugitive")
     ; -- Adds :Gbrowse
