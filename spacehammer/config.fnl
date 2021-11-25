@@ -18,8 +18,8 @@
 (local slack (require :slack))
 (local vim (require :vim))
 
-(local {:concat concat
-        :logf logf} (require :lib.functional))
+(local {: concat
+        : logf} (require :lib.functional))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; WARNING
@@ -43,7 +43,7 @@
 ;; [x] |-- n, p - next, previous screen
 ;; [x] |-- shift + n, p - up, down screen
 ;; [x] |-- g - grid
-;; [x] |-- arstneio - grid presets
+;; [x] |-- arstzxcd - grid presets
 ;; [x] |-- space - maximize
 ;; [x] |-- c - center
 ;; [x] |-- u - undo
@@ -119,6 +119,14 @@
 
 ;; Make window resizes instant
 (tset hs.window "animationDuration" 0)
+
+;; Make the grid hints look like my keyboard layout
+(set hs.grid.HINTS
+     [[ "f1" "f2" "f3" "f4" "f5" "f6" "f7" "f8" "f9" "f10" ]
+      [ "1" "2" "3" "4" "5" "6" "7" "8" "9" "0" ]
+      [ "Q" "W" "F" "P" "V" "J" "L" "U" "Y" ";" ]
+      [ "A" "R" "S" "T" "G" "M" "N" "E" "I" "O" ]
+      [ "Z" "X" "C" "D" "B" "K" "H" "," "." "/" ]])
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Windows
@@ -239,25 +247,26 @@
         {:key :t
          :action (fn [] (hs.grid.set (hs.window.focusedWindow) "0,0 6x4"))
          :repeatable true}
-        {:key "neio"
+        {:key "zxcd"
          :title "right side presets"}
-        {:key :n
+        {:key :z
          :action (fn [] (hs.grid.set (hs.window.focusedWindow) "3,0 6x4"))
          :repeatable true}
-        {:key :e
+        {:key :x
          :action (fn [] (hs.grid.set (hs.window.focusedWindow) "4,0 5x4"))
          :repeatable true}
-        {:key :i
+        {:key :c
          :action (fn [] (hs.grid.set (hs.window.focusedWindow) "5,0 4x4"))
          :repeatable true}
-        {:key :o
+        {:key :d
          :action (fn [] (hs.grid.set (hs.window.focusedWindow) "6,0 3x4"))
          :repeatable true}
         ])
 
 (local window-bindings
        (concat
-        [{:key :w
+        [return
+         {:key :w
           :title "Last Window"
           :action "windows:jump-to-last-window"}]
         window-jumps
@@ -266,14 +275,14 @@
         window-resize
         window-move-screens
         window-presets
-        [{:key :space
+        [{:key :p
           :title "Maximize"
           :action "windows:maximize-window-frame"
           :repeatable true}
-         {:key :c
-          :title "Center"
-          :action "windows:center-window-frame"
-          :repeatable true}
+         ;{:key :c
+          ;:title "Center"
+          ;:action "windows:center-window-frame"
+          ;:repeatable true}
          {:key :g
           :title "Grid"
           :action "windows:show-grid"}
