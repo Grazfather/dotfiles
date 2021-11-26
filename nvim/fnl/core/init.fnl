@@ -62,6 +62,8 @@
     (use "tomlion/vim-solidity")
     ; Git
     (use "tpope/vim-fugitive")
+    (use {1 "TimUntersberger/neogit"
+          :requires ["nvim-lua/plenary.nvim"]})
     ; -- Adds :Gbrowse
     (use "tpope/vim-rhubarb")
     ; -- Adds :GV to browse history
@@ -323,6 +325,7 @@
   <leader>gd "<cmd>Git diff<CR>"
   <leader>gs "<cmd>Git status<CR>"
   <leader>gl "<cmd>GV<CR>"
+  <leader>gg "<cmd>Neogit<CR>"
 
   ; fzf.vim
   ; -- Find files in 'project' (repo)
