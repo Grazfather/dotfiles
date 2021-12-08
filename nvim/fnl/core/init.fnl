@@ -23,6 +23,7 @@
     (use {1 "akinsho/bufferline.nvim"
           :requires "kyazdani42/nvim-web-devicons"})
     (use "liuchengxu/vim-which-key")
+
     ; Navigation
     (use {1 "junegunn/fzf" :run (fn [] (vim.fn "-> fzf#install()")) })
     (use {1 "ibhagwan/fzf-lua"
@@ -71,7 +72,7 @@
     ; -- Adds changed lines in the gutter
     (use "airblade/vim-gitgutter")
     ; Misc
-    (use "scrooloose/nerdcommenter")
+    (use "numToStr/Comment.nvim")
     (use "tpope/vim-surround")
     ; Themes
     (use "morhetz/gruvbox")))
@@ -294,8 +295,10 @@
   ; Quit
   <leader>qq "<cmd>qa<CR>"
 
-  ; Add 'DELETEME' comment using nerdcommenter
-  <leader>dm "mx<leader>cA DELETEME<ESC>`x"
+  ; Add 'DELETEME' comment using Comment.nvim
+  ; This is broken, we hack around it for now
+  ; <leader>dm "mxgcADELETEME<ESC>`x<ESC>"
+  <leader>dm "mxgcoDELETEME<ESC>kJ`x<ESC>"
   ; Delete all DELETEME lines
   <leader>dd "<cmd>keepp :g/DELETEME/d<CR><C-o>"
 
@@ -359,6 +362,10 @@
 (if (= (get? encoding) "utf-8")
   (set! listchars "eol:\u{00ac},nbsp:\u{2423},conceal:\u{22ef},tab:\u{25b8}\u{2014},precedes:\u{2026},extends:\u{2026}")
   (set! listchars "eol:$,conceal:+tab:>-,precedes:<,extends:\u{2026}"))
+
+; Comment.nvim
+(call-module-setup :Comment {})
+(nmap! "<leader>c " "gcc")
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; Language support
