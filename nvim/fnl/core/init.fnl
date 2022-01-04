@@ -55,6 +55,8 @@
     (use {1 "liquidz/vim-iced" :ft ["clojure"]})
     ; ---- Linting
     (use "borkdude/clj-kondo")
+    : -- Janet
+    (use "janet-lang/janet.vim")
     ; -- TOML
     (use "cespare/vim-toml")
     ; -- Fennel
