@@ -37,8 +37,6 @@
     (use "phaazon/hop.nvim")
     ; -- Override f/t & add sniping via s
     (use "ggandor/lightspeed.nvim")
-    ; Lisp
-    (use "guns/vim-sexp")
     ; Language support
     (use "neovim/nvim-lspconfig")
     (use "glepnir/lspsaga.nvim")
@@ -50,6 +48,8 @@
     (use "fatih/vim-go")
     ; -- Markdown
     (use "jtratner/vim-flavored-markdown")
+    ; -- Lisps
+    (use "guns/vim-sexp")
     ; -- Clojure
     ; ---- Connection to nREPL
     (use {1 "liquidz/vim-iced" :ft ["clojure"]})
@@ -495,5 +495,16 @@
       g/iced_enable_default_key_mappings "v:true"
       g/iced_enable_clj_konda_analysis "v:true")
 
-; Make vim-sexp work for fennel
-(vim.api.nvim_set_var "sexp_filetypes" "clojure,scheme,lisp,timl,fennel")
+; vim-sexp
+; - Adds new text objects:
+;   - f - form
+;   - F - top-level form
+;   - s - string or regex
+;   - e - element
+; - Adds new motions
+;   - (/) - Move back/forward sexp
+;   - M-b/M-w - Move back/forward sibling
+;   - [e/]e - Select prev/next sexp
+;   - M-h/M-j/M-k/M-l - Drag sexp around
+; Make vim-sexp work for more languages
+(vim.api.nvim_set_var "sexp_filetypes" "clojure,scheme,lisp,timl,fennel,janet")
