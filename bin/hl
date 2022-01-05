@@ -11,11 +11,17 @@
     :default "^.+$"
     :validate [#(re-pattern %) "Must be a valid regex pattern"]
     ]
+   ["-a" "--alphanumeric" "Highlight alphanumeric words"]
+   ["-d" "--digits" "Highlight decimal digits"]
+   ["-w" "--words" "Highlight (regex) words"]
+   ["-x" "--hexnumbers" "Highlight hex numbers"]
    ["-h" "--help" "Show help"]])
 
 (def usage-header
   "Usage:
-  hs [-h] [-p PATTERN]")
+  hl [-h]
+  hl [-p PATTERN]
+  hl [-a,-d,-w,-x]")
 
 (def usage-details
   "FILTERING
@@ -23,7 +29,12 @@
                    If your regex contains group, they must be
                    non-overlapping, and every matched character must
                    be in some group, otherwise ungrouped characters
-                   will not be shown")
+                   will not be shown
+PREBUILT FILTERS
+  -a, --alphanumeric  Use regex pattern \"[a-zA-Z\\d]+\"
+  -d, --digits        Use regex pattern \"\\d+\"
+  -w, --words         Use regex pattern \"\\w+\"
+  -x, --hexnumbers    Use regex pattern \"(?:0x)?[a-fA-F\\d]{2,}\"")
 
 (defn print-usage
   [o]
@@ -84,7 +95,12 @@
   (print-usage o)
   (System/exit 1))
 
-(def pattern (re-pattern (:pattern opts)))
+(def pattern (re-pattern (cond
+                           (:alphanumeric opts) "[a-zA-Z\\d]+"
+                           (:decimalnumbers opts) "\\d+"
+                           (:words opts) "\\w+"
+                           (:hexnumbers opts) "(?:0x)?[a-fA-F\\d]{2,}"
+                           (:pattern opts) (:pattern opts))))
 (def stream (line-seq (io/reader *in*)))
 
 (run pattern stream)
