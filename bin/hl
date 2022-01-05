@@ -7,38 +7,34 @@
 
 ;; CLI
 (def cli-options
-  [["-p" "--pattern PATTERN" "Regex to highlight"
+  [["-h" "--help" "Show help"]
+   ["-p" "--pattern PATTERN" "Regex pattern to highlight"
     :default "^.+$"
     :validate [#(re-pattern %) "Must be a valid regex pattern"]
     ]
    ["-a" "--alphanumeric" "Highlight alphanumeric words"]
    ["-d" "--digits" "Highlight decimal digits"]
    ["-w" "--words" "Highlight (regex) words"]
-   ["-x" "--hexnumbers" "Highlight hex numbers"]
-   ["-h" "--help" "Show help"]])
+   ["-x" "--hexnumbers" "Highlight hex numbers"]])
 
 (def usage-header
-  "Usage:
-  hl [-h]
-  hl [-p PATTERN]
-  hl [-a,-d,-w,-x]")
+  "USAGE:
+    hl [-h]
+    hl [-p PATTERN]
+    hl [-a,-d,-w,-x]")
 
 (def usage-details
-  "FILTERING
-  -p, --pattern    regex pattern to highlight
-                   If your regex contains group, they must be
-                   non-overlapping, and every matched character must
-                   be in some group, otherwise ungrouped characters
-                   will not be shown
-PREBUILT FILTERS
-  -a, --alphanumeric  Use regex pattern \"[a-zA-Z\\d]+\"
-  -d, --digits        Use regex pattern \"\\d+\"
-  -w, --words         Use regex pattern \"\\w+\"
-  -x, --hexnumbers    Use regex pattern \"(?:0x)?[a-fA-F\\d]{2,}\"")
+  "
+    -p, --pattern <PATTERN>
+            Match against specified regex pattern.
+
+            If pattern contains groups, they must not be overlapping, and every matched
+            character must be in some group, otherwise they will not be shown")
 
 (defn print-usage
   [o]
   (println usage-header)
+  (println "\nARGS:")
   (println (:summary o))
   (println usage-details)
 )
