@@ -33,13 +33,19 @@
     ; -- Override f/t & add sniping via s
     (use "ggandor/lightspeed.nvim")
     ; Language support
+    ; -- LSP
     (use "neovim/nvim-lspconfig")
     (use "glepnir/lspsaga.nvim")
+    ; -- Parsing
     (use {1 "nvim-treesitter/nvim-treesitter" :run ":TSUpdate"})
     (use "nvim-treesitter/playground")
+    ; -- Completion
     (use "hrsh7th/nvim-cmp")
     (use "hrsh7th/cmp-buffer")
     (use "hrsh7th/cmp-nvim-lsp")
+    (use "saadparwaiz1/cmp_luasnip")
+    (use "L3MON4D3/LuaSnip")
+    (use "rafamadriz/friendly-snippets")
     ; -- Go
     (use "fatih/vim-go")
     ; -- Markdown
@@ -73,4 +79,3 @@
     ; Themes
     (use "morhetz/gruvbox")
     (use "shaunsingh/nord.nvim")))
-

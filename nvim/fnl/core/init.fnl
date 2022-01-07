@@ -1,17 +1,10 @@
 (module core.init
-  {autoload {packer packer}
+  {autoload {: packer
+             utils core.utils}
    require-macros [core.macros]})
 
 (require :core.plugins)
-
-(fn call-module-setup
-  [m ...]
-  "Call a module's setup function if the module can be imported."
-  (let [(ok? mod) (pcall require m) ]
-    (if ok?
-      (-?> mod
-           (. :setup)
-           ((fn [f ...] (f ...)) ...)))))
+(require :core.completion)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; THEMES/UI
@@ -27,12 +20,12 @@
       g/tmuxline_theme "zenburn")
 
 ; Status line
-(call-module-setup :lualine {:options {:theme :gruvbox}})
+(utils.call-module-setup :lualine {:options {:theme :gruvbox}})
 ; Always show the status bar
 (set! laststatus 2)
 ; Show opened buffers on tabline
 (set-true! termguicolors)
-(call-module-setup :bufferline {:options {:separator_style :slant
+(utils.call-module-setup :bufferline {:options {:separator_style :slant
                                           :diagnostics :nvim_lsp}})
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -180,7 +173,7 @@
 (nnoremap! Q "<nop>")
 
 ; Configure hop bindings
-(call-module-setup :hop {:keys "arstneio"})
+(utils.call-module-setup :hop {:keys "arstneio"})
 (map! "nv" gs/ "<cmd>HopPattern<CR>"
       "nv" gss "<cmd>HopChar2<CR>"
       "nv" gsw "<cmd>HopWordAC<CR>"
@@ -289,28 +282,12 @@
   (set! listchars "eol:$,conceal:+tab:>-,precedes:<,extends:\u{2026}"))
 
 ; Comment.nvim
-(call-module-setup :Comment {})
+(utils.call-module-setup :Comment {})
 (nmap! "<leader>c " "gcc")
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; Language support
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-; Completion via nvim-cmp
-(local cmp (require :cmp))
-(call-module-setup
-  :cmp
-  {
-   :mapping {"<CR>" (cmp.mapping.confirm { :select true })}
-   :sources [{:name :buffer :keyword_length 3 }
-             {:name :nvim_lsp :keyword_length 3 }]
-   :experimental {:native_menu false
-                  :ghost_text true}})
-
-; These are provided later to lspconfig
-(local capabilities
-  ((. (require :cmp_nvim_lsp) :update_capabilities)
-   (vim.lsp.protocol.make_client_capabilities)))
 
 ; LSP
 (local lspconfig (require :lspconfig))
@@ -354,6 +331,10 @@
         autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
       augroup END")))
 
+(local capabilities
+  ((. (require :cmp_nvim_lsp) :update_capabilities)
+   (vim.lsp.protocol.make_client_capabilities)))
+
 ; Use a loop to conveniently both setup defined servers and map buffer local
 ; keybindings when the language server attaches
 (each [_ lsp (ipairs servers)]
@@ -361,7 +342,7 @@
                                  :capabilities capabilities}))
 
 ; Treesitter
-(call-module-setup
+(utils.call-module-setup
   :treesitter
   {
    :playground {
