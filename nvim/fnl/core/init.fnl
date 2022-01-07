@@ -13,6 +13,7 @@
 ; Color scheme
 (set! syntax "enable"
       background "dark")
+(set-true! termguicolors)
 (vim.api.nvim_command "silent! colorscheme gruvbox")
 
 ; Tmuxline (Configures Tmux's statusbar)
@@ -24,7 +25,6 @@
 ; Always show the status bar
 (set! laststatus 2)
 ; Show opened buffers on tabline
-(set-true! termguicolors)
 (utils.call-module-setup :bufferline {:options {:separator_style :slant
                                           :diagnostics :nvim_lsp}})
 

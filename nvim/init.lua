@@ -15,11 +15,13 @@ end
 
 -- Packer is our plugin manager.
 ensure("wbthomason", "packer.nvim")
+
 local ok, packer = pcall(require, "packer")
 if not ok then
     return
 end
 
+-- Make packer UI in a popup instead of a split
 packer.init({
     display = {
         open_fn = function()
