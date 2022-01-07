@@ -21,8 +21,8 @@
                            (luasnip.expand_or_jumpable) (luasnip.expand_or_jump)
                            (fallback)))
                        [:i :s])}
-   :sources [{:name :buffer :keyword_length 3 }
-             {:name :luasnip }
-             {:name :nvim_lsp :keyword_length 3 }]
+   :sources [{:name :nvim_lsp :keyword_length 3}
+             {:name :buffer :keyword_length 3}
+             {:name :luasnip }]
    :experimental {:native_menu false
                   :ghost_text true}})
