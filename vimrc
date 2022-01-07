@@ -8,7 +8,6 @@ Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] }
 " Navigation
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-Plug 'edkolev/tmuxline.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'ryanoasis/vim-devicons'
@@ -62,10 +61,6 @@ if has("gui_running")
   endif
 endif
 
-" Tmuxline (Configures Tmux's statusbar)
-:let g:tmuxline_preset = "powerline"
-:let g:tmuxline_theme = "zenburn"
-
 " Use local config if it exists
 if filereadable($HOME . "/.vimrc.local")
     source ~/.vimrc.local
@@ -75,13 +70,11 @@ endif
 " VISUAL/LAYOUT
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" Match weird white space:
+" Highlight trailing whitespace and spaces touching tabs
 "   Lines ending with spaces:   
 "   Mixed spaces and tabs (in either order):
     	"
 	    "
-
-" Highlight trailing whitespace and spaces touching tabs
 :highlight TrailingWhitespace ctermbg=darkred guibg=darkred
 :let w:m2=matchadd('TrailingWhitespace', '\s\+$\| \+\ze\t\|\t\+\ze ')
 

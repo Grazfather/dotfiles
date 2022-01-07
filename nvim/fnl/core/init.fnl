@@ -114,13 +114,11 @@
 ; VISUAL/LAYOUT
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-; Match weird white space:
+; Highlight trailing whitespace and spaces touching tabs
 ;   Lines ending with spaces:   
 ;   Mixed spaces and tabs (in either order):
     	;
 	    ;
-
-; Highlight trailing whitespace and spaces touching tabs
 (vim.api.nvim_command ":highlight TrailingWhitespace ctermbg=darkred guibg=darkred")
 (vim.api.nvim_command ":let w:m2=matchadd('TrailingWhitespace', '\\s\\+$\\| \\+\\ze\\t\\|\\t\\+\\ze ')")
 
