@@ -143,6 +143,10 @@
 (map! :nv "ghe" #'er/expand-region)
 (map! :nv "ghi" #'er/contract-region)
 
+; Quick toggle line comment
+(map! :leader :prefix "c"
+      :desc "Toggle line comment" "SPC" "gcc")
+
 ;; LANGUAGE SPECIFIC
 ; Don't autoformat python -- Black is too aggressive
 (add-to-list '+format-on-save-enabled-modes 'python-mode t)
