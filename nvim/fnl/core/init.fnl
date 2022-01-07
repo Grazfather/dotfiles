@@ -116,6 +116,10 @@
 (noremap! "c" <C-n> "<down>"
           "c" <C-p> "<up>")
 
+; Let indents in visual mode keep the selection
+(noremap! "v" < "<gv"
+          "v" > ">gv")
+
 ; Start scrolling before my cursor reaches the bottom of the screen
 (set! scrolloff 4)
 ; Improve search
