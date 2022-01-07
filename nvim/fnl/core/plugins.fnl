@@ -1,0 +1,76 @@
+(module core.plugins
+  {autoload {packer packer}})
+
+(packer.startup
+  (fn []
+    ; META (Vim config stuff)
+    ; -- Packer itself
+    (use "wbthomason/packer.nvim")
+    ; -- Aniseed itself, to compile fennel
+    (use "Olical/aniseed")
+    ; -- Profile with :StartupTime
+    (use "tweekmonster/startuptime.vim")
+    ; -- Speed up setting up filetypes to improve startup time
+    (use "nathom/filetype.nvim")
+
+    (use {1 "hoob3rt/lualine.nvim"
+          :requires "kyazdani42/nvim-web-devicons"})
+    (use {1 "akinsho/bufferline.nvim"
+          :requires "kyazdani42/nvim-web-devicons"})
+    (use "liuchengxu/vim-which-key")
+
+    ; Navigation
+    (use {1 "junegunn/fzf" :run (fn [] (vim.fn "-> fzf#install()")) })
+    (use {1 "ibhagwan/fzf-lua"
+          :requires ["vijaymarupudi/nvim-fzf" "kyazdani42/nvim-web-devicons"]})
+    (use "edkolev/tmuxline.vim")
+    (use "scrooloose/nerdtree")
+    (use "tiagofumo/vim-nerdtree-syntax-highlight")
+    (use "ryanoasis/vim-devicons")
+    (use "junegunn/vim-peekaboo")
+    ; -- hopping (bound to gsj & gsk)
+    (use "phaazon/hop.nvim")
+    ; -- Override f/t & add sniping via s
+    (use "ggandor/lightspeed.nvim")
+    ; Language support
+    (use "neovim/nvim-lspconfig")
+    (use "glepnir/lspsaga.nvim")
+    (use {1 "nvim-treesitter/nvim-treesitter" :run ":TSUpdate"})
+    (use "nvim-treesitter/playground")
+    (use "hrsh7th/nvim-cmp")
+    (use "hrsh7th/cmp-buffer")
+    (use "hrsh7th/cmp-nvim-lsp")
+    ; -- Go
+    (use "fatih/vim-go")
+    ; -- Markdown
+    (use "jtratner/vim-flavored-markdown")
+    ; -- Lisps
+    (use "guns/vim-sexp")
+    ; -- Clojure
+    ; ---- Connection to nREPL
+    (use {1 "liquidz/vim-iced" :ft ["clojure"]})
+    ; ---- Linting
+    (use "borkdude/clj-kondo")
+    : -- Janet
+    (use "janet-lang/janet.vim")
+    ; -- Fennel
+    (use "bakpakin/fennel.vim")
+    ; -- Solidity
+    (use "tomlion/vim-solidity")
+    ; Git
+    (use "tpope/vim-fugitive")
+    (use {1 "TimUntersberger/neogit"
+          :requires ["nvim-lua/plenary.nvim"]})
+    ; -- Adds :Gbrowse
+    (use "tpope/vim-rhubarb")
+    ; -- Adds :GV to browse history
+    (use "junegunn/gv.vim")
+    ; -- Adds changed lines in the gutter
+    (use "airblade/vim-gitgutter")
+    ; Misc
+    (use "numToStr/Comment.nvim")
+    (use "tpope/vim-surround")
+    ; Themes
+    (use "morhetz/gruvbox")
+    (use "shaunsingh/nord.nvim")))
+
