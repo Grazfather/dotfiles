@@ -36,6 +36,7 @@
     ; -- LSP
     (use "neovim/nvim-lspconfig")
     (use "glepnir/lspsaga.nvim")
+    (use "onsails/lspkind-nvim")
     ; -- Parsing
     (use {1 "nvim-treesitter/nvim-treesitter" :run ":TSUpdate"})
     (use "nvim-treesitter/playground")

@@ -5,6 +5,7 @@
 ; Completion via nvim-cmp
 ((. (require :luasnip.loaders.from_vscode) :lazy_load))
 
+(local lspkind (require :lspkind))
 (local luasnip (require :luasnip))
 (local cmp (require :cmp))
 
@@ -21,6 +22,11 @@
                            (luasnip.expand_or_jumpable) (luasnip.expand_or_jump)
                            (fallback)))
                        [:i :s])}
+   ; Show icons for the type of completion, and show where it came from
+   :formatting {:format (lspkind.cmp_format {:with_text true
+                                             :menu {:nvim_lsp "[lsp]"
+                                                    :buffer "[buf]"
+                                                    :luasnip "[LuaSnip]"}})}
    :sources [{:name :nvim_lsp :keyword_length 3}
              {:name :buffer :keyword_length 3}
              {:name :luasnip }]
