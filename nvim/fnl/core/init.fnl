@@ -29,6 +29,12 @@
 (utils.call-module-setup :bufferline {:options {:separator_style :slant
                                           :diagnostics :nvim_lsp}})
 
+(each [name text (pairs {:DiagnosticSignError ""
+                         :DiagnosticSignWarn ""
+                         :DiagnosticSignHint ""
+                         :DiagnosticSignInfo ""})]
+  (vim.fn.sign_define name {:texthl name :text text :numhl ""}))
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; VISUAL/LAYOUT
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
