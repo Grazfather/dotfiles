@@ -15,6 +15,18 @@ end
 
 -- Packer is our plugin manager.
 ensure("wbthomason", "packer.nvim")
+local ok, packer = pcall(require, "packer")
+if not ok then
+    return
+end
+
+packer.init({
+    display = {
+        open_fn = function()
+            return require("packer.util").float({border = "rounded"})
+        end,
+    },
+})
 
 -- Aniseed compiles our Fennel code to Lua and loads it automatically.
 ensure("Olical", "aniseed")
