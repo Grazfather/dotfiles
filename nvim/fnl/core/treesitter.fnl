@@ -30,5 +30,7 @@
                                      :scope_incremental "ghu"}}
    :ensure_installed ["bash" "c" "clojure" "javascript"
                       "fennel" "json" "lua" "go" "python"
-                      "toml" "yaml"]})
-
+                      "toml" "yaml"]
+   :rainbow {:enable true
+             :disable []
+             :extended_mode false}})

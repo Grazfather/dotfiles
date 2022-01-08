@@ -40,6 +40,7 @@
     ; -- Parsing
     (use {1 "nvim-treesitter/nvim-treesitter" :run ":TSUpdate"})
     (use "nvim-treesitter/playground")
+    (use "p00f/nvim-ts-rainbow")
     ; -- Completion
     (use "hrsh7th/nvim-cmp")
     (use "hrsh7th/cmp-buffer")
