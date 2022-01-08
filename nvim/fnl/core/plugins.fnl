@@ -24,8 +24,7 @@
     (use {1 "ibhagwan/fzf-lua"
           :requires ["vijaymarupudi/nvim-fzf" "kyazdani42/nvim-web-devicons"]})
     (use "edkolev/tmuxline.vim")
-    (use "scrooloose/nerdtree")
-    (use "tiagofumo/vim-nerdtree-syntax-highlight")
+    (use "kyazdani42/nvim-tree.lua")
     (use "ryanoasis/vim-devicons")
     (use "junegunn/vim-peekaboo")
     ; -- hopping (bound to gsj & gsk)

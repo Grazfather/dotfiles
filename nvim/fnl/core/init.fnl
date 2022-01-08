@@ -195,6 +195,9 @@
       "nv" gsj "<cmd>HopLineAC<CR>"
       "nv" gsk "<cmd>HopLineBC<CR>")
 
+; Configure nvim-tree
+(utils.call-module-setup :nvim-tree {})
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; GLOBAL MAPPINGS
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -252,8 +255,8 @@
   <leader>wd "<C-W>c"
   <leader>wo "<C-W>o"
 
-  ; NERDTree
-  <leader>ft "<cmd>NERDTreeToggle<CR>"
+  ; Nvim tree
+  <leader>ft "<cmd>NvimTreeToggle<CR>"
 
   ; Fugitive (git)
   <leader>gb "<cmd>Git blame<CR>"
