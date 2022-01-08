@@ -34,8 +34,6 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
 " -- Adds :GV to browse history
 Plug 'junegunn/gv.vim'
-" -- Adds changed lines in the gutter
-Plug 'airblade/vim-gitgutter'
 " Misc
 Plug 'scrooloose/nerdcommenter'
 

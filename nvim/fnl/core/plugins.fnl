@@ -73,7 +73,8 @@
     ; -- Adds :GV to browse history
     (use "junegunn/gv.vim")
     ; -- Adds changed lines in the gutter
-    (use "airblade/vim-gitgutter")
+    (use {1 "lewis6991/gitsigns.nvim"
+          :requires ["nvim-lua/plenary.nvim"]})
     ; Misc
     (use "numToStr/Comment.nvim")
     (use "tpope/vim-surround")
