@@ -7,6 +7,7 @@
     (if ok?
       (-?> mod
            (. :setup)
-           ((fn [f ...] (f ...)) ...)))))
+           ((fn [f ...] (f ...)) ...))
+      (print "Could not import module " m))))
 
 {: call-module-setup}
