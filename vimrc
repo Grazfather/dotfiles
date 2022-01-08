@@ -92,9 +92,6 @@ endif
 " Use WhichKey to show my prefix mappings
 :nnoremap <silent> <leader> :WhichKey '<Space>'<CR>
 
-" Allow filetype-specific plugins
-:filetype plugin on
-
 " Read configurations from files
 :set modeline
 :set modelines=5

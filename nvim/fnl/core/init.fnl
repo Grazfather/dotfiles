@@ -64,9 +64,6 @@
 ; Use WhichKey to show my prefix mappings
 (nmap! <leader> "<cmd>WhichKey '<Space>'<CR>")
 
-; Allow filetype-specific plugins
-:filetype plugin on
-
 ; Read configurations from files
 (set-true! modeline)
 (set! modelines 5)
