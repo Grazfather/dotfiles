@@ -31,8 +31,10 @@
 ; Always show the status bar
 (set! laststatus 2)
 ; Show opened buffers on tabline
-(utils.call-module-setup :bufferline {:options {:separator_style :slant
-                                                :diagnostics :nvim_lsp}})
+(utils.call-module-setup :bufferline {:options {:diagnostics :nvim_lsp
+                                                :offsets [{:filetype :NvimTree
+                                                           :text ""
+                                                           :padding 1}]}})
 
 (each [name text (pairs {:DiagnosticSignError ""
                          :DiagnosticSignWarn ""
