@@ -11,8 +11,7 @@
 
 (utils.call-module-setup
   :cmp
-  {
-   :snippet {:expand (fn [args] (luasnip.lsp_expand args.body))}
+  {:snippet {:expand (fn [args] (luasnip.lsp_expand args.body))}
    :mapping {"<CR>" (cmp.mapping.confirm { :select true })
              ; For snippets with params, tab jumps to next, or expand doc
              "<Tab>" (cmp.mapping

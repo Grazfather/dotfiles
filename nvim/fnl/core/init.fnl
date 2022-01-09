@@ -23,7 +23,11 @@
       g/tmuxline_theme "zenburn")
 
 ; Status line
-(utils.call-module-setup :lualine {:options {:theme :gruvbox}})
+(utils.call-module-setup :lualine {:options {:theme :auto
+                                             :component_separators {:left ""
+                                                                    :right ""}
+                                             :section_separators {:left ""
+                                                                  :right ""}}})
 ; Always show the status bar
 (set! laststatus 2)
 ; Show opened buffers on tabline
