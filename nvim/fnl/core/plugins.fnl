@@ -6,6 +6,8 @@
     ; META (Vim config stuff)
     ; -- Packer itself
     (use "wbthomason/packer.nvim")
+    ; -- Impatient speeds up startup
+    (use "lewis6991/impatient.nvim")
     ; -- Aniseed itself, to compile fennel
     (use "Olical/aniseed")
     ; -- Profile with :StartupTime
