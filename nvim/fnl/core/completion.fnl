@@ -12,7 +12,7 @@
 (utils.call-module-setup
   :cmp
   {:snippet {:expand (fn [args] (luasnip.lsp_expand args.body))}
-   :mapping {"<CR>" (cmp.mapping.confirm { :select true })
+   :mapping {"<CR>" (cmp.mapping.confirm {:select true})
              ; For snippets with params, tab jumps to next, or expand doc
              "<Tab>" (cmp.mapping
                        (fn [fallback]
@@ -28,6 +28,6 @@
                                                     :luasnip "[LuaSnip]"}})}
    :sources [{:name :nvim_lsp :keyword_length 3}
              {:name :buffer :keyword_length 3}
-             {:name :luasnip }]
+             {:name :luasnip}]
    :experimental {:native_menu false
                   :ghost_text true}})

@@ -32,6 +32,7 @@
     (use "phaazon/hop.nvim")
     ; -- Override f/t & add sniping via s
     (use "ggandor/lightspeed.nvim")
+
     ; Language support
     ; -- LSP
     (use "neovim/nvim-lspconfig")
@@ -64,6 +65,7 @@
     (use "bakpakin/fennel.vim")
     ; -- Solidity
     (use "tomlion/vim-solidity")
+
     ; Git
     (use "tpope/vim-fugitive")
     (use {1 "TimUntersberger/neogit"
@@ -75,9 +77,11 @@
     ; -- Adds changed lines in the gutter
     (use {1 "lewis6991/gitsigns.nvim"
           :requires ["nvim-lua/plenary.nvim"]})
+
     ; Misc
     (use "numToStr/Comment.nvim")
     (use "tpope/vim-surround")
+
     ; Themes
     (use "morhetz/gruvbox")
     (use "shaunsingh/nord.nvim")))
