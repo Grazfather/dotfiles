@@ -57,6 +57,7 @@
 ; Remap <leader>
 ; I tend to use leader a lot, so I try to namespace commands under leader
 ; using a simple mnemonic:
+; <leader>b_ -> Buffer stuff
 ; <leader>e_ -> Edit stuff
 ; <leader>g_ -> Git stuff
 ; <leader>m_ -> 'localleader': Filetype specific stuff
@@ -68,7 +69,18 @@
       g/maplocalleader " m")
 
 ; Use WhichKey to show my prefix mappings
-(nmap! <leader> "<cmd>WhichKey '<Space>'<CR>")
+(utils.call-module-setup :which-key {})
+; -- Document top-level prefixes
+(utils.call-module-method :which-key :register
+                          {:b {:name "Buffer stuff"}
+                           :e {:name "Edit stuff"}
+                           :g {:name "Git"}
+                           :h {:name "Help"}
+                           :m {:name "Local leader"}
+                           :f {:name "File/find ops"}
+                           :t {:name "Toggles"}
+                           :w {:name "Window"}}
+                          {:prefix :<leader>})
 
 ; Read configurations from files
 (set-true! modeline)
@@ -229,9 +241,6 @@
 
   ; Save
   <leader>fs "<cmd>write<CR>"
-
-  ; Quit
-  <leader>qq "<cmd>qa<CR>"
 
   ; Add 'DELETEME' comment using Comment.nvim
   ; This is broken, we hack around it for now

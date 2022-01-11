@@ -19,7 +19,7 @@
           :requires "kyazdani42/nvim-web-devicons"})
     (use {1 "akinsho/bufferline.nvim"
           :requires "kyazdani42/nvim-web-devicons"})
-    (use "liuchengxu/vim-which-key")
+    (use "folke/which-key.nvim")
 
     ; Navigation
     (use {1 "junegunn/fzf" :run (fn [] (vim.fn "-> fzf#install()")) })
@@ -28,7 +28,6 @@
     (use "edkolev/tmuxline.vim")
     (use "kyazdani42/nvim-tree.lua")
     (use "ryanoasis/vim-devicons")
-    (use "junegunn/vim-peekaboo")
     ; -- hopping (bound to gsj & gsk)
     (use "phaazon/hop.nvim")
     ; -- Override f/t & add sniping via s
