@@ -276,7 +276,8 @@ endif
 " Window (split) management
 :nmap <leader>wv :vsp<CR>
 :nmap <leader>ws :sp<CR>
-:nmap <leader>wd <C-W>c
+:nmap <leader>wd :close<CR>
+:nmap <leader>wo :only<CR>
 
 " NERDTree
 :nnoremap <leader>ft :NERDTreeToggle<CR>

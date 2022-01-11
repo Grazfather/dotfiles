@@ -228,7 +228,7 @@
   <leader>bd "<cmd>bp|bd #<CR>"
 
   ; Save
-  <leader>fs "<cmd>w<CR>"
+  <leader>fs "<cmd>write<CR>"
 
   ; Quit
   <leader>qq "<cmd>qa<CR>"
@@ -253,10 +253,10 @@
   <leader>tp "<cmd>set paste!<CR>"
 
   ; Window (split) management
-  <leader>wv "<cmd>vsp<CR>"
-  <leader>ws "<cmd>sp<CR>"
-  <leader>wd "<C-W>c"
-  <leader>wo "<C-W>o"
+  <leader>wv "<cmd>vsplit<CR>"
+  <leader>ws "<cmd>split<CR>"
+  <leader>wd "<cmd>close<CR>"
+  <leader>wo "<cmd>only<CR>"
 
   ; Nvim tree
   <leader>ft "<cmd>NvimTreeToggle<CR>"
