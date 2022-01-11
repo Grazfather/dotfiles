@@ -3,7 +3,7 @@
   {autoload {utils core.utils}})
 
 ; Completion via nvim-cmp
-((. (require :luasnip.loaders.from_vscode) :lazy_load))
+(utils.call-module-method :luasnip.loaders.from_vscode :lazy_load)
 
 (local lspkind (require :lspkind))
 (local luasnip (require :luasnip))
