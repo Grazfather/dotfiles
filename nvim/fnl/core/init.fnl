@@ -69,6 +69,8 @@
 
 ; Use WhichKey to show my prefix mappings
 (utils.call-module-setup :which-key {})
+; -- Short timeoutlen to get which-key to kick in sooner
+(set! timeoutlen 100)
 ; -- Document top-level prefixes
 (utils.call-module-method :which-key :register
                           {:b {:name "Buffer stuff"}
