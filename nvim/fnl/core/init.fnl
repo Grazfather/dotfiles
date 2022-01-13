@@ -1,92 +1,12 @@
 (module core.init
-        {autoload {packer packer}
-         require-macros [core.macros]})
+  {autoload {: packer
+             utils core.utils}
+   require-macros [core.macros]})
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; PLUGINS
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-(packer.startup
-  (fn []
-    ; META (Vim config stuff)
-    ; -- Packer itself
-    (use "wbthomason/packer.nvim")
-    ; -- Aniseed itself, to compile fennel
-    (use "Olical/aniseed")
-    ; -- Profile with :StartupTime
-    (use "tweekmonster/startuptime.vim")
-    ; -- Speed up setting up filetypes to improve startup time
-    (use "nathom/filetype.nvim")
-
-    (use {1 "hoob3rt/lualine.nvim"
-          :requires "kyazdani42/nvim-web-devicons"})
-    (use {1 "akinsho/bufferline.nvim"
-          :requires "kyazdani42/nvim-web-devicons"})
-    (use "liuchengxu/vim-which-key")
-
-    ; Navigation
-    (use {1 "junegunn/fzf" :run (fn [] (vim.fn "-> fzf#install()")) })
-    (use {1 "ibhagwan/fzf-lua"
-          :requires ["vijaymarupudi/nvim-fzf" "kyazdani42/nvim-web-devicons"]})
-    (use "edkolev/tmuxline.vim")
-    (use "scrooloose/nerdtree")
-    (use "tiagofumo/vim-nerdtree-syntax-highlight")
-    (use "ryanoasis/vim-devicons")
-    (use "junegunn/vim-peekaboo")
-    ; -- hopping (bound to gsj & gsk)
-    (use "phaazon/hop.nvim")
-    ; -- Override f/t & add sniping via s
-    (use "ggandor/lightspeed.nvim")
-    ; Language support
-    (use "neovim/nvim-lspconfig")
-    (use "glepnir/lspsaga.nvim")
-    (use "nvim-treesitter/nvim-treesitter")
-    (use "hrsh7th/nvim-cmp")
-    (use "hrsh7th/cmp-buffer")
-    (use "hrsh7th/cmp-nvim-lsp")
-    ; -- Go
-    (use "fatih/vim-go")
-    ; -- Markdown
-    (use "jtratner/vim-flavored-markdown")
-    ; -- Lisps
-    (use "guns/vim-sexp")
-    ; -- Clojure
-    ; ---- Connection to nREPL
-    (use {1 "liquidz/vim-iced" :ft ["clojure"]})
-    ; ---- Linting
-    (use "borkdude/clj-kondo")
-    : -- Janet
-    (use "janet-lang/janet.vim")
-    ; -- TOML
-    (use "cespare/vim-toml")
-    ; -- Fennel
-    (use "bakpakin/fennel.vim")
-    ; -- Solidity
-    (use "tomlion/vim-solidity")
-    ; Git
-    (use "tpope/vim-fugitive")
-    (use {1 "TimUntersberger/neogit"
-          :requires ["nvim-lua/plenary.nvim"]})
-    ; -- Adds :Gbrowse
-    (use "tpope/vim-rhubarb")
-    ; -- Adds :GV to browse history
-    (use "junegunn/gv.vim")
-    ; -- Adds changed lines in the gutter
-    (use "airblade/vim-gitgutter")
-    ; Misc
-    (use "numToStr/Comment.nvim")
-    (use "tpope/vim-surround")
-    ; Themes
-    (use "morhetz/gruvbox")))
-
-(fn call-module-setup
-  [m ...]
-  "Call a module's setup function if the module can be imported."
-  (let [(ok? mod) (pcall require m) ]
-    (if ok?
-      (-?> mod
-           (. :setup)
-           ((fn [f ...] (f ...)) ...)))))
+(require :core.plugins)
+(require :core.completion)
+(require :core.lsp)
+(require :core.treesitter)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; THEMES/UI
@@ -95,6 +15,7 @@
 ; Color scheme
 (set! syntax "enable"
       background "dark")
+(set-true! termguicolors)
 (vim.api.nvim_command "silent! colorscheme gruvbox")
 
 ; Tmuxline (Configures Tmux's statusbar)
@@ -102,31 +23,41 @@
       g/tmuxline_theme "zenburn")
 
 ; Status line
-(call-module-setup :lualine {:options {:theme :gruvbox}})
+(utils.call-module-setup :lualine {:options {:theme :auto
+                                             :component_separators {:left ""
+                                                                    :right ""}
+                                             :section_separators {:left ""
+                                                                  :right ""}}})
 ; Always show the status bar
 (set! laststatus 2)
 ; Show opened buffers on tabline
-(set-true! termguicolors)
-(call-module-setup :bufferline {:options {:separator_style :slant
-                                          :diagnostics :nvim_lsp}})
+(utils.call-module-setup :bufferline {:options {:diagnostics :nvim_lsp
+                                                :offsets [{:filetype :NvimTree
+                                                           :text ""
+                                                           :padding 1}]}})
+
+(each [name text (pairs {:DiagnosticSignError ""
+                         :DiagnosticSignWarn ""
+                         :DiagnosticSignHint ""
+                         :DiagnosticSignInfo ""})]
+  (vim.fn.sign_define name {:texthl name :text text :numhl ""}))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; VISUAL/LAYOUT
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-; Match weird white space:
+; Highlight trailing whitespace and spaces touching tabs
 ;   Lines ending with spaces:   
 ;   Mixed spaces and tabs (in either order):
     	;
 	    ;
-
-; Highlight trailing whitespace and spaces touching tabs
 (vim.api.nvim_command ":highlight TrailingWhitespace ctermbg=darkred guibg=darkred")
 (vim.api.nvim_command ":let w:m2=matchadd('TrailingWhitespace', '\\s\\+$\\| \\+\\ze\\t\\|\\t\\+\\ze ')")
 
 ; Remap <leader>
 ; I tend to use leader a lot, so I try to namespace commands under leader
 ; using a simple mnemonic:
+; <leader>b_ -> Buffer stuff
 ; <leader>e_ -> Edit stuff
 ; <leader>g_ -> Git stuff
 ; <leader>m_ -> 'localleader': Filetype specific stuff
@@ -138,10 +69,18 @@
       g/maplocalleader " m")
 
 ; Use WhichKey to show my prefix mappings
-(nmap! <leader> "<cmd>WhichKey '<Space>'<CR>")
-
-; Allow filetype-specific plugins
-:filetype plugin on
+(utils.call-module-setup :which-key {})
+; -- Document top-level prefixes
+(utils.call-module-method :which-key :register
+                          {:b {:name "Buffer stuff"}
+                           :e {:name "Edit stuff"}
+                           :g {:name "Git"}
+                           :h {:name "Help"}
+                           :m {:name "Local leader"}
+                           :f {:name "File/find ops"}
+                           :t {:name "Toggles"}
+                           :w {:name "Window"}}
+                          {:prefix :<leader>})
 
 ; Read configurations from files
 (set-true! modeline)
@@ -159,6 +98,8 @@
 
 ; Lazily redraw: Make macros faster
 (set-true! lazyredraw)
+
+(utils.call-module-setup :gitsigns {})
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; NAVIGATION
@@ -199,6 +140,10 @@
 ; Let <C-n> and <C-p> also filter through command history
 (noremap! "c" <C-n> "<down>"
           "c" <C-p> "<up>")
+
+; Let indents in visual mode keep the selection
+(noremap! "v" < "<gv"
+          "v" > ">gv")
 
 ; Start scrolling before my cursor reaches the bottom of the screen
 (set! scrolloff 4)
@@ -257,13 +202,16 @@
 (nnoremap! Q "<nop>")
 
 ; Configure hop bindings
-(call-module-setup :hop {:keys "arstneio"})
+(utils.call-module-setup :hop {:keys "arstneio"})
 (map! "nv" gs/ "<cmd>HopPattern<CR>"
       "nv" gss "<cmd>HopChar2<CR>"
       "nv" gsw "<cmd>HopWordAC<CR>"
       "nv" gsb "<cmd>HopWordBC<CR>"
       "nv" gsj "<cmd>HopLineAC<CR>"
       "nv" gsk "<cmd>HopLineBC<CR>")
+
+; Configure nvim-tree
+(utils.call-module-setup :nvim-tree {})
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; GLOBAL MAPPINGS
@@ -292,10 +240,7 @@
   <leader>bd "<cmd>bp|bd #<CR>"
 
   ; Save
-  <leader>fs "<cmd>w<CR>"
-
-  ; Quit
-  <leader>qq "<cmd>qa<CR>"
+  <leader>fs "<cmd>write<CR>"
 
   ; Add 'DELETEME' comment using Comment.nvim
   ; This is broken, we hack around it for now
@@ -317,13 +262,13 @@
   <leader>tp "<cmd>set paste!<CR>"
 
   ; Window (split) management
-  <leader>wv "<cmd>vsp<CR>"
-  <leader>ws "<cmd>sp<CR>"
-  <leader>wd "<C-W>c"
-  <leader>wo "<C-W>o"
+  <leader>wv "<cmd>vsplit<CR>"
+  <leader>ws "<cmd>split<CR>"
+  <leader>wd "<cmd>close<CR>"
+  <leader>wo "<cmd>only<CR>"
 
-  ; NERDTree
-  <leader>ft "<cmd>NERDTreeToggle<CR>"
+  ; Nvim tree
+  <leader>ft "<cmd>NvimTreeToggle<CR>"
 
   ; Fugitive (git)
   <leader>gb "<cmd>Git blame<CR>"
@@ -366,113 +311,8 @@
   (set! listchars "eol:$,conceal:+tab:>-,precedes:<,extends:\u{2026}"))
 
 ; Comment.nvim
-(call-module-setup :Comment {})
+(utils.call-module-setup :Comment {})
 (nmap! "<leader>c " "gcc")
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; Language support
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-; Completion via nvim-cmp
-(local cmp (require :cmp))
-(call-module-setup
-  :cmp
-  {
-   :mapping {"<CR>" (cmp.mapping.confirm { :select true })}
-   :sources [{:name :buffer :keyword_length 3 }
-             {:name :nvim_lsp :keyword_length 3 }]
-   :experimental {:native_menu false
-                  :ghost_text true}})
-
-; These are provided later to lspconfig
-(local capabilities
-  ((. (require :cmp_nvim_lsp) :update_capabilities)
-   (vim.lsp.protocol.make_client_capabilities)))
-
-; LSP
-(local lspconfig (require :lspconfig))
-
-(local servers ["gopls" "clojure_lsp" "pyright"])
-
-(defn on-attach [client bufnr]
-  (defn buf-set-keymap [...] (vim.api.nvim_buf_set_keymap bufnr ...))
-  (defn buf-set-option [...] (vim.api.nvim_buf_set_option bufnr ...))
-
-  (buf-set-option "omnifunc" "v:lua.vim.lsp.omnifunc")
-
-  ; Mappings
-  (local opts {:noremap true :silent true})
-  (buf-set-keymap "n" "gD" "<cmd>lua vim.lsp.buf.declaration()<CR>" opts)
-  (buf-set-keymap "n" "gd" "<cmd>lua vim.lsp.buf.definition()<CR>" opts)
-  (buf-set-keymap "n" "gdd" "<cmd>lua vim.lsp.buf.definition()<CR>" opts)
-  (buf-set-keymap "n" "gdp" "<cmd>lua require('lspsaga.provider').preview_definition()<CR>" opts)
-  (buf-set-keymap "n" "K" "<cmd>lua require('lspsaga.hover').render_hover_doc()<CR>" opts)
-  (buf-set-keymap "n" "gi" "<cmd>lua vim.lsp.buf.implementation()<CR>" opts)
-  (buf-set-keymap "n" "gr" "<cmd>lua vim.lsp.buf.references()<CR>" opts)
-  (buf-set-keymap "n" "[d" "<cmd>lua require('lspsaga.diagnostic').lsp_jump_diagnostic_prev()<CR>" opts)
-  (buf-set-keymap "n" "]d" "<cmd>lua require('lspsaga.diagnostic').lsp_jump_diagnostic_next()<CR>" opts)
-  (buf-set-keymap "n" "<leader>rn" "<cmd>lua require('lspsaga.rename').rename()<CR>" opts)
-
-  ; Set some keybinds conditional on server capabilities
-  (if client.resolved_capabilities.document_formatting
-    (buf-set-keymap "n" "<leader>ef" "<cmd>lua vim.lsp.buf.formatting()<CR>" opts))
-  (if client.resolved_capabilities.document_range_formatting
-    (buf-set-keymap "v" "<leader>ef" "<cmd>lua vim.lsp.buf.range_formatting()<CR>" opts))
-
-  ; Set autocommands conditional on server_capabilities
-  (if client.resolved_capabilities.document_highlight
-    (vim.api.nvim_command
-      "hi LspReferenceRead cterm=bold ctermbg=red guibg=LightYellow
-      hi LspReferenceText cterm=bold ctermbg=red guibg=LightYellow
-      hi LspReferenceWrite cterm=bold ctermbg=red guibg=LightYellow
-      augroup lsp_document_highlight
-        autocmd! * <buffer>
-        autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
-        autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
-      augroup END")))
-
-; Use a loop to conveniently both setup defined servers and map buffer local
-; keybindings when the language server attaches
-(each [_ lsp (ipairs servers)]
-  ((. (. lspconfig lsp) :setup) {:on_attach on-attach
-                                 :capabilities capabilities}))
-
-; Treesitter
-(call-module-setup
-  :treesitter
-  {
-   :playground {
-                :enable  true
-                :disable  {}
-                :updatetime  25 ; Debounced time for highlighting nodes in the playground from source code
-                :persist_queries  false ; Whether the query persists across vim sessions
-                :keybindings  {
-                               :toggle_query_editor  "o"
-                               :toggle_hl_groups  "i"
-                               :toggle_injected_languages  "t"
-                               :toggle_anonymous_nodes  "a"
-                               :toggle_language_display  "I"
-                               :focus_language  "f"
-                               :unfocus_language  "F"
-                               :update  "R"
-                               :goto_node  "<cr>"
-                               :show_help  "?"
-                               }
-                }
-   :highlight { :enable true }
-   :indent { :enable false }
-   :incremental_selection {
-                           :enable true
-                           :keymaps {
-                                     :init_selection "gh"
-                                     :node_incremental "ghe"
-                                     :node_decremental "ghi"
-                                     :scope_incremental "ghu"
-                                     }
-                           }
-   :ensure_installed ["bash" "c" "clojure" "javascript"
-                      "fennel" "json" "lua" "go" "python"
-                      "toml" "yaml"] })
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; Specific language settings

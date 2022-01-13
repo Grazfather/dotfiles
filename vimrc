@@ -8,7 +8,6 @@ Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] }
 " Navigation
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-Plug 'edkolev/tmuxline.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'ryanoasis/vim-devicons'
@@ -35,8 +34,6 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
 " -- Adds :GV to browse history
 Plug 'junegunn/gv.vim'
-" -- Adds changed lines in the gutter
-Plug 'airblade/vim-gitgutter'
 " Misc
 Plug 'scrooloose/nerdcommenter'
 
@@ -62,10 +59,6 @@ if has("gui_running")
   endif
 endif
 
-" Tmuxline (Configures Tmux's statusbar)
-:let g:tmuxline_preset = "powerline"
-:let g:tmuxline_theme = "zenburn"
-
 " Use local config if it exists
 if filereadable($HOME . "/.vimrc.local")
     source ~/.vimrc.local
@@ -75,13 +68,11 @@ endif
 " VISUAL/LAYOUT
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" Match weird white space:
+" Highlight trailing whitespace and spaces touching tabs
 "   Lines ending with spaces:   
 "   Mixed spaces and tabs (in either order):
     	"
 	    "
-
-" Highlight trailing whitespace and spaces touching tabs
 :highlight TrailingWhitespace ctermbg=darkred guibg=darkred
 :let w:m2=matchadd('TrailingWhitespace', '\s\+$\| \+\ze\t\|\t\+\ze ')
 
@@ -100,9 +91,6 @@ endif
 
 " Use WhichKey to show my prefix mappings
 :nnoremap <silent> <leader> :WhichKey '<Space>'<CR>
-
-" Allow filetype-specific plugins
-:filetype plugin on
 
 " Read configurations from files
 :set modeline
@@ -288,7 +276,8 @@ endif
 " Window (split) management
 :nmap <leader>wv :vsp<CR>
 :nmap <leader>ws :sp<CR>
-:nmap <leader>wd <C-W>c
+:nmap <leader>wd :close<CR>
+:nmap <leader>wo :only<CR>
 
 " NERDTree
 :nnoremap <leader>ft :NERDTreeToggle<CR>

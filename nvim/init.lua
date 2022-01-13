@@ -15,9 +15,30 @@ end
 
 -- Packer is our plugin manager.
 ensure("wbthomason", "packer.nvim")
-
+-- Impatient speeds up startup
+ensure("lewis6991", "impatient.nvim")
 -- Aniseed compiles our Fennel code to Lua and loads it automatically.
 ensure("Olical", "aniseed")
+
+local ok, packer = pcall(require, "packer")
+if not ok then
+    return
+end
+
+-- Load impatient, but don't bail if we can't
+local ok, _ = pcall(require, "impatient")
+if not ok then
+    print("Cannot load impatient")
+end
+
+-- Make packer UI in a popup instead of a split
+packer.init({
+    display = {
+        open_fn = function()
+            return require("packer.util").float({border = "rounded"})
+        end,
+    },
+})
 
 -- Do not source the default filetype.vim, use filetype.nvim
 vim.g.did_load_filetypes = 1
