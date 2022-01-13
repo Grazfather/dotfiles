@@ -106,10 +106,10 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ; Jump to last cursor position unless it's invalid or in an event handler
-;(vim.api.nvim_command "autocmd BufReadPost *
-  ;\\ if line(\"'\\\"\") > 0 && line(\"'\\\"\") <= line(\"$\") |
-  ;\\   exe \"normal g`\\\"\" |
-  ;\\ endif")
+(vim.cmd "autocmd! BufReadPost *
+         \\ if line(\"'\\\"\") > 0 && line(\"'\\\"\") <= line(\"$\") |
+         \\   exe \"normal g`\\\"\" |
+         \\ endif")
 
 ; Disable arrow keys for navigation
 (nnoremap! <up> "<nop>"
@@ -318,17 +318,10 @@
 ; Specific language settings
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-; Special settings for some filetypes
-(vim.api.nvim_command
-  ":au Filetype ruby setl expandtab smarttab tabstop=4 shiftwidth=4 softtabstop=4
-  :au Filetype yaml setl expandtab smarttab tabstop=4 shiftwidth=4 softtabstop=4")
-
 ; Use github-flavored markdown
-(vim.api.nvim_exec
-  ":aug markdown
-  :au!
-  :au BufNewFile,BufRead *.md,*.markdown setlocal filetype=ghmarkdown
-  :aug END" false)
+(vim.cmd "augroup markdown
+         autocmd! BufNewFile,BufRead *.md,*.markdown setlocal filetype=ghmarkdown
+         augroup end")
 
 ; vim-iced (Clojure)
 (let! g/iced_default_key_mapping_leader "<LocalLeader>"
