@@ -599,6 +599,18 @@
                             screen
                             seconds)))
 
+;; Make window highlights smaller and faster
+(defadvice my-highlight-active-window
+           []
+           :override windows.highlight-active-window
+           "Highlight selected windows for a shorter amount of time, and in red"
+           (let [rect (hs.drawing.rectangle (: (hs.window.focusedWindow) :frame))]
+             (: rect :setStrokeColor {:red 1 :blue 0 :green 0 :alpha 1})
+             (: rect :setStrokeWidth 3)
+             (: rect :setFill false)
+             (: rect :show)
+             (hs.timer.doAfter .1 (fn [] (: rect :delete)))))
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Spoons
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
