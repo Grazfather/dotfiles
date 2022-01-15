@@ -154,3 +154,47 @@
 ; Tell the LSP to not monitor Go vendor files
 (after! lsp-mode
   (add-to-list 'lsp-file-watch-ignored-directories "[/\\\\]vendor\\'" t))
+
+; Add easier binding to move between sexps
+(map! (:after smartparens
+       :map smartparens-mode-map
+       "M-f" #'sp-forward-sexp
+       "M-b" #'sp-backward-sexp))
+
+; Lispyville needs Lispy, but I don't want to ever use the insane lispy-mode
+; bindings.
+(use-package! lispy)
+(use-package! lispyville
+  :hook ((lisp-mode . lispyville-mode)
+         (emacs-lisp-mode . lispyville-mode)
+         (ielm-mode . lispyville-mode)
+         (scheme-mode . lispyville-mode)
+         (racket-mode . lispyville-mode)
+         (hy-mode . lispyville-mode)
+         (lfe-mode . lispyville-mode)
+         (dune-mode . lispyville-mode)
+         (clojure-mode . lispyville-mode)
+         (fennel-mode . lispyville-mode))
+  :init
+  (setq
+   lispyville-key-theme
+   '(; Make some operators smarter
+     ; - D/C will delete/change to the end of the line but not delete closing
+     ;   parens if it'll make them unbalanced
+     ; - x will delete the matching paren/bracket/curly brace
+     (operators normal)
+     ; Ctrl-w and Ctrl-u are sexp aware
+     ; For example, Ctrl-w will delete a whole sexp if it's the previous word
+     c-w c-u
+     (atom-movement t)
+     ; >/< to 'grow' and 'shrink' sexps
+     slurp/barf-lispy
+     ; M-j/k to swap (drag) atoms forward/back
+     ; M-s to splice (remove surrounding)
+     ; M-S to join
+     additional
+     ; M-{i,a,o,O} for sexp-aware enter insert
+     ; For example, if the sexp is split over multiple lines, it'll enter insert
+     ; mode before or after the sexp, instead of next to that exact line.
+     additional-insert))
+  :config (lispyville-set-key-theme))

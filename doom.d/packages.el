@@ -49,3 +49,8 @@
 ;; ...Or *all* packages (NOT RECOMMENDED; will likely break things)
 ;(unpin! t)
 (package! protobuf-mode)
+
+; I want the lispy functionality, but its bindings are horrible, so I install it
+; manually instead of using the doom module
+(package! lispy)
+(package! lispyville)
