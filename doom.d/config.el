@@ -198,3 +198,7 @@
      ; mode before or after the sexp, instead of next to that exact line.
      additional-insert))
   :config (lispyville-set-key-theme))
+
+(after! evil-goggles
+  (setq evil-goggles-enable-delete t
+        evil-goggles-enable-change t))

@@ -288,7 +288,7 @@
           :action "windows:show-grid"}
          {:key :u
           :title "Undo"
-          :action "windows:undo-action"
+          :action "windows:undo"
           :repeatable true}]))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
