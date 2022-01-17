@@ -13,8 +13,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ; Color scheme
-(set! syntax "enable"
-      background "dark")
+(set! syntax "enable")
 (set-true! termguicolors)
 (vim.api.nvim_command "silent! colorscheme gruvbox")
 
@@ -91,7 +90,6 @@
 
 ; Set path to include the cwd and everything underneath
 (set! path "**3")
-(set-true! wildmenu)
 
 ; Show the normal mode command as I type it
 (set-true! showcmd)
@@ -147,11 +145,11 @@
 
 ; Start scrolling before my cursor reaches the bottom of the screen
 (set! scrolloff 4)
+
 ; Improve search
 (set-true! ignorecase
            smartcase
-           infercase
-           hlsearch)
+           infercase)
 (set-false! incsearch)
 
 ; Turn off swap files
@@ -163,17 +161,8 @@
 (set-true! splitbelow
            splitright)
 
-; Allow hidden buffers
-(set-true! hidden)
-
-; Hide mode so it shows on the statusbar only
-(set-false! showmode)
-
 ; Short ttimeoutlen to lower latency to show current mode
 (set! ttimeoutlen 50)
-
-; Consistent backspace on all systems
-(set! backspace "indent,eol,start")
 
 ; When tabbing on lines with extra spaces, round to the next tab barrier
 (set-true! shiftround)
@@ -187,9 +176,6 @@
 
 ; Show linenumbers by default
 (set-true! number relativenumber)
-
-; Make Y act like D and C
-(nnoremap! Y "y$")
 
 ; Make joins keep the cursor in the same spot in the window
 (nnoremap! J "mzJ`z")
