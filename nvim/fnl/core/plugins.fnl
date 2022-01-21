@@ -39,6 +39,7 @@
     (use "onsails/lspkind-nvim")
     ; -- Parsing
     (use {1 "nvim-treesitter/nvim-treesitter" :run ":TSUpdate"})
+    (use "nvim-treesitter/nvim-treesitter-textobjects")
     (use "nvim-treesitter/playground")
     (use "p00f/nvim-ts-rainbow")
     ; -- Completion
