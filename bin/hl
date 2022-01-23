@@ -9,11 +9,11 @@
 (def cli-options
   [["-h" "--help" "Show help"]
    ["-p" "--pattern PATTERN" "Regex pattern to highlight"
-    :default "^.+$"
+    :default #"^.+$"
     :validate [#(re-pattern %) "Must be a valid regex pattern"]
     ]
    ["-a" "--alphanumeric" "Highlight alphanumeric words"]
-   ["-d" "--digits" "Highlight decimal digits"]
+   ["-d" "--decimalnumbers" "Highlight decimal digits"]
    ["-w" "--words" "Highlight (regex) words"]
    ["-x" "--hexnumbers" "Highlight hex numbers"]])
 
@@ -92,10 +92,10 @@
   (System/exit 1))
 
 (def pattern (re-pattern (cond
-                           (:alphanumeric opts) "[a-zA-Z\\d]+"
-                           (:decimalnumbers opts) "\\d+"
-                           (:words opts) "\\w+"
-                           (:hexnumbers opts) "(?:0x)?[a-fA-F\\d]{2,}"
+                           (:alphanumeric opts) #"\b[a-zA-Z\d]+\b"
+                           (:decimalnumbers opts) #"\b\d+\b"
+                           (:words opts) #"\w+"
+                           (:hexnumbers opts) #"\b(?:0x)?[a-fA-F\d]{2,}\b"
                            (:pattern opts) (:pattern opts))))
 (def stream (line-seq (io/reader *in*)))
 
