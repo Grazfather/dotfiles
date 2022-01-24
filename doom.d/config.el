@@ -147,6 +147,12 @@
 (map! :leader :prefix "c"
       :desc "Toggle line comment" "SPC" "gcc")
 
+; Quick git commands
+(map! :leader :prefix "g"
+      :desc "Git log" "l" 'magit-log-current
+      :desc "Git status" "s" 'magit-status
+      :desc "Git blame" "b" 'magit-blame-addition)
+
 ;; LANGUAGE SPECIFIC
 ; Don't autoformat python -- Black is too aggressive
 (add-to-list '+format-on-save-enabled-modes 'python-mode t)
