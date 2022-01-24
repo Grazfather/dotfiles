@@ -12,7 +12,7 @@
 ;; + `doom-big-font' -- used for `doom-big-font-mode'; use this for
 ;;   presentations or streaming.
 ;;
-(setq doom-theme 'doom-gruvbox)
+(setq doom-theme 'doom-one)
 
 (setq org-directory "~/org/")
 
