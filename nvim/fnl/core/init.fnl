@@ -231,9 +231,7 @@
   <leader>fs "<cmd>write<CR>"
 
   ; Add 'DELETEME' comment using Comment.nvim
-  ; This is broken, we hack around it for now
-  ; <leader>dm "mxgcADELETEME<ESC>`x<ESC>"
-  <leader>dm "mxgcoDELETEME<ESC>kJ`x<ESC>"
+  <leader>dm "mxgcADELETEME<ESC>`x<ESC>"
   ; Delete all DELETEME lines
   <leader>dd "<cmd>keepp :g/DELETEME/d<CR><C-o>"
 
