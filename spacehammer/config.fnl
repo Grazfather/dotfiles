@@ -279,10 +279,10 @@
           :title "Maximize"
           :action "windows:maximize-window-frame"
           :repeatable true}
-         ;{:key :c
-          ;:title "Center"
-          ;:action "windows:center-window-frame"
-          ;:repeatable true}
+         {:key :f
+          :title "Center"
+          :action "windows:center-window-frame"
+          :repeatable true}
          {:key :g
           :title "Grid"
           :action "windows:show-grid"}
@@ -295,6 +295,7 @@
 ;; Apps Menu
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+; These are behind the 'a' submenu
 (local app-bindings
        [return
         {:key :e
@@ -305,7 +306,7 @@
          :action (activator browser-app)}
         {:key :t
          :title "iTerm"
-         :action (activator "iTerm2")}
+         :action (activator "iterm")}
         {:key :s
          :title "Slack"
          :action (activator "Slack")}
@@ -313,6 +314,7 @@
          :title music-app
          :action (activator music-app)}])
 
+; These are behind the 'm' submenu
 (local media-bindings
        [return
         {:key :s
@@ -336,21 +338,6 @@
          :title (.. "Launch " music-app)
          :action (activator music-app)}])
 
-(local emacs-bindings
-       [return
-        {:key :c
-         :title "Capture"
-         :action (fn [] (emacs.capture))}
-        {:key :z
-         :title "Note"
-         :action (fn [] (emacs.note))}
-        {:key :v
-         :title "Split"
-         :action "emacs:vertical-split-with-emacs"}
-        {:key :f
-         :title "Full Screen"
-         :action "emacs:full-screen"}])
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; App hotkeys
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -364,7 +351,7 @@
          :action (activator "Slack")}
         {:mods hyper-mods
          :key :t
-         :action (activator "iTerm2")}
+         :action (activator "iterm")}
         {:mods hyper-mods
          :key :c
          :action (activator "Whatsapp")}
@@ -431,10 +418,7 @@
          :action "windows:jump"}
         {:key   :m
          :title "Media"
-         :items media-bindings}
-        {:key   :e
-         :title "Emacs"
-         :items emacs-bindings}])
+         :items media-bindings}])
 
 (local common-keys
        (concat app-keys
@@ -483,14 +467,6 @@
        {:key browser-app
         :keys browser-keys
         :items browser-items})
-
-(local emacs-config
-       {:key "Emacs"
-        :activate (fn [] (vim.disable))
-        :deactivate (fn [] (vim.enable))
-        :launch "emacs:maximize"
-        :items []
-        :keys []})
 
 (local hammerspoon-config
        {:key "Hammerspoon"
@@ -567,12 +543,21 @@
                 :key  :n
                 :action "slack:down"}]})
 
+(local roam-config
+       {:key "Roam Research"
+        :keys [{:mods [:ctrl]
+                :key :p
+                :action "slack:up"}
+               {:mods [:ctrl]
+                :key  :n
+                :action "slack:down"}]})
+
 (local apps
        [browser-config
-        emacs-config
         hammerspoon-config
         slack-config
-        obsidian-config])
+        obsidian-config
+        roam-config])
 
 (local config
        {:title "Main Menu"
