@@ -85,4 +85,5 @@
 
     ; Themes
     (use "morhetz/gruvbox")
-    (use "shaunsingh/nord.nvim")))
+    (use "shaunsingh/nord.nvim")
+    (use "navarasu/onedark.nvim")))

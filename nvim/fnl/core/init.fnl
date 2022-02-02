@@ -15,7 +15,8 @@
 ; Color scheme
 (set! syntax "enable")
 (set-true! termguicolors)
-(vim.api.nvim_command "silent! colorscheme gruvbox")
+(utils.call-module-setup :onedark {:style :warmer})
+(vim.api.nvim_command "silent! colorscheme onedark")
 
 ; Tmuxline (Configures Tmux's statusbar)
 (let! g/tmuxline_preset "powerline"
