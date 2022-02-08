@@ -145,7 +145,7 @@
 (noremap! "v" < "<gv"
           "v" > ">gv")
 
-; Start scrolling before my cursor reaches the bottom of the screen
+; Start scrolling before my cursor reaches the top or bottom of the screen
 (set! scrolloff 4)
 
 ; Improve search

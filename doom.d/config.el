@@ -103,6 +103,9 @@
 (map! :n "C-n" #'next-buffer
       :n "C-p" #'previous-buffer)
 
+;; Start scrolling before my cursor reaches the top or bottom of the screen
+(setq scroll-margin 4)
+
 ;; Workspace (tab) nav
 (map! :leader :prefix "TAB"
       :desc "Next workspace" "n" #'+workspace/switch-right
