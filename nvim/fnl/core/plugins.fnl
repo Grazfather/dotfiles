@@ -19,6 +19,7 @@
           :requires "kyazdani42/nvim-web-devicons"})
     (use {1 "akinsho/bufferline.nvim"
           :requires "kyazdani42/nvim-web-devicons"})
+    (use "lukas-reineke/indent-blankline.nvim")
     (use "folke/which-key.nvim")
 
     ; Navigation
