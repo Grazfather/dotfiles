@@ -44,7 +44,7 @@
 ;; [x] |-- shift + n, p - up, down screen
 ;; [x] |-- g - grid
 ;; [x] |-- arstzxcd - grid presets
-;; [x] |-- space - maximize
+;; [x] |-- p - maximize
 ;; [x] |-- c - center
 ;; [x] |-- u - undo
 ;;
@@ -53,6 +53,7 @@
 ;; [x] |-- b - browser
 ;; [x] |-- i - iTerm
 ;; [x] |-- s - Slack
+;; [x] |-- r - Spotify
 ;;
 ;; [x] j - jump
 ;;
@@ -63,12 +64,6 @@
 ;; [x] |-- j - volume down
 ;; [x] |-- s - play\pause
 ;; [x] |-- a - launch player
-;;
-;; [x] x - emacs
-;; [x] |-- c - capture
-;; [x] |-- z - note
-;; [x] |-- f - fullscreen
-;; [x] |-- v - split
 ;;
 ;; [x] alt-n - next-app
 ;; [x] alt-p - prev-app
@@ -434,10 +429,7 @@
                  :action "apps:prev-app"}
                 {:mods [:cmd :ctrl]
                  :key "`"
-                 :action hs.toggleConsole}
-                {:mods [:cmd :ctrl]
-                 :key :o
-                 :action "emacs:edit-with-emacs"}]))
+                 :action hs.toggleConsole}]))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; App Specific Config
@@ -457,16 +449,11 @@
          :repeat true}])
 
 (local browser-items
-       (concat
-        menu-items
-        [{:key "'"
-          :title "Edit with Emacs"
-          :action "emacs:edit-with-emacs"}]))
+        menu-items)
 
 (local browser-config
        {:key browser-app
-        :keys browser-keys
-        :items browser-items})
+        :keys browser-keys})
 
 (local hammerspoon-config
        {:key "Hammerspoon"
