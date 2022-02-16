@@ -1,6 +1,5 @@
 (module core.init
-  {autoload {: packer
-             utils core.utils}
+  {autoload {utils core.utils}
    require-macros [core.macros]})
 
 (require :core.plugins)
@@ -331,5 +330,6 @@
 ;   - M-b/M-w - Move back/forward sibling
 ;   - [e/]e - Select prev/next sexp
 ;   - M-h/M-j/M-k/M-l - Drag sexp around
+;   - M-S-h/M-S-j/M-S-k/M-S-l - Barf/slurp
 ; Make vim-sexp work for more languages
 (vim.api.nvim_set_var "sexp_filetypes" "clojure,scheme,lisp,timl,fennel,janet")

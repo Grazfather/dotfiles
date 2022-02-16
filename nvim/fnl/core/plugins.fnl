@@ -27,8 +27,8 @@
     (use {1 "ibhagwan/fzf-lua"
           :requires ["vijaymarupudi/nvim-fzf" "kyazdani42/nvim-web-devicons"]})
     (use "edkolev/tmuxline.vim")
-    (use "kyazdani42/nvim-tree.lua")
-    (use "ryanoasis/vim-devicons")
+    (use {1 "kyazdani42/nvim-tree.lua"
+          :requires ["kyazdani42/nvim-web-devicons"]})
     ; -- hopping (bound to gsj & gsk)
     (use "phaazon/hop.nvim")
     ; -- Override f/t & add sniping via s
