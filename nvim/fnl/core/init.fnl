@@ -1,6 +1,5 @@
 (module core.init
-  {autoload {utils core.utils}
-   require-macros [core.macros]})
+  {require-macros [core.macros]})
 
 (require :core.plugins)
 (require :core.completion)
@@ -14,7 +13,7 @@
 ; Color scheme
 (set! syntax "enable")
 (set-true! termguicolors)
-(utils.call-module-setup :onedark {:style :warmer})
+(setup-module! :onedark {:style :warmer})
 (vim.api.nvim_command "silent! colorscheme onedark")
 
 ; Tmuxline (Configures Tmux's statusbar)
@@ -22,18 +21,18 @@
       g/tmuxline_theme "zenburn")
 
 ; Status line
-(utils.call-module-setup :lualine {:options {:theme :auto
-                                             :component_separators {:left ""
-                                                                    :right ""}
-                                             :section_separators {:left ""
-                                                                  :right ""}}})
+(setup-module! :lualine {:options {:theme :auto
+                                   :component_separators {:left ""
+                                                          :right ""}
+                                   :section_separators {:left ""
+                                                        :right ""}}})
 ; Always show the status bar
 (set! laststatus 2)
 ; Show opened buffers on tabline
-(utils.call-module-setup :bufferline {:options {:diagnostics :nvim_lsp
-                                                :offsets [{:filetype :NvimTree
-                                                           :text ""
-                                                           :padding 1}]}})
+(setup-module! :bufferline {:options {:diagnostics :nvim_lsp
+                                      :offsets [{:filetype :NvimTree
+                                                 :text ""
+                                                 :padding 1}]}})
 
 (each [name text (pairs {:DiagnosticSignError ""
                          :DiagnosticSignWarn ""
@@ -42,9 +41,9 @@
   (vim.fn.sign_define name {:texthl name :text text :numhl ""}))
 
 ; Show lines at each indent
-(utils.call-module-setup :indent_blankline
-                         {:buftype_exclude ["terminal" "nofile"]
-                          :filetype_exclude ["NvimTree" "help"]})
+(setup-module! :indent_blankline
+               {:buftype_exclude ["terminal" "nofile"]
+                :filetype_exclude ["NvimTree" "help"]})
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; VISUAL/LAYOUT
@@ -72,21 +71,19 @@
 (let! g/mapleader " "
       g/maplocalleader " m")
 
-; Use WhichKey to show my prefix mappings
-(utils.call-module-setup :which-key {})
-; -- Short timeoutlen to get which-key to kick in sooner
+; Short timeoutlen to get which-key to kick in sooner
 (set! timeoutlen 100)
 ; -- Document top-level prefixes
-(utils.call-module-method :which-key :register
-                          {:b {:name "Buffer stuff"}
-                           :e {:name "Edit stuff"}
-                           :g {:name "Git"}
-                           :h {:name "Help"}
-                           :m {:name "Local leader"}
-                           :f {:name "File/find ops"}
-                           :t {:name "Toggles"}
-                           :w {:name "Window"}}
-                          {:prefix :<leader>})
+(call-module-method! :which-key :register
+                     {:b {:name "Buffer stuff"}
+                      :e {:name "Edit stuff"}
+                      :g {:name "Git"}
+                      :h {:name "Help"}
+                      :m {:name "Local leader"}
+                      :f {:name "File/find ops"}
+                      :t {:name "Toggles"}
+                      :w {:name "Window"}}
+                     {:prefix :<leader>})
 
 ; Read configurations from files
 (set-true! modeline)
@@ -103,8 +100,6 @@
 
 ; Lazily redraw: Make macros faster
 (set-true! lazyredraw)
-
-(utils.call-module-setup :gitsigns {})
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; NAVIGATION
@@ -195,16 +190,13 @@
 (nnoremap! Q "<nop>")
 
 ; Configure hop bindings
-(utils.call-module-setup :hop {:keys "arstneio"})
+(setup-module! :hop {:keys "arstneio"})
 (map! "nv" gs/ "<cmd>HopPattern<CR>"
       "nv" gss "<cmd>HopChar2<CR>"
       "nv" gsw "<cmd>HopWordAC<CR>"
       "nv" gsb "<cmd>HopWordBC<CR>"
       "nv" gsj "<cmd>HopLineAC<CR>"
       "nv" gsk "<cmd>HopLineBC<CR>")
-
-; Configure nvim-tree
-(utils.call-module-setup :nvim-tree {})
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; GLOBAL MAPPINGS
@@ -302,7 +294,6 @@
   (set! listchars "eol:$,conceal:+tab:>-,precedes:<,extends:\u{2026}"))
 
 ; Comment.nvim
-(utils.call-module-setup :Comment {})
 (nmap! "<leader>c " "gcc")
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

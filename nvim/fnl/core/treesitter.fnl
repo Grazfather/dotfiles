@@ -1,7 +1,7 @@
 (module code.treesitter
-  {autoload {utils core.utils}})
+  {require-macros [core.macros]})
 
-(utils.call-module-setup
+(setup-module!
   :nvim-treesitter.configs
   {:playground {:enable true}
    :highlight {:enable true}

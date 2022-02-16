@@ -1,15 +1,14 @@
-; (module core.completion)
 (module core.completion
-  {autoload {utils core.utils}})
+  {require-macros [core.macros]})
 
 ; Completion via nvim-cmp
-(utils.call-module-method :luasnip.loaders.from_vscode :lazy_load)
+(call-module-method! :luasnip.loaders.from_vscode :lazy_load)
 
 (local lspkind (require :lspkind))
 (local luasnip (require :luasnip))
 (local cmp (require :cmp))
 
-(utils.call-module-setup
+(setup-module!
   :cmp
   {:snippet {:expand (fn [args] (luasnip.lsp_expand args.body))}
    :mapping {"<CR>" (cmp.mapping.confirm {:select true})

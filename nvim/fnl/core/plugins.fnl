@@ -1,5 +1,6 @@
 (module core.plugins
-  {autoload {packer packer}})
+  {autoload {packer packer}
+   require-macros [core.macros]})
 
 (packer.startup
   (fn []
@@ -20,7 +21,8 @@
     (use {1 "akinsho/bufferline.nvim"
           :requires "kyazdani42/nvim-web-devicons"})
     (use "lukas-reineke/indent-blankline.nvim")
-    (use "folke/which-key.nvim")
+    (use {1 "folke/which-key.nvim"
+          :config (setup-module-fn! :which-key)})
 
     ; Navigation
     (use {1 "junegunn/fzf" :run (fn [] (vim.fn "-> fzf#install()")) })
@@ -28,7 +30,8 @@
           :requires ["vijaymarupudi/nvim-fzf" "kyazdani42/nvim-web-devicons"]})
     (use "edkolev/tmuxline.vim")
     (use {1 "kyazdani42/nvim-tree.lua"
-          :requires ["kyazdani42/nvim-web-devicons"]})
+          :requires ["kyazdani42/nvim-web-devicons"]
+          :config (setup-module-fn! :nvim-tree)})
     ; -- hopping (bound to gsj & gsk)
     (use "phaazon/hop.nvim")
     ; -- Override f/t & add sniping via s
@@ -78,10 +81,12 @@
     (use "junegunn/gv.vim")
     ; -- Adds changed lines in the gutter
     (use {1 "lewis6991/gitsigns.nvim"
-          :requires ["nvim-lua/plenary.nvim"]})
+          :requires ["nvim-lua/plenary.nvim"]
+          :config (setup-module-fn! :gitsigns)})
 
     ; Misc
-    (use "numToStr/Comment.nvim")
+    (use {1 "numToStr/Comment.nvim"
+          :config (setup-module-fn! :Comment)})
     (use "tpope/vim-surround")
 
     ; Themes

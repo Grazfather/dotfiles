@@ -1,5 +1,5 @@
 (module core.lsp
-  {autoload {utils core.utils}})
+  {require-macros [core.macros]})
 
 (local lspconfig (require :lspconfig))
 
@@ -42,7 +42,7 @@
 
 ; Add capabilities from cmp_nvim_lsp
 (local capabilities
-  (utils.call-module-method :cmp_nvim_lsp :update_capabilities
+  (call-module-method! :cmp_nvim_lsp :update_capabilities
    (vim.lsp.protocol.make_client_capabilities)))
 
 ; Use a loop to conveniently both setup defined servers and map buffer local
