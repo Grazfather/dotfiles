@@ -290,8 +290,8 @@
 ; Toggle showing listchars
 (nnoremap! <leader>t<TAB> "<cmd>set list!<CR>")
 (if (= (get? encoding) "utf-8")
-  (set! listchars "eol:\u{00ac},nbsp:\u{2423},conceal:\u{22ef},tab:\u{25b8}\u{2014},precedes:\u{2026},extends:\u{2026}")
-  (set! listchars "eol:$,conceal:+tab:>-,precedes:<,extends:\u{2026}"))
+  (set! listchars "eol:¬,nbsp:␣,conceal:⋯,tab:▸—,precedes:…,extends:…,trail:•")
+  (set! listchars "eol:$,conceal:+tab:>-,precedes:<,extends:>"))
 
 ; Comment.nvim
 (nmap! "<leader>c " "gcc")
