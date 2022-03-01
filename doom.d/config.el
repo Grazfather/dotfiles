@@ -101,7 +101,8 @@
 
 ;; Buffer nav
 (map! :n "C-n" #'next-buffer
-      :n "C-p" #'previous-buffer)
+      :n "C-p" #'previous-buffer
+      :n "C-e" #'mode-line-other-buffer)
 
 ;; Start scrolling before my cursor reaches the top or bottom of the screen
 (setq scroll-margin 4)
