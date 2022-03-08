@@ -8,16 +8,25 @@
 (local luasnip (require :luasnip))
 (local cmp (require :cmp))
 
+(setup-module! :luasnip {:updateevents "TextChanged,TextChangedI"})
+
 (setup-module!
   :cmp
   {:snippet {:expand (fn [args] (luasnip.lsp_expand args.body))}
    :mapping {"<CR>" (cmp.mapping.confirm {:select true})
-             ; For snippets with params, tab jumps to next, or expand doc
-             "<Tab>" (cmp.mapping
+             ; For snippets with params, C-N/C-P can be used to move within them
+             "<C-N>" (cmp.mapping
                        (fn [fallback]
                          (if
-                           (luasnip.expandable) (luasnip.expand)
-                           (luasnip.expand_or_jumpable) (luasnip.expand_or_jump)
+                           (cmp.visible) (cmp.select_next_item)
+                           (luasnip.jumpable 1) (luasnip.jump 1)
+                           (fallback)))
+                       [:i :s])
+             "<C-P>" (cmp.mapping
+                       (fn [fallback]
+                         (if
+                           (cmp.visible) (cmp.select_prev_item)
+                           (luasnip.jumpable -1) (luasnip.jump -1)
                            (fallback)))
                        [:i :s])}
    ; Show icons for the type of completion, and show where it came from
