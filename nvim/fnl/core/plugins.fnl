@@ -23,6 +23,8 @@
     (use "lukas-reineke/indent-blankline.nvim")
     (use {1 "folke/which-key.nvim"
           :config (setup-module-fn! :which-key)})
+    (use {1 "folke/todo-comments.nvim"
+          :requires "nvim-lua/plenary.nvim"})
 
     ; Navigation
     (use {1 "junegunn/fzf" :run (fn [] (vim.fn "-> fzf#install()")) })

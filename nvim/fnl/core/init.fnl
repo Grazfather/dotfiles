@@ -101,6 +101,19 @@
 ; Lazily redraw: Make macros faster
 (set-true! lazyredraw)
 
+; Setup todo-comments.nvim to highlight special words
+; DELETEME:
+; TODO:
+; HACK:
+; WARN:
+; NOTE:
+(setup-module! :todo-comments
+               {:keywords {:DELETEME {:icon "✗" :color "error"}
+                           :TODO {:icon " " :color "info"}
+                           :HACK {:icon " " :color "warning"}
+                           :WARN {:icon " " :color "warning" :alt ["WARNING" "XXX"]}
+                           :NOTE {:icon " " :color "hint" :alt  ["INFO"]}}})
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; NAVIGATION
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
