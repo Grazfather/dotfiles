@@ -103,7 +103,7 @@
 
 ; Setup todo-comments.nvim to highlight special words
 ; DELETEME:
-; TODO:
+; TODO: This is a todo
 ; HACK:
 ; WARN:
 ; NOTE:
@@ -112,7 +112,9 @@
                            :TODO {:icon " " :color "info"}
                            :HACK {:icon " " :color "warning"}
                            :WARN {:icon " " :color "warning" :alt ["WARNING" "XXX"]}
-                           :NOTE {:icon " " :color "hint" :alt  ["INFO"]}}})
+                           :NOTE {:icon " " :color "hint" :alt  ["INFO"]}}
+                ; I set the colon to optional for DELETEME comments
+                :highlight {:pattern ".*<(KEYWORDS)\\s*:?"}})
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; NAVIGATION
