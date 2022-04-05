@@ -72,7 +72,7 @@
       g/maplocalleader " m")
 
 ; Short timeoutlen to get which-key to kick in sooner
-(set! timeoutlen 100)
+(set! timeoutlen 200)
 ; -- Document top-level prefixes
 (call-module-method! :which-key :register
                      {:b {:name "Buffer stuff"}
