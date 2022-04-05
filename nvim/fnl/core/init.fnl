@@ -254,6 +254,9 @@
   ; Toggle cursor highlighting
   <leader>tx "<cmd>set cursorline! cursorcolumn!<CR>"
 
+  ; Blink on demand
+  <leader><space> "<cmd>lua require('blinker').blink_cursorline()<CR>"
+
   ; Toggle paste
   <leader>tp "<cmd>set paste!<CR>"
 
@@ -308,6 +311,9 @@
 
 ; Comment.nvim
 (nmap! "<leader>c " "gcc")
+
+; Blinker.nvim
+(setup-module! :blinker {})
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; Specific language settings

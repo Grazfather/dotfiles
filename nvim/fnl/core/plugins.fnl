@@ -25,6 +25,7 @@
           :config (setup-module-fn! :which-key)})
     (use {1 "folke/todo-comments.nvim"
           :requires "nvim-lua/plenary.nvim"})
+    (use "Grazfather/blinker.nvim")
 
     ; Navigation
     (use {1 "junegunn/fzf" :run (fn [] (vim.fn "-> fzf#install()")) })
