@@ -218,7 +218,9 @@
   <leader>eW "<cmd>%s/\\s\\+$//<CR><C-o>"
 
   ; Convert tabs to spaces
-  <leader>eT "<cmd>%s/\t/    /g<CR>"
+  <leader>eT2 "<cmd>%s/\t/  /g<CR>"
+  <leader>eT4 "<cmd>%s/\t/    /g<CR>"
+  <leader>eT8 "<cmd>%s/\t/        /g<CR>"
 
   ; Select whole buffer
   vag "ggVGg_"
