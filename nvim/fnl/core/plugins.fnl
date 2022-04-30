@@ -26,6 +26,7 @@
     (use {1 "folke/todo-comments.nvim"
           :requires "nvim-lua/plenary.nvim"})
     (use "Grazfather/blinker.nvim")
+    (use "akinsho/toggleterm.nvim")
 
     ; Navigation
     (use {1 "junegunn/fzf" :run (fn [] (vim.fn "-> fzf#install()")) })
@@ -67,7 +68,7 @@
     (use {1 "liquidz/vim-iced" :ft ["clojure"]})
     ; ---- Linting
     (use "borkdude/clj-kondo")
-    : -- Janet
+    ; -- Janet
     (use "janet-lang/janet.vim")
     ; -- Fennel
     (use "bakpakin/fennel.vim")

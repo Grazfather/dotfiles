@@ -209,6 +209,9 @@
       "nv" gsj "<cmd>HopLineAC<CR>"
       "nv" gsk "<cmd>HopLineBC<CR>")
 
+; Toggleterm
+(setup-module! :toggleterm {:open_mapping "<c-\\>"})
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; GLOBAL MAPPINGS
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
