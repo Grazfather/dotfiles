@@ -272,6 +272,9 @@
   ; Nvim tree
   <leader>ft "<cmd>NvimTreeToggle<CR>"
 
+  ; Undotree
+  <leader>tu "<cmd>UndotreeToggle<CR>"
+
   ; Fugitive (git)
   <leader>gb "<cmd>Git blame<CR>"
   <leader>gd "<cmd>Git diff<CR>"

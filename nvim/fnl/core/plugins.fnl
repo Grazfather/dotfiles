@@ -27,6 +27,7 @@
           :requires "nvim-lua/plenary.nvim"})
     (use "Grazfather/blinker.nvim")
     (use "akinsho/toggleterm.nvim")
+    (use "mbbill/undotree")
 
     ; Navigation
     (use {1 "junegunn/fzf" :run (fn [] (vim.fn "-> fzf#install()")) })
