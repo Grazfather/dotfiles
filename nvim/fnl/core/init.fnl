@@ -210,7 +210,8 @@
       "nv" gsk "<cmd>HopLineBC<CR>")
 
 ; Toggleterm
-(setup-module! :toggleterm {:open_mapping "<c-\\>"})
+(setup-module! :toggleterm {:open_mapping "<c-\\>"
+                            :direction :float})
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; GLOBAL MAPPINGS
