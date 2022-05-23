@@ -26,8 +26,8 @@
                                                           :right ""}
                                    :section_separators {:left ""
                                                         :right ""}}})
-; Always show the status bar
-(set! laststatus 2)
+; Always show the status bar, one for all splits
+(set! laststatus 3)
 ; Show opened buffers on tabline
 (setup-module! :bufferline {:options {:diagnostics :nvim_lsp
                                       :offsets [{:filetype :NvimTree
