@@ -1,9 +1,9 @@
 [alias]
       aa = add --all
-      ao = add --patch
+      ap = add --patch
       b = branch
-      br = branch
       ca = commit --amend
+      cara = commit --amend --reset-author
       co = checkout
       ci = commit
       cp = cherry-pick
