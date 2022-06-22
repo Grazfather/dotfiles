@@ -211,7 +211,7 @@
 
 ; Toggleterm
 (setup-module! :toggleterm {:open_mapping "<c-\\>"
-                            :direction :float})
+                            :direction :tab})
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; GLOBAL MAPPINGS
