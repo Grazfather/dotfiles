@@ -331,9 +331,12 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ; Use github-flavored markdown
-(vim.cmd "augroup markdown
-         autocmd! BufNewFile,BufRead *.md,*.markdown setlocal filetype=ghmarkdown
-         augroup end")
+(vim.api.nvim_create_autocmd
+  ["BufNewFile" "BufRead"]
+  {:pattern "*.md"
+   :group (vim.api.nvim_create_augroup "markdown" {:clear true})
+   :callback (fn [] (vim.api.nvim_set_option_value :filetype :ghmarkdown {:scope :local}))
+   })
 
 ; vim-iced (Clojure)
 (let! g/iced_default_key_mapping_leader "<LocalLeader>"
