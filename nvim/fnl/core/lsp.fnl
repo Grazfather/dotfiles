@@ -30,15 +30,25 @@
 
   ; Set autocommands conditional on server_capabilities
   (if client.resolved_capabilities.document_highlight
-    (vim.api.nvim_command
-      "hi LspReferenceRead cterm=bold ctermbg=red guibg=LightYellow
-      hi LspReferenceText cterm=bold ctermbg=red guibg=LightYellow
-      hi LspReferenceWrite cterm=bold ctermbg=red guibg=LightYellow
-      augroup lsp_document_highlight
-        autocmd! * <buffer>
-        autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
-        autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
-      augroup END")))
+    (do
+      (vim.api.nvim_set_hl 0 "LspReferenceRead" {:bold true :fg :grey :bg :LightYellow})
+      (vim.api.nvim_set_hl 0 "LspReferenceText" {:bold true :fg :grey :bg :LightYellow})
+      (vim.api.nvim_set_hl 0 "LspReferenceWrite" {:bold true :fg :grey :bg :LightYellow})
+
+      (let [group (vim.api.nvim_create_augroup "lsp-document-highlight" {:clear true})]
+        (vim.api.nvim_create_autocmd
+          :CursorHold
+          {:buffer bufnr
+           :group group
+           :callback (fn [] (vim.lsp.buf.document_highlight))})
+        (print "2")
+        (vim.api.nvim_create_autocmd
+          :CursorMoved
+          {:buffer bufnr
+           :group group
+           :callback (fn [] (vim.lsp.buf.clear_references))})
+        )
+      )))
 
 ; Add capabilities from cmp_nvim_lsp
 (local capabilities

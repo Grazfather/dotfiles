@@ -46,6 +46,7 @@
     ; -- LSP
     (use "neovim/nvim-lspconfig")
     (use "onsails/lspkind-nvim")
+    (use "antoinemadec/FixCursorHold.nvim")
     ; -- Parsing
     (use {1 "nvim-treesitter/nvim-treesitter" :run ":TSUpdate"})
     (use "nvim-treesitter/nvim-treesitter-textobjects")

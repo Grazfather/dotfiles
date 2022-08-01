@@ -101,6 +101,10 @@
 ; Lazily redraw: Make macros faster
 (set-true! lazyredraw)
 
+; With FixCursorHold.nvim we can make CursorHold trigger quickly without
+; triggering writing to swap files
+(let! g/cursorhold_updatetime 500)
+
 ; Setup todo-comments.nvim to highlight special words
 ; DELETEME:
 ; TODO: This is a todo
