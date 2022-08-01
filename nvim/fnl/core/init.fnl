@@ -54,7 +54,7 @@
 ;   Mixed spaces and tabs (in either order):
     	;
 	    ;
-(vim.api.nvim_command ":highlight TrailingWhitespace ctermbg=darkred guibg=darkred")
+(vim.api.nvim_set_hl 0 "TrailingWhitespace" {:bg :darkred})
 (vim.api.nvim_command ":let w:m2=matchadd('TrailingWhitespace', '\\s\\+$\\| \\+\\ze\\t\\|\\t\\+\\ze ')")
 
 ; Remap <leader>
