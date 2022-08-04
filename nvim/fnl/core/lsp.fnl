@@ -31,9 +31,9 @@
   ; Set autocommands conditional on server_capabilities
   (if client.server_capabilities.documentHighlightProvider
     (do
-      (vim.api.nvim_set_hl 0 "LspReferenceRead" {:bold true :fg :grey :bg :LightYellow})
-      (vim.api.nvim_set_hl 0 "LspReferenceText" {:bold true :fg :grey :bg :LightYellow})
-      (vim.api.nvim_set_hl 0 "LspReferenceWrite" {:bold true :fg :grey :bg :LightYellow})
+      (vim.api.nvim_set_hl 0 "LspReferenceRead" {:reverse true})
+      (vim.api.nvim_set_hl 0 "LspReferenceText" {:reverse true})
+      (vim.api.nvim_set_hl 0 "LspReferenceWrite" {:reverse true})
 
       (let [group (vim.api.nvim_create_augroup "lsp-document-highlight" {:clear true})]
         (vim.api.nvim_create_autocmd
