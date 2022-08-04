@@ -23,13 +23,13 @@
   (buf-set-keymap "n" "<leader>rn" "<cmd>lua vim.lsp.buf.rename()<CR>" opts)
 
   ; Set some keybinds conditional on server capabilities
-  (if client.resolved_capabilities.document_formatting
-    (buf-set-keymap "n" "<leader>ef" "<cmd>lua vim.lsp.buf.formatting()<CR>" opts))
-  (if client.resolved_capabilities.document_range_formatting
+  (if client.server_capabilities.documentFormattingProvider
+    (buf-set-keymap "n" "<leader>ef" "<cmd>lua vim.lsp.buf.format({async = true})<CR>" opts))
+  (if client.server_capabilities.documentRangeFormattingProvider
     (buf-set-keymap "v" "<leader>ef" "<cmd>lua vim.lsp.buf.range_formatting()<CR>" opts))
 
   ; Set autocommands conditional on server_capabilities
-  (if client.resolved_capabilities.document_highlight
+  (if client.server_capabilities.documentHighlightProvider
     (do
       (vim.api.nvim_set_hl 0 "LspReferenceRead" {:bold true :fg :grey :bg :LightYellow})
       (vim.api.nvim_set_hl 0 "LspReferenceText" {:bold true :fg :grey :bg :LightYellow})
@@ -41,7 +41,6 @@
           {:buffer bufnr
            :group group
            :callback (fn [] (vim.lsp.buf.document_highlight))})
-        (print "2")
         (vim.api.nvim_create_autocmd
           :CursorMoved
           {:buffer bufnr
