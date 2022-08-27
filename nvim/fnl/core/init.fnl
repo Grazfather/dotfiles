@@ -223,12 +223,12 @@
 
 (nmap!
   ; Clear trailing whitespace
-  <leader>eW "<cmd>%s/\\s\\+$//<CR><C-o>"
+  <leader>ew "<cmd>%s/\\s\\+$//<CR><C-o>"
 
   ; Convert tabs to spaces
-  <leader>eT2 "<cmd>%s/\t/  /g<CR>"
-  <leader>eT4 "<cmd>%s/\t/    /g<CR>"
-  <leader>eT8 "<cmd>%s/\t/        /g<CR>"
+  <leader>et2 "<cmd>%s/\t/  /g<CR>"
+  <leader>et4 "<cmd>%s/\t/    /g<CR>"
+  <leader>et8 "<cmd>%s/\t/        /g<CR>"
 
   ; Select whole buffer
   vag "ggVGg_"
