@@ -13,7 +13,7 @@
 (setup-module!
   :cmp
   {:snippet {:expand (fn [args] (luasnip.lsp_expand args.body))}
-   :mapping {"<CR>" (cmp.mapping.confirm {:select true})
+   :mapping {"<C-Y>" (cmp.mapping.confirm {:select true})
              ; For snippets with params, C-N/C-P can be used to move within them
              "<C-N>" (cmp.mapping
                        (fn [fallback]
