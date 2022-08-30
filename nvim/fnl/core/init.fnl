@@ -280,12 +280,13 @@
   ; Undotree
   <leader>tu "<cmd>UndotreeToggle<CR>"
 
-  ; Fugitive (git)
+  ; Git stuff
   <leader>gb "<cmd>Git blame<CR>"
   <leader>gd "<cmd>Git diff<CR>"
   <leader>gs "<cmd>Git status<CR>"
   <leader>gl "<cmd>GV<CR>"
   <leader>gg "<cmd>Neogit<CR>"
+  <leader>gm "<cmd>GitMessenger<CR>"
 
   ; fzf.vim
   ; -- Find files in 'project' (repo)

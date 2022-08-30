@@ -83,6 +83,8 @@
           :requires ["nvim-lua/plenary.nvim"]})
     ; -- Adds :Gbrowse
     (use "tpope/vim-rhubarb")
+    ; -- Adds :GitMessenger
+    (use "rhysd/git-messenger.vim")
     ; -- Adds :GV to browse history
     (use "junegunn/gv.vim")
     ; -- Adds changed lines in the gutter
