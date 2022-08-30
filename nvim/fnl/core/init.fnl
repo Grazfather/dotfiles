@@ -339,11 +339,6 @@
    :callback (fn [] (vim.api.nvim_set_option_value :filetype :ghmarkdown {:scope :local}))
    })
 
-; vim-iced (Clojure)
-(let! g/iced_default_key_mapping_leader "<LocalLeader>"
-      g/iced_enable_default_key_mappings "v:true"
-      g/iced_enable_clj_konda_analysis "v:true")
-
 ; vim-sexp
 ; - Adds new text objects:
 ;   - f - form

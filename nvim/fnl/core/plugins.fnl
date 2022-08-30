@@ -67,7 +67,7 @@
     (use "guns/vim-sexp")
     ; -- Clojure
     ; ---- Connection to nREPL
-    (use {1 "liquidz/vim-iced" :ft ["clojure"]})
+    (use "Olical/conjure")
     ; ---- Linting
     (use "borkdude/clj-kondo")
     ; -- Janet
