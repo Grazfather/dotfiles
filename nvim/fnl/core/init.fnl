@@ -198,6 +198,10 @@
 ; Show linenumbers by default
 (set-true! number relativenumber)
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; GLOBAL MAPPINGS
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 ; Make joins keep the cursor in the same spot in the window
 (nnoremap! J "mzJ`z")
 
@@ -217,94 +221,103 @@
 (setup-module! :toggleterm {:open_mapping "<c-\\>"
                             :direction :tab})
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; GLOBAL MAPPINGS
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-(nmap!
-  ; Clear trailing whitespace
+(descnmap!
+  "Clear trailing whitespace"
   <leader>ew "<cmd>%s/\\s\\+$//<CR><C-o>"
 
-  ; Convert tabs to spaces
+  "Convert tabs to 2 spaces"
   <leader>et2 "<cmd>%s/\t/  /g<CR>"
+  "Convert tabs to 4 spaces"
   <leader>et4 "<cmd>%s/\t/    /g<CR>"
+  "Convert tabs to 8 spaces"
   <leader>et8 "<cmd>%s/\t/        /g<CR>"
 
-  ; Select whole buffer
+  "Select whole buffer"
   vag "ggVGg_"
 
   ; Open commonly edited files
+  "Open vimrc"
   <leader>fev "<cmd>edit $MYVIMRC<CR>"
+  "Open tmux config"
   <leader>fet "<cmd>edit $HOME/.tmux.conf<CR>"
+  "Open bash aliases"
   <leader>feb "<cmd>edit $HOME/.bash_aliases<CR>"
+  "Open git aliases"
   <leader>feg "<cmd>edit $HOME/.gitaliases<CR>"
 
-  ; Reload vimrc
+  "Reload vimrc"
   <leader>frv "<cmd>source $MYVIMRC<CR>"
-
-  ; Close the current buffer
+  "Close current buffer"
   <leader>bd "<cmd>bp|bd #<CR>"
-
-  ; Save
+  "Save buffer"
   <leader>fs "<cmd>write<CR>"
 
   ; Add 'DELETEME' comment using Comment.nvim
+  "Add DELETEME comment"
   <leader>dm "mxgcADELETEME<ESC>`x<ESC>"
-  ; Delete all DELETEME lines
+  "Delete all DELETEME lines"
   <leader>dd "<cmd>keepp :g/DELETEME/d<CR><C-o>"
 
-  ; Toggle search highlighting
+  "Toggle search highlighting"
   <leader>th "<cmd>set hlsearch!<CR>"
-
-  ; Show relative line numbers
+  "Toggle showing relative line numbers"
   <leader>tl "<cmd>set number! relativenumber!<CR>"
-
-  ; Toggle cursor highlighting
+  "Toggle cursor highlighting"
   <leader>tx "<cmd>set cursorline! cursorcolumn!<CR>"
-
-  ; Blink on demand
+  "Blink current line"
   <leader><space> "<cmd>lua require('blinker').blink_cursorline()<CR>"
-
-  ; Toggle paste
+  "Toggle paste"
   <leader>tp "<cmd>set paste!<CR>"
 
   ; Window (split) management
+  "Split vertically"
   <leader>wv "<cmd>vsplit<CR>"
+  "Split horizontally"
   <leader>ws "<cmd>split<CR>"
+  "Close split"
   <leader>wd "<cmd>close<CR>"
+  "Close other splits"
   <leader>wo "<cmd>only<CR>"
 
-  ; Nvim tree
+  "Toggle NvimTree"
   <leader>ft "<cmd>NvimTreeToggle<CR>"
-
-  ; Undotree
+  "Toggle Undotree"
   <leader>tu "<cmd>UndotreeToggle<CR>"
 
   ; Git stuff
+  "Git blame"
   <leader>gb "<cmd>Git blame<CR>"
+  "Git diff"
   <leader>gd "<cmd>Git diff<CR>"
+  "Git status"
   <leader>gs "<cmd>Git status<CR>"
+  "Git log"
   <leader>gl "<cmd>GV<CR>"
+  "Open Neogit"
   <leader>gg "<cmd>Neogit<CR>"
+  "Show commit message at line"
   <leader>gm "<cmd>GitMessenger<CR>"
 
   ; fzf.vim
-  ; -- Find files in 'project' (repo)
+  "Find files in project"
   <leader>pf "<cmd>lua require('fzf-lua').git_files()<CR>"
-  ; -- Find files from CWD
+  "File files from CWD"
   <leader>ff "<cmd>lua require('fzf-lua').files()<CR>"
-  ; -- Find buffer
+  "Find buffer"
   <leader>bb "<cmd>lua require('fzf-lua').buffers()<CR>"
-  ; -- Find line in current buffer
+  "Find line in buffer"
   <leader>ss "<cmd>lua require('fzf-lua').blines()<CR>"
-  ; -- Find line in all buffers
+  "Find line in all buffers"
   <leader>f* "<cmd>lua require('fzf-lua').lines()<CR>"
-  ; -- Grep file content from CWD
+  "Grep file content from CWD"
   <leader>frg "<cmd>lua require('fzf-lua').live_grep()<CR>"
-
+  "Search help"
   <leader>hh "<cmd>lua require('fzf-lua').help_tags()<CR>"
+  "Search keymaps"
   <leader>hk "<cmd>lua require('fzf-lua').keymaps()<CR>"
+  "Search man pages"
   <leader>hm "<cmd>lua require('fzf-lua').man_pages()<CR>"
+  "Search ex commands"
   "<leader>:" "<cmd>lua require('fzf-lua').commands()<CR>")
 
 ; Toggle signcolumn (gutter) to make copy and paste easier
@@ -313,7 +326,7 @@
   (if (= (get? signcolumn) "yes")
     (set! signcolumn "no")
     (set! signcolumn "yes"))))
-(nmap! "<leader>tg" "<cmd>lua toggle_sign_column()<CR>")
+(descnmap! "Toggle sign column" "<leader>tg" "<cmd>lua toggle_sign_column()<CR>")
 
 ; Toggle showing listchars
 (nnoremap! <leader>t<TAB> "<cmd>set list!<CR>")
@@ -322,7 +335,7 @@
   (set! listchars "eol:$,conceal:+tab:>-,precedes:<,extends:>"))
 
 ; Comment.nvim
-(nmap! "<leader>c " "gcc")
+(descnmap! "Toggle comment on current line" "<leader>c " "gcc")
 
 ; Blinker.nvim
 (setup-module! :blinker {})
@@ -336,8 +349,7 @@
   ["BufNewFile" "BufRead"]
   {:pattern "*.md"
    :group (vim.api.nvim_create_augroup "markdown" {:clear true})
-   :callback (fn [] (vim.api.nvim_set_option_value :filetype :ghmarkdown {:scope :local}))
-   })
+   :callback (fn [] (vim.api.nvim_set_option_value :filetype :ghmarkdown {:scope :local}))})
 
 ; vim-sexp
 ; - Adds new text objects:

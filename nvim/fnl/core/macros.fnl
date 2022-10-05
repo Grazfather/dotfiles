@@ -67,6 +67,11 @@
     `(do ,(map!- "n" keys cmd {})
          ,(nmap! ...))))
 
+(fn descnmap! [desc keys cmd ...]
+  (when (not (= nil keys))
+    `(do ,(map!- "n" keys cmd {:desc desc})
+         ,(descnmap! ...))))
+
 (fn noremap! [modes keys cmd ...]
   (when (not (= nil modes))
     `(do ,(map!- modes keys cmd {:noremap true})
@@ -108,6 +113,7 @@
  : set-false!
  : map!
  : nmap!
+ : descnmap!
  : noremap!
  : nnoremap!
  : call-module-method!
