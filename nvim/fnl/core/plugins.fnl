@@ -40,7 +40,7 @@
     ; -- hopping (bound to gsj & gsk)
     (use "phaazon/hop.nvim")
     ; -- Override f/t & add sniping via s
-    (use "ggandor/lightspeed.nvim")
+    (use "ggandor/leap.nvim")
 
     ; Language support
     ; -- LSP

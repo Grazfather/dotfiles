@@ -198,6 +198,9 @@
 ; Show linenumbers by default
 (set-true! number relativenumber)
 
+; Use default (s/S) mappings for leap.nvim
+(call-module-method! :leap :set_default_keymaps)
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; GLOBAL MAPPINGS
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
