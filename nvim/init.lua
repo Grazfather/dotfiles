@@ -40,8 +40,5 @@ packer.init({
     },
 })
 
--- Do not source the default filetype.vim, use filetype.nvim
-vim.g.did_load_filetypes = 1
-
 -- Enable Aniseed
 vim.g["aniseed#env"] = { module = "core.init" }
