@@ -16,10 +16,6 @@
 (setup-module! :onedark {:style :warmer})
 (vim.api.nvim_command "silent! colorscheme onedark")
 
-; Tmuxline (Configures Tmux's statusbar)
-(let! g/tmuxline_preset "powerline"
-      g/tmuxline_theme "zenburn")
-
 ; Status line
 (setup-module! :lualine {:options {:theme :auto
                                    :component_separators {:left ""

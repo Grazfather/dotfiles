@@ -31,7 +31,6 @@
     (use {1 "junegunn/fzf" :run (fn [] (vim.fn "-> fzf#install()")) })
     (use {1 "ibhagwan/fzf-lua"
           :requires ["vijaymarupudi/nvim-fzf" "kyazdani42/nvim-web-devicons"]})
-    (use "edkolev/tmuxline.vim")
     (use {1 "kyazdani42/nvim-tree.lua"
           :requires ["kyazdani42/nvim-web-devicons"]
           :config (setup-module-fn! :nvim-tree)})
