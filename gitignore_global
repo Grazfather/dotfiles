@@ -26,16 +26,6 @@ __pycache__/
 *.o
 *.so
 
-# Packages
-*.7z
-*.dmg
-*.gz
-*.iso
-*.jar
-*.rar
-*.tar
-*.zip
-
 # Logs
 *.log
 *.sql
