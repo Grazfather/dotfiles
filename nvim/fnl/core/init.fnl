@@ -209,12 +209,7 @@
 
 ; Configure hop bindings
 (setup-module! :hop {:keys "arstneio"})
-(map! "nv" gs/ "<cmd>HopPattern<CR>"
-      "nv" gss "<cmd>HopChar2<CR>"
-      "nv" gsw "<cmd>HopWordAC<CR>"
-      "nv" gsb "<cmd>HopWordBC<CR>"
-      "nv" gsj "<cmd>HopLineAC<CR>"
-      "nv" gsk "<cmd>HopLineBC<CR>")
+(map! "nv" gl "<cmd>HopLine<CR>")
 
 ; Toggleterm
 (setup-module! :toggleterm {:open_mapping "<c-\\>"
