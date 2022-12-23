@@ -9,8 +9,8 @@
    :indent {:enable false}
    :incremental_selection {:enable true
                            :keymaps {:init_selection "gh"
-                                     :node_incremental "ghe"
-                                     :node_decremental "ghi"
+                                     :node_incremental "gh"
+                                     :node_decremental "ghd"
                                      :scope_incremental "ghu"}}
    :rainbow {:enable true
              :disable []
@@ -19,7 +19,12 @@
                           :keymaps {:aa "@parameter.outer"
                                     :ia "@parameter.inner"
                                     :af "@function.outer"
-                                    :if "@function.inner"}}}
+                                    :if "@function.inner"
+                                    :ac "@class.outer"
+                                    :ic "@class.inner"}}
+                 :swap {:enable true
+                        :swap_next {"<M-l>" "@parameter.inner"}
+                        :swap_previous {"<M-h>" "@parameter.inner"}}}
    :ensure_installed ["bash" "c" "clojure" "javascript"
                       "fennel" "json" "lua" "go" "python"
                       "toml" "yaml"]
