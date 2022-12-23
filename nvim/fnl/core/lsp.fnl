@@ -6,27 +6,25 @@
 (local servers ["gopls" "clojure_lsp" "pyright"])
 
 (defn on-attach [client bufnr]
-  (defn buf-set-keymap [...] (vim.api.nvim_buf_set_keymap bufnr ...))
+  (defn buf-nmap [keys func desc]
+    (vim.keymap.set "n" keys func {:buffer bufnr :desc desc}))
   (defn buf-set-option [...] (vim.api.nvim_buf_set_option bufnr ...))
 
   (buf-set-option "omnifunc" "v:lua.vim.lsp.omnifunc")
 
   ; Mappings
-  (local opts {:noremap true :silent true})
-  (buf-set-keymap "n" "gD" "<cmd>lua vim.lsp.buf.declaration()<CR>" opts)
-  (buf-set-keymap "n" "gd" "<cmd>lua vim.lsp.buf.definition()<CR>" opts)
-  (buf-set-keymap "n" "K" "<cmd>lua vim.lsp.buf.hover()<CR>" opts)
-  (buf-set-keymap "n" "gi" "<cmd>lua vim.lsp.buf.implementation()<CR>" opts)
-  (buf-set-keymap "n" "gr" "<cmd>lua vim.lsp.buf.references()<CR>" opts)
-  (buf-set-keymap "n" "[d" "<cmd>lua vim.diagnostic.goto_prev()<CR>" opts)
-  (buf-set-keymap "n" "]d" "<cmd>lua vim.diagnostic.goto_next()<CR>" opts)
-  (buf-set-keymap "n" "<leader>rn" "<cmd>lua vim.lsp.buf.rename()<CR>" opts)
+  (buf-nmap "gD" "<cmd>lua vim.lsp.buf.declaration()<CR>" "Go to declaration")
+  (buf-nmap "gd" "<cmd>lua vim.lsp.buf.definition()<CR>" "Go to definition")
+  (buf-nmap "gi" "<cmd>lua vim.lsp.buf.implementation()<CR>" "Go to implementation")
+  (buf-nmap "gr" "<cmd>lua vim.lsp.buf.references()<CR>" "Go to references")
+  (buf-nmap "K" "<cmd>lua vim.lsp.buf.hover()<CR>" "Hover documentation")
+  (buf-nmap "[d" "<cmd>lua vim.diagnostic.goto_prev()<CR>" "Go to previous diagnostic")
+  (buf-nmap "]d" "<cmd>lua vim.diagnostic.goto_next()<CR>" "Go to next diagnostic")
+  (buf-nmap "<leader>rn" "<cmd>lua vim.lsp.buf.rename()<CR>" "Rename symbol")
 
   ; Set some keybinds conditional on server capabilities
   (if client.server_capabilities.documentFormattingProvider
-    (buf-set-keymap "n" "<leader>ef" "<cmd>lua vim.lsp.buf.format({async = true})<CR>" opts))
-  (if client.server_capabilities.documentRangeFormattingProvider
-    (buf-set-keymap "v" "<leader>ef" "<cmd>lua vim.lsp.buf.range_formatting()<CR>" opts))
+    (buf-nmap "<leader>ef" "<cmd>lua vim.lsp.buf.format({async = true})<CR>" "Format buffer"))
 
   ; Set autocommands conditional on server_capabilities
   (if client.server_capabilities.documentHighlightProvider
