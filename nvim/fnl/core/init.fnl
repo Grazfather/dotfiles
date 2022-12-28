@@ -323,10 +323,10 @@
 (descnmap! "Toggle sign column" "<leader>tg" "<cmd>lua toggle_sign_column()<CR>")
 
 ; Toggle showing listchars
-(nnoremap! <leader>t<TAB> "<cmd>set list!<CR>")
 (if (= (get? encoding) "utf-8")
   (set! listchars "eol:¬,nbsp:␣,conceal:⋯,tab:▸—,precedes:…,extends:…,trail:•")
   (set! listchars "eol:$,conceal:+tab:>-,precedes:<,extends:>"))
+(descnmap! "Toggle showing listchars" <leader>t<TAB> "<cmd>set list!<CR>")
 
 ; Comment.nvim
 (descnmap! "Toggle comment on current line" "<leader>c " "gcc")
