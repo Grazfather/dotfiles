@@ -26,4 +26,5 @@
       type = cat-file -t
       dump = cat-file -p
       qclone = clone --depth 1
+      subup = submodule update --recursive
 
