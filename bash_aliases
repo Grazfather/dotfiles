@@ -14,6 +14,8 @@ alias gdb='gdb -q'
 
 # Ripgrep ignores hidden files and .gitignore files. rga to search them.
 alias rga="rg --no-ignore --hidden --glob '!.git'"
+# Ripgrep, ignore vendor
+alias rgnv="rg -g '!vendor'"
 
 alias lsusbx='ioreg -p IOUSB -l -w 0|grep "\-o"'
 
