@@ -1,0 +1,70 @@
+{
+	"workbench.startupEditor": "none",
+	"vim.enableNeovim": true,
+	"vim.easymotion": true,
+	"vim.incsearch": true,
+	"vim.useSystemClipboard": true,
+	"vim.useCtrlKeys": true,
+	"vim.hlsearch": true,
+	"vim.insertModeKeyBindings": [ ],
+	"vim.normalModeKeyBindings": [
+		{
+			"before": ["<leader>", "e", "w"],
+			"commands": [":%s/\\s+$//"]
+		},
+		{
+			"before": ["v", "a", "g"],
+			"after": ["g", "g", "V", "G", "g", "_"]
+		},
+		{
+			"before": ["<leader>", "b", "d"],
+			"commands": [":bp|bd #"]
+		},
+		{
+			"before": ["<leader>", "f", "s"],
+			"commands": [":write"]
+		},
+		{
+			"before": ["<leader>", "t", "h"],
+			"commands": [":set hlsearch!"]
+		},
+		{
+			"before": ["<leader>", "t", "l"],
+			"commands": [":set number!", ":set relativenumber!"]
+		},
+		{
+			"before": ["<leader>", "w", "v"],
+			"commands": [":vsplit"]
+		},
+		{
+			"before": ["<leader>", "w", "s"],
+			"commands": [":split"]
+		},
+		{
+			"before": ["<leader>", "w", "d"],
+			"commands": [":close"]
+		},
+		{
+			"before": ["<leader>", "w", "o"],
+			"commands": [":only"]
+		},
+	],
+	"vim.normalModeKeyBindingsNonRecursive": [
+		{
+			"before": ["J"],
+			"after": ["m", "z", "J", "`", "z"]
+		}
+	],
+	"vim.leader": "<space>",
+	"vim.handleKeys": {
+		"<C-a>": false,
+		"<C-f>": false
+	},
+	"vim.statusBarColors.replace": "",
+	"editor.lineNumbers": "relative",
+	"go.toolsManagement.autoUpdate": true,
+	"telemetry.telemetryLevel": "off",
+	"vim.neovimConfigPath": "~/.config/nvim/init.lua",
+	"vim.neovimPath": "/usr/local/bin/nvim",
+	"vim.neovimUseConfigFile": true,
+}

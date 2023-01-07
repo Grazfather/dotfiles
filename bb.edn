@@ -13,7 +13,9 @@
              ["spacehammer"]
              ["karabiner" ".config/karabiner/"]
              ["starship.toml" ".config/starship.toml"]
-             ["nvim/" ".config/nvim/"]])
+             ["nvim/" ".config/nvim/"]
+             ["vscodesettings.json",
+              "Library/Application Support/Code/User/settings.json"]])
 
           (def base-path (System/getProperty "user.dir"))
 
