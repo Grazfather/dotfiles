@@ -1,5 +1,6 @@
 #!/usr/bin/env bb
-#_" -*- mode: clojure; -*-"
+; -*- mode: clojure; -*-
+; vim: set ft=clojure:
 (ns hl
   (:require [clojure.java.io :as io]
             [clojure.string :as s]
@@ -36,8 +37,7 @@
   (println usage-header)
   (println "\nARGS:")
   (println (:summary o))
-  (println usage-details)
-)
+  (println usage-details))
 
 ;; Colorization
 (def ansi-escape "\u001b")
@@ -97,6 +97,7 @@
                            (:words opts) #"\w+"
                            (:hexnumbers opts) #"\b(?:0x)?[a-fA-F\d]{2,}\b"
                            (:pattern opts) (:pattern opts))))
+
 (def stream (line-seq (io/reader *in*)))
 
 (run pattern stream)
