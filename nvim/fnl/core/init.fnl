@@ -53,23 +53,11 @@
 (vim.api.nvim_set_hl 0 "TrailingWhitespace" {:bg :darkred})
 (vim.api.nvim_command ":let w:m2=matchadd('TrailingWhitespace', '\\s\\+$\\| \\+\\ze\\t\\|\\t\\+\\ze ')")
 
-; Remap <leader>
-; I tend to use leader a lot, so I try to namespace commands under leader
-; using a simple mnemonic:
-; <leader>b_ -> Buffer stuff
-; <leader>e_ -> Edit stuff
-; <leader>g_ -> Git stuff
-; <leader>m_ -> 'localleader': Filetype specific stuff
-; <leader>f_ -> File stuff, some [fuzzy] find stuff
-; <leader>t_ -> Toggleable settings
-; <leader>w_ -> Window stuff
-; Though some that don't fit aren't yet put behind a namespace
+; Remap <leader> to <space>
 (let! g/mapleader " "
       g/maplocalleader " m")
-
-; Short timeoutlen to get which-key to kick in sooner
-(set! timeoutlen 200)
-; -- Document top-level prefixes
+; I tend to use leader a lot, so I try to namespace commands under leader
+; using a simple mnemonic:
 (call-module-method! :which-key :register
                      {:b {:name "Buffer stuff"}
                       :e {:name "Edit stuff"}
@@ -80,6 +68,10 @@
                       :t {:name "Toggles"}
                       :w {:name "Window"}}
                      {:prefix :<leader>})
+; Though some that don't fit aren't yet put behind a namespace
+
+; Short timeoutlen to get which-key to kick in sooner
+(set! timeoutlen 200)
 
 ; Read configurations from files
 (set-true! modeline)
@@ -314,22 +306,22 @@
   "Search ex commands"
   "<leader>:" "<cmd>lua require('fzf-lua').commands()<CR>")
 
-; Toggle signcolumn (gutter) to make copy and paste easier
+(descnmap! "Toggle sign column"
+           "<leader>tg" "<cmd>lua toggle_sign_column()<CR>")
 (set! signcolumn "yes")
 (global toggle_sign_column (fn []
   (if (= (get? signcolumn) "yes")
     (set! signcolumn "no")
     (set! signcolumn "yes"))))
-(descnmap! "Toggle sign column" "<leader>tg" "<cmd>lua toggle_sign_column()<CR>")
 
-; Toggle showing listchars
+(descnmap! "Toggle showing listchars"
+           <leader>t<TAB> "<cmd>set list!<CR>")
 (if (= (get? encoding) "utf-8")
   (set! listchars "eol:¬,nbsp:␣,conceal:⋯,tab:▸—,precedes:…,extends:…,trail:•")
   (set! listchars "eol:$,conceal:+tab:>-,precedes:<,extends:>"))
-(descnmap! "Toggle showing listchars" <leader>t<TAB> "<cmd>set list!<CR>")
 
-; Comment.nvim
-(descnmap! "Toggle comment on current line" "<leader>c " "gcc")
+(descnmap! "Toggle comment on current line"
+           "<leader>c " "gcc")
 
 ; Blinker.nvim
 (setup-module! :blinker {})
@@ -355,7 +347,7 @@
 ;   - (/) - Move back/forward sexp
 ;   - M-b/M-w - Move back/forward sibling
 ;   - [e/]e - Select prev/next sexp
-;   - M-h/M-j/M-k/M-l - Drag sexp around
-;   - M-S-h/M-S-j/M-S-k/M-S-l - Barf/slurp
+;   - M-{hjkl} - Drag sexp around
+;   - M-S-{hjkl} - Barf/slurp
 ; Make vim-sexp work for more languages
 (vim.api.nvim_set_var "sexp_filetypes" "clojure,scheme,lisp,timl,fennel,janet")
