@@ -25,7 +25,8 @@
                  :swap {:enable true
                         :swap_next {"<M-l>" "@parameter.inner"}
                         :swap_previous {"<M-h>" "@parameter.inner"}}}
-   :ensure_installed ["bash" "c" "clojure" "javascript"
-                      "fennel" "json" "lua" "go" "python"
-                      "toml" "yaml"]
+   :ensure_installed ["bash" "clojure" "javascript" "fennel" "json" "go"
+                      "python" "toml" "yaml"
+                      ; These must be present to override neovim builtins
+                      "c" "help" "lua" "vim"]
    })
