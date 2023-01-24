@@ -315,10 +315,21 @@
     (set! signcolumn "yes"))))
 
 (descnmap! "Toggle showing listchars"
-           <leader>t<TAB> "<cmd>set list!<CR>")
+           <leader>tt "<cmd>set list!<CR>")
+(set-true! list)
 (if (= (get? encoding) "utf-8")
   (set! listchars "eol:¬,nbsp:␣,conceal:⋯,tab:▸—,precedes:…,extends:…,trail:•")
   (set! listchars "eol:$,conceal:+tab:>-,precedes:<,extends:>"))
+
+; Toggle indent markers
+(descnmap! "Toggle indent markers" <leader>ti "<cmd>IndentBlanklineToggle<CR>")
+
+; Toggle visual glyphs that make copy and paste from terminal annoying
+(global toggle_visual (fn []
+  (toggle_sign_column)
+  (set-toggle! list number relativenumber)
+  (vim.cmd "IndentBlanklineToggle")))
+(descnmap! "Toggle visual glyphs" <leader>tv "<cmd>lua toggle_visual()<CR>")
 
 (descnmap! "Toggle comment on current line"
            "<leader>c " "gcc")

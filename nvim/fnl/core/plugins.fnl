@@ -14,6 +14,7 @@
     ; -- Profile with :StartupTime
     (use "tweekmonster/startuptime.vim")
 
+    ; Visual/Layout
     (use {1 "hoob3rt/lualine.nvim"
           :requires "kyazdani42/nvim-web-devicons"})
     (use {1 "akinsho/bufferline.nvim"
