@@ -280,27 +280,27 @@
   "Show commit message at line"
   <leader>gm "<cmd>GitMessenger<CR>"
 
-  ; fzf.vim
+  ; telescope.nvim
   "Find files in project"
-  <leader>pf "<cmd>lua require('fzf-lua').git_files()<CR>"
+  <leader>pf "<cmd>lua require('telescope.builtin').git_files()<CR>"
   "File files from CWD"
-  <leader>ff "<cmd>lua require('fzf-lua').files()<CR>"
+  <leader>ff "<cmd>lua require('telescope.builtin').find_files()<CR>"
   "Find buffer"
-  <leader>bb "<cmd>lua require('fzf-lua').buffers()<CR>"
-  "Find line in buffer"
-  <leader>ss "<cmd>lua require('fzf-lua').blines()<CR>"
-  "Find line in all buffers"
-  <leader>f* "<cmd>lua require('fzf-lua').lines()<CR>"
+  <leader>bb "<cmd>lua require('telescope.builtin').buffers()<CR>"
+  "Find mark"
+  <leader>fm "<cmd>lua require('telescope.builtin').marks()<CR>"
+  "Find jump"
+  <leader>fj "<cmd>lua require('telescope.builtin').jumplist()<CR>"
   "Grep file content from CWD"
-  <leader>frg "<cmd>lua require('fzf-lua').live_grep()<CR>"
+  <leader>frg "<cmd>lua require('telescope.builtin').live_grep()<CR>"
   "Search help"
-  <leader>hh "<cmd>lua require('fzf-lua').help_tags()<CR>"
+  <leader>hh "<cmd>lua require('telescope.builtin').help_tags()<CR>"
   "Search keymaps"
-  <leader>hk "<cmd>lua require('fzf-lua').keymaps()<CR>"
+  <leader>hk "<cmd>lua require('telescope.builtin').keymaps()<CR>"
   "Search man pages"
-  <leader>hm "<cmd>lua require('fzf-lua').man_pages()<CR>"
+  <leader>hm "<cmd>lua require('telescope.builtin').man_pages()<CR>"
   "Search ex commands"
-  "<leader>:" "<cmd>lua require('fzf-lua').commands()<CR>")
+  "<leader>:" "<cmd>lua require('telescope.builtin').commands()<CR>")
 
 (descnmap! "Toggle sign column"
            "<leader>tg" "<cmd>lua toggle_sign_column()<CR>")
