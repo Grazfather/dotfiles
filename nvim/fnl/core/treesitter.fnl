@@ -30,3 +30,4 @@
                       ; These must be present to override neovim builtins
                       "c" "help" "lua" "vim"]
    })
+(setup-module! :treesitter-context)

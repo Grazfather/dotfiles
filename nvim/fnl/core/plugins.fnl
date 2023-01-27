@@ -47,6 +47,7 @@
     (use {1 "nvim-treesitter/nvim-treesitter" :run ":TSUpdate"})
     (use "nvim-treesitter/nvim-treesitter-textobjects")
     (use "nvim-treesitter/playground")
+    (use "nvim-treesitter/nvim-treesitter-context")
     (use "p00f/nvim-ts-rainbow")
     ; -- Completion
     (use "hrsh7th/nvim-cmp")
