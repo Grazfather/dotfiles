@@ -55,7 +55,7 @@
         keys (tostring keys)]
     `(do
        ,(unpack (icollect [mode (string.gmatch modes ".")]
-                          `(vim.api.nvim_set_keymap ,mode ,keys ,cmd ,options))))))
+                          `(vim.keymap.set ,mode ,keys ,cmd ,options))))))
 
 (fn map! [modes keys cmd ...]
   (when (not (= nil modes))

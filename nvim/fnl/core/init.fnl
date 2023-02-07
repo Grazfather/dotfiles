@@ -319,11 +319,11 @@
 (descnmap! "Toggle indent markers" <leader>ti "<cmd>IndentBlanklineToggle<CR>")
 
 ; Toggle visual glyphs that make copy and paste from terminal annoying
-(global toggle_visual (fn []
-  (toggle_sign_column)
-  (set-toggle! list number relativenumber)
-  (vim.cmd "IndentBlanklineToggle")))
-(descnmap! "Toggle visual glyphs" <leader>tv "<cmd>lua toggle_visual()<CR>")
+(descnmap! "Toggle visual glyphs"
+           <leader>tv (fn []
+                        (toggle_sign_column)
+                        (set-toggle! list number relativenumber)
+                        (vim.cmd "IndentBlanklineToggle")))
 
 (descnmap! "Toggle comment on current line"
            "<leader>c " "gcc")
@@ -344,7 +344,7 @@
   ["BufNewFile" "BufRead"]
   {:pattern "*.md"
    :group (vim.api.nvim_create_augroup "markdown" {:clear true})
-   :callback (fn [] (vim.api.nvim_set_option_value :filetype :ghmarkdown {:scope :local}))})
+   :callback #(vim.api.nvim_set_option_value :filetype :ghmarkdown {:scope :local})})
 
 ; vim-sexp
 ; - Adds new text objects:
