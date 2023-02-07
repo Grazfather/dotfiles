@@ -279,6 +279,8 @@
   ; telescope.nvim
   "Find files in project"
   <leader>pf "<cmd>lua require('telescope.builtin').git_files()<CR>"
+  "Find TODOs in project"
+  <leader>pt "<cmd>TodoTelescope<CR>"
   "File files from CWD"
   <leader>ff "<cmd>lua require('telescope.builtin').find_files()<CR>"
   "Find buffer"
@@ -325,6 +327,10 @@
 
 (descnmap! "Toggle comment on current line"
            "<leader>c " "gcc")
+
+; Simulate readline/emacs's jump to start/end of line in insert mode
+(map! "i" <C-a> "<ESC>I"
+      "i" <C-e> "<ESC>A")
 
 ; Blinker.nvim
 (setup-module! :blinker {})
