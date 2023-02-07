@@ -2,8 +2,7 @@
  {:requires ([babashka.fs :as fs])
   :init (do
           (def files
-            [["doom.d"]
-             ["vim"]
+            [["vim"]
              ["vimrc"]
              ["bash_aliases"]
              ["gitaliases"]
