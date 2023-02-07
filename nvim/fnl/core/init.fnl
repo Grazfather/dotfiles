@@ -65,7 +65,8 @@
                       :m {:name "Local leader"}
                       :f {:name "File/find ops"}
                       :t {:name "Toggles"}
-                      :w {:name "Window"}}
+                      :w {:name "Window"}
+                      :x {:name "Lisp"}}
                      {:prefix :<leader>})
 ; Though some that don't fit aren't yet put behind a namespace
 
@@ -358,5 +359,25 @@
 ;   - [e/]e - Select prev/next sexp
 ;   - M-{hjkl} - Drag sexp around
 ;   - M-S-{hjkl} - Barf/slurp
+(descnmap!
+  "Slurp from right"
+  <leader>xs "<Plug>(sexp_capture_next_element)"
+  "Slurp from left"
+  <leader>xS "<Plug>(sexp_capture_prev_element)"
+  "Barf from right"
+  <leader>xe "<Plug>(sexp_emit_tail_element)"
+  "Barf from left"
+  <leader>xE "<Plug>(sexp_emit_head_element)"
+  "Convolute"
+  <leader>xc "<Plug>(sexp_convolute)"
+  "Drag forward"
+  <leader>xl "<Plug>(sexp_swap_element_forward)"
+  "Drag back"
+  <leader>xh "<Plug>(sexp_swap_element_backward)"
+  "Next element"
+  <leader>xw "<Plug>(sexp_move_to_next_element_head)"
+  "Previous element"
+  <leader>xb "<Plug>(sexp_move_to_prev_element_head)")
 ; Make vim-sexp work for more languages
-(vim.api.nvim_set_var "sexp_filetypes" "clojure,scheme,lisp,timl,fennel,janet")
+(vim.api.nvim_set_var
+  "sexp_filetypes" "clojure,scheme,lisp,timl,fennel,janet")
