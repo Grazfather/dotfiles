@@ -101,10 +101,14 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ; Jump to last cursor position unless it's invalid or in an event handler
-(vim.cmd "autocmd! BufReadPost *
-         \\ if line(\"'\\\"\") > 0 && line(\"'\\\"\") <= line(\"$\") |
-         \\   exe \"normal g`\\\"\" |
-         \\ endif")
+(vim.api.nvim_create_autocmd
+  ["BufReadPost"]
+  {:pattern ["*"]
+   :callback #(let [[row _] (vim.api.nvim_buf_get_mark 0 "\"")
+                    lastrow (vim.api.nvim_buf_line_count 0)]
+                (if (and (> row 0)
+                         (<= row lastrow))
+                  (vim.cmd "normal g`\"")))})
 
 ; Disable arrow keys for navigation
 (nnoremap! <up> "<nop>"
