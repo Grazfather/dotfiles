@@ -214,16 +214,6 @@
   "Select whole buffer"
   vag "ggVGg_"
 
-  ; Open commonly edited files
-  "Open vimrc"
-  <leader>fev "<cmd>edit $MYVIMRC<CR>"
-  "Open tmux config"
-  <leader>fet "<cmd>edit $HOME/.tmux.conf<CR>"
-  "Open bash aliases"
-  <leader>feb "<cmd>edit $HOME/.bash_aliases<CR>"
-  "Open git aliases"
-  <leader>feg "<cmd>edit $HOME/.gitaliases<CR>"
-
   "Reload vimrc"
   <leader>frv "<cmd>source $MYVIMRC<CR>"
   "Close current buffer"
@@ -245,8 +235,6 @@
   <leader>tx "<cmd>set cursorline! cursorcolumn!<CR>"
   "Blink current line"
   <leader><space> "<cmd>lua require('blinker').blink_cursorline()<CR>"
-  "Toggle paste"
-  <leader>tp "<cmd>set paste!<CR>"
 
   ; Window (split) management
   "Split vertically"
@@ -302,7 +290,7 @@
   "<leader>:" "<cmd>lua require('telescope.builtin').commands()<CR>")
 
 (descnmap! "Toggle sign column"
-           "<leader>tg" "<cmd>lua toggle_sign_column()<CR>")
+           <leader>tg "<cmd>lua toggle_sign_column()<CR>")
 (set! signcolumn "yes")
 (global toggle_sign_column (fn []
   (if (= (get? signcolumn) "yes")
@@ -344,7 +332,7 @@
 (vim.api.nvim_create_autocmd
   ["BufNewFile" "BufRead"]
   {:pattern "*.md"
-   :group (vim.api.nvim_create_augroup "markdown" {:clear true})
+   :group (vim.api.nvim_create_augroup :markdown {:clear true})
    :callback #(vim.api.nvim_set_option_value :filetype :ghmarkdown {:scope :local})})
 
 ; vim-sexp
