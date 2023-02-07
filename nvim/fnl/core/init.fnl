@@ -11,7 +11,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ; Color scheme
-(set! syntax "enable")
 (set-true! termguicolors)
 (setup-module! :onedark {:style :warmer})
 (vim.api.nvim_command "silent! colorscheme onedark")
@@ -73,18 +72,11 @@
 ; Short timeoutlen to get which-key to kick in sooner
 (set! timeoutlen 200)
 
-; Read configurations from files
-(set-true! modeline)
-(set! modelines 5)
-
 ; Setup tags file
 (set! tags "./tags,tags;")
 
 ; Set path to include the cwd and everything underneath
 (set! path "**3")
-
-; Show the normal mode command as I type it
-(set-true! showcmd)
 
 ; Lazily redraw: Make macros faster
 (set-true! lazyredraw)

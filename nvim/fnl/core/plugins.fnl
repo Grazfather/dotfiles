@@ -34,7 +34,7 @@
     (use {1 "kyazdani42/nvim-tree.lua"
           :requires ["kyazdani42/nvim-web-devicons"]
           :config (setup-module-fn! :nvim-tree)})
-    ; -- hopping (bound to gsj & gsk)
+    ; -- hopping (bound to gl)
     (use "phaazon/hop.nvim")
     ; -- Override f/t & add sniping via s
     (use "ggandor/leap.nvim")
