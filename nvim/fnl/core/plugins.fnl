@@ -24,7 +24,8 @@
           :config (setup-module-fn! :which-key)})
     (use {1 "folke/todo-comments.nvim"
           :requires "nvim-lua/plenary.nvim"})
-    (use "Grazfather/blinker.nvim")
+    (use {1 "Grazfather/blinker.nvim"
+          :config (setup-module-fn! :blinker {})})
     (use "akinsho/toggleterm.nvim")
     (use "mbbill/undotree")
 

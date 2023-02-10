@@ -5,10 +5,10 @@
 
 (local servers ["gopls" "clojure_lsp" "pyright"])
 
-(defn on-attach [client bufnr]
-  (defn buf-nmap [keys func desc]
+(defn- on-attach [client bufnr]
+  (defn- buf-nmap [keys func desc]
     (vim.keymap.set "n" keys func {:buffer bufnr :desc desc}))
-  (defn buf-set-option [...] (vim.api.nvim_buf_set_option bufnr ...))
+  (defn- buf-set-option [...] (vim.api.nvim_buf_set_option bufnr ...))
 
   (buf-set-option "omnifunc" "v:lua.vim.lsp.omnifunc")
 
