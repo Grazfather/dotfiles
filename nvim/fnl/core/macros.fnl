@@ -59,27 +59,27 @@
 
 (fn map! [modes keys cmd ...]
   (when (not (= nil modes))
-    `(do ,(map!- modes keys cmd {})
+    `(do ,(map!- modes keys cmd {:remap true})
          ,(map! ...))))
 
 (fn nmap! [keys cmd ...]
   (when (not (= nil keys))
-    `(do ,(map!- "n" keys cmd {})
+    `(do ,(map!- "n" keys cmd {:remap true})
          ,(nmap! ...))))
 
 (fn descnmap! [desc keys cmd ...]
   (when (not (= nil keys))
-    `(do ,(map!- "n" keys cmd {:desc desc})
+    `(do ,(map!- "n" keys cmd {:desc desc :remap true})
          ,(descnmap! ...))))
 
 (fn noremap! [modes keys cmd ...]
   (when (not (= nil modes))
-    `(do ,(map!- modes keys cmd {:noremap true})
+    `(do ,(map!- modes keys cmd {})
          ,(noremap! ...))))
 
 (fn nnoremap! [keys cmd ...]
   (when (not (= nil keys))
-    `(do ,(map!- "n" keys cmd {:noremap true})
+    `(do ,(map!- "n" keys cmd {})
          ,(nnoremap! ...))))
 
 (fn call-module-method!

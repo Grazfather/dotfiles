@@ -223,7 +223,7 @@
 
   ; Add 'DELETEME' comment using Comment.nvim
   "Add DELETEME comment"
-  <leader>dm "mxgcADELETEME<ESC>`x<ESC>"
+  <leader>dm "mxgcADELETEME<ESC>`x"
   "Delete all DELETEME lines"
   <leader>dd "<cmd>keepp :g/DELETEME/d<CR><C-o>"
 
