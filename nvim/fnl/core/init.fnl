@@ -214,8 +214,8 @@
   "Select whole buffer"
   vag "ggVGg_"
 
-  "Reload vimrc"
-  <leader>frv "<cmd>source $MYVIMRC<CR>"
+  "Reload Neovim config"
+  <leader>frv "<cmd>AniseedEvalFile<CR>"
   "Close current buffer"
   <leader>bd "<cmd>bp|bd #<CR>"
   "Save buffer"
