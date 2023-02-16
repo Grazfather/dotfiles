@@ -2,7 +2,6 @@
   {require-macros [core.macros]})
 
 (local lspconfig (require :lspconfig))
-
 (local servers ["gopls" "clojure_lsp" "pyright"])
 
 (defn- on-attach [client bufnr]
@@ -52,8 +51,7 @@
   (call-module-method! :cmp_nvim_lsp :default_capabilities
    (vim.lsp.protocol.make_client_capabilities)))
 
-; Use a loop to conveniently both setup defined servers and map buffer local
-; keybindings when the language server attaches
+; Setup the above for each server specified
 (each [_ lsp (ipairs servers)]
   ((. (. lspconfig lsp) :setup) {:on_attach on-attach
                                  :capabilities capabilities}))

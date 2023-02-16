@@ -3,7 +3,9 @@
 
 (setup-module!
   :nvim-treesitter.configs
-  {:playground {:enable true}
+  {
+   ; playground
+   :playground {:enable true}
    :highlight {:enable true
                :additional_vim_regex_highlighting ["clojure" "fennel"]}
    :indent {:enable false}
@@ -12,9 +14,11 @@
                                      :node_incremental "gh"
                                      :node_decremental "ghd"
                                      :scope_incremental "ghu"}}
+   ; nvim-ts-rainbow
    :rainbow {:enable true
              :disable []
              :extended_mode false}
+   ; nvim-treesitter-textobjects
    :textobjects {:select {:enable true
                           :keymaps {:aa "@parameter.outer"
                                     :ia "@parameter.inner"
