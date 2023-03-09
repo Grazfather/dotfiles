@@ -1,6 +1,12 @@
 (module core.init
   {require-macros [core.macros]})
 
+; Remap <leader> to <space>.
+; This must be done before calling setup on lazy, which we do in the plugins
+; module.
+(let! g/mapleader " "
+      g/maplocalleader " m")
+
 (require :core.plugins)
 (require :core.completion)
 (require :core.lsp)
@@ -52,9 +58,6 @@
 (vim.api.nvim_set_hl 0 "TrailingWhitespace" {:bg :darkred})
 (vim.api.nvim_command ":let w:m2=matchadd('TrailingWhitespace', '\\s\\+$\\| \\+\\ze\\t\\|\\t\\+\\ze ')")
 
-; Remap <leader> to <space>
-(let! g/mapleader " "
-      g/maplocalleader " m")
 ; I tend to use leader a lot, so I try to namespace commands under leader
 ; using a simple mnemonic:
 (call-module-method! :which-key :register

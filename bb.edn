@@ -81,8 +81,7 @@
                                ; Plugins may be vim or neovim specific, so we
                                ; have to install using both
                                (shell "vim +'PlugInstall --sync' +qa")
-                               (shell "nvim +'PackerCompile --sync' +qa")
-                               (shell "nvim +'PackerInstall --sync' +qa"))
+                               (shell "nvim +qa"))
                        :depends [symlink]}
 
   setup {:depends [symlink set-path install-bash-aliases install-git-aliases
