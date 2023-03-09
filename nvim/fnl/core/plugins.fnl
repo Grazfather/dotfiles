@@ -91,7 +91,8 @@
    ; Misc
    {1 "numToStr/Comment.nvim"
     :config (setup-module-fn! :Comment)}
-   "tpope/vim-surround"
+   {1 "kylechui/nvim-surround"
+    :config (setup-module-fn! :nvim-surround)}
 
    ; Themes
    "morhetz/gruvbox"
