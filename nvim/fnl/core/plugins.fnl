@@ -22,6 +22,10 @@
    {1 "folke/todo-comments.nvim"
     :dependencies "nvim-lua/plenary.nvim"}
    {1 "Grazfather/blinker.nvim" :config true}
+   {1 "goolord/alpha-nvim"
+    :dependencies ["kyazdani42/nvim-web-devicons"]
+    :config (setup-module-fn! :alpha
+                              (. (require "alpha.themes.startify") :config))}
    "akinsho/toggleterm.nvim"
    "mbbill/undotree"
 
