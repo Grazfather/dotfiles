@@ -18,12 +18,10 @@
    {1 "akinsho/bufferline.nvim"
     :dependencies "kyazdani42/nvim-web-devicons"}
    "lukas-reineke/indent-blankline.nvim"
-   {1 "folke/which-key.nvim"
-    :config (setup-module-fn! :which-key)}
+   {1 "folke/which-key.nvim" :config true}
    {1 "folke/todo-comments.nvim"
     :dependencies "nvim-lua/plenary.nvim"}
-   {1 "Grazfather/blinker.nvim"
-    :config (setup-module-fn! :blinker {})}
+   {1 "Grazfather/blinker.nvim" :config true}
    "akinsho/toggleterm.nvim"
    "mbbill/undotree"
 
@@ -32,9 +30,9 @@
     :dependencies ["nvim-lua/plenary.nvim"]}
    {1 "kyazdani42/nvim-tree.lua"
     :dependencies ["kyazdani42/nvim-web-devicons"]
-    :config (setup-module-fn! :nvim-tree)}
+    :config true}
    ; -- hopping (bound to gl)
-   "phaazon/hop.nvim"
+   {1 "phaazon/hop.nvim" :opts {:keys "arstneio"}}
    ; -- Override f/t & add sniping via s
    "ggandor/leap.nvim"
 
@@ -60,7 +58,11 @@
    ; -- Markdown
    "jtratner/vim-flavored-markdown"
    ; -- Lisps
-   "guns/vim-sexp"
+   {1 "guns/vim-sexp"
+    :init (fn []
+            ; Make vim-sexp work for more languages
+            (vim.api.nvim_set_var
+              "sexp_filetypes" "clojure,scheme,lisp,timl,fennel,janet"))}
    ; -- Clojure
    ; ---- Connection to nREPL
    "Olical/conjure"
@@ -86,13 +88,11 @@
    ; -- Adds changed lines in the gutter
    {1 "lewis6991/gitsigns.nvim"
     :dependencies ["nvim-lua/plenary.nvim"]
-    :config (setup-module-fn! :gitsigns)}
+    :config true}
 
    ; Misc
-   {1 "numToStr/Comment.nvim"
-    :config (setup-module-fn! :Comment)}
-   {1 "kylechui/nvim-surround"
-    :config (setup-module-fn! :nvim-surround)}
+   {1 "numToStr/Comment.nvim" :config true}
+   {1 "kylechui/nvim-surround" :config true}
 
    ; Themes
    "morhetz/gruvbox"

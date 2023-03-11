@@ -196,7 +196,6 @@
 (nnoremap! Q "<nop>")
 
 ; Configure hop bindings
-(setup-module! :hop {:keys "arstneio"})
 (map! "nv" gl "<cmd>HopLine<CR>")
 
 ; Toggleterm
@@ -366,6 +365,3 @@
   <leader>xw "<Plug>(sexp_move_to_next_element_head)"
   "Previous element"
   <leader>xb "<Plug>(sexp_move_to_prev_element_head)")
-; Make vim-sexp work for more languages
-(vim.api.nvim_set_var
-  "sexp_filetypes" "clojure,scheme,lisp,timl,fennel,janet")
