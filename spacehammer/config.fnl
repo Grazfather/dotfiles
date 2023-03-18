@@ -51,7 +51,7 @@
 ;; [x] a - apps
 ;; [x] |-- e - emacs
 ;; [x] |-- b - browser
-;; [x] |-- i - iTerm
+;; [x] |-- i - Kitty
 ;; [x] |-- s - Slack
 ;; [x] |-- r - Spotify
 ;;
@@ -300,8 +300,8 @@
          :title "Browser"
          :action (activator browser-app)}
         {:key :t
-         :title "iTerm"
-         :action (activator "iterm")}
+         :title "Kitty"
+         :action (activator "Kitty")}
         {:key :s
          :title "Slack"
          :action (activator "Slack")}
@@ -346,7 +346,7 @@
          :action (activator "Slack")}
         {:mods hyper-mods
          :key :t
-         :action (activator "iterm")}
+         :action (activator "Kitty")}
         {:mods hyper-mods
          :key :c
          :action (activator "Whatsapp")}
