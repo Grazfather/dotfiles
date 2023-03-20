@@ -5,8 +5,6 @@
 (lazy.setup
   [
    ; META (Vim config stuff)
-   ; -- Impatient speeds up startup
-   "lewis6991/impatient.nvim"
    ; -- Aniseed itself, to compile fennel
    "Olical/aniseed"
    ; -- Profile with :StartupTime

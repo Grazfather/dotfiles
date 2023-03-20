@@ -17,11 +17,5 @@ end
 bootstrap("lazy.nvim", "folke/lazy.nvim")
 bootstrap("aniseed", "Olical/aniseed")
 
--- Load impatient, but don't bail if we can't
-local ok, _ = pcall(require, "impatient")
-if not ok then
-    print("Cannot load impatient")
-end
-
 -- Enable Aniseed
 vim.g["aniseed#env"] = { module = "core.init" }
