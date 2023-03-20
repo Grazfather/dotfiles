@@ -284,6 +284,8 @@
   <leader>frg "<cmd>lua require('telescope.builtin').live_grep()<CR>"
   "Search help"
   <leader>hh "<cmd>lua require('telescope.builtin').help_tags()<CR>"
+  "Search autocommands"
+  <leader>ha "<cmd>lua require('telescope.builtin').autocommands()<CR>"
   "Search keymaps"
   <leader>hk "<cmd>lua require('telescope.builtin').keymaps()<CR>"
   "Search man pages"
