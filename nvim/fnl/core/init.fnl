@@ -291,17 +291,18 @@
   "Search ex commands"
   "<leader>:" "<cmd>lua require('telescope.builtin').commands()<CR>")
 
-(descnmap! "Toggle sign column"
-           <leader>tg "<cmd>lua toggle_sign_column()<CR>")
 (set! signcolumn "yes")
-(global toggle_sign_column (fn []
+(defn toggle-sign-column []
   (if (= (get? signcolumn) "yes")
     (set! signcolumn "no")
-    (set! signcolumn "yes"))))
+    (set! signcolumn "yes")))
+(descnmap! "Toggle sign column"
+          <leader>tg toggle-sign-column)
 
 (descnmap! "Toggle showing listchars"
            <leader>tt "<cmd>set list!<CR>")
 (set-true! list)
+
 (if (= (get? encoding) "utf-8")
   (set! listchars "eol:¬,nbsp:␣,conceal:⋯,tab:▸—,precedes:…,extends:…,trail:•")
   (set! listchars "eol:$,conceal:+tab:>-,precedes:<,extends:>"))
@@ -312,7 +313,7 @@
 ; Toggle visual glyphs that make copy and paste from terminal annoying
 (descnmap! "Toggle visual glyphs"
            <leader>tv (fn []
-                        (toggle_sign_column)
+                        (toggle-sign-column)
                         (set-toggle! list number relativenumber)
                         (vim.cmd "IndentBlanklineToggle")))
 
