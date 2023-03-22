@@ -305,9 +305,7 @@
            <leader>tt "<cmd>set list!<CR>")
 (set-true! list)
 
-(if (= (get? encoding) "utf-8")
-  (set! listchars "eol:¬,nbsp:␣,conceal:⋯,tab:▸—,precedes:…,extends:…,trail:•")
-  (set! listchars "eol:$,conceal:+tab:>-,precedes:<,extends:>"))
+(set! listchars "eol:¬,nbsp:␣,conceal:⋯,tab:  ,precedes:…,extends:…,trail:•")
 
 ; Toggle indent markers
 (descnmap! "Toggle indent markers" <leader>ti "<cmd>IndentBlanklineToggle<CR>")
