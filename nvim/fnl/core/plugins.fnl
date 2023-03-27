@@ -43,7 +43,9 @@
    {1 "ggandor/flit.nvim" :config true}
 
    ; Language support
+   {1 "williamboman/mason.nvim" :run ":MasonUpdate" :config true}
    ; -- LSP
+   "williamboman/mason-lspconfig.nvim"
    "neovim/nvim-lspconfig"
    "onsails/lspkind-nvim"
    ; -- Parsing
