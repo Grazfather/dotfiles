@@ -36,7 +36,11 @@
    ; -- hopping (bound to gl)
    {1 "phaazon/hop.nvim" :opts {:keys "arstneio"}}
    ; -- Override f/t & add sniping via s
-   "ggandor/leap.nvim"
+   ; Add targets to 's'/'S'
+   {1 "ggandor/leap.nvim"
+    :dependencies "tpope/vim-repeat"
+    :config (fn [] (call-module-method! :leap :set_default_keymaps))}
+   {1 "ggandor/flit.nvim" :config true}
 
    ; Language support
    ; -- LSP
