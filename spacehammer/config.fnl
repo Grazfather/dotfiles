@@ -231,30 +231,30 @@
        [{:key "arst"
          :title "left side presets"}
         {:key :a
-         :action (fn [] (hs.grid.set (hs.window.focusedWindow) "0,0 3x4"))
+         :action #(hs.grid.set (hs.window.focusedWindow) "0,0 3x4")
          :repeatable true}
         {:key :r
-         :action (fn [] (hs.grid.set (hs.window.focusedWindow) "0,0 4x4"))
+         :action #(hs.grid.set (hs.window.focusedWindow) "0,0 4x4")
          :repeatable true}
         {:key :s
-         :action (fn [] (hs.grid.set (hs.window.focusedWindow) "0,0 5x4"))
+         :action #(hs.grid.set (hs.window.focusedWindow) "0,0 5x4")
          :repeatable true}
         {:key :t
-         :action (fn [] (hs.grid.set (hs.window.focusedWindow) "0,0 6x4"))
+         :action #(hs.grid.set (hs.window.focusedWindow) "0,0 6x4")
          :repeatable true}
         {:key "zxcd"
          :title "right side presets"}
         {:key :z
-         :action (fn [] (hs.grid.set (hs.window.focusedWindow) "3,0 6x4"))
+         :action #(hs.grid.set (hs.window.focusedWindow) "3,0 6x4")
          :repeatable true}
         {:key :x
-         :action (fn [] (hs.grid.set (hs.window.focusedWindow) "4,0 5x4"))
+         :action #(hs.grid.set (hs.window.focusedWindow) "4,0 5x4")
          :repeatable true}
         {:key :c
-         :action (fn [] (hs.grid.set (hs.window.focusedWindow) "5,0 4x4"))
+         :action #(hs.grid.set (hs.window.focusedWindow) "5,0 4x4")
          :repeatable true}
         {:key :d
-         :action (fn [] (hs.grid.set (hs.window.focusedWindow) "6,0 3x4"))
+         :action #(hs.grid.set (hs.window.focusedWindow) "6,0 3x4")
          :repeatable true}
         ])
 
@@ -400,20 +400,26 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (local menu-items
-       [{:key   :w
+       [{:key :w
          :title "Window"
          :enter "windows:enter-window-menu"
          :exit "windows:exit-window-menu"
          :items window-bindings}
-        {:key   :a
+        {:key :a
          :title "Apps"
          :items app-bindings}
-        {:key    :j
-         :title  "Jump"
+        {:key :j
+         :title "Jump"
          :action "windows:jump"}
-        {:key   :m
+        {:key :m
          :title "Media"
-         :items media-bindings}])
+         :items media-bindings}
+        {:key :v
+         :title "Clipboard"
+         :action #(: (require :TextClipboardHistory) :toggleClipboard)}
+        {:key "/"
+         :title "KSheet"
+         :action #(: (require :KSheet) :toggle)}])
 
 (local common-keys
        (concat app-keys
@@ -550,8 +556,8 @@
        {:title "Main Menu"
         :items menu-items
         :keys  common-keys
-        :enter (fn [] (windows.hide-display-numbers))
-        :exit  (fn [] (windows.hide-display-numbers))
+        :enter #(windows.hide-display-numbers)
+        :exit  #(windows.hide-display-numbers)
         :apps  apps
         :grid {:size "9x4"}
         :hyper {:key :F18}})
@@ -581,7 +587,7 @@
              (: rect :setStrokeWidth 3)
              (: rect :setFill false)
              (: rect :show)
-             (hs.timer.doAfter .1 (fn [] (: rect :delete)))))
+             (hs.timer.doAfter .1 #(: rect :delete))))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Spoons
@@ -592,7 +598,7 @@
 
 ;; Simple clipboard manager
 (Install:andUse "TextClipboardHistory"
-                {:config {:show_in_menubar false
+                {:config {:show_in_menubar true
                           :paste_on_select true}
                  :hotkeys {:toggle_clipboard [hyper-mods "v"] }
                  :start true})
