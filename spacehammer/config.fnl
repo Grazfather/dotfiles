@@ -293,21 +293,39 @@
 ; These are behind the 'a' submenu
 (local app-bindings
        [return
-        {:key :e
-         :title "Emacs"
-         :action (activator "Emacs")}
-        {:key :b
-         :title "Browser"
-         :action (activator browser-app)}
-        {:key :t
-         :title "Kitty"
-         :action (activator "Kitty")}
+        {:key :r
+         :title music-app
+         :action (activator music-app)}
         {:key :s
          :title "Slack"
          :action (activator "Slack")}
-        {:key :r
-         :title music-app
-         :action (activator music-app)}])
+        {:key :t
+         :title "Kitty"
+         :action (activator "Kitty")}
+        {:key :c
+         :title "Whatsapp"
+         :action (activator "Whatsapp")}
+        {:key :d
+         :title "Discord"
+         :action (activator "Discord")}
+        {:key :b
+         :title browser-app
+         :action (activator browser-app)}
+        {:key :q
+         :title "Roam Research"
+         :action (activator "Roam Research")}
+        {:key :f
+         :title "Finder"
+         :action (activator "Finder")}
+        {:key :p
+         :title "Preview"
+         :action (activator "Preview")}
+        {:key :o
+         :title "Obsidian"
+         :action (activator "Obsidian")}
+        {:key :e
+         :title "Emacs"
+         :action (activator "Emacs")}])
 
 ; These are behind the 'm' submenu
 (local media-bindings
@@ -340,7 +358,7 @@
 (local app-keys
        [{:mods hyper-mods
          :key :r
-         :action (activator "Spotify")}
+         :action (activator music-app)}
         {:mods hyper-mods
          :key :s
          :action (activator "Slack")}
