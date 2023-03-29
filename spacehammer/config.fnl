@@ -494,7 +494,7 @@
 (local slack-config
        {:key "Slack"
         :keys [{:mods [:cmd]
-                :key  :g
+                :key :g
                 :action "slack:scroll-to-bottom"}
                {:mods [:ctrl]
                 :key :r
@@ -548,10 +548,10 @@
 (local obsidian-config
        {:key "Obsidian"
         :keys [{:mods [:ctrl]
-                :key  :p
+                :ke :p
                 :action "slack:up"}
                {:mods [:ctrl]
-                :key  :n
+                :key :n
                 :action "slack:down"}]})
 
 (local roam-config
@@ -560,7 +560,7 @@
                 :key :p
                 :action "slack:up"}
                {:mods [:ctrl]
-                :key  :n
+                :key :n
                 :action "slack:down"}]})
 
 (local apps
@@ -573,10 +573,10 @@
 (local config
        {:title "Main Menu"
         :items menu-items
-        :keys  common-keys
+        :keys common-keys
         :enter #(windows.hide-display-numbers)
-        :exit  #(windows.hide-display-numbers)
-        :apps  apps
+        :exit #(windows.hide-display-numbers)
+        :apps apps
         :grid {:size "9x4"}
         :hyper {:key :F18}})
 
@@ -589,7 +589,7 @@
            [str style seconds]
            :override alert
            "Replace core.alert with one that alerts on all screens"
-           (each [_ screen (pairs  (hs.screen.allScreens))]
+           (each [_ screen (pairs (hs.screen.allScreens))]
              (hs.alert.show str
                             (or style 1)
                             screen
