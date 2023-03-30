@@ -231,30 +231,30 @@
        [{:key "arst"
          :title "left side presets"}
         {:key :a
-         :action #(hs.grid.set (hs.window.focusedWindow) "0,0 3x4")
+         :action #(windows.resize-to-grid "0,0 3x4")
          :repeatable true}
         {:key :r
-         :action #(hs.grid.set (hs.window.focusedWindow) "0,0 4x4")
+         :action #(windows.resize-to-grid "0,0 4x4")
          :repeatable true}
         {:key :s
-         :action #(hs.grid.set (hs.window.focusedWindow) "0,0 5x4")
+         :action #(windows.resize-to-grid "0,0 5x4")
          :repeatable true}
         {:key :t
-         :action #(hs.grid.set (hs.window.focusedWindow) "0,0 6x4")
+         :action #(windows.resize-to-grid "0,0 6x4")
          :repeatable true}
         {:key "zxcd"
          :title "right side presets"}
         {:key :z
-         :action #(hs.grid.set (hs.window.focusedWindow) "3,0 6x4")
+         :action #(windows.resize-to-grid "3,0 6x4")
          :repeatable true}
         {:key :x
-         :action #(hs.grid.set (hs.window.focusedWindow) "4,0 5x4")
+         :action #(windows.resize-to-grid "4,0 5x4")
          :repeatable true}
         {:key :c
-         :action #(hs.grid.set (hs.window.focusedWindow) "5,0 4x4")
+         :action #(windows.resize-to-grid "5,0 4x4")
          :repeatable true}
         {:key :d
-         :action #(hs.grid.set (hs.window.focusedWindow) "6,0 3x4")
+         :action #(windows.resize-to-grid "6,0 3x4")
          :repeatable true}
         ])
 
