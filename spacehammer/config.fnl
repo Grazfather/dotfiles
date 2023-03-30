@@ -459,25 +459,8 @@
 ;; App Specific Config
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(local browser-keys
-       [{:mods [:cmd :shift]
-         :key :l
-         :action "chrome:open-location"}
-        {:mods hyper-mods
-         :key :n
-         :action "chrome:next-tab"
-         :repeat true}
-        {:mods hyper-mods
-         :key :p
-         :action "chrome:prev-tab"
-         :repeat true}])
-
-(local browser-items
-        menu-items)
-
 (local browser-config
-       {:key browser-app
-        :keys browser-keys})
+       {:key browser-app})
 
 (local hammerspoon-config
        {:key "Hammerspoon"
