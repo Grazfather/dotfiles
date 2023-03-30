@@ -132,9 +132,6 @@
       "nv" <C-k> "<C-w>k"
       "nv" <C-l> "<C-w>l")
 
-; <Tab> to cycle through splits
-(nnoremap! <Tab> "<C-w>w")
-
 ; Jumping between buffers
 (nnoremap! <C-n> "<cmd>bnext<CR>"
            <C-p> "<cmd>bprev<CR>"
