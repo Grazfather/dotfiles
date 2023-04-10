@@ -51,7 +51,6 @@
    ; -- Parsing
    {1 "nvim-treesitter/nvim-treesitter" :build ":TSUpdate"}
    "nvim-treesitter/nvim-treesitter-textobjects"
-   "nvim-treesitter/playground"
    "nvim-treesitter/nvim-treesitter-context"
    "p00f/nvim-ts-rainbow"
    ; -- Completion
