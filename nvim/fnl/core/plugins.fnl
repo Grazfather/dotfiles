@@ -24,6 +24,9 @@
     :dependencies ["kyazdani42/nvim-web-devicons"]
     :config (setup-module-fn! :alpha
                               (. (require "alpha.themes.startify") :config))}
+   {1 "folke/noice.nvim"
+    :config true
+    :dependencies ["MunifTanjim/nui.nvim"]}
    "akinsho/toggleterm.nvim"
    "mbbill/undotree"
 
