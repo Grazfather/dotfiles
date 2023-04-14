@@ -313,6 +313,7 @@
 
 (descnmap! "Toggle comment on current line"
            "<leader>c " "gcc")
+(map! "v" "<leader>c " "gc")
 
 ; Simulate readline/emacs's jump to start/end of line in insert mode
 (map! "i" <C-a> "<ESC>I"
