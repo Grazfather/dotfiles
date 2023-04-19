@@ -91,7 +91,9 @@
       (-?> mod#
            (. ,method)
            ((fn [f# ...] (f# ...)) ,...))
-      (print "Could not import module " ,m))))
+      (do
+        (print "Could not import module" ,m)
+        nil))))
 
 (fn setup-module!
   [m ...]
@@ -102,7 +104,7 @@
   [m ...]
   "Return a function that will call a module's setup function if the module can
   be imported."
-  `(fn [] ,(setup-module! m ...)))
+  `#,(setup-module! m ...))
 
 {: get?
  : let!

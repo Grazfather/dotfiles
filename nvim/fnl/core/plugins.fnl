@@ -42,7 +42,7 @@
    ; Add targets to 's'/'S'
    {1 "ggandor/leap.nvim"
     :dependencies "tpope/vim-repeat"
-    :config (fn [] (call-module-method! :leap :set_default_keymaps))}
+    :config #(call-module-method! :leap :set_default_keymaps)}
    {1 "ggandor/flit.nvim" :config true}
 
    ; Language support
