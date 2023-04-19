@@ -1,5 +1,5 @@
 (module core.completion
-  {require-macros [core.macros]})
+        {require-macros [core.macros]})
 
 ; Completion via nvim-cmp
 (call-module-method! :luasnip.loaders.from_vscode :lazy_load)

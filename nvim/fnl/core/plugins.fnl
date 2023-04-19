@@ -1,6 +1,6 @@
 (module core.plugins
-  {autoload {lazy lazy}
-   require-macros [core.macros]})
+        {autoload {lazy lazy}
+         require-macros [core.macros]})
 
 (lazy.setup
   [

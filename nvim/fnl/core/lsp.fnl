@@ -1,5 +1,6 @@
 (module core.lsp
-  {require-macros [core.macros]})
+        {require-macros [core.macros
+                         aniseed.macros.autocmds]})
 
 (local lspconfig (require :lspconfig))
 (local servers ["gopls" "clojure_lsp" "pyright" "bashls"])
@@ -32,19 +33,11 @@
       (vim.api.nvim_set_hl 0 "LspReferenceText" {:reverse true})
       (vim.api.nvim_set_hl 0 "LspReferenceWrite" {:reverse true})
 
-      (let [group (vim.api.nvim_create_augroup "lsp-document-highlight" {:clear true})]
-        (vim.api.nvim_create_autocmd
-          :CursorHold
-          {:buffer bufnr
-           :group group
-           :callback (fn [] (vim.lsp.buf.document_highlight))})
-        (vim.api.nvim_create_autocmd
-          :CursorMoved
-          {:buffer bufnr
-           :group group
-           :callback (fn [] (vim.lsp.buf.clear_references))})
-        )
-      )))
+      (augroup "lsp-document-highlight"
+               [[:CursorHold] {:buffer bufnr
+                               :callback #(vim.lsp.buf.document_highlight)}]
+               [[:CursorMoved] {:buffer bufnr
+                                :callback #(vim.lsp.buf.clear_references)}]))))
 
 ; Add capabilities from cmp_nvim_lsp
 (local capabilities

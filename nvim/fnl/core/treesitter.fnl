@@ -1,5 +1,5 @@
 (module code.treesitter
-  {require-macros [core.macros]})
+        {require-macros [core.macros]})
 
 (setup-module!
   :nvim-treesitter.configs
