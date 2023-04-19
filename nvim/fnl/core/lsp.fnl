@@ -13,18 +13,18 @@
   (buf-set-option "omnifunc" "v:lua.vim.lsp.omnifunc")
 
   ; Mappings
-  (buf-nmap "gD" "<cmd>lua vim.lsp.buf.declaration()<CR>" "Go to declaration")
-  (buf-nmap "gd" "<cmd>lua vim.lsp.buf.definition()<CR>" "Go to definition")
-  (buf-nmap "gi" "<cmd>lua vim.lsp.buf.implementation()<CR>" "Go to implementation")
-  (buf-nmap "gr" "<cmd>lua vim.lsp.buf.references()<CR>" "Go to references")
-  (buf-nmap "K" "<cmd>lua vim.lsp.buf.hover()<CR>" "Hover documentation")
-  (buf-nmap "[d" "<cmd>lua vim.diagnostic.goto_prev()<CR>" "Go to previous diagnostic")
-  (buf-nmap "]d" "<cmd>lua vim.diagnostic.goto_next()<CR>" "Go to next diagnostic")
-  (buf-nmap "<leader>rn" "<cmd>lua vim.lsp.buf.rename()<CR>" "Rename symbol")
+  (buf-nmap "gD" #(vim.lsp.buf.declaration) "Go to declaration")
+  (buf-nmap "gd" #(vim.lsp.buf.definition) "Go to definition")
+  (buf-nmap "gi" #(vim.lsp.buf.implementation) "Go to implementation")
+  (buf-nmap "gr" #(vim.lsp.buf.references) "Go to references")
+  (buf-nmap "K" #(vim.lsp.buf.hover) "Hover documentation")
+  (buf-nmap "[d" #(vim.diagnostic.goto_prev) "Go to previous diagnostic")
+  (buf-nmap "]d" #(vim.diagnostic.goto_next) "Go to next diagnostic")
+  (buf-nmap "<leader>rn" #(vim.lsp.buf.rename) "Rename symbol")
 
   ; Set some keybinds conditional on server capabilities
   (if client.server_capabilities.documentFormattingProvider
-    (buf-nmap "<leader>ef" "<cmd>lua vim.lsp.buf.format({async = true})<CR>" "Format buffer"))
+    (buf-nmap "<leader>ef" #(vim.lsp.buf.format {:async true}) "Format buffer"))
 
   ; Set autocommands conditional on server_capabilities
   (if client.server_capabilities.documentHighlightProvider
