@@ -68,11 +68,9 @@
    ; -- Markdown
    "jtratner/vim-flavored-markdown"
    ; -- Lisps
-   {1 "guns/vim-sexp"
-    :init (fn []
-            ; Make vim-sexp work for more languages
-            (vim.api.nvim_set_var
-              "sexp_filetypes" "clojure,scheme,lisp,timl,fennel,janet"))}
+   {1 "Grazfather/sexp.nvim"
+    :config {:filetypes "clojure,scheme,lisp,timl,fennel,janet"}
+    :dependencies "tpope/vim-repeat"}
    ; -- Clojure
    ; ---- Connection to nREPL
    "Olical/conjure"
