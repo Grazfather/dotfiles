@@ -71,9 +71,9 @@
    {1 "Grazfather/sexp.nvim"
     :config {:filetypes "clojure,scheme,lisp,timl,fennel,janet"}
     :dependencies "tpope/vim-repeat"}
-   ; -- Clojure
-   ; ---- Connection to nREPL
+   ; ---- Connection to various lisp REPLs
    "Olical/conjure"
+   ; -- Clojure
    ; ---- Linting
    "borkdude/clj-kondo"
    ; -- Janet
