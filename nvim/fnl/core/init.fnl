@@ -198,14 +198,14 @@
 
 (descnmap!
   "Clear trailing whitespace"
-  <leader>ew "<cmd>%s/\\s\\+$//<CR><C-o>"
+  <leader>ew "<cmd>keeppatterns %s/\\s\\+$//e<CR><C-o>"
 
   "Convert tabs to 2 spaces"
-  <leader>et2 "<cmd>%s/\t/  /g<CR>"
+  <leader>et2 "<cmd>keeppatterns %s/\t/  /eg<CR><C-o>"
   "Convert tabs to 4 spaces"
-  <leader>et4 "<cmd>%s/\t/    /g<CR>"
+  <leader>et4 "<cmd>keeppatterns %s/\t/    /eg<CR><C-o>"
   "Convert tabs to 8 spaces"
-  <leader>et8 "<cmd>%s/\t/        /g<CR>"
+  <leader>et8 "<cmd>keeppatterns %s/\t/        /eg<CR><C-o>"
 
   "Select whole buffer"
   vag "ggVGg_"
