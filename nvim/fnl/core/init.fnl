@@ -101,18 +101,20 @@
         ; I set the colon to optional for DELETEME comments
         :highlight {:pattern ".*<(KEYWORDS)\\s*:?"}})
 
+; Highlight the text I yank
+(autocmd [:TextYankPost] {:callback #(vim.highlight.on_yank)})
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; NAVIGATION
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-; Jump to last cursor when loading a file position unless it's invalid or in an
-; event handler
+; Jump to last position when loading a file if we can
 (autocmd ["BufReadPost"]
          {:pattern ["*"]
-          :callback #(let [[row _] (vim.api.nvim_buf_get_mark 0 "\"")
+          :callback #(let [[row col] (vim.api.nvim_buf_get_mark 0 "\"")
                            lastrow (vim.api.nvim_buf_line_count 0)]
                        (when (and (> row 0) (<= row lastrow))
-                         (vim.cmd "normal g`\"")))})
+                         (vim.api.nvim_win_set_cursor 0 [row col])))})
 
 ; Disable arrow keys for navigation
 (nnoremap! <up> "<nop>"
