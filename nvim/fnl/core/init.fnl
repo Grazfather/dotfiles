@@ -232,7 +232,7 @@
   "Toggle cursor highlighting"
   <leader>tx "<cmd>set cursorline! cursorcolumn!<CR>"
   "Blink current line"
-  <leader><space> "<cmd>lua require('blinker').blink_cursorline()<CR>"
+  <leader><space> #(call-module-func :blinker "blink_cursorline")
 
   ; Window (split) management
   "Split vertically"
@@ -265,29 +265,31 @@
 
   ; telescope.nvim
   "Find files in project"
-  <leader>pf "<cmd>lua require('telescope.builtin').git_files()<CR>"
+  <leader>pf #(call-module-func "telescope.builtin" "git_files")
   "Find TODOs in project"
   <leader>pt "<cmd>TodoTelescope<CR>"
   "File files from CWD"
-  <leader>ff "<cmd>lua require('telescope.builtin').find_files()<CR>"
+  <leader>ff #(call-module-func "telescope.builtin" "find_files")
   "Find buffer"
-  <leader>bb "<cmd>lua require('telescope.builtin').buffers()<CR>"
+  <leader>bb #(call-module-func "telescope.builtin" "buffers")
   "Find mark"
-  <leader>fm "<cmd>lua require('telescope.builtin').marks()<CR>"
+  <leader>fm #(call-module-func "telescope.builtin" "marks")
   "Find jump"
-  <leader>fj "<cmd>lua require('telescope.builtin').jumplist()<CR>"
+  <leader>fj #(call-module-func "telescope.builtin" "jumplist")
   "Grep file content from CWD"
-  <leader>frg "<cmd>lua require('telescope.builtin').live_grep()<CR>"
+  <leader>frg #(call-module-func "telescope.builtin" "live_grep")
   "Search help"
-  <leader>hh "<cmd>lua require('telescope.builtin').help_tags()<CR>"
+  <leader>hh #(call-module-func "telescope.builtin" "help_tags")
+  "Search highlights"
+  <leader>hH #(call-module-func "telescope.builtin" "highlights")
   "Search autocommands"
-  <leader>ha "<cmd>lua require('telescope.builtin').autocommands()<CR>"
+  <leader>ha #(call-module-func "telescope.builtin" "autocommands")
   "Search keymaps"
-  <leader>hk "<cmd>lua require('telescope.builtin').keymaps()<CR>"
+  <leader>hk #(call-module-func "telescope.builtin" "keymaps")
   "Search man pages"
-  <leader>hm "<cmd>lua require('telescope.builtin').man_pages()<CR>"
+  <leader>hm #(call-module-func "telescope.builtin" "man_pages")
   "Search ex commands"
-  "<leader>:" "<cmd>lua require('telescope.builtin').commands()<CR>")
+  "<leader>:" #(call-module-func "telescope.builtin" "commands"))
 
 (set! signcolumn "yes")
 (defn toggle-sign-column []

@@ -22,8 +22,8 @@
    {1 "Grazfather/blinker.nvim" :config true}
    {1 "goolord/alpha-nvim"
     :dependencies ["kyazdani42/nvim-web-devicons"]
-    :config (setup-fn :alpha
-                      (. (require "alpha.themes.startify") :config))}
+    :config #(setup :alpha
+                    (. (require "alpha.themes.startify") :config))}
    {1 "folke/noice.nvim"
     :config true
     :dependencies ["MunifTanjim/nui.nvim"]}

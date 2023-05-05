@@ -101,12 +101,6 @@
   "Call a module's setup function if the module can be imported."
   (call-module-func m :setup ...))
 
-(fn setup-fn
-  [m ...]
-  "Return a function that will call a module's setup function if the module can
-  be imported."
-  `#,(setup m ...))
-
 {: get?
  : let!
  : set!
@@ -120,5 +114,4 @@
  : noremap!
  : nnoremap!
  : call-module-func
- : setup
- : setup-fn}
+ : setup}
