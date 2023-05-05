@@ -22,8 +22,8 @@
    {1 "Grazfather/blinker.nvim" :config true}
    {1 "goolord/alpha-nvim"
     :dependencies ["kyazdani42/nvim-web-devicons"]
-    :config (setup-module-fn! :alpha
-                              (. (require "alpha.themes.startify") :config))}
+    :config (setup-fn :alpha
+                      (. (require "alpha.themes.startify") :config))}
    {1 "folke/noice.nvim"
     :config true
     :dependencies ["MunifTanjim/nui.nvim"]}
@@ -42,7 +42,7 @@
    ; Add targets to 's'/'S'
    {1 "ggandor/leap.nvim"
     :dependencies "tpope/vim-repeat"
-    :config #(call-module-method! :leap :set_default_keymaps)}
+    :config #(call-module-func :leap :set_default_keymaps)}
    {1 "ggandor/flit.nvim" :config true}
 
    ; Language support

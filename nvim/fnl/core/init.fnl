@@ -19,22 +19,22 @@
 
 ; Color scheme
 (set-true! termguicolors)
-(setup-module! :onedark {:style :warmer})
+(setup :onedark {:style :warmer})
 (vim.api.nvim_command "silent! colorscheme onedark")
 
 ; Status line
-(setup-module! :lualine {:options {:theme :auto
-                                   :component_separators {:left ""
-                                                          :right ""}
-                                   :section_separators {:left ""
-                                                        :right ""}}})
+(setup :lualine {:options {:theme :auto
+                           :component_separators {:left ""
+                                                  :right ""}
+                           :section_separators {:left ""
+                                                :right ""}}})
 ; Always show the status bar, one for all splits
 (set! laststatus 3)
 ; Show opened buffers on tabline
-(setup-module! :bufferline {:options {:diagnostics :nvim_lsp
-                                      :offsets [{:filetype :NvimTree
-                                                 :text ""
-                                                 :padding 1}]}})
+(setup :bufferline {:options {:diagnostics :nvim_lsp
+                              :offsets [{:filetype :NvimTree
+                                         :text ""
+                                         :padding 1}]}})
 
 (each [name text (pairs {:DiagnosticSignError ""
                          :DiagnosticSignWarn ""
@@ -43,9 +43,9 @@
   (vim.fn.sign_define name {:texthl name :text text :numhl ""}))
 
 ; Show lines at each indent
-(setup-module! :indent_blankline
-               {:buftype_exclude ["terminal" "nofile"]
-                :filetype_exclude ["NvimTree" "help"]})
+(setup :indent_blankline
+       {:buftype_exclude ["terminal" "nofile"]
+        :filetype_exclude ["NvimTree" "help"]})
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; VISUAL/LAYOUT
@@ -61,17 +61,17 @@
 
 ; I tend to use leader a lot, so I try to namespace commands under leader
 ; using a simple mnemonic:
-(call-module-method! :which-key :register
-                     {:b {:name "Buffer stuff"}
-                      :e {:name "Edit stuff"}
-                      :g {:name "Git"}
-                      :h {:name "Help"}
-                      :m {:name "Local leader"}
-                      :f {:name "File/find ops"}
-                      :t {:name "Toggles"}
-                      :w {:name "Window"}
-                      :x {:name "Lisp"}}
-                     {:prefix :<leader>})
+(call-module-func :which-key :register
+                  {:b {:name "Buffer stuff"}
+                   :e {:name "Edit stuff"}
+                   :g {:name "Git"}
+                   :h {:name "Help"}
+                   :m {:name "Local leader"}
+                   :f {:name "File/find ops"}
+                   :t {:name "Toggles"}
+                   :w {:name "Window"}
+                   :x {:name "Lisp"}}
+                  {:prefix :<leader>})
 ; Though some that don't fit aren't yet put behind a namespace
 
 ; Short timeoutlen to get which-key to kick in sooner
@@ -92,14 +92,14 @@
 ; HACK:
 ; WARN:
 ; NOTE:
-(setup-module! :todo-comments
-               {:keywords {:DELETEME {:icon "✗" :color "error"}
-                           :TODO {:icon " " :color "info"}
-                           :HACK {:icon " " :color "warning"}
-                           :WARN {:icon " " :color "warning" :alt ["WARNING" "XXX"]}
-                           :NOTE {:icon " " :color "hint" :alt  ["INFO"]}}
-                ; I set the colon to optional for DELETEME comments
-                :highlight {:pattern ".*<(KEYWORDS)\\s*:?"}})
+(setup :todo-comments
+       {:keywords {:DELETEME {:icon "✗" :color "error"}
+                   :TODO {:icon " " :color "info"}
+                   :HACK {:icon " " :color "warning"}
+                   :WARN {:icon " " :color "warning" :alt ["WARNING" "XXX"]}
+                   :NOTE {:icon " " :color "hint" :alt  ["INFO"]}}
+        ; I set the colon to optional for DELETEME comments
+        :highlight {:pattern ".*<(KEYWORDS)\\s*:?"}})
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; NAVIGATION
@@ -193,8 +193,8 @@
 (map! "nv" gl "<cmd>HopLine<CR>")
 
 ; Toggleterm
-(setup-module! :toggleterm {:open_mapping "<c-\\>"
-                            :direction :tab})
+(setup :toggleterm {:open_mapping "<c-\\>"
+                    :direction :tab})
 
 (descnmap!
   "Clear trailing whitespace"

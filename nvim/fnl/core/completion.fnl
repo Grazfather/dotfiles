@@ -2,15 +2,15 @@
         {require-macros [core.macros]})
 
 ; Completion via nvim-cmp
-(call-module-method! :luasnip.loaders.from_vscode :lazy_load)
+(call-module-func :luasnip.loaders.from_vscode :lazy_load)
 
 (local lspkind (require :lspkind))
 (local luasnip (require :luasnip))
 (local cmp (require :cmp))
 
-(setup-module! :luasnip {:updateevents "TextChanged,TextChangedI"})
+(setup :luasnip {:updateevents "TextChanged,TextChangedI"})
 
-(setup-module!
+(setup
   :cmp
   {:snippet {:expand (fn [args] (luasnip.lsp_expand args.body))}
    :mapping {"<C-Y>" (cmp.mapping.confirm {:select true})

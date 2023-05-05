@@ -41,12 +41,12 @@
 
 ; Add capabilities from cmp_nvim_lsp
 (local capabilities
-  (call-module-method! :cmp_nvim_lsp :default_capabilities
+  (call-module-func :cmp_nvim_lsp :default_capabilities
    (vim.lsp.protocol.make_client_capabilities)))
 
 ; Use Mason to auto-install the lsp servers for us.
-(setup-module! :mason-lspconfig
-               {:ensure_installed servers})
+(setup :mason-lspconfig
+       {:ensure_installed servers})
 
 ; Setup the above for each server specified
 (each [_ lsp (ipairs servers)]

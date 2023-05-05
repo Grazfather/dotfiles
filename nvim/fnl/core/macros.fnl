@@ -82,10 +82,11 @@
     `(do ,(map!- "n" keys cmd {})
          ,(nnoremap! ...))))
 
-(fn call-module-method!
+(fn call-module-func
   [m method ...]
   "Call a module's specified method if the module can be imported."
   (assert-compile (= :string (type m)) "expected string for module name" m)
+  (assert-compile (= :string (type method)) "expected string for method name" m)
   `(let [(ok?# mod#) (pcall require ,m) ]
     (if ok?#
       (-?> mod#
@@ -95,16 +96,16 @@
         (print "Could not import module" ,m)
         nil))))
 
-(fn setup-module!
+(fn setup
   [m ...]
   "Call a module's setup function if the module can be imported."
-  (call-module-method! m :setup ...))
+  (call-module-func m :setup ...))
 
-(fn setup-module-fn!
+(fn setup-fn
   [m ...]
   "Return a function that will call a module's setup function if the module can
   be imported."
-  `#,(setup-module! m ...))
+  `#,(setup m ...))
 
 {: get?
  : let!
@@ -118,6 +119,6 @@
  : descnmap!
  : noremap!
  : nnoremap!
- : call-module-method!
- : setup-module!
- : setup-module-fn!}
+ : call-module-func
+ : setup
+ : setup-fn}

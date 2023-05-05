@@ -1,7 +1,7 @@
 (module code.treesitter
         {require-macros [core.macros]})
 
-(setup-module!
+(setup
   :nvim-treesitter.configs
   {
    :highlight {:enable true
@@ -36,4 +36,4 @@
                       ; These must be present to override neovim builtins
                       "c" "help" "lua" "vim"]
    })
-(setup-module! :treesitter-context)
+(setup :treesitter-context)
