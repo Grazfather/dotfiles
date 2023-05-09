@@ -33,9 +33,11 @@
    ; Navigation
    {1 "nvim-telescope/telescope.nvim"
     :dependencies ["nvim-lua/plenary.nvim"]}
-   {1 "kyazdani42/nvim-tree.lua"
+   {1 "nvim-tree/nvim-tree.lua"
     :dependencies ["kyazdani42/nvim-web-devicons"]
-    :config true}
+    :lazy true
+    :cmd "NvimTreeToggle"
+    :config #(setup :nvim-tree)}
    ; -- hopping (bound to gl)
    {1 "phaazon/hop.nvim" :opts {:keys "arstneio"}}
    ; -- Override f/t & add sniping via s
@@ -64,18 +66,22 @@
    "L3MON4D3/LuaSnip"
    "rafamadriz/friendly-snippets"
    ; -- Go
-   "fatih/vim-go"
+   {1 "fatih/vim-go"
+    :lazy true
+    :ft ["go" "gomod" "gosum"]}
    ; -- Markdown
    "jtratner/vim-flavored-markdown"
    ; -- Lisps
    {1 "Grazfather/sexp.nvim"
+    :lazy true
+    :ft ["clojure" "scheme" "lisp" "timl" "fennel" "janet"]
     :config {:filetypes "clojure,scheme,lisp,timl,fennel,janet"}
     :dependencies "tpope/vim-repeat"}
    ; ---- Connection to various lisp REPLs
-   "Olical/conjure"
+   {1 "Olical/conjure" :lazy true :ft ["clojure" "fennel" "janet"]}
    ; -- Clojure
    ; ---- Linting
-   "borkdude/clj-kondo"
+   {1 "borkdude/clj-kondo" :lazy true :ft ["clojure"]}
    ; -- Janet
    "janet-lang/janet.vim"
    ; -- Fennel
