@@ -59,12 +59,13 @@
    "nvim-treesitter/nvim-treesitter-context"
    "p00f/nvim-ts-rainbow"
    ; -- Completion
-   "hrsh7th/nvim-cmp"
-   "hrsh7th/cmp-buffer"
-   "hrsh7th/cmp-nvim-lsp"
-   "saadparwaiz1/cmp_luasnip"
-   "L3MON4D3/LuaSnip"
-   "rafamadriz/friendly-snippets"
+  {1 "hrsh7th/nvim-cmp"
+   :lazy true
+   :event "InsertEnter"
+   :dependencies ["hrsh7th/cmp-buffer" "hrsh7th/cmp-nvim-lsp"
+                  "saadparwaiz1/cmp_luasnip" "L3MON4D3/LuaSnip"
+                  "rafamadriz/friendly-snippets"]
+   :config (. (require "core.completion") :config)}
    ; -- Go
    {1 "fatih/vim-go"
     :lazy true

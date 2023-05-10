@@ -9,7 +9,6 @@
       g/maplocalleader " m")
 
 (require :core.plugins)
-(require :core.completion)
 (require :core.lsp)
 (require :core.treesitter)
 
