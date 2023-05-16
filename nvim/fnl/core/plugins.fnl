@@ -48,7 +48,7 @@
    {1 "ggandor/flit.nvim" :config true}
 
    ; Language support
-   {1 "williamboman/mason.nvim" :run ":MasonUpdate" :config true}
+   {1 "williamboman/mason.nvim" :build ":MasonUpdate" :config true}
    ; -- LSP
    "williamboman/mason-lspconfig.nvim"
    "neovim/nvim-lspconfig"
@@ -76,7 +76,7 @@
    {1 "Grazfather/sexp.nvim"
     :lazy true
     :ft ["clojure" "scheme" "lisp" "timl" "fennel" "janet"]
-    :config {:filetypes "clojure,scheme,lisp,timl,fennel,janet"}
+    :opts {:filetypes "clojure,scheme,lisp,timl,fennel,janet"}
     :dependencies "tpope/vim-repeat"}
    ; ---- Connection to various lisp REPLs
    {1 "Olical/conjure" :lazy true :ft ["clojure" "fennel" "janet"]}
