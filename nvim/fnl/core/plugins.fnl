@@ -32,7 +32,9 @@
 
    ; Navigation
    {1 "nvim-telescope/telescope.nvim"
-    :dependencies ["nvim-lua/plenary.nvim"]}
+    :dependencies ["nvim-lua/plenary.nvim"
+                   {1 "nvim-telescope/telescope-fzf-native.nvim"
+                    :build "make"}]}
    {1 "nvim-tree/nvim-tree.lua"
     :dependencies ["kyazdani42/nvim-web-devicons"]
     :lazy true
