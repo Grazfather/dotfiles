@@ -1,6 +1,7 @@
 (module core.plugins
         {autoload {lazy lazy}
-         require-macros [core.macros]})
+         require-macros [core.macros
+                         aniseed.macros.autocmds]})
 
 (lazy.setup
   [
@@ -55,6 +56,18 @@
    "williamboman/mason-lspconfig.nvim"
    "neovim/nvim-lspconfig"
    "onsails/lspkind-nvim"
+   "j-hui/fidget.nvim"
+   {1 "jose-elias-alvarez/null-ls.nvim"
+    :ft ["go"]
+    :config #(let [null-ls (require :null-ls)]
+               (setup :null-ls
+                      {:sources [null-ls.builtins.formatting.gofmt
+                                 null-ls.builtins.formatting.goimports]
+                       :on_attach (fn [client bufnr]
+                                    (augroup :LspFormatting
+                                             [[:BufWritePre]
+                                              {:buffer bufnr
+                                               :callback #(vim.lsp.buf.format {:bufnr bufnr})}]))}))}
    ; -- Parsing
    {1 "nvim-treesitter/nvim-treesitter" :build ":TSUpdate"}
    "nvim-treesitter/nvim-treesitter-textobjects"
@@ -68,10 +81,6 @@
                   "saadparwaiz1/cmp_luasnip" "L3MON4D3/LuaSnip"
                   "rafamadriz/friendly-snippets"]
    :config (. (require "core.completion") :config)}
-   ; -- Go
-   {1 "fatih/vim-go"
-    :lazy true
-    :ft ["go" "gomod" "gosum"]}
    ; -- Markdown
    "jtratner/vim-flavored-markdown"
    ; -- Lisps
