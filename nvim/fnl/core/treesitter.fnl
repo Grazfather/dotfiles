@@ -32,7 +32,7 @@
 
    :ensure_installed ["bash" "clojure" "cpp" "fennel" "go" "gomod" "gosum"
                       "javascript" "json" "make" "markdown" "proto" "python"
-                      "toml" "toml" "yaml" "zig"
+                      "toml" "regex" "yaml" "zig"
                       ; These must be present to override neovim builtins
                       "c" "help" "lua" "vim"]
    })

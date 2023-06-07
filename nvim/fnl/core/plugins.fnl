@@ -43,12 +43,14 @@
     :config #(setup :nvim-tree)}
    ; -- hopping (bound to gl)
    {1 "phaazon/hop.nvim" :opts {:keys "arstneio"}}
-   ; -- Override f/t & add sniping via s
-   ; Add targets to 's'/'S'
+   ; -- Add targets to 's'/'S'
    {1 "ggandor/leap.nvim"
     :dependencies "tpope/vim-repeat"
     :config #(call-module-func :leap :set_default_keymaps)}
-   {1 "ggandor/flit.nvim" :config true}
+   ; -- Override f/t
+   {1 "ggandor/flit.nvim"
+    :dependencies "ggandor/leap.nvim"
+    :config true}
 
    ; Language support
    {1 "williamboman/mason.nvim" :build ":MasonUpdate" :config true}
