@@ -53,9 +53,8 @@
 (fn map!- [modes keys cmd options]
   (let [modes (tostring modes)
         keys (tostring keys)]
-    `(do
-       ,(unpack (icollect [mode (string.gmatch modes ".")]
-                          `(vim.keymap.set ,mode ,keys ,cmd ,options))))))
+    (unpack (icollect [mode (string.gmatch modes ".")]
+                      `(vim.keymap.set ,mode ,keys ,cmd ,options)))))
 
 (fn map! [modes keys cmd ...]
   (when (not (= nil modes))
