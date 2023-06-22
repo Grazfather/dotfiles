@@ -19,10 +19,10 @@
 ; Color scheme
 (set-true! termguicolors)
 (setup :onedark {:style :warmer})
-(vim.api.nvim_command "silent! colorscheme onedark")
+(vim.cmd.colorscheme :onedark)
 
 ; Status line
-(setup :lualine {:options {:theme :auto
+(setup :lualine {:options {:theme :onedark
                            :component_separators {:left ""
                                                   :right ""}
                            :section_separators {:left ""
