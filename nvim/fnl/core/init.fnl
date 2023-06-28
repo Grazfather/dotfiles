@@ -116,10 +116,10 @@
                          (vim.api.nvim_win_set_cursor 0 [row col])))})
 
 ; Disable arrow keys for navigation
-(nnoremap! <up> "<nop>"
-           <down> "<nop>"
-           <left> "<nop>"
-           <right> "<nop>")
+(nmap! <up> "<nop>"
+       <down> "<nop>"
+       <left> "<nop>"
+       <right> "<nop>")
 
 ; Make j and k move up and down better for wrapped lines
 (nnoremap! k "gk"
@@ -128,19 +128,20 @@
            gj "j")
 
 ; Ctrl-<hjkl> to change splits
-(map! "nv" <C-h> "<C-w>h"
-      "nv" <C-j> "<C-w>j"
-      "nv" <C-k> "<C-w>k"
-      "nv" <C-l> "<C-w>l")
+(descnmap!
+  "Go to the left window" <C-h> "<C-w>h"
+  "Go to the down window" <C-j> "<C-w>j"
+  "Go to the up window" <C-k> "<C-w>k"
+  "Go to the right window" <C-l> "<C-w>l")
 
 ; Jumping between buffers
-(nnoremap! <C-n> "<cmd>bnext<CR>"
-           <C-p> "<cmd>bprev<CR>"
-           <C-e> "<cmd>b#<CR>")
+(nmap! <C-n> "<cmd>bnext<CR>"
+       <C-p> "<cmd>bprev<CR>"
+       <C-e> "<cmd>b#<CR>")
 
 ; Let <C-n> and <C-p> also filter through command history
-(noremap! "c" <C-n> "<down>"
-          "c" <C-p> "<up>")
+(map! "c" <C-n> "<down>"
+      "c" <C-p> "<up>")
 
 ; Let indents in visual mode keep the selection
 (noremap! "v" < "<gv"
@@ -188,7 +189,7 @@
 (nnoremap! J "mzJ`z")
 
 ; Unmap ex mode
-(nnoremap! Q "<nop>")
+(nmap! Q "<nop>")
 
 ; Configure hop bindings
 (map! "nv" gl "<cmd>HopLine<CR>")
