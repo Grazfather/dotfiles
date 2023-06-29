@@ -41,11 +41,6 @@
                          :DiagnosticSignInfo ""})]
   (vim.fn.sign_define name {:texthl name :text text :numhl ""}))
 
-; Show lines at each indent
-(setup :indent_blankline
-       {:buftype_exclude ["terminal" "nofile"]
-        :filetype_exclude ["NvimTree" "help"]})
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; VISUAL/LAYOUT
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
