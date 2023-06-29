@@ -186,9 +186,6 @@
 ; Unmap ex mode
 (nmap! Q "<nop>")
 
-; Configure hop bindings
-(map! "nv" gl "<cmd>HopLine<CR>")
-
 ; Toggleterm
 (setup :toggleterm {:open_mapping "<c-\\>"
                     :direction :tab})

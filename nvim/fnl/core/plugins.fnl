@@ -41,16 +41,44 @@
     :lazy true
     :cmd "NvimTreeToggle"
     :config #(setup :nvim-tree)}
-   ; -- hopping (bound to gl)
-   {1 "phaazon/hop.nvim" :opts {:keys "arstneio"}}
    ; -- Add targets to 's'/'S'
    {1 "ggandor/leap.nvim"
     :dependencies "tpope/vim-repeat"
-    :config #(call-module-func :leap :set_default_keymaps)}
-   ; -- Override f/t
+    :config (fn []
+              (call-module-func :leap :add_default_mappings)
+              ; Labels better for my keyboard layout + preference
+              (tset (require :leap.opts) :labels [:a :r :s :t :n :e :i :o
+                                                  :A :R :S :T :N :E :I :O
+                                                  :z :x :c :d :h "," "." "/"
+                                                  :Z :X :C :D :H "," "." "/"
+                                                  :q :w :f :v :l :u :y ";"
+                                                  :Q :W :F :V :L :U :Y ";"])
+              (tset (require :leap.opts) :safe_labels [])
+              (augroup :LeapCustom
+                       [[:ColorScheme]
+                        {:callback #(vim.api.nvim_set_hl 0
+                                                         :LeapBackdrop
+                                                         {:link :Comment})}]))}
+   ; ; -- Override f/t
    {1 "ggandor/flit.nvim"
     :dependencies "ggandor/leap.nvim"
     :config true}
+   {1 "Grazfather/leaplines.nvim"
+    :dev true
+    :dir "~/code/leaplines.nvim"
+    :dependencies "ggandor/leap.nvim"
+    :keys [{1 "<leader>k"
+            :mode ["n" "v"]
+            :desc "Leap line upwards"
+            2 #(call-module-func :leaplines :leap :up)}
+           {1 "<leader>j"
+            :mode ["n" "v"]
+            :desc "Leap line downwards"
+            2 #(call-module-func :leaplines :leap :down) }
+           {1 "gl"
+            :mode ["n" "v"]
+            :desc "Leap line"
+            2 #(call-module-func :leaplines :leap)}]}
 
    ; Language support
    {1 "williamboman/mason.nvim" :build ":MasonUpdate" :config true}
