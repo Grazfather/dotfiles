@@ -4,6 +4,7 @@
 (setup
   :nvim-treesitter.configs
   {
+   :playground {:enable true}
    :highlight {:enable true
                :additional_vim_regex_highlighting ["clojure" "fennel"]}
    :indent {:enable false}
@@ -32,7 +33,7 @@
 
    :ensure_installed ["bash" "clojure" "cpp" "fennel" "go" "gomod" "gosum"
                       "javascript" "json" "make" "markdown" "proto" "python"
-                      "toml" "regex" "yaml" "zig"
+                      "query" "toml" "regex" "yaml" "zig"
                       ; These must be present to override neovim builtins
                       "c" "help" "lua" "vim"]
    })

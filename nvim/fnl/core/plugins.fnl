@@ -74,6 +74,7 @@
    {1 "nvim-treesitter/nvim-treesitter" :build ":TSUpdate"}
    "nvim-treesitter/nvim-treesitter-textobjects"
    "nvim-treesitter/nvim-treesitter-context"
+   "nvim-treesitter/playground"
    "p00f/nvim-ts-rainbow"
    ; -- Completion
   {1 "hrsh7th/nvim-cmp"
