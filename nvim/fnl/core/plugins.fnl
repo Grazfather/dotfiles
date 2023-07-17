@@ -48,11 +48,11 @@
               (call-module-func :leap :add_default_mappings)
               ; Labels better for my keyboard layout + preference
               (tset (require :leap.opts) :labels [:a :r :s :t :n :e :i :o
-                                                  :A :R :S :T :N :E :I :O
                                                   :z :x :c :d :h "," "." "/"
-                                                  :Z :X :C :D :H "," "." "/"
-                                                  :q :w :f :v :l :u :y ";"
-                                                  :Q :W :F :V :L :U :Y ";"])
+                                                  :q :w :f :p :l :u :y ";"
+                                                  :A :R :S :T :N :E :I :O
+                                                  :Z :X :C :D :H "<" ">" "?"
+                                                  :Q :W :F :P :L :U :Y ";"])
               (tset (require :leap.opts) :safe_labels [])
               (augroup :LeapCustom
                        [[:ColorScheme]
