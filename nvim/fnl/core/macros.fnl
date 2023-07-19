@@ -53,8 +53,13 @@
 (fn map!- [modes keys cmd options]
   (let [modes (tostring modes)
         keys (tostring keys)]
-    (unpack (icollect [mode (string.gmatch modes ".")]
-                      `(vim.keymap.set ,mode ,keys ,cmd ,options)))))
+    ; Don't bother with gensym if the cmd is a string
+    (if (= :string (type cmd))
+      (icollect [mode (string.gmatch modes ".")]
+        `(vim.keymap.set ,mode ,keys ,cmd ,options))
+      `(let [cmd# ,cmd]
+         ,(unpack (icollect [mode (string.gmatch modes ".")]
+                    `(vim.keymap.set ,mode ,keys cmd# ,options)))))))
 
 (fn map! [modes keys cmd ...]
   (when (not (= nil modes))
