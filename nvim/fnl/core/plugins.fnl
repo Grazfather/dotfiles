@@ -89,15 +89,16 @@
    "j-hui/fidget.nvim"
    {1 "jose-elias-alvarez/null-ls.nvim"
     :ft ["go"]
-    :config #(let [null-ls (require :null-ls)]
+    :config #(let [null-ls (require :null-ls)
+                   group (vim.api.nvim_create_augroup :LspFormatting {})]
                (setup :null-ls
                       {:sources [null-ls.builtins.formatting.gofmt
                                  null-ls.builtins.formatting.goimports]
                        :on_attach (fn [client bufnr]
-                                    (augroup :LspFormatting
-                                             [[:BufWritePre]
-                                              {:buffer bufnr
-                                               :callback #(vim.lsp.buf.format {:bufnr bufnr})}]))}))}
+                                    (autocmd [:BufWritePre]
+                                             {:group group
+                                              :buffer bufnr
+                                              :callback #(vim.lsp.buf.format {:bufnr bufnr})}))}))}
    ; -- Parsing
    {1 "nvim-treesitter/nvim-treesitter" :build ":TSUpdate"}
    "nvim-treesitter/nvim-treesitter-textobjects"
