@@ -236,8 +236,8 @@
   "Close other splits"
   <leader>wo "<cmd>only<CR>"
 
-  "Toggle NvimTree"
-  <leader>ft "<cmd>NvimTreeToggle<CR>"
+  "Toggle Neo-tree"
+  <leader>ft "<cmd>Neotree toggle<CR>"
   "Toggle Undotree"
   <leader>tu "<cmd>UndotreeToggle<CR>"
 

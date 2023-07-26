@@ -36,11 +36,10 @@
     :dependencies ["nvim-lua/plenary.nvim"
                    {1 "nvim-telescope/telescope-fzf-native.nvim"
                     :build "make"}]}
-   {1 "nvim-tree/nvim-tree.lua"
-    :dependencies ["kyazdani42/nvim-web-devicons"]
-    :lazy true
-    :cmd "NvimTreeToggle"
-    :config #(setup :nvim-tree)}
+   {1 "nvim-neo-tree/neo-tree.nvim"
+    :dependencies ["nvim-lua/plenary.nvim"
+                   "kyazdani42/nvim-web-devicons"
+                   "MunifTanjim/nui.nvim"]}
    ; -- Add targets to 's'/'S'
    {1 "ggandor/leap.nvim"
     :dependencies "tpope/vim-repeat"
