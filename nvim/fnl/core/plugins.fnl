@@ -58,10 +58,11 @@
                         {:callback #(vim.api.nvim_set_hl 0
                                                          :LeapBackdrop
                                                          {:link :Comment})}]))}
-   ; ; -- Override f/t
+   ; -- Override f/t
    {1 "ggandor/flit.nvim"
     :dependencies "ggandor/leap.nvim"
     :config true}
+   ; -- Leap line-wise with `<leader>` h/j
    {1 "Grazfather/leaplines.nvim"
     :dev true
     :dir "~/code/leaplines.nvim"
@@ -73,11 +74,13 @@
            {1 "<leader>j"
             :mode ["n" "v"]
             :desc "Leap line downwards"
-            2 #(call-module-func :leaplines :leap :down) }
-           {1 "gl"
+            2 #(call-module-func :leaplines :leap :down)}]}
+   ; -- Jump up the AST hierarchy
+   {1 "ggandor/leap-ast.nvim"
+    :keys [{1 "<leader>a"
             :mode ["n" "v"]
-            :desc "Leap line"
-            2 #(call-module-func :leaplines :leap)}]}
+            :desc "Leap up AST"
+            2 #(call-module-func :leap-ast :leap)}]}
 
    ; Language support
    {1 "williamboman/mason.nvim" :build ":MasonUpdate" :config true}
