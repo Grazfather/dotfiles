@@ -1,3 +1,16 @@
+(fn partition [n seq]
+  (var temp [])
+  (var res [])
+  (each [i v (ipairs seq)]
+    (table.insert temp v)
+    (when (= (length temp) n)
+      (table.insert res temp)
+      (set temp [])))
+  (when (~= (length temp) 0)
+    (table.insert res (icollect [_ v (ipairs temp)] v)))
+  res
+  )
+
 (fn get? [name]
   "Get the value of a vim opt"
   (let [name (tostring name)]
@@ -20,35 +33,30 @@
         "t" `(do (tset vim.t ,name ,value) ,(let! ...))
         _ `(do (tset vim.g ,name ,value) ,(let! ...))))))
 
-(fn set! [name value ...]
-  "Set a vim opt to an explicit value"
-  (when (not (= nil name))
-    (let [name (tostring name)]
-      `(do (tset vim.opt ,name ,value) ,(set! ...)))))
+(fn set! [...]
+  "Set vim opts to explicit values"
+  `(do ,(unpack (icollect [_ [name value] (ipairs (partition 2 [...]))]
+                  `(tset vim.opt ,(tostring name) ,value)))))
 
-(fn set-toggle! [name ...]
-  "Toggle the value of a vim opt"
-  (when (not (= nil name))
-    (let [name (tostring name)]
-      `(do (tset vim.opt ,name (not (get? ,name))) ,(set-toggle! ...)))))
+(fn set-toggle! [...]
+  "Toggle the values of specified opts"
+  `(do ,(unpack (icollect [_ name (ipairs [...])]
+                  `(tset vim.opt ,(tostring name) (not (get? ,name)))))))
 
-(fn set-append! [name value ...]
-  "Append a value to a vim opt"
-  (when (not (= nil name))
-    (let [name (tostring name)]
-      `(do (: (. vim.opt ,name) :append ,value) ,(set-append! ...)))))
+(fn set-append! [...]
+  "Append each value to each vim opt"
+  `(do ,(unpack (icollect [_ [name value] (ipairs (partition 2 [...]))]
+                  `(: (. vim.opt ,(tostring name)) :append ,value)))))
 
-(fn set-true! [name ...]
-  "Set a vim opt to true"
-  (when (not (= nil name))
-    (let [name (tostring name)]
-      `(do (tset vim.opt ,name true) ,(set-true! ...)))))
+(fn set-true! [...]
+  "Set each vim opt to true"
+  `(do ,(unpack (icollect [_ name (ipairs [...])]
+                  `(tset vim.opt ,(tostring name) true)))))
 
-(fn set-false! [name ...]
-  "Set a vim opt to false"
-  (when (not (= nil name))
-    (let [name (tostring name)]
-      `(do (tset vim.opt ,name false) ,(set-false! ...)))))
+(fn set-false! [...]
+  "Set each vim opt to false"
+  `(do ,(unpack (icollect [_ name (ipairs [...])]
+                  `(tset vim.opt ,(tostring name) false)))))
 
 (fn map!- [modes keys cmd options]
   (let [modes (tostring modes)
@@ -88,17 +96,10 @@
 
 (fn call-module-func
   [m method ...]
-  "Call a module's specified method if the module can be imported."
+  "Call a module's specified function if the module can be imported."
   (assert-compile (= :string (type m)) "expected string for module name" m)
-  (assert-compile (= :string (type method)) "expected string for method name" m)
-  `(let [(ok?# mod#) (pcall require ,m) ]
-    (if ok?#
-      (-?> mod#
-           (. ,method)
-           ((fn [f# ...] (f# ...)) ,...))
-      (do
-        (print "Could not import module" ,m)
-        nil))))
+  (assert-compile (= :string (type method)) "expected string for function name" m)
+  `((. (require ,m) ,method) ,...))
 
 (fn setup
   [m ...]
