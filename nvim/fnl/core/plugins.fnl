@@ -51,7 +51,7 @@
                                                   :q :w :f :p :l :u :y ";"
                                                   :A :R :S :T :N :E :I :O
                                                   :Z :X :C :D :H "<" ">" "?"
-                                                  :Q :W :F :P :L :U :Y ";"])
+                                                  :Q :W :F :P :L :U :Y ":"])
               (tset (require :leap.opts) :safe_labels [])
               (augroup :LeapCustom
                        [[:ColorScheme]
