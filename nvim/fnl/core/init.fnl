@@ -250,10 +250,14 @@
   <leader>gs "<cmd>Git status<CR>"
   "Git log"
   <leader>gl "<cmd>GV<CR>"
+  "Git log current file"
+  <leader>gf "<cmd>GV!<CR>"
   "Open Neogit"
   <leader>gg "<cmd>Neogit<CR>"
   "Show commit message at line"
   <leader>gm "<cmd>GitMessenger<CR>"
+  "Open selected file in github"
+  <leader>go "<cmd>GBrowse<CR>"
 
   ; telescope.nvim
   "Find files in project"

@@ -139,7 +139,7 @@
    "tpope/vim-fugitive"
    {1 "TimUntersberger/neogit"
     :dependencies ["nvim-lua/plenary.nvim"]}
-   ; -- Adds :Gbrowse
+   ; -- Adds :GBrowse
    "tpope/vim-rhubarb"
    ; -- Adds :GitMessenger
    "rhysd/git-messenger.vim"
