@@ -62,6 +62,9 @@
    {1 "ggandor/flit.nvim"
     :dependencies "ggandor/leap.nvim"
     :config true}
+   {1 "ggandor/leap-spooky.nvim"
+    :dependencies "ggandor/leap.nvim"
+    :config true}
    ; -- Leap line-wise with `<leader>` h/j
    {1 "Grazfather/leaplines.nvim"
     :dev true
