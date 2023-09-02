@@ -1,16 +1,3 @@
-;; Copyright (c) 2017-2020 Ag Ibragimov & Contributors
-;;
-;;; Author: Ag Ibragimov <agzam.ibragimov@gmail.com>
-;;
-;;; Contributors:
-;;   Jay Zawrotny <jayzawrotny@gmail.com>
-;;
-;;; URL: https://github.com/agzam/spacehammer
-;;
-;;; License: MIT
-;;
-
-
 (require-macros :lib.macros)
 (require-macros :lib.advice.macros)
 (local windows (require :windows))
@@ -49,7 +36,6 @@
 ;; [x] |-- u - undo
 ;;
 ;; [x] a - apps
-;; [x] |-- e - emacs
 ;; [x] |-- b - browser
 ;; [x] |-- i - Kitty
 ;; [x] |-- s - Slack
@@ -322,10 +308,7 @@
          :action (activator "Preview")}
         {:key :o
          :title "Obsidian"
-         :action (activator "Obsidian")}
-        {:key :e
-         :title "Emacs"
-         :action (activator "Emacs")}])
+         :action (activator "Obsidian")}])
 
 ; These are behind the 'm' submenu
 (local media-bindings
@@ -387,9 +370,8 @@
          :key :o
          :action (activator "Obsidian")}
         {:mods hyper-mods
-         :key :e
-         :action (activator "Emacs")}
-        ])
+         :key :x
+         :action (activator "Visual Studio Code")}])
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Repl
@@ -531,7 +513,7 @@
 (local obsidian-config
        {:key "Obsidian"
         :keys [{:mods [:ctrl]
-                :ke :p
+                :key :p
                 :action "slack:up"}
                {:mods [:ctrl]
                 :key :n
