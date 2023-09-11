@@ -33,6 +33,7 @@
 
    ; Navigation
    {1 "nvim-telescope/telescope.nvim"
+    :opts {:pickers {:git_files {:file_ignore_patterns ["^vendor/"]}}}
     :dependencies ["nvim-lua/plenary.nvim"
                    {1 "nvim-telescope/telescope-fzf-native.nvim"
                     :build "make"}]}
