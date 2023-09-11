@@ -9,15 +9,6 @@
         : logf} (require :lib.functional))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; WARNING
-;; Make sure you are customizing ~/.spacehammer/config.fnl and not
-;; ~/.hammerspoon/config.fnl
-;; Otherwise you will lose your customizations on upstream changes.
-;; A copy of this file should already exist in your ~/.spacehammer directory.
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Table of Contents
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -31,8 +22,8 @@
 ;; [x] |-- shift + n, p - up, down screen
 ;; [x] |-- g - grid
 ;; [x] |-- arstzxcd - grid presets
+;; [x] |-- 678 - thirds
 ;; [x] |-- p - maximize
-;; [x] |-- c - center
 ;; [x] |-- u - undo
 ;;
 ;; [x] a - apps
@@ -242,7 +233,17 @@
         {:key :d
          :action #(windows.resize-to-grid "6,0 3x4")
          :repeatable true}
-        ])
+        {:key "678"
+         :title "thirds"}
+        {:key :6
+         :action #(windows.resize-to-grid "0,0 3x4")
+         :repeatable true}
+        {:key :7
+         :action #(windows.resize-to-grid "3,0 3x4")
+         :repeatable true}
+        {:key :8
+         :action #(windows.resize-to-grid "6,0 3x4")
+         :repeatable true}])
 
 (local window-bindings
        (concat
