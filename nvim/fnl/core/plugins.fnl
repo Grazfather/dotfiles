@@ -135,7 +135,7 @@
    ; -- Janet
    "janet-lang/janet.vim"
    ; -- Fennel
-   "bakpakin/fennel.vim"
+   "jaawerth/fennel.vim"
    ; -- Solidity
    "tomlion/vim-solidity"
 
