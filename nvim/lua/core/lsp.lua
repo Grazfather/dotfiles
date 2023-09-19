@@ -1,7 +1,7 @@
 -- [nfnl] Compiled from fnl/core/lsp.fnl by https://github.com/Olical/nfnl, do not edit.
 local function _1_()
   local lspconfig = require("lspconfig")
-  local servers = {"gopls", "clojure_lsp", "pyright", "bashls"}
+  local servers = {"gopls", "clojure_lsp", "pyright", "bashls", "fennel_language_server"}
   local group
   do
     local group0 = vim.api.nvim_create_augroup("LspHighlighting", {clear = true})

@@ -10,7 +10,7 @@
                  "hrsh7th/cmp-nvim-lsp"]
   :config (fn []
             (local lspconfig (require :lspconfig))
-            (local servers ["gopls" "clojure_lsp" "pyright" "bashls"])
+            (local servers ["gopls" "clojure_lsp" "pyright" "bashls" "fennel_language_server"])
             (local group (augroup :LspHighlighting
                                   [[:CursorHold] {:buffer 0 :callback print}]))
 
