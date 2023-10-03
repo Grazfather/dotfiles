@@ -201,27 +201,24 @@
   (if (= (get? signcolumn) "yes")
     (set! signcolumn "no")
     (set! signcolumn "yes")))
-(descnmap! "Toggle sign column"
-          <leader>tg toggle-sign-column)
-
-(descnmap! "Toggle showing listchars"
-           <leader>tt "<cmd>set list!<CR>")
 (set-true! list)
 
 (set! listchars "eol:¬,nbsp:␣,conceal:⋯,tab:  ,precedes:…,extends:…,trail:•")
 
-; Toggle indent markers
-(descnmap! "Toggle indent markers" <leader>ti "<cmd>IndentBlanklineToggle<CR>")
-
-; Toggle visual glyphs that make copy and paste from terminal annoying
-(descnmap! "Toggle visual glyphs"
-           <leader>tv (fn []
-                        (toggle-sign-column)
-                        (set-toggle! list number relativenumber)
-                        (vim.cmd "IndentBlanklineToggle")))
-
-(descnmap! "Toggle comment on current line"
-           "<leader>c " "gcc")
+(descnmap!
+  "Toggle sign column"
+  <leader>tg toggle-sign-column
+  "Toggle showing listchars"
+  <leader>tt "<cmd>set list!<CR>"
+  "Toggle indent markers"
+  <leader>ti "<cmd>IndentBlanklineToggle<CR>"
+  "Toggle visual glyphs"
+  <leader>tv (fn []
+               (toggle-sign-column)
+               (set-toggle! list number relativenumber)
+               (vim.cmd "IndentBlanklineToggle"))
+  "Toggle comment on current line"
+  "<leader>c " "gcc")
 (map! "v" "<leader>c " "gc")
 
 ; Simulate readline/emacs's jump to start/end of line in insert mode
