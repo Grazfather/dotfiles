@@ -18,9 +18,6 @@
 ; Short timeoutlen to get which-key to kick in sooner
 (set! timeoutlen 200)
 
-; Lazily redraw: Make macros faster
-(set-true! lazyredraw)
-
 ; Highlight the text I yank
 (autocmd [:TextYankPost] {:callback #(vim.highlight.on_yank)})
 
@@ -87,9 +84,7 @@
         ; I set the colon to optional for DELETEME comments
         :highlight {:pattern ".*<(KEYWORDS)\\s*:?"}}}
  {1 "Grazfather/blinker.nvim"
-  :opts {:count 3}
-  :config true
-  :dir "~/code/blinker.nvim" :dev true}
+  :config true}
  ; Start page
  {1 "goolord/alpha-nvim"
   :dependencies ["kyazdani42/nvim-web-devicons"]

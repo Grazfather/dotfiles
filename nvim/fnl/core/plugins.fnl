@@ -26,6 +26,22 @@
  ; -- Solidity
  "tomlion/vim-solidity"
 
+
+ ; Git
+ "tpope/vim-fugitive"
+ {1 "TimUntersberger/neogit"
+  :dependencies ["nvim-lua/plenary.nvim"]}
+ ; -- Adds :GBrowse
+ "tpope/vim-rhubarb"
+ ; -- Adds :GitMessenger
+ "rhysd/git-messenger.vim"
+ ; -- Adds :GV to browse history
+ "junegunn/gv.vim"
+ ; -- Adds changed lines in the gutter
+ {1 "lewis6991/gitsigns.nvim"
+  :dependencies ["nvim-lua/plenary.nvim"]
+  :config true}
+
  ; Misc
  {1 "numToStr/Comment.nvim" :config true}
  {1 "kylechui/nvim-surround" :config true}
