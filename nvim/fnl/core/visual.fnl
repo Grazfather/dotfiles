@@ -52,6 +52,8 @@
                               :text ""
                               :padding 1}]}}}
  "lukas-reineke/indent-blankline.nvim"
+ "szw/vim-maximizer"
+
  ; Show hints for key bindings
  ; -- I tend to use leader a lot, so I try to namespace commands under leader
  ; -- using a simple mnemonic:

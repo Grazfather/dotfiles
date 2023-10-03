@@ -117,6 +117,7 @@ do
   do local _ = {vim.keymap.set("n", "<leader>wd", "<cmd>close<CR>", {desc = "Close split", remap = true})} end
   do local _ = {vim.keymap.set("n", "<leader>wo", "<cmd>only<CR>", {desc = "Close other splits", remap = true})} end
   do local _ = {vim.keymap.set("n", "<leader>ww", "<C-w>w", {desc = "Switch split", remap = true})} end
+  do local _ = {vim.keymap.set("n", "<leader>wz", "<cmd>MaximizerToggle<CR>", {desc = "Zoom in/out from current split", remap = true})} end
   do local _ = {vim.keymap.set("n", "<leader>ft", "<cmd>Neotree toggle<CR>", {desc = "Toggle Neo-tree", remap = true})} end
   do local _ = {vim.keymap.set("n", "<leader>tu", "<cmd>UndotreeToggle<CR>", {desc = "Toggle Undotree", remap = true})} end
   do local _ = {vim.keymap.set("n", "<leader>gb", "<cmd>Git blame<CR>", {desc = "Git blame", remap = true})} end

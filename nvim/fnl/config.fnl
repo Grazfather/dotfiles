@@ -142,6 +142,8 @@
   <leader>wo "<cmd>only<CR>"
   "Switch split"
   <leader>ww "<C-w>w"
+  "Zoom in/out from current split"
+  <leader>wz "<cmd>MaximizerToggle<CR>"
 
   ; "Toggle NvimTree"
   ; <leader>ft "<cmd>NvimTreeToggle<CR>"
