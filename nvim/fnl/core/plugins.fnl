@@ -42,6 +42,7 @@
   :config true}
 
  ; Misc
+ "szw/vim-maximizer"
  {1 "numToStr/Comment.nvim" :config true}
  {1 "kylechui/nvim-surround" :config true}
  "mbbill/undotree"]
