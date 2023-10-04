@@ -144,6 +144,8 @@
   <leader>wo "<cmd>only<CR>"
   "Switch split"
   <leader>ww "<C-w>w"
+  "Toggle window zoom"
+  <leader>wz "<cmd>MaximizerToggle<CR>"
 
   "Toggle Neo-tree"
   <leader>ft "<cmd>Neotree toggle<CR>"
