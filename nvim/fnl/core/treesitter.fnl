@@ -11,7 +11,7 @@
               :incremental_selection {:enable true
                                       :keymaps {:init_selection "gh"
                                                 :node_incremental "gh"
-                                                :node_decremental "ghd"
+                                                :node_decremental "<BS>"
                                                 :scope_incremental "ghu"}}
               ; nvim-ts-rainbow
               :rainbow {:enable true
@@ -19,7 +19,9 @@
                         :extended_mode false}
               ; nvim-treesitter-textobjects
               :textobjects {:select {:enable true
-                                     :keymaps {:aa "@parameter.outer"
+                                     :keymaps {:a= "@assignment.outer"
+                                               :i= "@assignment.inner"
+                                               :aa "@parameter.outer"
                                                :ia "@parameter.inner"
                                                :af "@function.outer"
                                                :if "@function.inner"
