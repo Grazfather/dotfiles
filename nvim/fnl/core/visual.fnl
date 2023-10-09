@@ -22,6 +22,9 @@
 ; Highlight the text I yank
 (autocmd [:TextYankPost] {:callback #(vim.highlight.on_yank)})
 
+; Smoothscroll to not scroll past soft-wrapped lines
+(set-true! smoothscroll)
+
 ; Highlight trailing whitespace and spaces touching tabs
 ;   Lines ending with spaces:   
 ;   Mixed spaces and tabs (in either order):
