@@ -12,26 +12,38 @@
             (local group (vim.api.nvim_create_augroup :LspHighlighting {}))
 
             (fn on-attach [client bufnr]
-              (fn buf-nmap [keys func desc]
-                (vim.keymap.set "n" keys func {:buffer bufnr :desc desc}))
+              (fn buf-nmap [desc lhs rhs]
+                (vim.keymap.set "n" lhs rhs {:buffer bufnr :desc desc}))
               (fn buf-set-option [...]
                 (vim.api.nvim_buf_set_option bufnr ...))
 
               (buf-set-option "omnifunc" "v:lua.vim.lsp.omnifunc")
 
               ; Mappings
-              (buf-nmap "gD" vim.lsp.buf.declaration "Go to declaration")
-              (buf-nmap "gd" vim.lsp.buf.definition "Go to definition")
-              (buf-nmap "gi" vim.lsp.buf.implementation "Go to implementation")
-              (buf-nmap "gr" vim.lsp.buf.references "Go to references")
-              (buf-nmap "K" vim.lsp.buf.hover "Hover documentation")
-              (buf-nmap "[d" vim.diagnostic.goto_prev "Go to previous diagnostic")
-              (buf-nmap "]d" vim.diagnostic.goto_next "Go to next diagnostic")
-              (buf-nmap "<leader>rn" vim.lsp.buf.rename "Rename symbol")
+              (buf-nmap "Go to declaration"
+                        "gD" vim.lsp.buf.declaration)
+              (buf-nmap "Go to definition"
+                        "gd" #(call-module-func "telescope.builtin" "lsp_definitions"))
+              (buf-nmap "Go to implementation"
+                        "gi" vim.lsp.buf.implementation)
+              (buf-nmap "Go to definition"
+                        "gr" #(call-module-func "telescope.builtin" "lsp_references"))
+              (buf-nmap "Hover documentation"
+                        "K" vim.lsp.buf.hover)
+              (buf-nmap "Go to previous diagnostic"
+                        "[d" vim.diagnostic.goto_prev)
+              (buf-nmap "Go to next diagnostic"
+                        "]d" vim.diagnostic.goto_next)
+              (buf-nmap "Show diagnostics"
+                        "<leader>D" #(call-module-func "telescope.builtin"
+                                                       "diagnostics" {bufnr 0}))
+              (buf-nmap "Rename symbol"
+                        "<leader>rn" vim.lsp.buf.rename)
 
               ; Set some keybinds conditional on server capabilities
               (when client.server_capabilities.documentFormattingProvider
-                (buf-nmap "<leader>ef" #(vim.lsp.buf.format {:async true}) "Format buffer"))
+                (buf-nmap "Format buffer"
+                          "<leader>ef" #(vim.lsp.buf.format {:async true})))
 
               ; Set autocommands conditional on server_capabilities
               (when client.server_capabilities.documentHighlightProvider
