@@ -9,7 +9,7 @@
 [{1 "hrsh7th/nvim-cmp"
   :lazy true
   :event "InsertEnter"
-  :dependencies ["hrsh7th/cmp-buffer" "hrsh7th/cmp-nvim-lsp"
+  :dependencies ["hrsh7th/cmp-buffer" "hrsh7th/cmp-nvim-lsp" "hrsh7th/cmp-path"
                  "saadparwaiz1/cmp_luasnip" "L3MON4D3/LuaSnip"
                  "rafamadriz/friendly-snippets"]
   :config (fn []
@@ -48,6 +48,7 @@
                                                                 :luasnip "[LuaSnip]"}})}
                :sources [{:name :nvim_lsp :keyword_length 3}
                          {:name :buffer :keyword_length 3}
-                         {:name :luasnip}]
+                         {:name :luasnip}
+                         {:name :path}]
                :experimental {:native_menu false
                               :ghost_text true}}))}]
