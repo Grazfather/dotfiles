@@ -55,7 +55,7 @@
                    :offsets [{:filetype :NvimTree
                               :text ""
                               :padding 1}]}}}
- "lukas-reineke/indent-blankline.nvim"
+ {1 "lukas-reineke/indent-blankline.nvim" :main "ibl" :config true}
 
  ; Show hints for key bindings
  ; -- I tend to use leader a lot, so I try to namespace commands under leader

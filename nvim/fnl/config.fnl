@@ -218,7 +218,7 @@
   <leader>tv (fn []
                (toggle-sign-column)
                (set-toggle! list number relativenumber)
-               (vim.cmd "IndentBlanklineToggle"))
+               (vim.cmd "IBLToggle"))
   "Toggle comment on current line"
   "<leader>c " "gcc")
 (map! "v" "<leader>c " "gc")
