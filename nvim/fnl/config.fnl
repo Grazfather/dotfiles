@@ -1,102 +1,15 @@
-(module core.init
+(module config
         {require-macros [core.macros
                          aniseed.macros.autocmds]})
 
-; Remap <leader> to <space>.
-; This must be done before calling setup on lazy, which we do in the plugins
-; module.
-(let! g/mapleader " "
-      g/maplocalleader " m")
-
-(require :core.plugins)
-(require :core.lsp)
-(require :core.treesitter)
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; THEMES/UI
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-; Color scheme
-(set-true! termguicolors)
-(setup :onedark {:style :warmer})
-(vim.cmd.colorscheme :onedark)
-
-; Status line
-(setup :lualine {:options {:theme :onedark
-                           :component_separators {:left ""
-                                                  :right ""}
-                           :section_separators {:left ""
-                                                :right ""}}})
-; Always show the status bar, one for all splits
-(set! laststatus 3)
-; Show opened buffers on tabline
-(setup :bufferline {:options {:diagnostics :nvim_lsp
-                              :offsets [{:filetype :NvimTree
-                                         :text ""
-                                         :padding 1}]}})
-
-(each [name text (pairs {:DiagnosticSignError ""
-                         :DiagnosticSignWarn ""
-                         :DiagnosticSignHint ""
-                         :DiagnosticSignInfo ""})]
-  (vim.fn.sign_define name {:texthl name :text text :numhl ""}))
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; VISUAL/LAYOUT
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-; Highlight trailing whitespace and spaces touching tabs
-;   Lines ending with spaces:   
-;   Mixed spaces and tabs (in either order):
-    	;
-	    ;
-(vim.api.nvim_set_hl 0 "TrailingWhitespace" {:bg :darkred})
-(vim.api.nvim_command ":let w:m2=matchadd('TrailingWhitespace', '\\s\\+$\\| \\+\\ze\\t\\|\\t\\+\\ze ')")
-
-; I tend to use leader a lot, so I try to namespace commands under leader
-; using a simple mnemonic:
-(call-module-func :which-key :register
-                  {:b {:name "Buffer stuff"}
-                   :e {:name "Edit stuff"}
-                   :g {:name "Git"}
-                   :h {:name "Help"}
-                   :m {:name "Local leader"}
-                   :f {:name "File/find ops"}
-                   :t {:name "Toggles"}
-                   :w {:name "Window"}
-                   :x {:name "Lisp"}}
-                  {:prefix :<leader>})
-; Though some that don't fit aren't yet put behind a namespace
-
-; Short timeoutlen to get which-key to kick in sooner
-(set! timeoutlen 200)
+; First load lazy.nvim, setting up all plugins
+(setup :lazy :core)
 
 ; Setup tags file
 (set! tags "./tags,tags;")
 
 ; Set path to include the cwd and everything underneath
 (set! path "**3")
-
-; Lazily redraw: Make macros faster
-(set-true! lazyredraw)
-
-; Setup todo-comments.nvim to highlight special words
-; DELETEME:
-; TODO: This is a todo
-; HACK:
-; WARN:
-; NOTE:
-(setup :todo-comments
-       {:keywords {:DELETEME {:icon "✗" :color "error"}
-                   :TODO {:icon " " :color "info"}
-                   :HACK {:icon " " :color "warning"}
-                   :WARN {:icon " " :color "warning" :alt ["WARNING" "XXX"]}
-                   :NOTE {:icon " " :color "hint" :alt  ["INFO"]}}
-        ; I set the colon to optional for DELETEME comments
-        :highlight {:pattern ".*<(KEYWORDS)\\s*:?"}})
-
-; Highlight the text I yank
-(autocmd [:TextYankPost] {:callback #(vim.highlight.on_yank)})
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; NAVIGATION
@@ -186,10 +99,6 @@
 ; Unmap ex mode
 (nmap! Q "<nop>")
 
-; Toggleterm
-(setup :toggleterm {:open_mapping "<c-\\>"
-                    :direction :tab})
-
 (descnmap!
   "Clear trailing whitespace"
   <leader>ew "<cmd>keeppatterns %s/\\s\\+$//e<CR><C-o>"
@@ -204,8 +113,6 @@
   "Select whole buffer"
   vag "ggVGg_"
 
-  "Reload Neovim config"
-  <leader>frv "<cmd>AniseedEvalFile<CR>"
   "Close current buffer"
   <leader>bd "<cmd>bp|bd #<CR>"
   "Save buffer"
@@ -235,6 +142,8 @@
   <leader>wd "<cmd>close<CR>"
   "Close other splits"
   <leader>wo "<cmd>only<CR>"
+  "Switch split"
+  <leader>ww "<C-w>w"
 
   "Toggle Neo-tree"
   <leader>ft "<cmd>Neotree toggle<CR>"
@@ -288,7 +197,7 @@
   "<leader>:" #(call-module-func "telescope.builtin" "commands"))
 
 (set! signcolumn "yes")
-(defn toggle-sign-column []
+(fn toggle-sign-column []
   (if (= (get? signcolumn) "yes")
     (set! signcolumn "no")
     (set! signcolumn "yes")))

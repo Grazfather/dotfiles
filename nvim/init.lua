@@ -17,5 +17,9 @@ end
 bootstrap("lazy.nvim", "folke/lazy.nvim")
 bootstrap("aniseed", "Olical/aniseed")
 
--- Enable Aniseed
-vim.g["aniseed#env"] = { module = "core.init" }
+-- Enable Aniseed, loading init.fnl
+vim.g["aniseed#env"] = { module = "config" }
+
+-- Leader must be set before loading Lazy
+vim.g.mapleader = " "
+vim.g.maplocalleader = " m"
