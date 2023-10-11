@@ -1,6 +1,5 @@
 (module config
-        {require-macros [core.macros
-                         aniseed.macros.autocmds]})
+        {require-macros [core.macros]})
 
 ; First load lazy.nvim, setting up all plugins
 (setup :lazy :core)
@@ -16,12 +15,13 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ; Jump to last position when loading a file if we can
-(autocmd ["BufReadPost"]
-         {:pattern ["*"]
-          :callback #(let [[row col] (vim.api.nvim_buf_get_mark 0 "\"")
-                           lastrow (vim.api.nvim_buf_line_count 0)]
-                       (when (and (> row 0) (<= row lastrow))
-                         (vim.api.nvim_win_set_cursor 0 [row col])))})
+(vim.api.nvim_create_autocmd
+  :BufReadPost
+  {:pattern ["*"]
+   :callback #(let [[row col] (vim.api.nvim_buf_get_mark 0 "\"")
+                    lastrow (vim.api.nvim_buf_line_count 0)]
+                (when (and (> row 0) (<= row lastrow))
+                  (vim.api.nvim_win_set_cursor 0 [row col])))})
 
 ; Disable arrow keys for navigation
 (nmap! <up> "<nop>"
@@ -232,10 +232,11 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ; Use github-flavored markdown
-(augroup :markdown
-         [[:BufNewFile :BufRead]
-          {:pattern "*.md"
-           :callback #(set! filetype "ghmarkdown")}])
+(vim.api.nvim_create_augroup :markdown {})
+(vim.api.nvim_create_autocmd
+  [:BufNewFile :BufRead]
+  {:pattern "*.md"
+   :callback #(set! filetype "ghmarkdown")})
 
 ; vim-sexp
 ; - Adds new text objects:

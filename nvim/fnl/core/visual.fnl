@@ -1,6 +1,5 @@
 (import-macros {: call-module-func : setup
                 : set! : set-true!} :core.macros)
-(import-macros {: autocmd} :aniseed.macros.autocmds)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; THEMES/VISUAL/LAYOUT/UI
@@ -20,7 +19,7 @@
 (set! timeoutlen 200)
 
 ; Highlight the text I yank
-(autocmd [:TextYankPost] {:callback #(vim.highlight.on_yank)})
+(vim.api.nvim_create_autocmd :TextYankPost {:callback #(vim.highlight.on_yank)})
 
 ; Smoothscroll to not scroll past soft-wrapped lines
 (set-true! smoothscroll)
@@ -30,8 +29,9 @@
 ;   Mixed spaces and tabs (in either order):
     	;
 	    ;
-(vim.api.nvim_set_hl 0 "TrailingWhitespace" {:bg :darkred})
 (vim.api.nvim_command ":let w:m2=matchadd('TrailingWhitespace', '\\s\\+$\\| \\+\\ze\\t\\|\\t\\+\\ze ')")
+(vim.api.nvim_create_autocmd :ColorScheme
+                             {:callback #(vim.api.nvim_set_hl 0 "TrailingWhitespace" {:bg :darkred})})
 
 [
  ; Colorscheme

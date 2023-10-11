@@ -1,6 +1,5 @@
 (import-macros {: call-module-func
                 : setup} :core.macros)
-(import-macros {: augroup} :aniseed.macros.autocmds)
 
 [{1 "nvim-telescope/telescope.nvim"
   :config (fn []
@@ -27,11 +26,11 @@
                                                 :Z :X :C :D :H "<" ">" "?"
                                                 :Q :W :F :P :L :U :Y ":"])
             (tset (require :leap.opts) :safe_labels [])
-            (augroup :LeapCustom
-                     [[:ColorScheme]
-                      {:callback #(vim.api.nvim_set_hl 0
-                                                       :LeapBackdrop
-                                                       {:link :Comment})}]))}
+            (vim.api.nvim_create_augroup :LeapCustom {})
+            (vim.api.nvim_create_autocmd :ColorScheme
+                                         {:callback #(vim.api.nvim_set_hl 0
+                                                                          :LeapBackdrop
+                                                                          {:link :Comment})}))}
  ; Override f/t
  {1 "ggandor/flit.nvim"
   :dependencies "ggandor/leap.nvim"
