@@ -1,5 +1,5 @@
 (import-macros {: call-module-func : setup
-                : set! : set-true!} :core.macros)
+                : set! : set-true!} :macros)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; THEMES/VISUAL/LAYOUT/UI

@@ -1,4 +1,4 @@
-(import-macros {: setup} :core.macros)
+(import-macros {: setup} :macros)
 
 [{1 "nvim-treesitter/nvim-treesitter" :build ":TSUpdate"
   :config #(setup

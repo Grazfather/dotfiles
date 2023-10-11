@@ -1,5 +1,5 @@
 (module config
-        {require-macros [core.macros]})
+        {require-macros [macros]})
 
 ; First load lazy.nvim, setting up all plugins
 (setup :lazy :core)

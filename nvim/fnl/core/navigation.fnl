@@ -1,5 +1,5 @@
 (import-macros {: call-module-func
-                : setup} :core.macros)
+                : setup} :macros)
 
 [{1 "nvim-telescope/telescope.nvim"
   :config (fn []

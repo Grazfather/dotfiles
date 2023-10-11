@@ -94,15 +94,13 @@
     `(do ,(map!- "n" keys cmd {})
          ,(nnoremap! ...))))
 
-(fn call-module-func
-  [m method ...]
+(fn call-module-func [m method ...]
   "Call a module's specified function if the module can be imported."
   (assert-compile (= :string (type m)) "expected string for module name" m)
   (assert-compile (= :string (type method)) "expected string for function name" m)
   `((. (require ,m) ,method) ,...))
 
-(fn setup
-  [m ...]
+(fn setup [m ...]
   "Call a module's setup function if the module can be imported."
   (call-module-func m :setup ...))
 

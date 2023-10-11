@@ -1,5 +1,5 @@
 (import-macros {: call-module-func
-                : setup} :core.macros)
+                : setup} :macros)
 
 [{1 "neovim/nvim-lspconfig"
   :dependencies ["williamboman/mason-lspconfig.nvim"

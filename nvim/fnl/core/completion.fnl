@@ -4,7 +4,7 @@
                 : map!
                 : nmap!
                 : noremap!
-                : descnmap!} :core.macros)
+                : descnmap!} :macros)
 
 [{1 "hrsh7th/nvim-cmp"
   :lazy true
