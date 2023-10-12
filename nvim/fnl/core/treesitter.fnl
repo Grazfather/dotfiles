@@ -35,7 +35,7 @@
                                  "javascript" "json" "make" "markdown" "proto" "python"
                                  "query" "toml" "regex" "yaml" "zig"
                                  ; These must be present to override neovim builtins
-                                 "c" "help" "lua" "vim"]
+                                 "c" "vimdoc" "lua" "vim"]
               })}
  {1 "nvim-treesitter/nvim-treesitter-context"
   :config #(setup :treesitter-context)}
