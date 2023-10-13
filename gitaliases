@@ -16,6 +16,7 @@
       fp = format-patch
       l = "!. ~/.githelpers && pretty_git_log"
       lf = log --pretty=format:\"%h %cd%C(yellow)%d%Creset %s%C(green) [%an]%Creset\" --decorate --numstat --date=short
+      lsnv = ls-files -- . ':!vendor'
       rb = "!r() { git rebase -i HEAD~$1; }; r"
       rc = rebase --continue
       ra = rebase --abort
