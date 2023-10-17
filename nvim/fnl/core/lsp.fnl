@@ -2,6 +2,7 @@
                 : setup} :macros)
 
 [{1 "neovim/nvim-lspconfig"
+  :event ["BufReadPre" "BufNewFile"]
   :dependencies ["williamboman/mason-lspconfig.nvim"
                  "j-hui/fidget.nvim"
                  "onsails/lspkind-nvim"
