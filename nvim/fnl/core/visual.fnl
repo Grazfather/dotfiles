@@ -52,9 +52,11 @@
  {1 "akinsho/bufferline.nvim"
   :dependencies "kyazdani42/nvim-web-devicons"
   :opts {:options {:diagnostics :nvim_lsp
-                   :offsets [{:filetype :NvimTree
-                              :text ""
-                              :padding 1}]}}}
+                   :separator_style :slant
+                   :show_buffer_close_icon false
+                   :show_close_icon false
+                   :offsets [{:filetype :neo-tree
+                              :text "File explorer"}]}}}
  {1 "lukas-reineke/indent-blankline.nvim" :main "ibl" :config true}
 
  ; Show hints for key bindings

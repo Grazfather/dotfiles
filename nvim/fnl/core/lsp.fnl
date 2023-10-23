@@ -27,7 +27,7 @@
                         "gd" #(call-module-func "telescope.builtin" "lsp_definitions"))
               (buf-nmap "Go to implementation"
                         "gi" vim.lsp.buf.implementation)
-              (buf-nmap "Go to definition"
+              (buf-nmap "Get references"
                         "gr" #(call-module-func "telescope.builtin" "lsp_references"))
               (buf-nmap "Hover documentation"
                         "K" vim.lsp.buf.hover)
