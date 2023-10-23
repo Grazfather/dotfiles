@@ -10,6 +10,9 @@
                  {1 "nvim-telescope/telescope-fzf-native.nvim"
                   :build "make"}]}
  {1 "nvim-neo-tree/neo-tree.nvim"
+  :keys [{1 "<leader>ft"
+          :desc "Toggle Neo-tree"
+          2 "<cmd>Neotree toggle<CR>"}]
   :dependencies ["nvim-lua/plenary.nvim"
                  "kyazdani42/nvim-web-devicons"
                  "MunifTanjim/nui.nvim"]}

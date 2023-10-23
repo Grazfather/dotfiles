@@ -147,8 +147,6 @@
   "Toggle window zoom"
   <leader>wz "<cmd>MaximizerToggle<CR>"
 
-  "Toggle Neo-tree"
-  <leader>ft "<cmd>Neotree toggle<CR>"
   "Toggle Undotree"
   <leader>tu "<cmd>UndotreeToggle<CR>"
 
