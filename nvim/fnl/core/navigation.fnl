@@ -57,6 +57,7 @@
           2 #(call-module-func :leaplines :leap :down)}]}
  ; Jump up the AST hierarchy
  {1 "ggandor/leap-ast.nvim"
+  :dependencies "ggandor/leap.nvim"
   :keys [{1 "<leader>a"
           :mode ["n" "v"]
           :desc "Leap up AST"

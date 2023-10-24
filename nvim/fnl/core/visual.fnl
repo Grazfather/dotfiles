@@ -7,7 +7,7 @@
 
 ; Status line
 ; Always show the status bar, one for all splits
-(set! laststatus 3)
+(set! laststatus 2)
 
 (each [name text (pairs {:DiagnosticSignError ""
                          :DiagnosticSignWarn ""
