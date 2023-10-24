@@ -229,13 +229,6 @@
 ; Specific language settings
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-; Use github-flavored markdown
-(vim.api.nvim_create_augroup :markdown {})
-(vim.api.nvim_create_autocmd
-  [:BufNewFile :BufRead]
-  {:pattern "*.md"
-   :callback #(set! filetype "ghmarkdown")})
-
 ; vim-sexp
 ; - Adds new text objects:
 ;   - f - form

@@ -1,3 +1,5 @@
+(import-macros {: set!} :macros)
+
 [
  ; META (Vim config stuff)
  ; -- Aniseed itself, to compile fennel
@@ -8,7 +10,15 @@
  ; Language support
  {1 "williamboman/mason.nvim" :build ":MasonUpdate" :config true}
  ; -- Markdown
- "jtratner/vim-flavored-markdown"
+ {1 "jtratner/vim-flavored-markdown"
+  :ft ["markdown"]
+  :config (fn []
+            ; Use github-flavored markdown
+            (vim.api.nvim_create_augroup :markdown {})
+            (vim.api.nvim_create_autocmd
+              [:BufNewFile :BufRead]
+              {:pattern "*.md"
+               :callback #(set! filetype "ghmarkdown")}))}
  ; -- Lisps
  {1 "Grazfather/sexp.nvim"
   :lazy true
