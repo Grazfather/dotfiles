@@ -21,14 +21,13 @@
                :callback #(set! filetype "ghmarkdown")}))}
  ; -- Lisps
  {1 "Grazfather/sexp.nvim"
-  :lazy true
   :ft ["clojure" "scheme" "lisp" "timl" "fennel" "janet"]
   :opts {:filetypes "clojure,scheme,lisp,timl,fennel,janet"}
-  :dependencies "tpope/vim-repeat"}
+  :dependencies ["tpope/vim-repeat"]}
  ; ---- Connection to various lisp REPLs
- {1 "Olical/conjure" :lazy true :ft ["clojure" "fennel" "janet"]}
+ {1 "Olical/conjure" :ft ["clojure" "fennel" "janet"]}
  ; -- Clojure
- {1 "borkdude/clj-kondo" :lazy true :ft ["clojure"]}
+ {1 "borkdude/clj-kondo" :ft ["clojure"]}
  ; -- Janet
  "janet-lang/janet.vim"
  ; -- Fennel

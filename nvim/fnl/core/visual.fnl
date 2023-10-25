@@ -42,7 +42,7 @@
             (vim.cmd.colorscheme :onedark))}
  ; Status line
  {1 "hoob3rt/lualine.nvim"
-  :dependencies "kyazdani42/nvim-web-devicons"
+  :dependencies ["kyazdani42/nvim-web-devicons"]
   :opts {:options {:theme :onedark
                    :component_separators {:left ""
                                           :right ""}
@@ -50,7 +50,7 @@
                                         :right ""}}}}
  ; Show open buffers as a tab bar
  {1 "akinsho/bufferline.nvim"
-  :dependencies "kyazdani42/nvim-web-devicons"
+  :dependencies ["kyazdani42/nvim-web-devicons"]
   :opts {:options {:diagnostics :nvim_lsp
                    :separator_style :slant
                    :show_buffer_close_icon false
@@ -62,7 +62,7 @@
  ; Show hints for key bindings
  ; -- I tend to use leader a lot, so I try to namespace commands under leader
  ; -- using a simple mnemonic:
- {1 "folke/which-key.nvim" :config true
+ {1 "folke/which-key.nvim"
   :config #(call-module-func :which-key :register
                              {:b {:name "Buffer stuff"}
                               :e {:name "Edit stuff"}
@@ -76,7 +76,7 @@
                              {:prefix :<leader>})}
 ; Highlight special words in comments
 {1 "folke/todo-comments.nvim"
- :dependencies "nvim-lua/plenary.nvim"
+ :dependencies ["nvim-lua/plenary.nvim"]
  :opts {:keywords {
                    ; DELETEME:
                    :DELETEME {:icon "✗" :color "error"}

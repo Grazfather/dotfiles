@@ -38,7 +38,7 @@
                                  "c" "vimdoc" "lua" "vim"]
               })}
  {1 "nvim-treesitter/nvim-treesitter-context"
-  :config #(setup :treesitter-context)}
+  :config true}
  "nvim-treesitter/nvim-treesitter-textobjects"
  "nvim-treesitter/playground"
  "p00f/nvim-ts-rainbow"]
