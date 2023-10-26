@@ -100,6 +100,14 @@
 (nmap! Q "<nop>")
 
 (descnmap!
+  "Delete all DELETEME lines"
+  <leader>dd "<cmd>keepp :g/DELETEME/d<CR><C-o>"
+  ; Add 'DELETEME' comment using Comment.nvim
+  "Add DELETEME comment"
+  <leader>dm "mxgcADELETEME<ESC>`x")
+(map! "v" <leader>dm "mx:normal gcADELETEME<ESC><CR>`x")
+
+(descnmap!
   "Clear trailing whitespace"
   <leader>ew "<cmd>keeppatterns %s/\\s\\+$//e<CR><C-o>"
 
@@ -117,12 +125,6 @@
   <leader>bd "<cmd>bp|bd #<CR>"
   "Save buffer"
   <leader>fs "<cmd>write<CR>"
-
-  ; Add 'DELETEME' comment using Comment.nvim
-  "Add DELETEME comment"
-  <leader>dm "mxgcADELETEME<ESC>`x"
-  "Delete all DELETEME lines"
-  <leader>dd "<cmd>keepp :g/DELETEME/d<CR><C-o>"
 
   "Toggle search highlighting"
   <leader>th "<cmd>set hlsearch!<CR>"
