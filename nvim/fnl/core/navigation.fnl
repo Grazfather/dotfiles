@@ -1,14 +1,9 @@
 (import-macros {: call-module-func
                 : setup} :macros)
 
-[{1 "nvim-telescope/telescope.nvim"
-  :config (fn []
-            (setup :telescope
-                   {:pickers {:git_files {:file_ignore_patterns ["^vendor/"]}}})
-            (call-module-func :telescope :load_extension :fzf))
-  :dependencies ["nvim-lua/plenary.nvim"
-                 {1 "nvim-telescope/telescope-fzf-native.nvim"
-                  :build "make"}]}
+[{1 "ibhagwan/fzf-lua"
+  :dependencies ["kyazdani42/nvim-web-devicons"]
+  :opts {:git {:files {:cmd "git ls-files --exclude-standard ':!:vendor'"}}}}
  {1 "nvim-neo-tree/neo-tree.nvim"
   :keys [{1 "<leader>ft"
           :desc "Toggle Neo-tree"

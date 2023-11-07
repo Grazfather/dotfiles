@@ -23,11 +23,11 @@
                (buf-nmap "Go to declaration"
                          "gD" vim.lsp.buf.declaration)
                (buf-nmap "Go to definition"
-                         "gd" #(call-module-func "telescope.builtin" "lsp_definitions"))
+                         "gd" #(call-module-func "fzf-lua" "lsp_definitions"))
                (buf-nmap "Go to implementation"
                          "gi" vim.lsp.buf.implementation)
                (buf-nmap "Get references"
-                         "gr" #(call-module-func "telescope.builtin" "lsp_references"))
+                         "gr" #(call-module-func "fzf-lua" "lsp_references"))
                (buf-nmap "Hover documentation"
                          "K" vim.lsp.buf.hover)
                (buf-nmap "Go to previous diagnostic"
@@ -35,8 +35,8 @@
                (buf-nmap "Go to next diagnostic"
                          "]d" vim.diagnostic.goto_next)
                (buf-nmap "Show diagnostics"
-                         "<leader>D" #(call-module-func "telescope.builtin"
-                                                        "diagnostics" {bufnr 0}))
+                         "<leader>D" #(call-module-func "fzf-lua"
+                                                        "diagnostics_document" {bufnr 0}))
                (buf-nmap "Rename symbol"
                          "<leader>rn" vim.lsp.buf.rename)
 

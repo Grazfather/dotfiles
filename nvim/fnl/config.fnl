@@ -170,33 +170,31 @@
   "Open selected file in github"
   <leader>go "<cmd>GBrowse<CR>"
 
-  ; telescope.nvim
+  ; fzf-lua fuzzy finder
   "Find files in project"
-  <leader>pf #(call-module-func "telescope.builtin" "git_files")
-  "Find TODOs in project"
-  <leader>pt "<cmd>TodoTelescope<CR>"
+  <leader>pf #(call-module-func "fzf-lua" "git_files")
   "File files from CWD"
-  <leader>ff #(call-module-func "telescope.builtin" "find_files")
+  <leader>ff #(call-module-func "fzf-lua" "files")
   "Find buffer"
-  <leader>bb #(call-module-func "telescope.builtin" "buffers")
+  <leader>bb #(call-module-func "fzf-lua" "buffers")
   "Find mark"
-  <leader>fm #(call-module-func "telescope.builtin" "marks")
+  <leader>fm #(call-module-func "fzf-lua" "marks")
   "Find jump"
-  <leader>fj #(call-module-func "telescope.builtin" "jumplist")
+  <leader>fj #(call-module-func "fzf-lua" "jumps")
   "Grep file content from CWD"
-  <leader>frg #(call-module-func "telescope.builtin" "live_grep")
+  <leader>frg #(call-module-func "fzf-lua" "live_grep")
   "Search help"
-  <leader>hh #(call-module-func "telescope.builtin" "help_tags")
+  <leader>hh #(call-module-func "fzf-lua" "help_tags")
   "Search highlights"
-  <leader>hH #(call-module-func "telescope.builtin" "highlights")
+  <leader>hH #(call-module-func "fzf-lua" "highlights")
   "Search autocommands"
-  <leader>ha #(call-module-func "telescope.builtin" "autocommands")
+  <leader>ha #(call-module-func "fzf-lua" "autocmds")
   "Search keymaps"
-  <leader>hk #(call-module-func "telescope.builtin" "keymaps")
+  <leader>hk #(call-module-func "fzf-lua" "keymaps")
   "Search man pages"
-  <leader>hm #(call-module-func "telescope.builtin" "man_pages")
+  <leader>hm #(call-module-func "fzf-lua" "man_pages")
   "Search ex commands"
-  "<leader>:" #(call-module-func "telescope.builtin" "commands"))
+  "<leader>:" #(call-module-func "fzf-lua" "commands"))
 
 (set! signcolumn "yes")
 (fn toggle-sign-column []
