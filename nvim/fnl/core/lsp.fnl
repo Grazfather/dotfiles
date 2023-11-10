@@ -1,4 +1,5 @@
 (import-macros {: call-module-func
+                : nmap!
                 : setup} :macros)
 
 [{1 "neovim/nvim-lspconfig"
@@ -10,6 +11,18 @@
   :config #(let [lspconfig (require :lspconfig)
                  servers ["gopls" "clojure_lsp" "bashls"]
                  group (vim.api.nvim_create_augroup :LspHighlighting {})]
+             ; Blackhole the mappings by default, so that if I hit them in
+             ; files with no lsp they just do nothing
+             (nmap! "gD" "<nop>")
+             (nmap! "gd" "<nop>")
+             (nmap! "gi" "<nop>")
+             (nmap! "gr" "<nop>")
+             (nmap! "K" "<nop>")
+             (nmap! "[d" "<nop>")
+             (nmap! "]d" "<nop>")
+             (nmap! "<leader>D" "<nop>")
+             (nmap! "<leader>rn" "<nop>")
+             (nmap! "<leader>ef" "<nop>")
 
              (fn on-attach [client bufnr]
                (fn buf-nmap [desc lhs rhs]
