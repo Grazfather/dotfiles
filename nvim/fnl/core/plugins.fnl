@@ -18,6 +18,7 @@
             (vim.api.nvim_create_autocmd
               [:BufNewFile :BufRead]
               {:pattern "*.md"
+               :group :markdown
                :callback #(set! filetype "ghmarkdown")}))}
  ; -- Lisps
  {1 "Grazfather/sexp.nvim"

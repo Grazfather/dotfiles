@@ -26,7 +26,8 @@
              (tset opts :safe_labels [])
              (vim.api.nvim_create_augroup :LeapCustom {})
              (vim.api.nvim_create_autocmd :ColorScheme
-                                          {:callback #(vim.api.nvim_set_hl 0
+                                          {:group :LeapCustom
+                                           :callback #(vim.api.nvim_set_hl 0
                                                                            :LeapBackdrop
                                                                            {:link :Comment})}))}
  ; Override f/t
