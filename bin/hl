@@ -16,13 +16,14 @@
    ["-a" "--alphanumeric" "Highlight alphanumeric words"]
    ["-d" "--decimalnumbers" "Highlight decimal digits"]
    ["-w" "--words" "Highlight (regex) words"]
-   ["-x" "--hexnumbers" "Highlight hex numbers"]])
+   ["-x" "--hexnumbers" "Highlight hex numbers"]
+   ["-g" "--grep" "Only print matching lines"]])
 
 (def usage-header
   "USAGE:
     hl [-h]
     hl [-p PATTERN]
-    hl [-a,-d,-w,-x]")
+    hl [-a,-d,-w,-x,-g]")
 
 (def usage-details
   "
@@ -76,9 +77,12 @@
   (s/replace l regex colorize-match))
 
 ;; Main
-(defn run [pattern lines]
+(defn run [pattern lines grep?]
   (doseq [l lines]
-    (println (colorize-line pattern l))))
+    (if-not (nil? (re-find pattern l))
+      (println (colorize-line pattern l))
+      (when-not grep?
+        (println l)))))
 
 ;; Arg parsing
 (def o (parse-opts *command-line-args* cli-options))
@@ -100,4 +104,6 @@
 
 (def stream (line-seq (io/reader *in*)))
 
-(run pattern stream)
+(def grep (:grep opts))
+
+(run pattern stream grep)
