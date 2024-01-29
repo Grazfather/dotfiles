@@ -123,6 +123,8 @@
 
   "Close current buffer"
   <leader>bd "<cmd>bp|bd #<CR>"
+  "Force close current buffer"
+  <leader>bD "<cmd>bp|bd! #<CR>"
   "Save buffer"
   <leader>fs "<cmd>write<CR>"
 
