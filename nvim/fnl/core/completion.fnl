@@ -43,4 +43,10 @@
                           {:name :luasnip}
                           {:name :path}]
                 :experimental {:native_menu false
-                               :ghost_text true}}))}]
+                               :ghost_text true}}))}
+ {1 "hrsh7th/cmp-cmdline"
+  :dependencies ["hrsh7th/cmp-buffer" "hrsh7th/nvim-cmp"]
+  :config #(let [cmp (require :cmp)]
+             (cmp.setup.cmdline "/"
+                                {:mapping (cmp.mapping.preset.cmdline)
+                                 :sources (cmp.config.sources [{:name :buffer}])}))}]
