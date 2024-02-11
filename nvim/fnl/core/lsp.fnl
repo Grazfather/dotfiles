@@ -22,6 +22,7 @@
              (nmap! "]d" "<nop>")
              (nmap! "<leader>D" "<nop>")
              (nmap! "<leader>rn" "<nop>")
+             (nmap! "<leader>ca" "<nop>")
              (nmap! "<leader>ef" "<nop>")
 
              (fn on-attach [client bufnr]
@@ -52,6 +53,8 @@
                                                         "diagnostics_document" {bufnr 0}))
                (buf-nmap "Rename symbol"
                          "<leader>rn" vim.lsp.buf.rename)
+               (buf-nmap "Code action"
+                         "<leader>ca" vim.lsp.buf.code_action)
 
                ; Set some keybinds conditional on server capabilities
                (when client.server_capabilities.documentFormattingProvider
