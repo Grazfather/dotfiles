@@ -50,7 +50,7 @@
                          "]d" vim.diagnostic.goto_next)
                (buf-nmap "Show diagnostics"
                          "<leader>D" #(call-module-func "fzf-lua"
-                                                        "diagnostics_document" {bufnr 0}))
+                                                        "diagnostics_document" {:bufnr 0}))
                (buf-nmap "Rename symbol"
                          "<leader>rn" vim.lsp.buf.rename)
                (buf-nmap "Code action"
