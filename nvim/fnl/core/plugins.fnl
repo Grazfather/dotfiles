@@ -39,7 +39,8 @@
  ; Git
  "tpope/vim-fugitive"
  {1 "TimUntersberger/neogit"
-  :dependencies ["nvim-lua/plenary.nvim"]}
+  :dependencies ["nvim-lua/plenary.nvim" "sindrets/diffview.nvim"]
+  :config true}
  ; -- Adds :GBrowse
  "tpope/vim-rhubarb"
  ; -- Adds :GitMessenger
