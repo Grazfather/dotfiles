@@ -51,6 +51,8 @@
                (buf-nmap "Show diagnostics"
                          "<leader>D" #(call-module-func "fzf-lua"
                                                         "diagnostics_document" {:bufnr 0}))
+               (buf-nmap "Add diagnostics to quickfix"
+                         "<leader>ld" vim.diagnostic.setqflist)
                (buf-nmap "Rename symbol"
                          "<leader>rn" vim.lsp.buf.rename)
                (buf-nmap "Code action"

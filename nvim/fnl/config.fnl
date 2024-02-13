@@ -198,7 +198,17 @@
   "Search man pages"
   <leader>hm #(call-module-func "fzf-lua" "man_pages")
   "Search ex commands"
-  "<leader>:" #(call-module-func "fzf-lua" "commands"))
+  "<leader>:" #(call-module-func "fzf-lua" "commands")
+
+  "Go to next in quickfix"
+  <leader>cn ":cnext<CR>zz"
+  "Go to previous in quickfix"
+  <leader>cp ":cprevious<CR>zz"
+  ; TODO: Make this a toggle
+  "Open quickfix list"
+  <leader>co ":copen<CR>zz"
+  "Close quickfix list"
+  <leader>cd ":cclose<CR>zz")
 
 (set! signcolumn "yes")
 (fn toggle-sign-column []
