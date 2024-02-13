@@ -34,12 +34,11 @@
                                         (fallback)))
                                     [:i :s])}
                 ; Show icons for the type of completion, and show where it came from
-                :formatting {:format (lspkind.cmp_format {:with_text true
-                                                          :menu {:nvim_lsp "[lsp]"
-                                                                 :buffer "[buf]"
-                                                                 :luasnip "[LuaSnip]"}})}
+                :formatting {:format (lspkind.cmp_format {})}
+                :window {:completion (cmp.config.window.bordered)
+                         :documentation (cmp.config.window.bordered)}
                 :sources [{:name :nvim_lsp :keyword_length 3}
-                          {:name :buffer :keyword_length 3}
+                          {:name :buffer :keyword_length 4}
                           {:name :luasnip}
                           {:name :path}]
                 :experimental {:native_menu false
