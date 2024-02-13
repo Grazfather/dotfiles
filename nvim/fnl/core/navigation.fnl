@@ -11,6 +11,11 @@
   :dependencies ["nvim-lua/plenary.nvim"
                  "kyazdani42/nvim-web-devicons"
                  "MunifTanjim/nui.nvim"]}
+ {1 "simrat39/symbols-outline.nvim"
+  :keys [{1 "<leader>st"
+          :desc "Toggle symbols-outline"
+          2 "<cmd>SymbolsOutline<CR>"}]
+  :config true}
  ; Add targets to 's'/'S'
  {1 "ggandor/leap.nvim"
   :dependencies ["tpope/vim-repeat"]
