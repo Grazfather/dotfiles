@@ -97,10 +97,10 @@
   :dependencies ["kyazdani42/nvim-web-devicons"]
   :config #(setup :alpha
                   (. (require "alpha.themes.startify") :config))}
- {1 "folke/noice.nvim"
-  :config true
-  :dependencies ["MunifTanjim/nui.nvim"]}
- ; Quick terminal toggle
+ {1 "rcarriga/nvim-notify"
+  :event ["VeryLazy"]
+  :config #(let [notify (require :notify)]
+             (tset vim :notify notify))}
  {1 "akinsho/toggleterm.nvim"
   :opts {:open_mapping "<c-\\>"
          :direction :tab}}]
