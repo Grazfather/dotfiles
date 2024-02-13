@@ -18,6 +18,7 @@ modified = 'M'
 renamed = 'R'
 staged = 'S'
 untracked = 'U'
+disabled = true
 
 [gcloud]
 disabled = true
