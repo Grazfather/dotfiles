@@ -27,9 +27,9 @@
 ; Highlight trailing whitespace and spaces touching tabs
 ;   Lines ending with spaces:   
 ;   Mixed spaces and tabs (in either order):
-    	;
-	    ;
-(vim.api.nvim_command ":let w:m2=matchadd('TrailingWhitespace', '\\s\\+$\\| \\+\\ze\\t\\|\\t\\+\\ze ')")
+;    	(Spaces then tabs))
+;	    (Tabs then spaces))
+(vim.fn.matchadd "TrailingWhitespace" "\\s\\+$\\| \\+\\ze\\t\\|\\t\\+\\ze ")
 (vim.api.nvim_create_autocmd :ColorScheme
                              {:callback #(vim.api.nvim_set_hl 0 "TrailingWhitespace" {:bg :darkred})})
 
