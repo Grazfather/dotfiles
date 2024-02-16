@@ -32,8 +32,9 @@
                                    :swap_previous {"<M-h>" "@parameter.inner"}}}
 
               :ensure_installed ["bash" "clojure" "cpp" "fennel" "go" "gomod" "gosum"
-                                 "javascript" "json" "make" "markdown" "proto" "python"
-                                 "query" "toml" "regex" "yaml" "zig"
+                                 "html" "javascript" "json" "make" "markdown" "proto"
+                                 "python" "query" "toml" "typescript" "regex" "yaml"
+                                 "zig"
                                  ; These must be present to override neovim builtins
                                  "c" "vimdoc" "lua" "vim"]
               })}

@@ -2,7 +2,7 @@
         {require-macros [macros]})
 
 ; First load lazy.nvim, setting up all plugins
-(setup :lazy :core)
+(setup :lazy :core {:change_detection { :notify false }})
 
 ; Setup tags file
 (set! tags "./tags,tags;")
@@ -85,6 +85,9 @@
 
 ; Use braces to determine when to auto indent
 (set-true! smartindent)
+
+; Use indent level to determine how to indent wrapped lines
+(set-true! breakindent)
 
 ; Show linenumbers by default
 (set-true! number relativenumber)

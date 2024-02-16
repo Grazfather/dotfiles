@@ -9,7 +9,7 @@
   :config #(let [lspkind (require :lspkind)
                  luasnip (require :luasnip)
                  cmp (require :cmp)]
-             ; Completion via nvim-cmp
+             ; Load snippets into luasnip
              (call-module-func :luasnip.loaders.from_vscode :lazy_load)
 
              (setup :luasnip {:updateevents "TextChanged,TextChangedI"})

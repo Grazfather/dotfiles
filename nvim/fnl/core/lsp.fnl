@@ -91,7 +91,7 @@
              (each [_ lsp (ipairs servers)]
                ((. (. lspconfig lsp) :setup) {:on_attach on-attach
                                               :capabilities capabilities})))}
- {1 "jose-elias-alvarez/null-ls.nvim"
+ {1 "nvimtools/none-ls.nvim"
   :ft ["go"]
   :config #(let [null-ls (require :null-ls)
                  group (vim.api.nvim_create_augroup :LspFormatting {})]
