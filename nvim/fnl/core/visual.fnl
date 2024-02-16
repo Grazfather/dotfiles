@@ -35,15 +35,20 @@
 
 [
  ; Colorscheme
- {1 "navarasu/onedark.nvim"
+ ; {1 "navarasu/onedark.nvim"
+ ;  :config (fn []
+ ;            (set-true! termguicolors)
+ ;            (setup :onedark {:style :warmer})
+ ;            (vim.cmd.colorscheme :onedark))}
+ {1 "folke/tokyonight.nvim"
+  :lazy false
+  :priority 1000
   :config (fn []
-            (set-true! termguicolors)
-            (setup :onedark {:style :warmer})
-            (vim.cmd.colorscheme :onedark))}
+            (vim.cmd.colorscheme :tokyonight-night))}
  ; Status line
  {1 "hoob3rt/lualine.nvim"
   :dependencies ["kyazdani42/nvim-web-devicons"]
-  :opts {:options {:theme :onedark
+  :opts {:options {:theme :tokyonight
                    :component_separators {:left ""
                                           :right ""}
                    :section_separators {:left ""
