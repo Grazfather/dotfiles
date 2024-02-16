@@ -228,7 +228,7 @@
   "Toggle showing listchars"
   <leader>tt "<cmd>set list!<CR>"
   "Toggle indent markers"
-  <leader>ti "<cmd>IndentBlanklineToggle<CR>"
+  <leader>ti #(vim.cmd "IBLToggle")
   "Toggle visual glyphs"
   <leader>tv (fn []
                (toggle-sign-column)
