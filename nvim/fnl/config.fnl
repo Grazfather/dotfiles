@@ -201,17 +201,27 @@
   "Search man pages"
   <leader>hm #(call-module-func "fzf-lua" "man_pages")
   "Search ex commands"
-  "<leader>:" #(call-module-func "fzf-lua" "commands")
+  "<leader>:" #(call-module-func "fzf-lua" "commands"))
 
+(fn toggle-quickfix []
+  (let [qfwins (vim.tbl_filter (fn [w]
+                                 (= w.quickfix 1))
+                               (vim.fn.getwininfo))
+        quickfix-open? (> (length qfwins) 0)
+        cmd (if quickfix-open? vim.cmd.cclose vim.cmd.copen)]
+    (cmd)))
+
+(descnmap!
   "Go to next in quickfix"
   <leader>cn ":cnext<CR>zz"
   "Go to previous in quickfix"
   <leader>cp ":cprevious<CR>zz"
-  ; TODO: Make this a toggle
-  "Open quickfix list"
-  <leader>co ":copen<CR>zz"
-  "Close quickfix list"
-  <leader>cd ":cclose<CR>zz")
+  "Open quickfix window"
+  <leader>co vim.cmd.copen
+  "Close quickfix window"
+  <leader>cd vim.cmd.close
+  "Toggle quickfix window"
+  <leader>cc toggle-quickfix)
 
 (set! signcolumn "yes")
 (fn toggle-sign-column []
