@@ -230,7 +230,13 @@
     (set! signcolumn "yes")))
 (set-true! list)
 
-(set! listchars "eol:¬,nbsp:␣,conceal:⋯,tab:  ,precedes:…,extends:…,trail:•")
+(set! listchars {:eol "¬"
+                 :nbsp "␣"
+                 :conceal "⋯"
+                 :tab "  "
+                 :precedes "…"
+                 :extends "…"
+                 :trail "•"})
 
 (descnmap!
   "Toggle sign column"
