@@ -17,22 +17,6 @@
     `(let [(ok?# value#) (pcall #(: (. vim.opt ,name) :get))]
        (if ok?# value# nil))))
 
-(fn let! [name value ...]
-  "Set vim variable with vim.[g b w t]"
-  (when (not (= nil name))
-    (let [name (tostring name)
-          scope (if (> (length (icollect [_ v (ipairs ["g/" "b/" "w/" "t/"])]
-                                         (when (= (name:sub 1 2) v) v))) 0)
-                  (name:sub 1 1)
-                  nil)
-          name (if (= nil scope) name (name:sub 3))]
-      (match scope
-        "g" `(do (tset vim.g ,name ,value) ,(let! ...))
-        "b" `(do (tset vim.b ,name ,value) ,(let! ...))
-        "w" `(do (tset vim.w ,name ,value) ,(let! ...))
-        "t" `(do (tset vim.t ,name ,value) ,(let! ...))
-        _ `(do (tset vim.g ,name ,value) ,(let! ...))))))
-
 (fn set! [...]
   "Set vim opts to explicit values"
   `(do ,(unpack (icollect [_ [name value] (ipairs (partition 2 [...]))]
@@ -105,7 +89,6 @@
   (call-module-func m :setup ...))
 
 {: get?
- : let!
  : set!
  : set-toggle!
  : set-append!
