@@ -35,11 +35,6 @@
 
 [
  ; Colorscheme
- ; {1 "navarasu/onedark.nvim"
- ;  :config (fn []
- ;            (set-true! termguicolors)
- ;            (setup :onedark {:style :warmer})
- ;            (vim.cmd.colorscheme :onedark))}
  {1 "folke/tokyonight.nvim"
   :lazy false
   :priority 1000
