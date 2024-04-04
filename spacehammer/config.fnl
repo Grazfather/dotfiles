@@ -28,7 +28,7 @@
 ;;
 ;; [x] a - apps
 ;; [x] |-- b - browser
-;; [x] |-- i - Kitty
+;; [x] |-- i - WezTerm
 ;; [x] |-- s - Slack
 ;; [x] |-- r - Spotify
 ;;
@@ -287,8 +287,8 @@
          :title "Slack"
          :action (activator "Slack")}
         {:key :t
-         :title "Kitty"
-         :action (activator "Kitty")}
+         :title "WezTerm"
+         :action (activator "WezTerm")}
         {:key :c
          :title "Whatsapp"
          :action (activator "Whatsapp")}
@@ -348,7 +348,7 @@
          :action (activator "Slack")}
         {:mods hyper-mods
          :key :t
-         :action (activator "Kitty")}
+         :action (activator "WezTerm")}
         {:mods hyper-mods
          :key :c
          :action (activator "Whatsapp")}

@@ -10,7 +10,7 @@
              ["gitignore_global"]
              ["tmux.conf"]
              ["spacehammer"]
-             ["kitty.conf" ".config/kitty/kitty.conf"]
+             ["wezterm.lua"]
              ["karabiner" ".config/karabiner/"]
              ["starship.toml" ".config/starship.toml"]
              ["nvim/" ".config/nvim/"]
