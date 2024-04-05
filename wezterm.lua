@@ -4,7 +4,7 @@ local config = wezterm.config_builder()
 local act = wezterm.action
 
 -- Visual
-config.font = wezterm.font('OperatorMonoNerdFontPlusFontAwesomePlusOcticons Nerd Font')
+config.font = wezterm.font('Operator Mono SSm Lig')
 config.color_scheme = 'N0tch2k'
 
 -- Key bindings
