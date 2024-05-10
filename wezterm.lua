@@ -7,6 +7,8 @@ local act = wezterm.action
 config.font = wezterm.font('Operator Mono SSm Lig')
 config.color_scheme = 'N0tch2k'
 
+config.audible_bell = 'Disabled'
+
 -- Key bindings
 config.leader = { key = ',', mods = 'CTRL' }
 config.keys = {
