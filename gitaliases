@@ -4,6 +4,7 @@
       b = branch
       ca = commit --amend
       cara = commit --amend --reset-author
+      carane = commit --amend --reset-author --no-edit
       co = checkout
       ci = commit
       cp = cherry-pick
