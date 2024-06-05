@@ -37,11 +37,12 @@
                (buf-nmap "Go to declaration"
                          "gD" vim.lsp.buf.declaration)
                (buf-nmap "Go to definition"
-                         "gd" #(call-module-func "fzf-lua" "lsp_definitions"))
+                         "gd" #(call-module-func "fzf-lua" "lsp_definitions" {:jump_to_single_result true}))
                (buf-nmap "Go to implementation"
-                         "gi" vim.lsp.buf.implementation)
+                         "gi" #(call-module-func "fzf-lua" "lsp_implementations" {:jump_to_single_result true}))
                (buf-nmap "Get references"
-                         "gr" #(call-module-func "fzf-lua" "lsp_references"))
+                         "gr" #(call-module-func "fzf-lua" "lsp_references" {:jump_to_single_result true
+                                                                             :ignore_current_line true}))
                (buf-nmap "Hover documentation"
                          "K" vim.lsp.buf.hover)
                (buf-nmap "Go to previous diagnostic"
