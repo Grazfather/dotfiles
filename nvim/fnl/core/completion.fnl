@@ -1,4 +1,5 @@
 (import-macros {: call-module-func
+                : map!
                 : setup} :macros)
 
 [{1 "hrsh7th/nvim-cmp"
@@ -13,6 +14,12 @@
              (call-module-func :luasnip.loaders.from_vscode :lazy_load)
 
              (setup :luasnip {:updateevents "TextChanged,TextChangedI"})
+
+             ; Setup Luasnip-specific bindings
+             (map! "is" "<C-K>" (fn [] (if (luasnip.expand_or_jumpable)
+                                         (luasnip.expand_or_jump)))
+                   "is" "<C-J>" (fn [] (if (luasnip.jumpable -1)
+                                         (luasnip.jump -1))))
 
              (setup
                :cmp
