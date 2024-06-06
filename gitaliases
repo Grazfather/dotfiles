@@ -22,6 +22,10 @@
       rc = rebase --continue
       ra = rebase --abort
       rs = rebase --skip
+      # Edit conflicting files
+      ec = "!$EDITOR $(git diff --name-only --diff-filter=U --relative)"
+      # Add conflicting files
+      ac = "!git add $(git diff --name-only --diff-filter=U --relative)"
       s = status -s
       st = status
       sl = stash list
