@@ -139,6 +139,10 @@
   <leader>tx "<cmd>set cursorline! cursorcolumn!<CR>"
   "Blink current line"
   <leader><space> #(call-module-func :blinker "blink_cursorline")
+  "Highlight occurrences of the word under the cursor"
+  <leader>* (fn []
+              (vim.fn.setreg "/" (.. "\\<" (vim.fn.expand "<cword>") "\\>"))
+              (set-true! hlsearch))
 
   ; Window (split) management
   "Split vertically"
