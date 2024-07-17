@@ -5,14 +5,14 @@
   :dependencies ["kyazdani42/nvim-web-devicons"]
   :opts {:git {:files {:cmd "git ls-files --exclude-standard ':!:vendor'"}}}}
  {1 "nvim-neo-tree/neo-tree.nvim"
-  :keys [{1 "<leader>ft"
+  :keys [{1 "<leader>tf"
           :desc "Toggle Neo-tree"
           2 "<cmd>Neotree toggle<CR>"}]
   :dependencies ["nvim-lua/plenary.nvim"
                  "kyazdani42/nvim-web-devicons"
                  "MunifTanjim/nui.nvim"]}
  {1 "simrat39/symbols-outline.nvim"
-  :keys [{1 "<leader>st"
+  :keys [{1 "<leader>ts"
           :desc "Toggle symbols-outline"
           2 "<cmd>SymbolsOutline<CR>"}]
   :config true}

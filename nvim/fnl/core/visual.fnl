@@ -60,20 +60,17 @@
  {1 "lukas-reineke/indent-blankline.nvim" :main "ibl" :config true}
 
  ; Show hints for key bindings
- ; -- I tend to use leader a lot, so I try to namespace commands under leader
- ; -- using a simple mnemonic:
  {1 "folke/which-key.nvim"
-  :config #(call-module-func :which-key :register
-                             {:b {:name "Buffer stuff"}
-                              :e {:name "Edit stuff"}
-                              :g {:name "Git"}
-                              :h {:name "Help"}
-                              :m {:name "Local leader"}
-                              :f {:name "File/find ops"}
-                              :t {:name "Toggles"}
-                              :w {:name "Window"}
-                              :x {:name "Lisp"}}
-                             {:prefix :<leader>})}
+  :opts {:spec [{1 :<leader>b :group "Buffer stuff"}
+                {1 :<leader>c :group "Quickfix"}
+                {1 :<leader>e :group "Edit stuff"}
+                {1 :<leader>g :group "Git"}
+                {1 :<leader>h :group "Help"}
+                {1 :<leader>m :group "Local leader"}
+                {1 :<leader>f :group "File/find ops"}
+                {1 :<leader>t :group "Toggles"}
+                {1 :<leader>w :group "Window"}
+                {1 :<leader>x :group "Lisp"}]}}
 ; Highlight special words in comments
 {1 "folke/todo-comments.nvim"
  :dependencies ["nvim-lua/plenary.nvim"]

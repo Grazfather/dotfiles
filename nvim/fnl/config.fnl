@@ -184,7 +184,7 @@
 
   ; fzf-lua fuzzy finder
   "Find files in project"
-  <leader>pf #(call-module-func "fzf-lua" "git_files")
+  <leader>fp #(call-module-func "fzf-lua" "git_files")
   "File files from CWD"
   <leader>ff #(call-module-func "fzf-lua" "files")
   "File text in open buffers"
@@ -196,7 +196,7 @@
   "Find jump"
   <leader>fj #(call-module-func "fzf-lua" "jumps")
   "Grep file content from CWD"
-  <leader>frg #(call-module-func "fzf-lua" "live_grep")
+  <leader>fg #(call-module-func "fzf-lua" "live_grep")
   "Search help"
   <leader>hh #(call-module-func "fzf-lua" "help_tags")
   "Search highlights"
