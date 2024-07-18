@@ -13,17 +13,17 @@
                  group (vim.api.nvim_create_augroup :LspHighlighting {})]
              ; Blackhole the mappings by default, so that if I hit them in
              ; files with no lsp they just do nothing
-             (nmap! "gD" "<nop>")
-             (nmap! "gd" "<nop>")
-             (nmap! "gi" "<nop>")
-             (nmap! "gr" "<nop>")
-             (nmap! "K" "<nop>")
-             (nmap! "[d" "<nop>")
-             (nmap! "]d" "<nop>")
-             (nmap! "<leader>D" "<nop>")
-             (nmap! "<leader>rn" "<nop>")
-             (nmap! "<leader>ca" "<nop>")
-             (nmap! "<leader>ef" "<nop>")
+             (nmap! "gD" "<nop>"
+                    "gd" "<nop>"
+                    "gi" "<nop>"
+                    "gr" "<nop>"
+                    "K" "<nop>"
+                    "[d" "<nop>"
+                    "]d" "<nop>"
+                    "<leader>D" "<nop>"
+                    "<leader>rn" "<nop>"
+                    "<leader>ca" "<nop>"
+                    "<leader>ef" "<nop>")
 
              (fn on-attach [client bufnr]
                (fn buf-nmap [desc lhs rhs]

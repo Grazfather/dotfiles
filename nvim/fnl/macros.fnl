@@ -53,30 +53,40 @@
          ,(unpack (icollect [mode (string.gmatch modes ".")]
                     `(vim.keymap.set ,mode ,keys cmd# ,options)))))))
 
+(fn xmap! [modes keys cmd ...]
+  (when (not (= nil keys))
+    `(do ,(map!- modes keys cmd {:remap true})
+         ,(xmap! modes ...))))
+
 (fn map! [modes keys cmd ...]
   (when (not (= nil modes))
     `(do ,(map!- modes keys cmd {:remap true})
          ,(map! ...))))
 
+(fn cmap! [keys cmd ...]
+  (xmap! "c" keys cmd ...))
+
+(fn imap! [keys cmd ...]
+  (xmap! "i" keys cmd ...))
+
 (fn nmap! [keys cmd ...]
+  (xmap! "n" keys cmd ...))
+
+(fn descxmap! [modes desc keys cmd ...]
   (when (not (= nil keys))
-    `(do ,(map!- "n" keys cmd {:remap true})
-         ,(nmap! ...))))
+    `(do ,(map!- modes keys cmd {:desc desc :remap true})
+         ,(descxmap! modes ...))))
 
 (fn descnmap! [desc keys cmd ...]
-  (when (not (= nil keys))
-    `(do ,(map!- "n" keys cmd {:desc desc :remap true})
-         ,(descnmap! ...))))
+  (descxmap! "n" desc keys cmd ...))
 
-(fn noremap! [modes keys cmd ...]
-  (when (not (= nil modes))
+(fn xnoremap! [modes keys cmd ...]
+  (when (not (= nil keys))
     `(do ,(map!- modes keys cmd {})
-         ,(noremap! ...))))
+         ,(xnoremap! modes ...))))
 
 (fn nnoremap! [keys cmd ...]
-  (when (not (= nil keys))
-    `(do ,(map!- "n" keys cmd {})
-         ,(nnoremap! ...))))
+  (xnoremap! "n" keys cmd ...))
 
 (fn call-module-func [m method ...]
   "Call a module's specified function if the module can be imported."
@@ -94,10 +104,14 @@
  : set-append!
  : set-true!
  : set-false!
+ : xmap!
  : map!
+ : cmap!
+ : imap!
  : nmap!
+ : descxmap!
  : descnmap!
- : noremap!
+ : xnoremap!
  : nnoremap!
  : call-module-func
  : setup}

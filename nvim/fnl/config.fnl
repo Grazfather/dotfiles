@@ -48,12 +48,13 @@
        <C-e> "<cmd>b#<CR>")
 
 ; Let <C-n> and <C-p> also filter through command history
-(map! "c" <C-n> "<down>"
-      "c" <C-p> "<up>")
+(cmap! <C-n> "<down>"
+       <C-p> "<up>")
 
 ; Let indents in visual mode keep the selection
-(noremap! "v" < "<gv"
-          "v" > ">gv")
+(xnoremap! "v"
+           < "<gv"
+           > ">gv")
 
 ; Start scrolling before my cursor reaches the top or bottom of the screen
 (set! scrolloff 4)
@@ -108,7 +109,9 @@
   ; Add 'DELETEME' comment using Comment.nvim
   "Add DELETEME comment"
   <leader>dm "mxgcADELETEME<ESC>`x")
-(map! "v" <leader>dm "mx:normal gcADELETEME<ESC><CR>`x")
+(descxmap! "v"
+           "Add DELETEME comment"
+           <leader>dm "mx:normal gcADELETEME<ESC><CR>`x")
 
 (descnmap!
   "Clear trailing whitespace"
@@ -256,11 +259,13 @@
                (vim.cmd "IBLToggle"))
   "Toggle comment on current line"
   "<leader>c " "gcc")
-(map! "v" "<leader>c " "gc")
+(descxmap! "v"
+           "Toggle comment on current line"
+           "<leader>c " "gc")
 
 ; Simulate readline/emacs's jump to start/end of line in insert mode
-(map! "i" <C-a> "<ESC>I"
-      "i" <C-e> "<ESC>A")
+(imap! <C-a> "<ESC>I"
+       <C-e> "<ESC>A")
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; Specific language settings

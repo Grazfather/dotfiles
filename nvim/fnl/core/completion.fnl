@@ -1,5 +1,5 @@
 (import-macros {: call-module-func
-                : map!
+                : xmap!
                 : setup} :macros)
 
 [{1 "hrsh7th/nvim-cmp"
@@ -16,10 +16,11 @@
              (setup :luasnip {:updateevents "TextChanged,TextChangedI"})
 
              ; Setup Luasnip-specific bindings
-             (map! "is" "<C-K>" (fn [] (if (luasnip.expand_or_jumpable)
-                                         (luasnip.expand_or_jump)))
-                   "is" "<C-J>" (fn [] (if (luasnip.jumpable -1)
-                                         (luasnip.jump -1))))
+             (xmap! "is"
+                    "<C-K>" (fn [] (if (luasnip.expand_or_jumpable)
+                                     (luasnip.expand_or_jump)))
+                    "<C-J>" (fn [] (if (luasnip.jumpable -1)
+                                     (luasnip.jump -1))))
 
              (setup
                :cmp
