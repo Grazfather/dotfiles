@@ -53,8 +53,9 @@
   :dependencies ["kyazdani42/nvim-web-devicons"]
   :opts {:options {:diagnostics :nvim_lsp
                    :separator_style :slant
-                   :show_buffer_close_icon false
-                   :show_close_icon false
+                   :show_buffer_close_icons false
+                   :show_close_icons false
+                   :always_show_bufferline false
                    :offsets [{:filetype :neo-tree
                               :text "File explorer"}]}}}
  {1 "lukas-reineke/indent-blankline.nvim" :main "ibl" :config true}
