@@ -3,7 +3,8 @@
 
 [{1 "ibhagwan/fzf-lua"
   :dependencies ["kyazdani42/nvim-web-devicons"]
-  :opts {:git {:files {:cmd "git ls-files --exclude-standard ':!:vendor'"}}}}
+  :opts {:git {:files {:cmd "git ls-files --exclude-standard ':!:vendor'"}}
+         :lines {:fzf_opts {"--with-nth" "2.."}}}}
  {1 "nvim-neo-tree/neo-tree.nvim"
   :keys [{1 "<leader>tf"
           :desc "Toggle Neo-tree"
