@@ -56,4 +56,7 @@
  "szw/vim-maximizer"
  {1 "numToStr/Comment.nvim" :config true}
  {1 "kylechui/nvim-surround" :config true}
- "mbbill/undotree"]
+ "mbbill/undotree"
+ {1 "stevearc/oil.nvim"
+  :dependencies ["nvim-tree/nvim-web-devicons"]
+  :config true}]
