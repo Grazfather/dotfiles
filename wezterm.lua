@@ -74,6 +74,16 @@ config.keys = {
   { key = "RightArrow", mods = "OPT", action = wezterm.action.SendString("\x1bf") },
   -- QuickSelect
   { key = "y", mods = "LEADER", action = act.QuickSelect },
+  -- Open URL via Quick Select
+  {
+		key = "u", mods = "LEADER", action = act.QuickSelectArgs {
+			label = "open url",
+			patterns = { "https?://[a-zA-Z0-9.]+[-a-zA-Z0-9()@:%_\\+.~#?&//=]*" },
+			action = wezterm.action_callback(function(win, pane)
+				wezterm.open_with(win:get_selection_text_for_pane(pane))
+			end),
+		},
+	},
   -- Copy mode
   { key = "[", mods = "LEADER", action = act.ActivateCopyMode },
 }
