@@ -19,12 +19,12 @@ config.inactive_pane_hsb = {
   brightness = 0.5,
 }
 
-wezterm.on("update-right-status", function(window, pane)
+wezterm.on("update-right-status", function(win, pane)
   status = ""
-  if window:leader_is_active() then status = "LEADER" end
-  if window:active_key_table() then status = window:active_key_table() end
+  if win:leader_is_active() then status = "LEADER" end
+  if win:active_key_table() then status = win:active_key_table() end
 
-  window:set_right_status(wezterm.format({
+  win:set_right_status(wezterm.format({
     { Text = status },
   }))
 end)
@@ -42,12 +42,11 @@ config.keys = {
   { key = ":", mods = "LEADER", action = act.ActivateCommandPalette },
   -- Rename current tab
   {
-    key = ",",
-    mods = "LEADER", action = act.PromptInputLine {
+    key = ",", mods = "LEADER", action = act.PromptInputLine {
       description = "Tab name:",
-      action = wezterm.action_callback(function(window, pane, line)
+      action = wezterm.action_callback(function(win, pane, line)
         if line then
-          window:active_tab():set_title(line)
+          win:active_tab():set_title(line)
         end
       end),
     },
