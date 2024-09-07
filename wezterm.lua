@@ -29,6 +29,9 @@ wezterm.on("update-right-status", function(win, pane)
   }))
 end)
 
+-- Use colemak homerow keys first
+config.quick_select_alphabet = "arstneioqwfpzxcvluymdhgjbk"
+
 -- Key bindings
 -- -- Same prefix as Tmux
 config.leader = { key = "o", mods = "CTRL" }
@@ -56,6 +59,12 @@ config.keys = {
   { key = "v", mods = "LEADER", action = act.SplitHorizontal },
   { key = "%", mods = "LEADER", action = act.SplitHorizontal },
   -- Move panes
+  { key = "e", mods = "LEADER", action = act.ActivateKeyTable(
+    { name = "move_pane",
+      one_shot = false,
+      timeout_milliseconds = 1000 })
+  },
+  { key = "E", mods = "LEADER", action = act.PaneSelect },
   { key = "h", mods = "LEADER", action = act.ActivatePaneDirection("Left") },
   { key = "l", mods = "LEADER", action = act.ActivatePaneDirection("Right") },
   { key = "k", mods = "LEADER", action = act.ActivatePaneDirection("Up") },
@@ -91,14 +100,17 @@ config.keys = {
 }
 
 config.key_tables = {
+  move_pane = {
+    { key = "h", action = act.ActivatePaneDirection("Left") },
+    { key = "j", action = act.ActivatePaneDirection("Down") },
+    { key = "k", action = act.ActivatePaneDirection("Up") },
+    { key = "l", action = act.ActivatePaneDirection("Right") },
+    { key = "Escape", action = act.PopKeyTable },
+  },
   resize_pane = {
-    { key = "LeftArrow", action = act.AdjustPaneSize({ "Left", 1 }) },
     { key = "h", action = act.AdjustPaneSize({ "Left", 1 }) },
-    { key = "DownArrow", action = act.AdjustPaneSize({ "Down", 1 }) },
     { key = "j", action = act.AdjustPaneSize({ "Down", 1 }) },
-    { key = "UpArrow", action = act.AdjustPaneSize({ "Up", 1 }) },
     { key = "k", action = act.AdjustPaneSize({ "Up", 1 }) },
-    { key = "RightArrow", action = act.AdjustPaneSize({ "Right", 1 }) },
     { key = "l", action = act.AdjustPaneSize({ "Right", 1 }) },
     { key = "Escape", action = act.PopKeyTable },
   },
