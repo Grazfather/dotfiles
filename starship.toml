@@ -18,8 +18,12 @@ modified = 'M'
 renamed = 'R'
 staged = 'S'
 untracked = 'U'
-disabled = true
+stashed = ''
 
+[cmake]
+disabled = true
+[docker_context]
+disabled = true
 [gcloud]
 disabled = true
 [golang]
