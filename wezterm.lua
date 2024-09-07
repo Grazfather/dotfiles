@@ -41,8 +41,7 @@ config.keys = {
   { key = "o", mods = "LEADER", action = act.SendKey({ key = "o", mods = "CTRL" }) },
   { key = ":", mods = "LEADER", action = act.ActivateCommandPalette },
   -- Rename current tab
-  {
-    key = ",", mods = "LEADER", action = act.PromptInputLine {
+  { key = ",", mods = "LEADER", action = act.PromptInputLine {
       description = "Tab name:",
       action = wezterm.action_callback(function(win, pane, line)
         if line then
@@ -62,7 +61,11 @@ config.keys = {
   { key = "k", mods = "LEADER", action = act.ActivatePaneDirection("Up") },
   { key = "j", mods = "LEADER", action = act.ActivatePaneDirection("Down") },
   -- Resize panes
-  { key = "r", mods = "LEADER", action = act.ActivateKeyTable({ name = "resize_pane", one_shot = false }) },
+  { key = "r", mods = "LEADER", action = act.ActivateKeyTable(
+    { name = "resize_pane",
+      one_shot = false,
+      timeout_milliseconds = 500 })
+  },
   -- Move tabs
   { key = "n", mods = "LEADER", action = act.ActivateTabRelative(1) },
   { key = "p", mods = "LEADER", action = act.ActivateTabRelative(-1) },
@@ -75,15 +78,14 @@ config.keys = {
   -- QuickSelect
   { key = "y", mods = "LEADER", action = act.QuickSelect },
   -- Open URL via Quick Select
-  {
-		key = "u", mods = "LEADER", action = act.QuickSelectArgs {
-			label = "open url",
-			patterns = { "https?://[a-zA-Z0-9.]+[-a-zA-Z0-9()@:%_\\+.~#?&//=]*" },
-			action = wezterm.action_callback(function(win, pane)
-				wezterm.open_with(win:get_selection_text_for_pane(pane))
-			end),
-		},
-	},
+  { key = "u", mods = "LEADER", action = act.QuickSelectArgs {
+      label = "open url",
+      patterns = { "https?://[a-zA-Z0-9.]+[-a-zA-Z0-9()@:%_\\+.~#?&//=]*" },
+      action = wezterm.action_callback(function(win, pane)
+        wezterm.open_with(win:get_selection_text_for_pane(pane))
+      end),
+    },
+  },
   -- Copy mode
   { key = "[", mods = "LEADER", action = act.ActivateCopyMode },
 }
