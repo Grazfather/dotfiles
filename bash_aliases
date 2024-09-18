@@ -8,6 +8,8 @@ alias l='ls -CF'
 alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
+# -- cd to the top of the current git repo
+alias tot='cd $(git rev-parse --show-toplevel)'
 
 # suppress the copyright info when starting gdb
 alias gdb='gdb -q'
