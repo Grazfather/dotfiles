@@ -48,6 +48,11 @@
       sd = stash drop stash@{0}
       ss = show stash@{0}
 
+      # Reset
+      rem = reset --mixed
+      reh = reset --hard
+      com = commit -c ORIG_HEAD
+
       gh = rev-parse @
       type = cat-file -t
       dump = cat-file -p
