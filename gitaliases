@@ -2,36 +2,52 @@
       aa = add --all
       ap = add --patch
       b = branch
+      co = checkout
+
+      # Commit
       ca = commit --amend
       cara = commit --amend --reset-author
       carane = commit --amend --reset-author --no-edit
-      co = checkout
       ci = commit
-      cp = cherry-pick
-      cpc = cherry-pick --continue
-      cpa = cherry-pick --abort
+
+      # Diff
       d = diff
       dc = diff --cached
+
+      # Fetch
       fo = fetch origin
       fop = fetch origin --prune
       fp = format-patch
       l = "!. ~/.githelpers && pretty_git_log"
       lf = log --pretty=format:\"%h %cd%C(yellow)%d%Creset %s%C(green) [%an]%Creset\" --decorate --numstat --date=short
       lsnv = ls-files -- . ':!vendor'
+
+      # Cherry pick
+      cp = cherry-pick
+      cpa = cherry-pick --abort
+      cpc = cherry-pick --continue
+
+      # Rebase
       rb = "!r() { git rebase -i HEAD~$1; }; r"
       rc = rebase --continue
       ra = rebase --abort
       rs = rebase --skip
+
       # Edit conflicting files
       ec = "!$EDITOR $(git diff --name-only --diff-filter=U --relative)"
       # Add conflicting files
       ac = "!git add $(git diff --name-only --diff-filter=U --relative)"
+
+      # Status
       s = status -s
       st = status
+
+      # Stash
       sl = stash list
       sp = stash pop
       sd = stash drop stash@{0}
       ss = show stash@{0}
+
       gh = rev-parse @
       type = cat-file -t
       dump = cat-file -p
