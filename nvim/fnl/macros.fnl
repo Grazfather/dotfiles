@@ -7,9 +7,8 @@
       (table.insert res temp)
       (set temp [])))
   (when (~= (length temp) 0)
-    (table.insert res (icollect [_ v (ipairs temp)] v)))
-  res
-  )
+    (table.insert res temp))
+  res)
 
 (fn get? [name]
   "Get the value of a vim opt"
