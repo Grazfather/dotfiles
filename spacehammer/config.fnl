@@ -28,11 +28,12 @@
 ;;
 ;; [x] a - apps
 ;; [x] |-- b - browser
-;; [x] |-- i - WezTerm
+;; [x] |-- r - music
+;; [x] |-- t - terminal
 ;; [x] |-- s - Slack
-;; [x] |-- r - Spotify
-;;
-;; [x] j - jump
+;; [x] |-- c - Whatsapp
+;; [x] |-- d - Discord
+;; [x] |-- o - notes
 ;;
 ;; [x] m - media
 ;; [x] |-- h - previous track
@@ -75,14 +76,14 @@
 ;; General
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;; If you would like to customize this we recommend copying this file to
-;; ~/.spacehammer/config.fnl. That will be used in place of the default
-;; and will not be overwritten by upstream changes when spacehammer is updated.
 (local music-app "Spotify")
+; Use the system default browser app
 (local browser-app
        (hs.application.nameForBundleID (hs.urlevent.getDefaultHandler "http")))
+(local notes-app "Logseq")
+(local terminal-app "WezTerm")
 
-(local return
+(local back
        {:key :space
         :title "Back"
         :action :previous})
@@ -247,10 +248,7 @@
 
 (local window-bindings
        (concat
-        [return
-         {:key :w
-          :title "Last Window"
-          :action "windows:jump-to-last-window"}]
+        [back]
         window-jumps
         window-halves
         window-increments
@@ -279,28 +277,25 @@
 
 ; These are behind the 'a' submenu
 (local app-bindings
-       [return
+       [back
+        {:key :b
+         :title browser-app
+         :action (activator browser-app)}
         {:key :r
          :title music-app
          :action (activator music-app)}
+        {:key :t
+         :title terminal-app
+         :action (activator terminal-app)}
         {:key :s
          :title "Slack"
          :action (activator "Slack")}
-        {:key :t
-         :title "WezTerm"
-         :action (activator "WezTerm")}
         {:key :c
          :title "Whatsapp"
          :action (activator "Whatsapp")}
         {:key :d
          :title "Discord"
          :action (activator "Discord")}
-        {:key :b
-         :title browser-app
-         :action (activator browser-app)}
-        {:key :q
-         :title "Roam Research"
-         :action (activator "Roam Research")}
         {:key :f
          :title "Finder"
          :action (activator "Finder")}
@@ -308,12 +303,12 @@
          :title "Preview"
          :action (activator "Preview")}
         {:key :o
-         :title "Obsidian"
-         :action (activator "Obsidian")}])
+         :title notes-app
+         :action (activator notes-app)}])
 
 ; These are behind the 'm' submenu
 (local media-bindings
-       [return
+       [back
         {:key :s
          :title "Play or Pause"
          :action "multimedia:play-or-pause"}
@@ -341,26 +336,23 @@
 
 (local app-keys
        [{:mods hyper-mods
+         :key :b
+         :action (activator browser-app)}
+        {:mods hyper-mods
          :key :r
          :action (activator music-app)}
         {:mods hyper-mods
+         :key :t
+         :action (activator terminal-app)}
+        {:mods hyper-mods
          :key :s
          :action (activator "Slack")}
-        {:mods hyper-mods
-         :key :t
-         :action (activator "WezTerm")}
         {:mods hyper-mods
          :key :c
          :action (activator "Whatsapp")}
         {:mods hyper-mods
          :key :d
          :action (activator "Discord")}
-        {:mods hyper-mods
-         :key :b
-         :action (activator browser-app)}
-        {:mods hyper-mods
-         :key :q
-         :action (activator "Roam Research")}
         {:mods hyper-mods
          :key :f
          :action (activator "Finder")}
@@ -369,10 +361,7 @@
          :action (activator "Preview")}
         {:mods hyper-mods
          :key :o
-         :action (activator "Obsidian")}
-        {:mods hyper-mods
-         :key :x
-         :action (activator "Visual Studio Code")}])
+         :action (activator notes-app)}])
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Repl
@@ -409,9 +398,6 @@
         {:key :a
          :title "Apps"
          :items app-bindings}
-        {:key :j
-         :title "Jump"
-         :action "windows:jump"}
         {:key :m
          :title "Media"
          :items media-bindings}
@@ -581,9 +567,10 @@
 (local Install spoon.SpoonInstall)
 
 ;; Simple clipboard manager
-(Install:andUse "TextClipboardHistory"
-                {:config {:show_in_menubar true
-                          :paste_on_select true}
+(Install:andUse "ClipboardTool"
+                {:config {:paste_on_select true
+                          :show_copied_alert false
+                          :hist_size 10}
                  :hotkeys {:toggle_clipboard [hyper-mods "v"] }
                  :start true})
 
