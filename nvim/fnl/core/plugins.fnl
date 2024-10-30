@@ -10,16 +10,10 @@
  ; Language support
  {1 "williamboman/mason.nvim" :build ":MasonUpdate" :config true}
  ; -- Markdown
- {1 "jtratner/vim-flavored-markdown"
-  :ft ["markdown"]
-  :config (fn []
-            ; Use github-flavored markdown
-            (vim.api.nvim_create_augroup :markdown {})
-            (vim.api.nvim_create_autocmd
-              [:BufNewFile :BufRead]
-              {:pattern "*.md"
-               :group :markdown
-               :callback #(set! filetype "ghmarkdown")}))}
+ {1 "MeanderingProgrammer/render-markdown.nvim"
+  :depencencies  ["nvim-treesitter/nvim-treesitter" "nvim-tree/nvim-web-devicons"]
+  :opts {:file_types  ["markdown" "Avante"]}
+  :ft ["markdown" "Avante"]}
  ; -- Lisps
  {1 "Grazfather/sexp.nvim"
   :ft ["clojure" "scheme" "lisp" "timl" "fennel" "janet"]
