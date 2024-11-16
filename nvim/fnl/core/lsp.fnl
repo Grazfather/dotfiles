@@ -11,7 +11,13 @@
                  "hrsh7th/cmp-nvim-lsp"]
   :config #(let [lspconfig (require :lspconfig)
                  ; If any of the servers are paired with a table, it will get merged into the config
-                 servers ["gopls" "clojure_lsp" "bashls"]
+                 servers [["arduino_language_server" {:cmd ["arduino-language-server"
+                                                            "-cli" "/opt/homebrew/bin/arduino-cli"
+                                                            "-cli-config" "~/Library/Arduino15/arduino-cli.yaml"]}]
+                          "clojure_lsp"
+                          "gopls"
+                          "bashls"
+                          "zls"]
                  group (vim.api.nvim_create_augroup :LspHighlighting {})]
              ; Blackhole the mappings by default, so that if I hit them in
              ; files with no lsp they just do nothing
