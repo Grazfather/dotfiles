@@ -1,6 +1,7 @@
 (import-macros {: call-module-func
                 : nmap!
                 : setup} :macros)
+(local lib (require :lib))
 
 [{1 "neovim/nvim-lspconfig"
   :event ["BufReadPre" "BufNewFile"]
@@ -9,6 +10,7 @@
                  "onsails/lspkind-nvim"
                  "hrsh7th/cmp-nvim-lsp"]
   :config #(let [lspconfig (require :lspconfig)
+                 ; If any of the servers are paired with a table, it will get merged into the config
                  servers ["gopls" "clojure_lsp" "bashls"]
                  group (vim.api.nvim_create_augroup :LspHighlighting {})]
              ; Blackhole the mappings by default, so that if I hit them in
@@ -84,14 +86,24 @@
                (call-module-func :cmp_nvim_lsp :default_capabilities
                                  (vim.lsp.protocol.make_client_capabilities)))
 
-             ; Use Mason to auto-install the lsp servers for us.
-             (setup :mason-lspconfig
-                    {:ensure_installed servers})
+             ; Use Mason to auto-install the lsp servers
+             (let [server-names (icollect [_ s (ipairs servers)]
+                                  (if (lib.seq? s) (. s 1) s))]
+               (setup :mason-lspconfig
+                      {:ensure_installed server-names}))
 
-             ; Setup the above for each server specified
+             ; Setup each server, using the on-attach and capabilities set
              (each [_ lsp (ipairs servers)]
-               ((. (. lspconfig lsp) :setup) {:on_attach on-attach
-                                              :capabilities capabilities})))}
+               (let [[server-name extra-config] (if (lib.seq? lsp)
+                                                  [(unpack lsp)]
+                                                  [lsp {}])
+                     ; Merge base config with optional extra config
+                     base-config {:on_attach on-attach
+                                  :capabilities capabilities}
+                     config (lib.merge extra-config base-config)]
+
+                 ; Set up the server
+                 ((. (. lspconfig server-name) :setup) config))))}
  {1 "nvimtools/none-ls.nvim"
   :ft ["go"]
   :config #(let [null-ls (require :null-ls)
