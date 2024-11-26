@@ -56,4 +56,8 @@
   :config #(let [cmp (require :cmp)]
              (cmp.setup.cmdline "/"
                                 {:mapping (cmp.mapping.preset.cmdline)
-                                 :sources (cmp.config.sources [{:name :buffer}])}))}]
+                                 :sources (cmp.config.sources [{:name :buffer}])}))}
+ {1 "stevearc/conform.nvim"
+  :opts {:formatters_by_ft {:go [:gofmt :goimports]}
+         :format_on_save {:timeout_ms 500
+                          :lsp_format :fallback}}}]

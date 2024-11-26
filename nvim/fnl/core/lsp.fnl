@@ -109,16 +109,4 @@
                      config (lib.merge extra-config base-config)]
 
                  ; Set up the server
-                 ((. (. lspconfig server-name) :setup) config))))}
- {1 "nvimtools/none-ls.nvim"
-  :ft ["go"]
-  :config #(let [null-ls (require :null-ls)
-                 group (vim.api.nvim_create_augroup :LspFormatting {})]
-             (setup :null-ls
-                    {:sources [null-ls.builtins.formatting.gofmt
-                               null-ls.builtins.formatting.goimports]
-                     :on_attach (fn [client bufnr]
-                                  (vim.api.nvim_create_autocmd :BufWritePre
-                                                               {:group group
-                                                                :buffer bufnr
-                                                                :callback #(vim.lsp.buf.format {:bufnr bufnr})}))}))}]
+                 ((. (. lspconfig server-name) :setup) config))))}]
