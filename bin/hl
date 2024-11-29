@@ -11,19 +11,22 @@
   [["-h" "--help" "Show help"]
    ["-p" "--pattern PATTERN" "Regex pattern to highlight"
     :default #"^.+$"
-    :validate [#(re-pattern %) "Must be a valid regex pattern"]
-    ]
+    :validate [#(re-pattern %) "Must be a valid regex pattern"]]
    ["-a" "--alphanumeric" "Highlight alphanumeric words"]
    ["-d" "--decimalnumbers" "Highlight decimal digits"]
    ["-w" "--words" "Highlight (regex) words"]
    ["-x" "--hexnumbers" "Highlight hex numbers"]
-   ["-g" "--grep" "Only print matching lines"]])
+   ["-g" "--grep" "Only print matching lines"]
+   ["-b" "--buffer-size SIZE" "Size of output buffer (lines)"
+    :default 32
+    :parse-fn #(Integer/parseInt %)
+    :validate [#(pos? %) "Must be a positive number"]]])
 
 (def usage-header
   "USAGE:
     hl [-h]
-    hl [-p PATTERN]
-    hl [-a,-d,-w,-x,-g]")
+    hl [-p PATTERN] [-b BUFFER_SIZE]
+    hl [-a,-d,-w,-x,-g] [-b BUFFER_SIZE]")
 
 (def usage-details
   "
@@ -31,7 +34,10 @@
             Match against specified regex pattern.
 
             If pattern contains groups, they must not be overlapping, and every matched
-            character must be in some group, otherwise they will not be shown")
+            character must be in some group, otherwise they will not be shown
+
+    -b, --buffer-size <SIZE>
+            Number of lines to buffer before output (default: 32)")
 
 (defn print-usage
   [o]
@@ -76,13 +82,44 @@
   [regex l]
   (s/replace l regex colorize-match))
 
+;; Line processing
+(defn process-line
+  [pattern grep? line]
+  (when (or (not grep?)
+            (re-find pattern line))
+    (if (re-find pattern line)
+      (colorize-line pattern line)
+      line)))
+
+(defn flush-buffer!
+  [buffer]
+  (when (seq buffer)
+    (println (s/join "\n" buffer))
+    (flush)))
+
 ;; Main
-(defn run [pattern lines grep?]
-  (doseq [l lines]
-    (if-not (nil? (re-find pattern l))
-      (println (colorize-line pattern l))
-      (when-not grep?
-        (println l)))))
+(defn run [pattern lines grep? buffer-size]
+  (loop [remaining-lines (seq lines)
+         current-buffer []]
+    (cond
+      ;; Buffer full - flush and continue
+      (>= (count current-buffer) buffer-size)
+      (do
+        (flush-buffer! current-buffer)
+        (recur remaining-lines []))
+
+      ;; Done? - Flush and return
+      (empty? remaining-lines)
+      (flush-buffer! current-buffer)
+
+      ;; Process next line
+      :else
+      (let [line (first remaining-lines)
+            processed-line (process-line pattern grep? line)]
+        (recur (rest remaining-lines)
+               (if processed-line
+                 (conj current-buffer processed-line)
+                 current-buffer))))))
 
 ;; Arg parsing
 (def o (parse-opts *command-line-args* cli-options))
@@ -91,6 +128,7 @@
 (when-let [e (:errors o)]
   (mapv #(println %) e)
   (System/exit 1))
+
 (when (:help opts)
   (print-usage o)
   (System/exit 1))
@@ -103,7 +141,7 @@
                            (:pattern opts) (:pattern opts))))
 
 (def stream (line-seq (io/reader *in*)))
-
 (def grep (:grep opts))
+(def buffer-size (:buffer-size opts))
 
-(run pattern stream grep)
+(run pattern stream grep buffer-size)
