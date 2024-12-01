@@ -19,8 +19,14 @@
 
           (def base-path (System/getProperty "user.dir"))
 
-          (defn status [& args]
-            (apply println "[*]" args))
+          ;; Utility functions
+          (defn log [level & msg]
+            (let [prefix (case level
+                           :info "[*]"
+                           :warn "[!]"
+                           :error "[✗]"
+                           :success "[✓]")]
+              (apply println prefix msg)))
 
           (defn file-contains? [filename re]
             (try
@@ -37,53 +43,70 @@
           (defn append-if-missing [filename s compare-string]
             (if-not (file-contains? filename compare-string)
               (append-to-file filename s)
-              (status (str compare-string " already in " filename))))
+              (log :warn (str compare-string " already in " filename))))
 
-          (defn symlink-and-backup [src dst]
-            (when (fs/exists? dst {:nofollow-links true})
-              (let [backup (str dst ".bak")]
-                (status "Backing up" dst "to" backup)
-                (fs/delete-tree backup)
-                (fs/copy-tree dst backup {:nofollow-links true})))
-            (status "Symlinking" src "to" dst)
+          (defn backup-file! [path]
+            (when (fs/exists? path {:nofollow-links true})
+              (let [backup (str path ".bak")]
+                (log :info "Backing up" path "to" backup)
+                (fs/create-dirs (fs/parent backup))
+                (fs/move path backup {:nofollow-links true
+                                      :replace-existing true}))))
+
+          (defn create-symlink! [src dst]
+            (log :info "Symlinking" src "→" dst)
             (fs/create-dirs (fs/parent dst))
-            (fs/delete-tree dst)
-            (fs/create-sym-link dst src))
+            (try
+              (fs/delete-if-exists dst)
+              (fs/create-sym-link dst src)
+              (catch Exception e
+                (log :error "Failed to create symlink:" (.getMessage e))
+                (throw e))))
 
           (defn home-dir [path]
-            (-> (System/getenv "HOME") (fs/path path) str)))
+            (-> (System/getenv "HOME") (fs/path path) str))
+
+          (defn install-vim-plugins! []
+            ; Plugins may be vim or neovim specific, so we
+            ; have to install using both
+            (shell "vim +'PlugInstall --sync' +qa")
+            (shell "nvim +qa"))
+
+          (defn install-bash-aliases! []
+            (let [filename (home-dir ".bashrc")]
+              (append-if-missing filename
+                                 "\n[ -f $HOME/.bash_aliases ] && source $HOME/.bash_aliases"
+                                 ".bash_aliases")
+              (append-if-missing filename
+                                 "\n[ -f $HOME/.bash_aliases_local ] && source $HOME/.bash_aliases_local"
+                                 ".bash_aliases_local"))))
 
   symlink (doseq [[src dst] files
                   :let [dstname (or dst (str "." src))
                         dst (home-dir dstname)
                         absrc (str (fs/absolutize src))]]
-            (symlink-and-backup absrc dst))
+            (backup-file! dst)
+            (create-symlink! absrc dst))
 
-  set-path (let [filename (home-dir ".bashrc")]
-             (append-if-missing filename
-                                (str "\n# Add dotfiles bin to PATH\n" "export PATH=$PATH:" base-path "/bin")
-                                (str (fs/path base-path "bin"))))
+  set-path {:task (let [filename (home-dir ".bashrc")]
+                    (append-if-missing filename
+                                       (str "\n# Add dotfiles bin to PATH\n" "export PATH=$PATH:" base-path "/bin")
+                                       (str (fs/path base-path "bin"))))
+            :depends [symlink]}
 
-  install-bash-aliases (let [filename (home-dir ".bashrc")]
-                         (append-if-missing filename
-                                            "\n[ -f $HOME/.bash_aliases ] && source $HOME/.bash_aliases"
-                                            ".bash_aliases")
-                         (append-if-missing filename
-                                            "\n[ -f $HOME/.bash_aliases_local ] && source $HOME/.bash_aliases_local"
-                                            ".bash_aliases_local"))
+  bash-aliases {:task (install-bash-aliases!)
+                :depends [symlink]}
 
-  install-git-aliases (let [filename (home-dir ".gitconfig")]
-                        (append-if-missing filename "[include]\n\tpath = ~/.gitaliases" ".gitaliases"))
+  git-aliases {:task (let [filename (home-dir ".gitconfig")]
+                       (append-if-missing filename "[include]\n\tpath = ~/.gitaliases" ".gitaliases"))
+               :depends [symlink]}
 
-  install-git-ignore (let [filename (home-dir ".gitconfig")]
-                        (append-if-missing filename "[core]\n\texcludesfile = ~/.gitignore_global" ".gitignore_global"))
+  git-ignore {:task (let [filename (home-dir ".gitconfig")]
+                      (append-if-missing filename "[core]\n\texcludesfile = ~/.gitignore_global" ".gitignore_global"))
+              :depends [symlink]}
 
-  install-vim-plugins {:task (do
-                               ; Plugins may be vim or neovim specific, so we
-                               ; have to install using both
-                               (shell "vim +'PlugInstall --sync' +qa")
-                               (shell "nvim +qa"))
-                       :depends [symlink]}
+  vim-plugins {:task install-vim-plugins!
+               :depends [symlink]}
 
-  setup {:depends [symlink set-path install-bash-aliases install-git-aliases
-                   install-git-ignore install-vim-plugins]}}}
+  setup {:depends [symlink set-path bash-aliases git-aliases git-ignore vim-plugins]
+         :task (log :success "Dotfiles installation complete!")}}}
