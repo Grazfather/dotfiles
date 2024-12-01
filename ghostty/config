@@ -1,0 +1,25 @@
+## Visual
+font-family = Operator Mono Medium
+font-size = 12
+theme = N0tch2k
+background-opacity = 0.9
+
+## Keybinds
+
+# Use ctrl-o as a prefix, as I use in tmux
+# -- Send prefix through
+keybind = ctrl+o>o=text:\x0F
+
+# Splits
+keybind = ctrl+o>v=new_split:right
+keybind = ctrl+o>s=new_split:down
+keybind = ctrl+o>h=goto_split:left
+keybind = ctrl+o>j=goto_split:bottom
+keybind = ctrl+o>k=goto_split:top
+keybind = ctrl+o>l=goto_split:right
+keybind = ctrl+o>equal=equalize_splits
+keybind = ctrl+o>z=toggle_split_zoom
+
+keybind = ctrl+o>ctrl+k=clear_screen
+
+keybind = global:cmd+shift+s=toggle_quick_terminal

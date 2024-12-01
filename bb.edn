@@ -11,6 +11,7 @@
              ["tmux.conf"]
              ["spacehammer"]
              ["wezterm.lua"]
+             ["ghostty/" ".config/ghostty/"]
              ["karabiner" ".config/karabiner/"]
              ["starship.toml" ".config/starship.toml"]
              ["nvim/" ".config/nvim/"]
