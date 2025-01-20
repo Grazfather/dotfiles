@@ -49,7 +49,15 @@
  ; Misc
  "szw/vim-maximizer"
  {1 "numToStr/Comment.nvim" :config true}
- {1 "kylechui/nvim-surround" :config true}
+ {1 "echasnovski/mini.surround"
+  :version "*"
+  :opts {:mappings {:add "<leader>sa"
+                    :delete "<leader>sd"
+                    :find "<leader>sf"
+                    :find_left "<leader>sF"
+                    :highlight "<leader>sh"
+                    :replace "<leader>sr"
+                    :update_n_lines "<leader>sn"}}}
  "mbbill/undotree"
  {1 "stevearc/oil.nvim"
   :dependencies ["nvim-tree/nvim-web-devicons"]

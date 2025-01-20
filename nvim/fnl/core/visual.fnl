@@ -69,6 +69,7 @@
                 {1 :<leader>h :group "Help"}
                 {1 :<leader>m :group "Local leader"}
                 {1 :<leader>f :group "File/find ops"}
+                {1 :<leader>s :group "Surround"}
                 {1 :<leader>t :group "Toggles"}
                 {1 :<leader>w :group "Window"}
                 {1 :<leader>x :group "Lisp"}]}}
