@@ -18,7 +18,7 @@
                         :disable []
                         :extended_mode false}
               ; nvim-treesitter-textobjects
-              :textobjects {:select {:enable true
+              :textobjects {:select {:enable false
                                      :keymaps {:a= "@assignment.outer"
                                                :i= "@assignment.inner"
                                                :aa "@parameter.outer"
