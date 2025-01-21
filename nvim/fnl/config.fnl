@@ -256,12 +256,7 @@
   <leader>tv (fn []
                (toggle-sign-column)
                (set-toggle! list number relativenumber)
-               (vim.cmd "IBLToggle"))
-  "Toggle comment on current line"
-  "<leader>c " "gcc")
-(descxmap! "v"
-           "Toggle comment on current line"
-           "<leader>c " "gc")
+               (vim.cmd "IBLToggle")))
 
 ; Simulate readline/emacs's jump to start/end of line in insert mode
 (imap! <C-a> "<ESC>I"
