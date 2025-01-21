@@ -124,6 +124,9 @@
   "Convert tabs to 8 spaces"
   <leader>et8 "<cmd>keeppatterns %s/\t/        /eg<CR><C-o>"
 
+  "Open new empty buffer"
+  <leader>en "<cmd>enew<CR>"
+
   "Select whole buffer"
   vag "ggVGg_"
 
@@ -195,6 +198,10 @@
   <leader>fm #(call-module-func "fzf-lua" "marks")
   "Find jump"
   <leader>fj #(call-module-func "fzf-lua" "jumps")
+  "Code action"
+  <leader>ca #(call-module-func "fzf-lua" "lsp_code_actions")
+  "Find register"
+  <leader>fr #(call-module-func "fzf-lua" "registers")
   "Grep file content from CWD"
   <leader>fg #(call-module-func "fzf-lua" "live_grep")
   "Search help"
