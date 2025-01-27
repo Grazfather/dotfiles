@@ -18,8 +18,11 @@
       fo = fetch origin
       fop = fetch origin --prune
       fp = format-patch
+
+      # Log
       l = "!. ~/.githelpers && pretty_git_log"
       lf = log --pretty=format:\"%h %cd%C(yellow)%d%Creset %s%C(green) [%an]%Creset\" --decorate --numstat --date=short
+      lff = log --pretty=format:\"%h %cd%C(yellow)%d%Creset %s%C(green) [%an]%Creset\" --shortstat --date=short
       lsnv = ls-files -- . ':!vendor'
 
       # Cherry pick
