@@ -72,7 +72,8 @@
                 {1 :<leader>s :group "Surround"}
                 {1 :<leader>t :group "Toggles"}
                 {1 :<leader>w :group "Window"}
-                {1 :<leader>x :group "Lisp"}]}}
+                {1 :<leader>x :group "Lisp"}]
+         :preset :helix}}
 ; Highlight special words in comments
 {1 "folke/todo-comments.nvim"
  :dependencies ["nvim-lua/plenary.nvim"]
