@@ -1,10 +1,17 @@
 ## Visual
 font-family = Operator Mono Medium
 font-size = 12
-theme = N0tch2k
-background-opacity = 0.9
+theme = Brogrammer
+background-opacity = 0.70
+background-blur-radius = 10
+
+window-padding-x = 10
+window-padding-y = 10
+window-padding-balance = true
 
 ## Keybinds
+
+keybind = super+r=reload_config
 
 # Use ctrl-o as a prefix, as I use in tmux
 # -- Send prefix through
