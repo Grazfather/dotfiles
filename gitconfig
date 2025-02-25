@@ -1,11 +1,29 @@
-[init]
-	defaultBranch = master
+[branch]
+	# Sort commits by committer date
+        sort = -committerdate
+[column]
+	# Put list items in columns
+	ui = auto
+[color]
+	# Use color when we can
+	ui = auto
+[commit]
+	# Show commit diff in commit message editor
+	verbose = true
 [core]
 	excludesFile = ~/.gitignore_global
-[color]
-	ui = auto
-[branch]
-        sort = -committerdate
+[diff]
+	# Nicer diffs
+	algorithm = histogram
+	# Colour lines that were only moved differently
+	colorMoved = plain
+	# Show where diffs some from (e.g. index) in diff prefix.
+	mnemonicPrefix = true
+[init]
+	defaultBranch = master
+[rebase]
+	# Automatically stash/unstash changes when rebasing
+	autostash = true
 [include]
 	path = ~/.gitaliases
 	path = ~/.gitconfig_local
