@@ -5,6 +5,7 @@
             [["vim"]
              ["vimrc"]
              ["bash_aliases"]
+             ["gitconfig"]
              ["gitaliases"]
              ["githelpers"]
              ["gitignore_global"]
@@ -98,16 +99,8 @@
   bash-aliases {:task (install-bash-aliases!)
                 :depends [symlink]}
 
-  git-aliases {:task (let [filename (home-dir ".gitconfig")]
-                       (append-if-missing filename "[include]\n\tpath = ~/.gitaliases" ".gitaliases"))
-               :depends [symlink]}
-
-  git-ignore {:task (let [filename (home-dir ".gitconfig")]
-                      (append-if-missing filename "[core]\n\texcludesfile = ~/.gitignore_global" ".gitignore_global"))
-              :depends [symlink]}
-
   vim-plugins {:task install-vim-plugins!
                :depends [symlink]}
 
-  setup {:depends [symlink set-path bash-aliases git-aliases git-ignore vim-plugins]
+  setup {:depends [symlink set-path bash-aliases vim-plugins]
          :task (log :success "Dotfiles installation complete!")}}}

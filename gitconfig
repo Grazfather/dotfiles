@@ -1,0 +1,11 @@
+[init]
+	defaultBranch = master
+[core]
+	excludesFile = ~/.gitignore_global
+[color]
+	ui = auto
+[branch]
+        sort = -committerdate
+[include]
+	path = ~/.gitaliases
+	path = ~/.gitconfig_local
