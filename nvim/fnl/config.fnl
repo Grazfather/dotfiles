@@ -252,10 +252,8 @@
   ; fzf-lua fuzzy finder
   "Find files in project"
   <leader>fp #(call-module-func "fzf-lua" "git_files")
-  "File files from CWD"
+  "Find files from CWD"
   <leader>ff #(call-module-func "fzf-lua" "files")
-  "File text in open buffers"
-  <leader>fl #(call-module-func "fzf-lua" "lines")
   "Find buffer"
   <leader>bb #(call-module-func "fzf-lua" "buffers")
   "Find mark"
@@ -266,6 +264,8 @@
   <leader>ca #(call-module-func "fzf-lua" "lsp_code_actions")
   "Find register"
   <leader>fr #(call-module-func "fzf-lua" "registers")
+  "Find text in open buffers"
+  <leader>fl #(call-module-func "fzf-lua" "lines")
   "Grep file content from CWD"
   <leader>fg #(call-module-func "fzf-lua" "live_grep")
   "Search help"

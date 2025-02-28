@@ -74,22 +74,22 @@
                 {1 :<leader>w :group "Window"}
                 {1 :<leader>x :group "Lisp"}]
          :preset :helix}}
-; Highlight special words in comments
-{1 "folke/todo-comments.nvim"
- :dependencies ["nvim-lua/plenary.nvim"]
- :opts {:keywords {
-                   ; DELETEME:
-                   :DELETEME {:icon "✗" :color "error"}
-                   ; TODO:
-                   :TODO {:icon " " :color "info"}
-                   ; HACK:
-                   :HACK {:icon " " :color "warning"}
-                   ; WARN:
-                   :WARN {:icon " " :color "warning" :alt ["WARNING" "XXX"]}
-                   ; NOTE:
-                   :NOTE {:icon " " :color "hint" :alt  ["INFO"]}}
-        ; I set the colon to optional for DELETEME comments
-        :highlight {:pattern ".*<(KEYWORDS)\\s*:?"}}}
+ ; Highlight special words in comments
+ {1 "folke/todo-comments.nvim"
+  :dependencies ["nvim-lua/plenary.nvim"]
+  :opts {:keywords {
+                    ; DELETEME:
+                    :DELETEME {:icon "✗" :color "error"}
+                    ; TODO:
+                    :TODO {:icon " " :color "info"}
+                    ; HACK:
+                    :HACK {:icon " " :color "warning"}
+                    ; WARN:
+                    :WARN {:icon " " :color "warning" :alt ["WARNING" "XXX"]}
+                    ; NOTE:
+                    :NOTE {:icon " " :color "hint" :alt  ["INFO"]} }
+         ; I set the colon to optional for DELETEME comments
+         :highlight {:pattern ".*<(KEYWORDS)\\s*:?"}}}
  {1 "Grazfather/blinker.nvim"
   :config true}
  ; Start page
