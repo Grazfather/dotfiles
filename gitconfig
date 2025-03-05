@@ -23,7 +23,11 @@
 	defaultBranch = master
 [rebase]
 	# Automatically stash/unstash changes when rebasing
-	autostash = true
+	autoStash = true
+	# Update local branches when a child is moved in a rebase
+	updateRefs = true
+	# When rebasing, automatically squash 'fixup!' commits
+	autoSquash = true
 [include]
 	path = ~/.gitaliases
 	path = ~/.gitconfig_local
