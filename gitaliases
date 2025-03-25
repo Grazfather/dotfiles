@@ -48,7 +48,7 @@
       # Stash
       sl = stash list
       sp = stash pop
-      sd = stash drop stash@{0}
+      sd = "!sd() { git stash drop stash@{${1:-0}};}; sd"
       ss = "!ss() { git show stash@{${1:-0}};}; ss"
 
       # Reset
