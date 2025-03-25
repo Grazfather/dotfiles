@@ -49,7 +49,7 @@
       sl = stash list
       sp = stash pop
       sd = stash drop stash@{0}
-      ss = show stash@{0}
+      ss = "!ss() { git show stash@{${1:-0}};}; ss"
 
       # Reset
       rem = reset --mixed
