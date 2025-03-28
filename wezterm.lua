@@ -81,6 +81,11 @@ config.keys = {
   { key = "x", mods = "LEADER", action = act.CloseCurrentPane({ confirm = true }) },
   { key = "z", mods = "LEADER", action = act.TogglePaneZoomState },
   { key = "a", mods = "LEADER|CTRL", action = act.ActivateLastTab },
+  { key = "t", mods = "LEADER", action = act.ActivateKeyTable(
+    { name = "move_tab",
+      one_shot = false,
+      timeout_milliseconds = 500 })
+  },
   -- Move word-wise
   { key = "LeftArrow", mods = "OPT", action = wezterm.action.SendString("\x1bb") },
   { key = "RightArrow", mods = "OPT", action = wezterm.action.SendString("\x1bf") },
@@ -112,6 +117,11 @@ config.key_tables = {
     { key = "j", action = act.AdjustPaneSize({ "Down", 1 }) },
     { key = "k", action = act.AdjustPaneSize({ "Up", 1 }) },
     { key = "l", action = act.AdjustPaneSize({ "Right", 1 }) },
+    { key = "Escape", action = act.PopKeyTable },
+  },
+  move_tab = {
+    { key = "n", action = act.ActivateTabRelative(1) },
+    { key = "p", action = act.ActivateTabRelative(-1) },
     { key = "Escape", action = act.PopKeyTable },
   },
 }
