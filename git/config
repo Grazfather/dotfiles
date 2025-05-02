@@ -11,7 +11,7 @@
 	# Show commit diff in commit message editor
 	verbose = true
 [core]
-	excludesFile = ~/.gitignore_global
+	excludesFile = ~/.config/git/ignore_global
 [diff]
 	# Nicer diffs
 	algorithm = histogram
@@ -29,5 +29,5 @@
 	# When rebasing, automatically squash 'fixup!' commits
 	autoSquash = true
 [include]
-	path = ~/.gitaliases
+	path = ~/.config/git/aliases
 	path = ~/.gitconfig_local
