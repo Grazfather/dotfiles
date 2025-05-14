@@ -2,7 +2,7 @@
       aa = add --all
       ap = add --patch
       b = branch
-      co = checkout
+      co = checkout -q
 
       # Commit
       ca = commit --amend
