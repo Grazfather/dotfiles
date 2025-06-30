@@ -227,6 +227,8 @@
   <leader>ww "<C-w>w"
   "Toggle window zoom"
   <leader>wz "<cmd>MaximizerToggle<CR>"
+  "Resize windows evently"
+  <leader>w= "<C-w>="
 
   "Toggle Undotree"
   <leader>tu "<cmd>UndotreeToggle<CR>"
