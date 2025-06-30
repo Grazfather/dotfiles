@@ -66,7 +66,7 @@ config.keys = {
   { key = "v", mods = "LEADER", action = act.SplitHorizontal },
   { key = "%", mods = "LEADER", action = act.SplitHorizontal },
   -- Move panes
-  { key = "e", mods = "LEADER", action = act.ActivateKeyTable(
+  { key = "w", mods = "LEADER", action = act.ActivateKeyTable(
     { name = "move_pane",
       one_shot = false,
       timeout_milliseconds = 1000 })
