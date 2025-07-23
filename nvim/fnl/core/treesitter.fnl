@@ -13,10 +13,6 @@
                                                 :node_incremental "gh"
                                                 :node_decremental "<BS>"
                                                 :scope_incremental "ghu"}}
-              ; nvim-ts-rainbow
-              :rainbow {:enable true
-                        :disable []
-                        :extended_mode false}
               ; nvim-treesitter-textobjects
               :textobjects {:select {:enable false
                                      :keymaps {:a= "@assignment.outer"
@@ -42,4 +38,5 @@
   :config true}
  "nvim-treesitter/nvim-treesitter-textobjects"
  "nvim-treesitter/playground"
- "p00f/nvim-ts-rainbow"]
+ "HiPhish/rainbow-delimiters.nvim"
+ ]
