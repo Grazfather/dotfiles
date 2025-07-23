@@ -8,8 +8,15 @@ config.font = wezterm.font("Operator Mono SSm Lig")
 config.color_scheme = "N0tch2k"
 
 config.window_decorations = "RESIZE"
-config.window_background_opacity = 0.95
-config.macos_window_background_blur = 6
+config.window_background_opacity = 0.9
+config.macos_window_background_blur = 10
+config.native_macos_fullscreen_mode = true
+config.window_padding = {
+  left = 10,
+  right = 10,
+  top = 10,
+  bottom = 10,
+}
 
 config.audible_bell = "Disabled"
 
