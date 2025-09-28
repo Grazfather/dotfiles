@@ -4,7 +4,7 @@
 (local lib (require :lib))
 
 [{1 "neovim/nvim-lspconfig"
-  :event ["BufReadPre" "BufNewFile"]
+  :event ["BufReadPre"]
   :dependencies ["williamboman/mason-lspconfig.nvim"
                  "j-hui/fidget.nvim"
                  "onsails/lspkind-nvim"
@@ -96,7 +96,8 @@
              (let [server-names (icollect [_ s (ipairs servers)]
                                   (if (lib.seq? s) (. s 1) s))]
                (setup :mason-lspconfig
-                      {:ensure_installed server-names}))
+                      {:ensure_installed server-names
+                       :automatic_enable false}))
 
              ; Setup each server, using the on-attach and capabilities set
              (each [_ lsp (ipairs servers)]
