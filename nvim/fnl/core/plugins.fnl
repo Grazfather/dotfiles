@@ -24,9 +24,9 @@
  ; -- Clojure
  {1 "borkdude/clj-kondo" :ft ["clojure"]}
  ; -- Janet
- "janet-lang/janet.vim"
+ {1 "janet-lang/janet.vim" :ft ["janet"]}
  ; -- Fennel
- "jaawerth/fennel.vim"
+ {1 "jaawerth/fennel.vim" :ft ["fennel"]}
  ; -- Solidity
  "tomlion/vim-solidity"
 
