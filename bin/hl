@@ -17,6 +17,7 @@
    ["-w" "--words" "Highlight (regex) words"]
    ["-x" "--hexnumbers" "Highlight hex numbers"]
    ["-g" "--grep" "Only print matching lines"]
+   ["-m" "--matches-only" "Show only matches (not whole lines)"]
    ["-b" "--buffer-size SIZE" "Size of output buffer (lines)"
     :default 32
     :parse-fn #(Integer/parseInt %)
@@ -84,12 +85,15 @@
 
 ;; Line processing
 (defn process-line
-  [pattern grep? line]
+  [pattern grep? matches-only? line]
   (when (or (not grep?)
             (re-find pattern line))
-    (if (re-find pattern line)
-      (colorize-line pattern line)
-      line)))
+    (if matches-only?
+      (when-let [matches (re-seq pattern line)]
+        (map colorize-match matches))
+      (if (re-find pattern line)
+        (colorize-line pattern line)
+        line))))
 
 (defn flush-buffer!
   [buffer]
@@ -98,7 +102,7 @@
     (flush)))
 
 ;; Main
-(defn run [pattern lines grep? buffer-size]
+(defn run [pattern lines grep? matches-only? buffer-size]
   (loop [remaining-lines (seq lines)
          current-buffer []]
     (cond
@@ -115,10 +119,12 @@
       ;; Process next line
       :else
       (let [line (first remaining-lines)
-            processed-line (process-line pattern grep? line)]
+            processed-line (process-line pattern grep? matches-only? line)]
         (recur (rest remaining-lines)
                (if processed-line
-                 (conj current-buffer processed-line)
+                 (if (seq? processed-line)
+                   (into current-buffer processed-line)
+                   (conj current-buffer processed-line))
                  current-buffer))))))
 
 ;; Arg parsing
@@ -142,6 +148,7 @@
 
 (def stream (line-seq (io/reader *in*)))
 (def grep (:grep opts))
+(def matches-only (:matches-only opts))
 (def buffer-size (:buffer-size opts))
 
-(run pattern stream grep buffer-size)
+(run pattern stream grep matches-only buffer-size)
