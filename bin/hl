@@ -49,14 +49,7 @@
 
 ;; Colorization
 (def ansi-escape "\u001b")
-
-(defn ansi-color-start
-  [color]
-  (format "%s[38;5;%dm" ansi-escape color))
-
-(defn ansi-color-end
-  []
-  (format "%s[0m" ansi-escape))
+(def ansi-reset (str ansi-escape "[0m"))
 
 (defn get-color
   [s]
@@ -67,10 +60,7 @@
 
 (defn colorize
   [s]
-  (format "%s%s%s"
-          (ansi-color-start (get-color s))
-          s
-          (ansi-color-end)))
+  (str ansi-escape "[38;5;" (get-color s) "m" s ansi-reset))
 
 ;; Pattern matching
 (defn colorize-match
