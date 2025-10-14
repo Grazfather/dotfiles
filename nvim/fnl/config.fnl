@@ -199,7 +199,7 @@
   "Force close current buffer"
   <leader>bD "<cmd>bp|bd! #<CR>"
   "Save buffer"
-  <leader>fs "<cmd>write<CR>"
+  <leader>es "<cmd>write<CR>"
 
   "Toggle search highlighting"
   <leader>th "<cmd>set hlsearch!<CR>"
@@ -264,6 +264,8 @@
   <leader>fj #(call-module-func "fzf-lua" "jumps")
   "Code action"
   <leader>ca #(call-module-func "fzf-lua" "lsp_code_actions")
+  "Find symbol"
+  <leader>fs #(call-module-func "aerial" "fzf_lua_picker")
   "Find register"
   <leader>fr #(call-module-func "fzf-lua" "registers")
   "Find text in open buffers"

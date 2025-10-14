@@ -58,6 +58,8 @@
           :mode ["n" "v"]
           :desc "Leap up AST"
           2 #(call-module-func :leap-ast :leap)}]}
+ {1 "stevearc/aerial.nvim"
+  :config true}
 
  ; Add better text objects for `a` and `i`
  ; -- <action><a/i>[n/l]<textobject>

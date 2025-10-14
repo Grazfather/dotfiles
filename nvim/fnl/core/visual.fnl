@@ -43,7 +43,8 @@
  ; Status line
  {1 "hoob3rt/lualine.nvim"
   :dependencies ["kyazdani42/nvim-web-devicons"]
-  :opts {:options {:theme :tokyonight
+  :opts {:sections {:lualine_c [:filename :aerial] }
+         :options {:theme :tokyonight
                    :component_separators {:left ""
                                           :right ""}
                    :section_separators {:left ""
