@@ -304,7 +304,10 @@
          :action (activator "Preview")}
         {:key :o
          :title notes-app
-         :action (activator notes-app)}])
+         :action (activator notes-app)}
+        {:key :l
+         :title "Anki"
+         :action (activator "Anki")}])
 
 ; These are behind the 'm' submenu
 (local media-bindings
@@ -361,7 +364,10 @@
          :action (activator "Preview")}
         {:mods hyper-mods
          :key :o
-         :action (activator notes-app)}])
+         :action (activator notes-app)}
+        {:mods hyper-mods
+         :key :l
+         :action (activator "Anki")}])
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Repl
