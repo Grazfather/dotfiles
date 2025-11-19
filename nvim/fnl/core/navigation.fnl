@@ -19,17 +19,20 @@
   :config true}
  ; Add targets to 's'/'S'
  {1 "ggandor/leap.nvim"
-  :dependencies ["tpope/vim-repeat"]
+  :event "VeryLazy"
+  :keys [{1 "s" :mode ["n" "x" "o"] 2 "<Plug>(leap-forward)"}
+         {1 "S" :mode ["n" "x" "o"] 2 "<Plug>(leap-backward)"}
+         {1 "<leader>l" :mode ["n"] 2 "<Plug>(leap-from-window)"}]
   :config #(let [opts (require :leap.opts)]
-             (call-module-func :leap :add_default_mappings)
              ; Labels better for my keyboard layout + preference
-             (tset opts :labels [:a :r :s :t :n :e :i :o
-                                 :z :x :c :d :h "," "." "/"
-                                 :q :w :f :p :l :u :y ";"
-                                 :A :R :S :T :N :E :I :O
-                                 :Z :X :C :D :H "<" ">" "?"
-                                 :Q :W :F :P :L :U :Y ":"])
-             (tset opts :safe_labels [])
+             (tset opts :labels (.. "arstneio"
+                                    "zxcdh,./"
+                                    "qwfpluy;"
+                                    "ARSTNEIO"
+                                    "ZXCDH<>?"
+                                    "QWFPLUY:"))
+             (tset opts :safe_labels "")
+
              (vim.api.nvim_create_augroup :LeapCustom {})
              (vim.api.nvim_create_autocmd :ColorScheme
                                           {:group :LeapCustom
