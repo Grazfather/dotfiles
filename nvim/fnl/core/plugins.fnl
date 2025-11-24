@@ -8,7 +8,6 @@
  "tweekmonster/startuptime.vim"
 
  ; Language support
- {1 "williamboman/mason.nvim" :build ":MasonUpdate" :config true}
  ; -- Markdown
  {1 "MeanderingProgrammer/render-markdown.nvim"
   :depencencies  ["nvim-treesitter/nvim-treesitter" "nvim-tree/nvim-web-devicons"]

@@ -5,7 +5,7 @@
 [{1 "hrsh7th/nvim-cmp"
   :event ["InsertEnter"]
   :dependencies ["hrsh7th/cmp-buffer" "hrsh7th/cmp-nvim-lsp" "hrsh7th/cmp-path"
-                 "saadparwaiz1/cmp_luasnip" "L3MON4D3/LuaSnip"
+                 "saadparwaiz1/cmp_luasnip" "L3MON4D3/LuaSnip" "onsails/lspkind.nvim"
                  "rafamadriz/friendly-snippets"]
   :config #(let [lspkind (require :lspkind)
                  luasnip (require :luasnip)
