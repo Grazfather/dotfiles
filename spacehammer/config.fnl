@@ -1,7 +1,6 @@
 (require-macros :lib.macros)
 (require-macros :lib.advice.macros)
 (local windows (require :windows))
-(local emacs (require :emacs))
 (local slack (require :slack))
 (local vim (require :vim))
 
@@ -36,15 +35,12 @@
 ;; [x] |-- o - notes
 ;;
 ;; [x] m - media
-;; [x] |-- h - previous track
-;; [x] |-- l - next track
+;; [x] |-- p - previous track
+;; [x] |-- n - next track
 ;; [x] |-- k - volume up
 ;; [x] |-- j - volume down
 ;; [x] |-- s - play\pause
 ;; [x] |-- a - launch player
-;;
-;; [x] alt-n - next-app
-;; [x] alt-p - prev-app
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -315,10 +311,10 @@
         {:key :s
          :title "Play or Pause"
          :action "multimedia:play-or-pause"}
-        {:key :h
-         :title "Prev Track"
+        {:key :p
+         :title "Previous Track"
          :action "multimedia:prev-track"}
-        {:key :l
+        {:key :n
          :title "Next Track"
          :action "multimedia:next-track"}
         {:key :j
@@ -420,12 +416,6 @@
                [{:mods hyper-mods
                  :key :w
                  :action "lib.modal:activate-modal"}
-                {:mods [:alt]
-                 :key :n
-                 :action "apps:next-app"}
-                {:mods [:alt]
-                 :key :p
-                 :action "apps:prev-app"}
                 {:mods [:cmd :ctrl]
                  :key "`"
                  :action hs.toggleConsole}]))
@@ -512,21 +502,11 @@
                 :key :n
                 :action "slack:down"}]})
 
-(local roam-config
-       {:key "Roam Research"
-        :keys [{:mods [:ctrl]
-                :key :p
-                :action "slack:up"}
-               {:mods [:ctrl]
-                :key :n
-                :action "slack:down"}]})
-
 (local apps
        [browser-config
         hammerspoon-config
         slack-config
-        obsidian-config
-        roam-config])
+        obsidian-config])
 
 (local config
        {:title "Main Menu"
