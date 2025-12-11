@@ -17,14 +17,28 @@ keybind = super+r=reload_config
 # -- Send prefix through
 keybind = ctrl+o>o=text:\x0F
 
-# Splits
+# Rename tab
+keybind = ctrl+o>,=prompt_surface_title
+
+# Split panes - Vim and Tmux style
 keybind = ctrl+o>v=new_split:right
+keybind = ctrl+o>shift+5=new_split:right
 keybind = ctrl+o>s=new_split:down
+keybind = ctrl+o>shift+'=new_split:down
+
+# Move panes
 keybind = ctrl+o>h=goto_split:left
 keybind = ctrl+o>j=goto_split:bottom
 keybind = ctrl+o>k=goto_split:top
 keybind = ctrl+o>l=goto_split:right
+
+# Resize panes
 keybind = ctrl+o>equal=equalize_splits
+
+# Move tabs
+keybind = ctrl+o>n=next_tab
+keybind = ctrl+o>p=previous_tab
+
 keybind = ctrl+o>z=toggle_split_zoom
 
 keybind = ctrl+o>ctrl+k=clear_screen
