@@ -61,22 +61,4 @@
           :desc "Leap up AST"
           2 #(call-module-func :leap-ast :leap)}]}
  {1 "stevearc/aerial.nvim"
-  :config true}
-
- ; Add better text objects for `a` and `i`
- ; -- <action><a/i>[n/l]<textobject>
- ; -- a/i for all/inner as normal
- ; -- n/l for next or previous
- ; -- Text object can be e.g. (), {}, []
- ; -- -- Using the closing one will select with whitespace, opening without
- {1 "echasnovski/mini.ai"
-  :version "*"
-  :config true}
- ; Add a bunch of operators under `g`.
- ; -- gr replace motion with content of yank register
- ; -- gm multiply
- ; -- gx eXchange. Exchange one motion, then do again on a target motion
- ; -- gs sort
- {1 "echasnovski/mini.operators"
-  :version "*"
   :config true}]

@@ -21,7 +21,7 @@
                                                 :node_decremental "<leader>sd"
                                                 :scope_incremental "<leader>ss"}}
               ; nvim-treesitter-textobjects
-              :textobjects {:select {:enable false
+              :textobjects {:select {:enable true
                                      :keymaps {:a= "@assignment.outer"
                                                :i= "@assignment.inner"
                                                :aa "@parameter.outer"
