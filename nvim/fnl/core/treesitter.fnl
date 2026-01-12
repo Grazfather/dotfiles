@@ -16,10 +16,10 @@
                           :additional_vim_regex_highlighting ["clojure" "fennel"]}
               :indent {:enable false}
               :incremental_selection {:enable true
-                                      :keymaps {:init_selection "gh"
-                                                :node_incremental "gh"
-                                                :node_decremental "<BS>"
-                                                :scope_incremental "ghu"}}
+                                      :keymaps {:init_selection "<leader>ss"
+                                                :node_incremental "<leader>si"
+                                                :node_decremental "<leader>sd"
+                                                :scope_incremental "<leader>ss"}}
               ; nvim-treesitter-textobjects
               :textobjects {:select {:enable false
                                      :keymaps {:a= "@assignment.outer"
