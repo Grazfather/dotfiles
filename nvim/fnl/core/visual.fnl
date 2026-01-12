@@ -8,17 +8,17 @@
 ; Always show the status bar, one for all splits
 (set! laststatus 2)
 
-(each [name text (pairs {:DiagnosticSignError ""
-                         :DiagnosticSignWarn ""
-                         :DiagnosticSignHint ""
-                         :DiagnosticSignInfo ""})]
-  (vim.fn.sign_define name {:texthl name :text text :numhl ""}))
+(vim.diagnostic.config {:virtual_text true
+                        :signs {:text {vim.diagnostic.severity.ERROR ""
+                                       vim.diagnostic.severity.WARN ""
+                                       vim.diagnostic.severity.HINT ""
+                                       vim.diagnostic.severity.INFO ""}}})
 
 ; Short timeoutlen to get which-key to kick in sooner
 (set! timeoutlen 200)
 
 ; Highlight the text I yank
-(vim.api.nvim_create_autocmd :TextYankPost {:callback #(vim.highlight.on_yank)})
+(vim.api.nvim_create_autocmd :TextYankPost {:callback #(vim.hl.on_yank)})
 
 ; Smoothscroll to not scroll past soft-wrapped lines
 (set-true! smoothscroll)
