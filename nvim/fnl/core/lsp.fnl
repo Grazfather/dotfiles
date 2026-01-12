@@ -71,9 +71,4 @@
                             "pyright"
                             "zls"]}
   :dependencies [{1 "williamboman/mason.nvim" :build ":MasonUpdate" :config true}
-                 "neovim/nvim-lspconfig"]}
- {1 "hrsh7th/cmp-nvim-lsp"
-  :event ["BufReadPre" "BufNewFile"]
-  :config #(let [cmp_nvim_lsp (require "cmp_nvim_lsp")
-                 capabilities (cmp_nvim_lsp.default_capabilities)]
-             (vim.lsp.config "*" {:capabilities capabilities}))}]
+                 "neovim/nvim-lspconfig"]}]
