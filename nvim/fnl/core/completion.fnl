@@ -1,7 +1,3 @@
-(import-macros {: call-module-func
-                : xmap!
-                : setup} :macros)
-
 [{1 "saghen/blink.cmp"
   :dependencies ["rafamacriz/friendly-snippets" "L3MON4D3/LuaSnip"]
   :version "1.*"
@@ -17,5 +13,4 @@
  {1 "yetone/avante.nvim"
   :dependencies ["nvim-lua/plenary.nvim" "MunifTanjim/nui.nvim"]
   :event ["VeryLazy"]
-  :opts {:provider :claude}}
- ]
+  :opts {:provider :claude}}]

@@ -1,5 +1,3 @@
-(import-macros {: set!} :macros)
-
 [
  ; META (Vim config stuff)
  ; -- Aniseed itself, to compile fennel

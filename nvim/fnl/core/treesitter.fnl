@@ -4,6 +4,13 @@
   :config #(setup
              :nvim-treesitter.configs
              {
+              :ensure_installed [; These must be present to override neovim builtins
+                                 "c" "lua" "vim" "vimdoc" "query"
+
+                                 "bash" "clojure" "cpp" "fennel" "go" "gomod" "gosum"
+                                 "html" "javascript" "json" "make" "markdown" "proto"
+                                 "python" "toml" "typescript" "regex" "yaml"
+                                 "zig"]
               :playground {:enable true}
               :highlight {:enable true
                           :additional_vim_regex_highlighting ["clojure" "fennel"]}
@@ -27,12 +34,6 @@
                                    :swap_next {"<M-l>" "@parameter.inner"}
                                    :swap_previous {"<M-h>" "@parameter.inner"}}}
 
-              :ensure_installed ["bash" "clojure" "cpp" "fennel" "go" "gomod" "gosum"
-                                 "html" "javascript" "json" "make" "markdown" "proto"
-                                 "python" "query" "toml" "typescript" "regex" "yaml"
-                                 "zig"
-                                 ; These must be present to override neovim builtins
-                                 "c" "vimdoc" "lua" "vim"]
               })}
  {1 "nvim-treesitter/nvim-treesitter-context"
   :config true}

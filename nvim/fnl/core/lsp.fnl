@@ -1,6 +1,4 @@
-(import-macros {: call-module-func
-                : nmap!
-                : setup} :macros)
+(import-macros {: call-module-func} :macros)
 (local lib (require :lib))
 
 (fn on-attach [client bufnr]

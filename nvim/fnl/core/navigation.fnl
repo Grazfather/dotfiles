@@ -1,5 +1,4 @@
-(import-macros {: call-module-func
-                : setup} :macros)
+(import-macros {: call-module-func} :macros)
 
 [{1 "ibhagwan/fzf-lua"
   :dependencies ["kyazdani42/nvim-web-devicons"]

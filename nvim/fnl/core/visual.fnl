@@ -1,5 +1,4 @@
-(import-macros {: call-module-func : setup
-                : set! : set-true!} :macros)
+(import-macros {: setup : set! : set-true!} :macros)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; THEMES/VISUAL/LAYOUT/UI
@@ -31,7 +30,7 @@
 ;	    (Tabs then spaces))
 (vim.fn.matchadd "TrailingWhitespace" "\\s\\+$\\| \\+\\ze\\t\\|\\t\\+\\ze ")
 (vim.api.nvim_create_autocmd :ColorScheme
-                             {:callback #(vim.api.nvim_set_hl 0 "TrailingWhitespace" {:bg :darkred})})
+                             {:callback #(vim.api.nvim_set_hl 0 "TrailingWhitespace" {:undercurl true})})
 
 [
  ; Colorscheme
@@ -41,7 +40,7 @@
   :config (fn []
             (vim.cmd.colorscheme :tokyonight-night))}
  ; Status line
- {1 "hoob3rt/lualine.nvim"
+ {1 "nvim-lualine/lualine.nvim"
   :dependencies ["kyazdani42/nvim-web-devicons"]
   :opts {:sections {:lualine_c [:filename :aerial] }
          :options {:theme :tokyonight
