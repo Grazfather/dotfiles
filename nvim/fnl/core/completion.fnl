@@ -4,7 +4,8 @@
   :opts {:keymap {:preset :default}
          :appearance {:nerd_font_variant :mono}
          :completion {:documentation {:auto_show true}}
-         :sources {:default [:lsp :path :snippets :buffer]}}
+         :sources {:default [:lsp :path :snippets :buffer]}
+         :snippets {:preset :luasnip}}
   :opts_extend ["sources.default"]}
  {1 "stevearc/conform.nvim"
   :opts {:formatters_by_ft {:go [:gofmt :goimports]}
