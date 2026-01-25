@@ -20,5 +20,12 @@ alias rga="rg --no-ignore --hidden --glob '!.git'"
 alias rgnv="rg -g '!vendor'"
 
 alias lsusbx='ioreg -p IOUSB -l -w 0|grep "\-o"'
+lsusbxt() {
+  if [ -z "$1" ]; then
+    echo "Usage: usbtree <device-name>"
+    return 1
+  fi
+  ioreg -r -n "$1" -l -w 0 | grep "+-o"
+}
 
 alias vim='$(command -v nvim || echo vim)'
