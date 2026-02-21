@@ -10,8 +10,4 @@
  {1 "stevearc/conform.nvim"
   :opts {:formatters_by_ft {:go [:gofmt :goimports]}
          :format_on_save {:timeout_ms 500
-                          :lsp_format :fallback}}}
- {1 "yetone/avante.nvim"
-  :dependencies ["nvim-lua/plenary.nvim" "MunifTanjim/nui.nvim"]
-  :event ["VeryLazy"]
-  :opts {:provider :claude}}]
+                          :lsp_format :fallback}}}]
