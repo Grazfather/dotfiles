@@ -4,6 +4,7 @@ font-size = 12
 theme = Brogrammer
 background-opacity = 0.70
 background-blur-radius = 10
+split-divider-color = #888888
 
 window-padding-x = 10
 window-padding-y = 10
@@ -22,8 +23,10 @@ keybind = ctrl+o>,=prompt_surface_title
 
 # Split panes - Vim and Tmux style
 keybind = ctrl+o>v=new_split:right
+keybind = ctrl+o>%=new_split:right
 keybind = ctrl+o>shift+5=new_split:right
 keybind = ctrl+o>s=new_split:down
+keybind = ctrl+o>"=new_split:down
 keybind = ctrl+o>shift+'=new_split:down
 
 # Move panes
@@ -32,8 +35,18 @@ keybind = ctrl+o>j=goto_split:bottom
 keybind = ctrl+o>k=goto_split:top
 keybind = ctrl+o>l=goto_split:right
 
+keybind = ctrl+o>x=close_surface
+
 # Resize panes
 keybind = ctrl+o>equal=equalize_splits
+# -- Make resizing work across panes
+keybind = all:cmd+==increase_font_size:1
+keybind = all:cmd+-=decrease_font_size:1
+keybind = all:cmd+0=reset_font_size
+# -- Support setting specific pane font size with shift
+keybind = cmd+shift+==increase_font_size:1
+keybind = cmd+shift+-=decrease_font_size:1
+keybind = cmd+shift+0=reset_font_size
 
 # Move tabs
 keybind = ctrl+o>n=next_tab
