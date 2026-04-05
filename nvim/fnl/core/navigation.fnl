@@ -16,49 +16,44 @@
           :desc "Toggle symbols-outline"
           2 "<cmd>SymbolsOutline<CR>"}]
   :config true}
- ; Add targets to 's'/'S'
- {1 "ggandor/leap.nvim"
-  :event "VeryLazy"
-  :keys [{1 "s" :mode ["n" "x" "o"] 2 "<Plug>(leap-forward)"}
-         {1 "S" :mode ["n" "x" "o"] 2 "<Plug>(leap-backward)"}
-         {1 "<leader>l" :mode ["n"] 2 "<Plug>(leap-from-window)"}]
-  :config #(let [opts (require :leap.opts)]
-             ; Labels better for my keyboard layout + preference
-             (tset opts :labels (.. "arstneio"
-                                    "zxcdh,./"
-                                    "qwfpluy;"
-                                    "ARSTNEIO"
-                                    "ZXCDH<>?"
-                                    "QWFPLUY:"))
-             (tset opts :safe_labels "")
-
-             (vim.api.nvim_create_augroup :LeapCustom {})
-             (vim.api.nvim_create_autocmd :ColorScheme
-                                          {:group :LeapCustom
-                                           :callback #(vim.api.nvim_set_hl 0
-                                                                           :LeapBackdrop
-                                                                           {:link :Comment})}))}
- ; Override f/t
- {1 "ggandor/flit.nvim"
-  :dependencies ["ggandor/leap.nvim"]
-  :config true}
- ; Leap line-wise with `<leader>` h/j
- {1 "Grazfather/leaplines.nvim"
-  :dependencies ["ggandor/leap.nvim"]
-  :keys [{1 "<leader>k"
+ {1 "folke/flash.nvim"
+  :event :VeryLazy
+  :opts {:labels "arstneiozxcdh,./qwfpluy;ARSTNEIOZXCDH<>?QWFPLUY:1234567890"}
+  :keys [{1 :s
+          :mode [:n :x :o]
+          :desc "Flash"
+          2 #(call-module-func :flash :jump)}
+         {1 :S
+          :mode [:n :x :o]
+          :desc "Flash Treesitter"
+          2 #(call-module-func :flash :treesitter)}
+         {1 :r
+          :mode :o
+          :desc "Remote Flash"
+          2 #(call-module-func :flash :remote)}
+         {1 :R
+          :mode [:o :x]
+          :desc "Treesitter Search"
+          2 #(call-module-func :flash :treesitter_search)}
+         {1 :<c-s>
+          :mode [:c]
+          :desc "Toggle Flash Search"
+          2 #(call-module-func :flash :toggle)}
+         {1 "<leader>k"
           :mode ["n" "v"]
-          :desc "Leap line upwards"
-          2 #(call-module-func :leaplines :leap :up)}
+          :desc "Jump line upwards"
+          2 #(call-module-func :flash :jump {:search {:mode :search
+                                                      :forward false
+                                                      :wrap false}
+                                             :label {:after [0 0]}
+                                             :pattern "^"})}
          {1 "<leader>j"
           :mode ["n" "v"]
-          :desc "Leap line downwards"
-          2 #(call-module-func :leaplines :leap :down)}]}
- ; Jump up the AST hierarchy
- {1 "ggandor/leap-ast.nvim"
-  :dependencies ["ggandor/leap.nvim"]
-  :keys [{1 "<leader>a"
-          :mode ["n" "v"]
-          :desc "Leap up AST"
-          2 #(call-module-func :leap-ast :leap)}]}
+          :desc "Jump line downwards"
+          2 #(call-module-func :flash :jump {:search {:mode :search
+                                                      :forward true
+                                                      :wrap false}
+                                             :label {:after [0 0]}
+                                             :pattern "^"})}]}
  {1 "stevearc/aerial.nvim"
   :config true}]
