@@ -92,11 +92,6 @@
          :highlight {:pattern ".*<(KEYWORDS)\\s*:?"}}}
  {1 "Grazfather/blinker.nvim"
   :config true}
- ; Start page
- {1 "goolord/alpha-nvim"
-  :dependencies ["kyazdani42/nvim-web-devicons"]
-  :config #(setup :alpha
-                  (. (require "alpha.themes.startify") :config))}
  {1 "rcarriga/nvim-notify"
   :event ["VeryLazy"]
   :config #(let [notify (require :notify)]
