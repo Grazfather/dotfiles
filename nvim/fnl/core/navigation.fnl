@@ -1,4 +1,4 @@
-(import-macros {: call-module-func} :macros)
+(import-macros {: call-module-func : setup} :macros)
 
 [{1 "ibhagwan/fzf-lua"
   :dependencies ["kyazdani42/nvim-web-devicons"]
@@ -19,6 +19,10 @@
  {1 "folke/flash.nvim"
   :event :VeryLazy
   :opts {:labels "arstneiozxcdh,./qwfpluy;ARSTNEIOZXCDH<>?QWFPLUY:1234567890"}
+  :config (fn [_ opts]
+            (setup :flash opts)
+            -- Make the labels less hard to read.
+            (vim.api.nvim_set_hl 0 :FlashLabel {:link :Folded}))
   :keys [{1 :s
           :mode [:n :x :o]
           :desc "Flash"
