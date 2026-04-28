@@ -1,4 +1,4 @@
-(import-macros {: setup : set! : set-true!} :macros)
+(import-macros {: setup : set! : set-true! : keys! : call-module-func} :macros)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; THEMES/VISUAL/LAYOUT/UI
@@ -91,7 +91,8 @@
          ; I set the colon to optional for DELETEME comments
          :highlight {:pattern ".*<(KEYWORDS)\\s*:?"}}}
  {1 "Grazfather/blinker.nvim"
-  :config true}
+  :config true
+  :keys (keys! "Blink current line" "n" <leader><space> #(call-module-func :blinker "blink_cursorline"))}
  {1 "rcarriga/nvim-notify"
   :event ["VeryLazy"]
   :config #(let [notify (require :notify)]

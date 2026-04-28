@@ -207,8 +207,6 @@
   <leader>tl "<cmd>set number! relativenumber!<CR>"
   "Toggle cursor highlighting"
   <leader>tx "<cmd>set cursorline! cursorcolumn!<CR>"
-  "Blink current line"
-  <leader><space> #(call-module-func :blinker "blink_cursorline")
   "Highlight occurrences of the word under the cursor"
   <leader>* (fn []
               (vim.fn.setreg "/" (.. "\\<" (vim.fn.expand "<cword>") "\\>"))
@@ -225,65 +223,11 @@
   <leader>wo "<cmd>only<CR>"
   "Switch split"
   <leader>ww "<C-w>w"
-  "Toggle window zoom"
-  <leader>wz "<cmd>MaximizerToggle<CR>"
   "Resize windows evently"
   <leader>w= "<C-w>="
 
   "Toggle Undotree"
-  <leader>tu "<cmd>UndotreeToggle<CR>"
-
-  ; Git stuff
-  "Git blame"
-  <leader>gb "<cmd>Git blame<CR>"
-  "Git diff"
-  <leader>gd "<cmd>Git diff<CR>"
-  "Git status"
-  <leader>gs "<cmd>Git status<CR>"
-  "Git log"
-  <leader>gl "<cmd>GV<CR>"
-  "Git log current file"
-  <leader>gf "<cmd>GV!<CR>"
-  "Open Neogit"
-  <leader>gg "<cmd>Neogit<CR>"
-  "Show commit message at line"
-  <leader>gm "<cmd>GitMessenger<CR>"
-  "Open selected file in github"
-  <leader>go "<cmd>GBrowse<CR>"
-
-  ; fzf-lua fuzzy finder
-  "Find files in project"
-  <leader>fp #(call-module-func "fzf-lua" "git_files")
-  "Find files from CWD"
-  <leader>ff #(call-module-func "fzf-lua" "files")
-  "Find buffer"
-  <leader>bb #(call-module-func "fzf-lua" "buffers")
-  "Find mark"
-  <leader>fm #(call-module-func "fzf-lua" "marks")
-  "Find jump"
-  <leader>fj #(call-module-func "fzf-lua" "jumps")
-  "Code action"
-  <leader>ca #(call-module-func "fzf-lua" "lsp_code_actions")
-  "Find symbol"
-  <leader>fs #(call-module-func "aerial" "fzf_lua_picker")
-  "Find register"
-  <leader>fr #(call-module-func "fzf-lua" "registers")
-  "Find text in open buffers"
-  <leader>fl #(call-module-func "fzf-lua" "lines")
-  "Grep file content from CWD"
-  <leader>fg #(call-module-func "fzf-lua" "live_grep")
-  "Search help"
-  <leader>hh #(call-module-func "fzf-lua" "help_tags")
-  "Search highlights"
-  <leader>hH #(call-module-func "fzf-lua" "highlights")
-  "Search autocommands"
-  <leader>ha #(call-module-func "fzf-lua" "autocmds")
-  "Search keymaps"
-  <leader>hk #(call-module-func "fzf-lua" "keymaps")
-  "Search man pages"
-  <leader>hm #(call-module-func "fzf-lua" "man_pages")
-  "Search ex commands"
-  "<leader>:" #(call-module-func "fzf-lua" "commands"))
+  <leader>tu "<cmd>UndotreeToggle<CR>")
 
 (fn toggle-quickfix []
   (let [qfwins (vim.tbl_filter (fn [w]
@@ -307,7 +251,7 @@
 
 (set! signcolumn "yes")
 (fn toggle-sign-column []
-  (if (= (get? signcolumn) "yes")
+  (if (= (. vim.opt.signcolumn :get) "yes")
     (set! signcolumn "no")
     (set! signcolumn "yes")))
 (set-true! list)
@@ -336,39 +280,3 @@
 ; Simulate readline/emacs's jump to start/end of line in insert mode
 (imap! <C-a> "<ESC>I"
        <C-e> "<ESC>A")
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; Specific language settings
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-; vim-sexp
-; - Adds new text objects:
-;   - f - form
-;   - F - top-level form
-;   - s - string or regex
-;   - e - element
-; - Adds new motions
-;   - (/) - Move back/forward sexp
-;   - M-b/M-w - Move back/forward sibling
-;   - [e/]e - Select prev/next sexp
-;   - M-{hjkl} - Drag sexp around
-;   - M-S-{hjkl} - Barf/slurp
-(descnmap!
-  "Slurp from right"
-  <leader>xs "<Plug>(sexp_capture_next_element)"
-  "Slurp from left"
-  <leader>xS "<Plug>(sexp_capture_prev_element)"
-  "Barf from right"
-  <leader>xe "<Plug>(sexp_emit_tail_element)"
-  "Barf from left"
-  <leader>xE "<Plug>(sexp_emit_head_element)"
-  "Convolute"
-  <leader>xc "<Plug>(sexp_convolute)"
-  "Drag forward"
-  <leader>xl "<Plug>(sexp_swap_element_forward)"
-  "Drag back"
-  <leader>xh "<Plug>(sexp_swap_element_backward)"
-  "Next element"
-  <leader>xw "<Plug>(sexp_move_to_next_element_head)"
-  "Previous element"
-  <leader>xb "<Plug>(sexp_move_to_prev_element_head)")

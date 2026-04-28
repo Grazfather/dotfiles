@@ -1,3 +1,5 @@
+(import-macros {: keys!} :macros)
+
 [
  ; META (Vim config stuff)
  ; -- Aniseed itself, to compile fennel
@@ -12,10 +14,31 @@
   :opts {:file_types  ["markdown"]}
   :ft ["markdown"]}
  ; -- Lisps
+ ; vim-sexp
+ ; - Adds new text objects:
+ ;   - f - form
+ ;   - F - top-level form
+ ;   - s - string or regex
+ ;   - e - element
+ ; - Adds new motions
+ ;   - (/) - Move back/forward sexp
+ ;   - M-b/M-w - Move back/forward sibling
+ ;   - [e/]e - Select prev/next sexp
+ ;   - M-{hjkl} - Drag sexp around
+ ;   - M-S-{hjkl} - Barf/slurp
  {1 "Grazfather/sexp.nvim"
   :ft ["clojure" "scheme" "lisp" "timl" "fennel" "janet"]
   :opts {:filetypes "clojure,scheme,lisp,timl,fennel,janet"}
-  :dependencies ["tpope/vim-repeat"]}
+  :dependencies ["tpope/vim-repeat"]
+  :keys (keys! "Slurp from right" "n" <leader>xs "<Plug>(sexp_capture_next_element)"
+               "Slurp from left" "n" <leader>xS "<Plug>(sexp_capture_prev_element)"
+               "Barf from right" "n" <leader>xe "<Plug>(sexp_emit_tail_element)"
+               "Barf from left" "n" <leader>xE "<Plug>(sexp_emit_head_element)"
+               "Convolute" "n" <leader>xc "<Plug>(sexp_convolute)"
+               "Drag forward" "n" <leader>xl "<Plug>(sexp_swap_element_forward)"
+               "Drag back" "n" <leader>xh "<Plug>(sexp_swap_element_backward)"
+               "Next element" "n" <leader>xw "<Plug>(sexp_move_to_next_element_head)"
+               "Previous element" "n" <leader>xb "<Plug>(sexp_move_to_prev_element_head)")}
  ; ---- Connection to various lisp REPLs
  {1 "Olical/conjure" :ft ["clojure" "fennel" "janet"]}
  ; -- Clojure
@@ -28,23 +51,32 @@
  "tomlion/vim-solidity"
 
  ; Git
- "tpope/vim-fugitive"
+ {1 "tpope/vim-fugitive"
+  :keys (keys! "Git blame" "n" <leader>gb "<cmd>Git blame<CR>"
+               "Git diff" "n" <leader>gd "<cmd>Git diff<CR>"
+               "Git status" "n" <leader>gs "<cmd>Git status<CR>"
+               "Open selected file in github" "n" <leader>go "<cmd>GBrowse<CR>")}
  {1 "TimUntersberger/neogit"
   :dependencies ["nvim-lua/plenary.nvim" "sindrets/diffview.nvim"]
-  :config true}
+  :config true
+  :keys (keys! "Open Neogit" "n" <leader>gg "<cmd>Neogit<CR>")}
  ; -- Adds :GBrowse
  "tpope/vim-rhubarb"
  ; -- Adds :GitMessenger
- "rhysd/git-messenger.vim"
+ {1 "rhysd/git-messenger.vim"
+  :keys (keys! "Show commit message at line" "n" <leader>gm "<cmd>GitMessenger<CR>")}
  ; -- Adds :GV to browse history
- "junegunn/gv.vim"
+ {1 "junegunn/gv.vim"
+  :keys (keys! "Git log" "n" <leader>gl "<cmd>GV<CR>"
+               "Git log current file" "n" <leader>gf "<cmd>GV!<CR>")}
  ; -- Adds changed lines in the gutter
  {1 "lewis6991/gitsigns.nvim"
   :dependencies ["nvim-lua/plenary.nvim"]
   :config true}
 
  ; Misc
- "szw/vim-maximizer"
+ {1 "szw/vim-maximizer"
+  :keys (keys! "Toggle window zoom" "n" <leader>wz "<cmd>MaximizerToggle<CR>")}
  {1 "numToStr/Comment.nvim" :config true}
  {1 "echasnovski/mini.surround"
   :version "*"
@@ -55,7 +87,8 @@
                     :highlight "<leader>sh"
                     :replace "<leader>sr"
                     :update_n_lines "<leader>sn"}}}
- "mbbill/undotree"
+ {1 "mbbill/undotree"
+  :keys (keys! "Toggle Undotree" "n" <leader>tu "<cmd>UndotreeToggle<CR>")}
  {1 "stevearc/oil.nvim"
   :dependencies ["nvim-tree/nvim-web-devicons"]
   :config true}]
