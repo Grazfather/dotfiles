@@ -1,14 +1,14 @@
 (fn partition [n seq]
-  (var temp [])
-  (var res [])
-  (each [i v (ipairs seq)]
-    (table.insert temp v)
-    (when (= (length temp) n)
-      (table.insert res temp)
-      (set temp [])))
-  (when (~= (length temp) 0)
-    (table.insert res temp))
-  res)
+  (let [res []]
+    (for [i 1 (length seq) n]
+      (let [temp []]
+        (for [j 0 (- n 1)]
+          (let [v (. seq (+ i j))]
+            (when (~= v nil)
+              (table.insert temp v))))
+        (when (> (length temp) 0)
+          (table.insert res temp))))
+    res))
 
 (fn get? [name]
   "Get the value of a vim opt"
@@ -52,40 +52,65 @@
          ,(unpack (icollect [mode (string.gmatch modes ".")]
                     `(vim.keymap.set ,mode ,keys cmd# ,options)))))))
 
-(fn xmap! [modes keys cmd ...]
-  (when (not (= nil keys))
-    `(do ,(map!- modes keys cmd {:remap true})
-         ,(xmap! modes ...))))
+(fn parse-map-args [default-options args]
+  (let [last-idx (length args)
+        last (. args last-idx)
+        has-options? (and (> last-idx 0)
+                          (= :table (type last))
+                          (not (. last 1)))
+        options (if has-options? last default-options)
+        remaining (if has-options?
+                    (let [r []]
+                      (for [i 1 (- last-idx 1)] (table.insert r (. args i)))
+                      r)
+                    args)]
+    [options remaining]))
 
-(fn map! [modes keys cmd ...]
-  (when (not (= nil modes))
-    `(do ,(map!- modes keys cmd {:remap true})
-         ,(map! ...))))
+(fn xmap! [modes ...]
+  (let [args [...]
+        [options remaining] (parse-map-args {:remap true} args)]
+    `(do ,(unpack (icollect [_ [keys cmd] (ipairs (partition 2 remaining))]
+                    (map!- modes keys cmd options))))))
 
-(fn cmap! [keys cmd ...]
-  (xmap! "c" keys cmd ...))
+(fn map! [...]
+  (let [args [...]
+        [options remaining] (parse-map-args {:remap true} args)]
+    `(do ,(unpack (icollect [_ [modes keys cmd] (ipairs (partition 3 remaining))]
+                    (map!- modes keys cmd options))))))
 
-(fn imap! [keys cmd ...]
-  (xmap! "i" keys cmd ...))
+(fn cmap! [...] (xmap! "c" ...))
+(fn imap! [...] (xmap! "i" ...))
+(fn nmap! [...] (xmap! "n" ...))
 
-(fn nmap! [keys cmd ...]
-  (xmap! "n" keys cmd ...))
+(fn descxmap! [modes ...]
+  (let [args [...]
+        [options remaining] (parse-map-args {:remap true} args)]
+    `(do ,(unpack (icollect [_ [desc keys cmd] (ipairs (partition 3 remaining))]
+                    (let [opts (let [t {}]
+                                 (each [k v (pairs options)] (tset t k v))
+                                 (tset t :desc desc)
+                                 t)]
+                      (map!- modes keys cmd opts)))))))
 
-(fn descxmap! [modes desc keys cmd ...]
-  (when (not (= nil keys))
-    `(do ,(map!- modes keys cmd {:desc desc :remap true})
-         ,(descxmap! modes ...))))
+(fn descnmap! [...]
+  (descxmap! "n" ...))
 
-(fn descnmap! [desc keys cmd ...]
-  (descxmap! "n" desc keys cmd ...))
+(fn xnoremap! [modes ...]
+  (let [args [...]
+        [options remaining] (parse-map-args {} args)]
+    `(do ,(unpack (icollect [_ [keys cmd] (ipairs (partition 2 remaining))]
+                    (map!- modes keys cmd options))))))
 
-(fn xnoremap! [modes keys cmd ...]
-  (when (not (= nil keys))
-    `(do ,(map!- modes keys cmd {})
-         ,(xnoremap! modes ...))))
+(fn nnoremap! [...]
+  (xnoremap! "n" ...))
 
-(fn nnoremap! [keys cmd ...]
-  (xnoremap! "n" keys cmd ...))
+(fn keys! [...]
+  "Generate lazy.nvim :keys table entries.
+   Usage: (keys! desc mode keys cmd desc2 mode2 keys2 cmd2 ...)"
+  (let [res []]
+    (each [_ [desc mode keys cmd] (ipairs (partition 4 [...]))]
+      (table.insert res {1 (tostring keys) 2 cmd :desc desc :mode mode}))
+    res))
 
 (fn call-module-func [m method ...]
   "Call a module's specified function if the module can be imported."
@@ -112,5 +137,6 @@
  : descnmap!
  : xnoremap!
  : nnoremap!
+ : keys!
  : call-module-func
  : setup}
