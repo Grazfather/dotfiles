@@ -76,7 +76,7 @@
 ; Use the system default browser app
 (local browser-app
        (hs.application.nameForBundleID (hs.urlevent.getDefaultHandler "http")))
-(local notes-app "Logseq")
+(local notes-app "Obsidian")
 (local terminal-app "WezTerm")
 
 (local back
