@@ -439,74 +439,9 @@
                   :action hs.console.clearConsole}])
         :keys []})
 
-(local slack-config
-       {:key "Slack"
-        :keys [{:mods [:cmd]
-                :key :g
-                :action "slack:scroll-to-bottom"}
-               {:mods [:ctrl]
-                :key :r
-                :action "slack:add-reaction"}
-               {:mods [:ctrl]
-                :key :t
-                :action "slack:thread"}
-               {:mods [:ctrl]
-                :key :p
-                :action "slack:up"}
-               {:mods [:ctrl]
-                :key :n
-                :action "slack:down"}
-               {:mods [:alt]
-                :key :f
-                :action "slack:scroll-down"
-                :repeat true}
-               {:mods [:alt]
-                :key :b
-                :action "slack:scroll-up"
-                :repeat true}
-               {:mods [:alt]
-                :key :d
-                :action (fn []
-                          (slack.scroll-down)
-                          (slack.scroll-down))
-                :repeat true}
-               {:mods [:alt]
-                :key :u
-                :action (fn []
-                          (slack.scroll-up)
-                          (slack.scroll-up))
-                :repeat true}
-               {:mods [:ctrl]
-                :key :i
-                :action "slack:next-history"
-                :repeat true}
-               {:mods [:ctrl]
-                :key :o
-                :action "slack:prev-history"
-                :repeat true}
-               {:mods [:ctrl]
-                :key :j
-                :action "slack:next-day"
-                :repeat true}
-               {:mods [:ctrl]
-                :key :k
-                :action "slack:prev-day"
-                :repeat true}]})
-
-(local obsidian-config
-       {:key "Obsidian"
-        :keys [{:mods [:ctrl]
-                :key :p
-                :action "slack:up"}
-               {:mods [:ctrl]
-                :key :n
-                :action "slack:down"}]})
-
 (local apps
        [browser-config
-        hammerspoon-config
-        slack-config
-        obsidian-config])
+        hammerspoon-config])
 
 (local config
        {:title "Main Menu"
