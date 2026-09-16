@@ -495,10 +495,6 @@
                  :hotkeys {:toggle_clipboard [hyper-mods "v"] }
                  :start true})
 
-;; Show a cheatsheet of hotkeys for the current app
-(Install:andUse "KSheet"
-                {:hotkeys {:toggle [hyper-mods "/"]}})
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Exports
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
