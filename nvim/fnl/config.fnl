@@ -209,7 +209,8 @@
   "Toggle visual glyphs"
   <leader>tv (fn []
                (toggle-sign-column)
-               (set-toggle! list number relativenumber)
+               (set-toggle! number relativenumber)
+               (vim.cmd "set list!")
                (vim.cmd "IBLToggle")))
 
 ; Simulate readline/emacs's jump to start/end of line in insert mode

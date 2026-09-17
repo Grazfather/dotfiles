@@ -30,7 +30,12 @@
 ;	    (Tabs then spaces))
 (vim.fn.matchadd "TrailingWhitespace" "\\s\\+$\\| \\+\\ze\\t\\|\\t\\+\\ze ")
 (vim.api.nvim_create_autocmd :ColorScheme
-                             {:callback #(vim.api.nvim_set_hl 0 "TrailingWhitespace" {:undercurl true})})
+                             {:callback #(vim.api.nvim_set_hl 0 "TrailingWhitespace" {:undercurl true :sp "red" :bg "#440000"})})
+(vim.api.nvim_set_hl 0 "TrailingWhitespace" {:undercurl true :sp "red" :bg "#440000"})
+(vim.api.nvim_create_autocmd :WinNew
+                             {:callback #(when (not vim.w.trailing_whitespace_match_id)
+                                           (tset vim.w :trailing_whitespace_match_id
+                                                 (vim.fn.matchadd "TrailingWhitespace" "\\s\\+$\\| \\+\\ze\\t\\|\\t\\+\\ze ")))})
 
 [
  ; Colorscheme
