@@ -41,7 +41,7 @@
             (vim.cmd.colorscheme :tokyonight-night))}
  ; Status line
  {1 "nvim-lualine/lualine.nvim"
-  :dependencies ["kyazdani42/nvim-web-devicons"]
+  :dependencies ["nvim-tree/nvim-web-devicons"]
   :opts {:sections {:lualine_c [:filename :aerial] }
          :options {:theme :tokyonight
                    :component_separators {:left ""
@@ -50,7 +50,7 @@
                                         :right ""}}}}
  ; Show open buffers as a tab bar
  {1 "akinsho/bufferline.nvim"
-  :dependencies ["kyazdani42/nvim-web-devicons"]
+  :dependencies ["nvim-tree/nvim-web-devicons"]
   :opts {:options {:diagnostics :nvim_lsp
                    :separator_style :slant
                    :show_buffer_close_icons false

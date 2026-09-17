@@ -1,7 +1,7 @@
 (import-macros {: call-module-func : setup : keys!} :macros)
 
 [{1 "ibhagwan/fzf-lua"
-  :dependencies ["kyazdani42/nvim-web-devicons"]
+  :dependencies ["nvim-tree/nvim-web-devicons"]
   :opts {:git {:files {:cmd "git ls-files --exclude-standard ':!:vendor'"}}
          :lines {:fzf_opts {"--with-nth" "2.."}}}
   :keys (keys! "Find files in project"
@@ -54,7 +54,7 @@
  {1 "nvim-neo-tree/neo-tree.nvim"
   :keys (keys! "Toggle Neo-tree" "n" "<leader>tf" "<cmd>Neotree toggle<CR>")
   :dependencies ["nvim-lua/plenary.nvim"
-                 "kyazdani42/nvim-web-devicons"
+                 "nvim-tree/nvim-web-devicons"
                  "MunifTanjim/nui.nvim"]}
  {1 "simrat39/symbols-outline.nvim"
   :keys (keys! "Toggle symbols-outline" "n" "<leader>ts" "<cmd>SymbolsOutline<CR>")
