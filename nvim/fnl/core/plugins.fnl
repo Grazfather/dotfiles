@@ -10,6 +10,7 @@
  ; Language support
  ; -- Markdown
  {1 "MeanderingProgrammer/render-markdown.nvim"
+  :cond (not vim.env.NVIM_LIGHT)
   :dependencies  ["nvim-treesitter/nvim-treesitter" "nvim-tree/nvim-web-devicons"]
   :opts {:file_types  ["markdown"]}
   :ft ["markdown"]}

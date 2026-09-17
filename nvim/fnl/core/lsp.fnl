@@ -74,6 +74,7 @@
                                             (on-attach client bufnr)))})
 
 [{1 "williamboman/mason-lspconfig.nvim"
+  :cond (not vim.env.NVIM_LIGHT)
   :opts {:ensure_installed ["bashls"
                             "clangd"
                             "gopls"

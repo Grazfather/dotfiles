@@ -1,4 +1,5 @@
 [{1 "saghen/blink.cmp"
+  :cond (not vim.env.NVIM_LIGHT)
   :dependencies ["rafamadriz/friendly-snippets" "L3MON4D3/LuaSnip"]
   :version "1.*"
   :opts {:keymap {:preset :default}
