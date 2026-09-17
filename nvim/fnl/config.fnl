@@ -162,10 +162,7 @@
   "Switch split"
   <leader>ww "<C-w>w"
   "Resize windows evently"
-  <leader>w= "<C-w>="
-
-  "Toggle Undotree"
-  <leader>tu "<cmd>UndotreeToggle<CR>")
+  <leader>w= "<C-w>=")
 
 (fn toggle-quickfix []
   (let [qfwins (vim.tbl_filter (fn [w]

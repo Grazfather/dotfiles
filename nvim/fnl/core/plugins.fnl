@@ -53,6 +53,7 @@
 
  ; Misc
  {1 "szw/vim-maximizer"
+  :cmd ["MaximizerToggle"]
   :keys (keys! "Toggle window zoom" "n" <leader>wz "<cmd>MaximizerToggle<CR>")}
  {1 "numToStr/Comment.nvim" :config true}
  {1 "echasnovski/mini.surround"
@@ -65,6 +66,7 @@
                     :replace "<leader>sr"
                     :update_n_lines "<leader>sn"}}}
  {1 "mbbill/undotree"
+  :cmd ["UndotreeToggle"]
   :keys (keys! "Toggle Undotree" "n" <leader>tu "<cmd>UndotreeToggle<CR>")}
  {1 "stevearc/oil.nvim"
   :dependencies ["nvim-tree/nvim-web-devicons"]
