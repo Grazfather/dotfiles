@@ -11,9 +11,9 @@
 
 (fn should-keep-line? [line i [start-indices end-indices]]
   "Predicate to determine if a line should be kept. It should be kept if:
-   - It doesn't have 'DELETEME' at the end of a line
+   - It doesn't contain 'DELETEME'
    - It isn't between any set of DELETEME markers"
-  (and (not (string.match line "DELETEME$"))
+  (and (not (string.match line "DELETEME"))
        (accumulate [keep true
                     idx start (ipairs start-indices)]
          (and keep
@@ -41,20 +41,13 @@
           (vim.api.nvim_buf_set_lines 0 0 -1 false filtered-lines)
           (vim.api.nvim_win_set_cursor 0 new-pos)))))
 
-(fn get-comment-string []
-  "Get appropriate comment string for current buffer"
-  (let [cms vim.bo.commentstring]
-    (if (= cms "")
-        "// "  ; Default to C-style if none set
-        (string.gsub cms "%%s" " "))))
-
 (fn add-delete-markers []
   "Add DELETEME markers around visual selection"
   (let [[_ l1 _ _] (vim.fn.getpos "v")
         [_ l2 _ _] (vim.fn.getpos ".")
-        cs (get-comment-string)
-        start-marker (.. cs " DELETEME>>")
-        end-marker (.. cs " DELETEME<<")
+        cms (let [c vim.bo.commentstring] (if (= c "") "%s" c))
+        start-marker (string.gsub cms "%%s" "DELETEME>>")
+        end-marker (string.gsub cms "%%s" "DELETEME<<")
         ; Figure out which end of the selection is first
         [start-line end-line] (if (< l1 l2)
                                 [l1 l2]
