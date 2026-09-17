@@ -10,7 +10,7 @@
  ; Language support
  ; -- Markdown
  {1 "MeanderingProgrammer/render-markdown.nvim"
-  :depencencies  ["nvim-treesitter/nvim-treesitter" "nvim-tree/nvim-web-devicons"]
+  :dependencies  ["nvim-treesitter/nvim-treesitter" "nvim-tree/nvim-web-devicons"]
   :opts {:file_types  ["markdown"]}
   :ft ["markdown"]}
  ; -- Lisps
