@@ -28,14 +28,35 @@
 ;   Mixed spaces and tabs (in either order):
 ;    	(Spaces then tabs))
 ;	    (Tabs then spaces))
-(vim.fn.matchadd "TrailingWhitespace" "\\s\\+$\\| \\+\\ze\\t\\|\\t\\+\\ze ")
+(local trailing-ws-pattern "\\s\\+$\\| \\+\\ze\\t\\|\\t\\+\\ze ")
+(local trailing-ws-bt-blacklist
+  {:nofile true :terminal true :prompt true :help true :quickfix true})
+(local trailing-ws-ft-blacklist
+  {:lazy true :neo-tree true :TelescopePrompt true :mason true :notify true :toggleterm true :DressingInput true})
+
+(fn add-trailing-ws-match []
+  (when (and (not (. trailing-ws-bt-blacklist vim.bo.buftype))
+             (not (. trailing-ws-ft-blacklist vim.bo.filetype))
+             (not vim.w.trailing_whitespace_match_id))
+    (tset vim.w :trailing_whitespace_match_id
+          (vim.fn.matchadd "TrailingWhitespace" trailing-ws-pattern))))
+
+(fn remove-trailing-ws-match []
+  (when vim.w.trailing_whitespace_match_id
+    (pcall vim.fn.matchdelete vim.w.trailing_whitespace_match_id)
+    (tset vim.w :trailing_whitespace_match_id nil)))
+
+(fn update-trailing-ws-match []
+  (if (or (. trailing-ws-bt-blacklist vim.bo.buftype)
+          (. trailing-ws-ft-blacklist vim.bo.filetype))
+    (remove-trailing-ws-match)
+    (add-trailing-ws-match)))
+
+(vim.api.nvim_create_autocmd [:BufWinEnter :BufEnter :WinNew :TermOpen :FileType]
+                             {:callback #(update-trailing-ws-match)})
 (vim.api.nvim_create_autocmd :ColorScheme
                              {:callback #(vim.api.nvim_set_hl 0 "TrailingWhitespace" {:undercurl true :sp "red" :bg "#440000"})})
 (vim.api.nvim_set_hl 0 "TrailingWhitespace" {:undercurl true :sp "red" :bg "#440000"})
-(vim.api.nvim_create_autocmd :WinNew
-                             {:callback #(when (not vim.w.trailing_whitespace_match_id)
-                                           (tset vim.w :trailing_whitespace_match_id
-                                                 (vim.fn.matchadd "TrailingWhitespace" "\\s\\+$\\| \\+\\ze\\t\\|\\t\\+\\ze ")))})
 
 [
  ; Colorscheme
