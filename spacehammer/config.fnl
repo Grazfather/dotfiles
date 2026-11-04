@@ -1,8 +1,6 @@
 (require-macros :lib.macros)
 (require-macros :lib.advice.macros)
 (local windows (require :windows))
-(local slack (require :slack))
-(local vim (require :vim))
 
 (local {: concat
         : logf} (require :lib.functional))
@@ -29,7 +27,6 @@
 ;; [x] |-- b - browser
 ;; [x] |-- r - music
 ;; [x] |-- t - terminal
-;; [x] |-- s - Slack
 ;; [x] |-- c - Whatsapp
 ;; [x] |-- d - Discord
 ;; [x] |-- o - notes
@@ -283,9 +280,6 @@
         {:key :t
          :title terminal-app
          :action (activator terminal-app)}
-        {:key :s
-         :title "Slack"
-         :action (activator "Slack")}
         {:key :c
          :title "Whatsapp"
          :action (activator "Whatsapp")}
@@ -343,9 +337,6 @@
         {:mods hyper-mods
          :key :t
          :action (activator terminal-app)}
-        {:mods hyper-mods
-         :key :s
-         :action (activator "Slack")}
         {:mods hyper-mods
          :key :c
          :action (activator "Whatsapp")}
