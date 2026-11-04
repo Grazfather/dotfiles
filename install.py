@@ -24,6 +24,7 @@ SYMLINKS = {
     "spacehammer": [("spacehammer", None)],
     "wezterm": [("wezterm.lua", None)],
     "ghostty": [("ghostty/", ".config/ghostty/")],
+    "rex": [("rex/", ".config/rex/")],
     "karabiner": [("karabiner", ".config/karabiner/")],
     "starship": [("starship.toml", ".config/starship.toml")],
     "nvim": [("nvim/", ".config/nvim/")],
